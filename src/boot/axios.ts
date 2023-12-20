@@ -1,6 +1,5 @@
 import { boot } from 'quasar/wrappers';
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { Basebase } from 'src/components/models';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { CommonFail } from 'src/components/dialog';
 
 declare module '@vue/runtime-core' {
@@ -48,7 +47,7 @@ export default boot(({ app }) => {
       return response.data
       // 如果再多一层 data 可能会导致某些 res 为空
     } else {
-      CommonFail('错误:' + res.data.code + '  信息：' + res.data.msg)
+      CommonFail('错误:' + response.data.code + '  信息：' + response.data.msg)
     }
 
   }, (error) => {

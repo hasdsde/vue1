@@ -17,7 +17,8 @@
 
     <!-- 表格 -->
     <div>
-      <q-table title="Treats" :rows="rows" :columns="columns" row-key="id">
+      <q-table title="Treats" :rows="rows" :columns="columns" row-key="id" v-model:selected="selected" @request="loadPage"
+        :pagination="{ page: currentPage, rowsPerPage: pageSize }" selection="multiple">
         <template v-slot:top>
           <q-input dense filled label="名称" v-model="searchForm.name" class="inline-block q-mr-sm" />
           <q-input dense filled label="id" v-model="searchForm.id" class="inline-block q-mr-sm" />
@@ -29,18 +30,33 @@
 
     <!-- 新增/修改 -->
     <q-dialog v-model="saveDialog" full-height position="right">
-      <q-card class="column full-height max-w-[80vw] w-fit">
+      <q-card class="column full-height max-w-[80vw] w-fit min-w-[300px]">
         <q-card-section>
-          <div class="text-h6">Full Height</div>
+          <div class="text-h6">{{ saveTitle }}</div>
         </q-card-section>
+
 
         <q-card-section class="col q-pt-none">
           Click/Tap on the backdrop.
         </q-card-section>
 
-        <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="OK" v-close-popup />
-        </q-card-actions>
+        <!-- <q-card-section class="q-pa-md" v-if="item.type == 'input' && item.new">
+          <q-input v-model="item.value" :label="item.label" />
+        </q-card-section> -->
+
+        <!--    提交按钮    -->
+        <q-card-section class="text-primary">
+
+          <div class="row justify-between">
+            <div class="col">
+              <!-- <q-btn color="primary" class="text-left" label="取消" v-close-popup @click="handleCancel" /> -->
+              <q-btn flat color="red" label="重置" @click="save" />
+            </div>
+            <div class="col text-right">
+              <q-btn color="primary" label="提交" v-close-popup @click="save" />
+            </div>
+          </div>
+        </q-card-section>
       </q-card>
     </q-dialog>
   </div>
@@ -50,9 +66,12 @@
 import { api } from 'src/boot/axios';
 import { onMounted, ref } from 'vue';
 import { BaseApi } from 'src/components/models'
+import { CommonWarn, DialogConfirm } from 'src/components/dialog';
 
 // 数据获取
-const columns = [
+const currentPage = 1
+const pageSize = 5
+const columns: any = [
   {
     name: 'id',
     required: true,
@@ -71,15 +90,16 @@ const columns = [
   { name: 'deletedAt', label: '删除时间', field: 'deletedAt', align: 'right' },
 ]
 const searchForm: any = ref({
-  name: "aaa",
-  id: "bbb"
+  name: "",
+  id: ""
 })
+
 let rows = ref([])
 onMounted(() => {
   loadPage()
 })
 function loadPage() {
-  api.get("/menu/page?currentPage=1&pageSize=10").then((res: BaseApi) => {
+  api.get("/menu/page?currentPage=1&pageSize=10",).then((res: BaseApi) => {
     rows.value = res.data.records
     console.log(res.data.records);
   })
@@ -92,18 +112,40 @@ function resetSearch() {
 }
 
 // 删改查
-
+let saveForm = ref({})
 let saveDialog = ref(false)
 let saveTitle = ref("")
+const selected = ref([])
+// 新增按钮
 function handelAdd() {
   saveTitle.value = "新增"
   saveDialog.value = true
 }
+
+// 更新按钮
 function handleUpdate() {
-  saveTitle.value = "新增"
+  const length = selected.value.length
+  if (length != 1) {
+    CommonWarn("只能选择一个")
+    return
+  }
+  saveTitle.value = "修改"
   saveDialog.value = true
 }
+
+// 删除按钮
 function handleDelete() {
+  const length = selected.value.length
+  if (length == 0) {
+    CommonWarn("请选择至少一个")
+    return
+  }
+  DialogConfirm("确定要删除" + length + "项吗？").onOk(() => {
+    console.log()
+  })
+}
+// Api
+function save() {
 
 }
 </script>

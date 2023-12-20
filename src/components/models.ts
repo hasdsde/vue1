@@ -1,3 +1,6 @@
+import { AxiosResponse } from "axios";
+import { extend } from "quasar";
+
 export interface Todo {
   id: number;
   content: string;
@@ -11,4 +14,9 @@ export interface DialogRadioItems {
   label: string;
   value: string;
   color: string;
+}
+export interface BaseApi {
+  code: number,
+  msg: string,
+  data: any,
 }

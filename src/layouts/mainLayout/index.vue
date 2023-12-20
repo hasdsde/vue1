@@ -16,7 +16,8 @@
       <q-list padding class="rounded-borders text-primary">
         <q-expansion-item expand-separator icon="perm_identity" label="仪表盘">
           <q-card class="text-black">
-            <q-item clickable v-ripple :active="link === 'inbox'" @click="link = 'main'" active-class="my-menu-link">
+            <q-item clickable v-ripple to="/home" :active="link === 'home'" @click="link = 'home'"
+              active-class="my-menu-link">
               <q-item-section avatar>
                 <q-icon name="inbox" class="pl-5" />
               </q-item-section>
@@ -62,7 +63,8 @@
 
               <q-item-section>部门管理</q-item-section>
             </q-item>
-            <q-item clickable v-ripple :active="link === 'menu'" @click="link = 'menu'" active-class="my-menu-link">
+            <q-item clickable v-ripple to="/menu" :active="link === 'menu'" @click="link = 'menu'"
+              active-class="my-menu-link">
               <q-item-section avatar>
                 <q-icon name="delete" class="pl-5" />
               </q-item-section>
@@ -97,7 +99,8 @@
 
               <q-item-section>函数调用指南</q-item-section>
             </q-item>
-            <q-item clickable v-ripple :active="link === 'trash'" @click="link = 'trash'" active-class="my-menu-link">
+            <q-item clickable v-ripple to="/table" :active="link === 'trash'" @click="link = 'trash'"
+              active-class="my-menu-link">
               <q-item-section avatar>
                 <q-icon name="delete" class="pl-5" />
               </q-item-section>

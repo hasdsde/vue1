@@ -14,7 +14,7 @@ declare module '@vue/runtime-core' {
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: 'https://api.example.com' });
+const api = axios.create({ baseURL: 'http://localhost:8080' });
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
@@ -26,6 +26,30 @@ export default boot(({ app }) => {
   app.config.globalProperties.$api = api;
   // ^ ^ ^ this will allow you to use this.$api (for Vue Options API form)
   //       so you can easily perform requests against your app's API
+
+  // 请求拦截器
+  // api.interceptors.request.use((config) => {
+  //   // if (localStorage.getItem('token') == null) {
+  //   //   window.location.href = "/login"
+  //   // }
+  //   if (localStorage.getItem('username') == null) {
+  //     window.location.href = '/#/login'
+  //   }
+  //   return config;
+  // })
+  // 响应拦截器
+  api.interceptors.response.use(res => {
+    if (res.data.code == '200') {
+      return res.data
+      // 如果再多一层 data 可能会导致某些 res 为空
+    } else {
+      // CommonFail('错误:' + res.data.code + '  信息：' + res.data.msg)
+    }
+  }, error => {
+    // 错误处理，错误不会有 res.data.code，不走上面
+    console.log(error.response.data.message);
+    // CommonFail('请求失败' + '  错误码:' + error.response.status)
+  })
 });
 
 export { api };

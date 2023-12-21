@@ -17,13 +17,48 @@
 
     <!-- 表格 -->
     <div>
-      <q-table title="Treats" :rows="rows" :columns="columns" row-key="id" v-model:selected="selected" @request="loadPage"
-        :pagination="{ page: currentPage, rowsPerPage: pageSize }" selection="multiple">
+      <q-table title="Treats" :rows="rows" :columns="columns" row-key="id" v-model:selected="selected"
+        :pagination="{ rowsPerPage: 0 }" selection="multiple">
+
+        <!-- 顶部插槽 -->
         <template v-slot:top>
           <q-input dense filled label="名称" v-model="searchForm.name" class="inline-block q-mr-sm" />
           <q-input dense filled label="id" v-model="searchForm.id" class="inline-block q-mr-sm" />
           <q-btn flat color="primary" class="inline vertical-top  q-mr-sm" label="" icon="search" @click="loadPage" />
           <q-btn flat color="red" class="inline vertical-top q-mr-sm" label="" icon="restart_alt" @click="resetSearch" />
+        </template>
+
+        <!-- 分页插槽 -->
+        <template v-slot:bottom>
+          <span v-if="selected.length > 0">已选择{{ selected.length }}项</span>
+          <q-space />
+          <span class="q-mr-md">共{{ total }}条</span>
+          <div>
+            <span class="q-mr-md ">行数 {{ pageSize }}
+              <q-btn-dropdown color="primary" flat label="" size="md" dense :ripple="false">
+                <q-list>
+                  <q-item clickable v-close-popup @click="updatePage(10)">
+                    <q-item-section>
+                      <q-item-label>10</q-item-label>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item clickable v-close-popup @click="updatePage(15)">
+                    <q-item-section>
+                      <q-item-label>15</q-item-label>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item clickable v-close-popup @click="updatePage(20)">
+                    <q-item-section>
+                      <q-item-label>20</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-btn-dropdown>
+            </span>
+          </div>
+          <q-pagination v-model="currentPage" :max="pageNumber" input @update:model-value="loadPage" />
         </template>
       </q-table>
     </div>
@@ -36,9 +71,9 @@
         </q-card-section>
 
 
-        <q-card-section class="col q-pt-none">
-          Click/Tap on the backdrop.
-        </q-card-section>
+        <!-- <q-card-section class="q-pa-md" v-if="item.type == 'primary-key' && info.mode == 'update'">
+          <q-input v-model="item.value" :label="item.label" readonly />
+        </q-card-section> -->
 
         <!-- <q-card-section class="q-pa-md" v-if="item.type == 'input' && item.new">
           <q-input v-model="item.value" :label="item.label" />
@@ -69,8 +104,11 @@ import { BaseApi } from 'src/components/models'
 import { CommonWarn, DialogConfirm } from 'src/components/dialog';
 
 // 数据获取
-const currentPage = 1
-const pageSize = 5
+let currentPage = ref(1)
+let pageSize = ref(15)
+let total = ref(10)
+let pageNumber = ref(1)
+
 const columns: any = [
   {
     name: 'id',
@@ -99,20 +137,31 @@ onMounted(() => {
   loadPage()
 })
 function loadPage() {
-  api.get("/menu/page?currentPage=1&pageSize=10",).then((res: BaseApi) => {
+  api.get("/menu/page?currentPage=" + currentPage.value + "&pageSize=" + pageSize.value,).then((res: BaseApi) => {
     rows.value = res.data.records
-    console.log(res.data.records);
+    total.value = res.data.total
+    pageNumber.value = Math.ceil(total.value / pageSize.value);
   })
 }
 function resetSearch() {
   for (const key in searchForm.value) {
     searchForm.value[key] = ""
   }
-  loadPage
+  loadPage()
+}
+function updatePage(size: number) {
+  pageSize.value = size
+  currentPage.value = 1
+  loadPage()
 }
 
 // 删改查
-let saveForm = ref({})
+let saveForm = ref({
+  id: "",
+  name: "",
+  icon: "",
+})
+
 let saveDialog = ref(false)
 let saveTitle = ref("")
 const selected = ref([])

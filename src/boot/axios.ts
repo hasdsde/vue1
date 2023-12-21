@@ -41,8 +41,6 @@ export default boot(({ app }) => {
 
   // 响应拦截器
   base.interceptors.response.use((response: AxiosResponse) => {
-    console.log(response);
-
     if (response.status == 200) {
       return response.data
       // 如果再多一层 data 可能会导致某些 res 为空

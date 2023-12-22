@@ -9,7 +9,7 @@
             <q-btn color="primary" class="q-mr-md" label="刷新" icon="refresh" @click="loadPage" />
             <q-btn color="secondary" class="q-mr-md" label="新增" icon="add" @click="handelAdd" />
             <q-btn color="purple" class="q-mr-md" label="修改" icon="update" @click="handleUpdate" />
-            <q-btn color="purple" class="q-mr-md" label="标记删除" icon="delete" @click="handleUpdate" />
+            <q-btn color="purple" class="q-mr-md" label="标记删除" icon="delete" @click="handleSignDelete" />
             <q-btn color="red" class="q-mr-md" label="删除" icon="delete" @click="handleDelete" />
           </div>
         </div>
@@ -24,7 +24,8 @@
         <!-- 顶部插槽 -->
         <template v-slot:top>
           <q-input dense filled label="名称" v-model="searchForm.name" class="inline-block q-mr-sm" />
-          <q-input dense filled label="id" v-model="searchForm.id" class="inline-block q-mr-sm" />
+          <q-select dense filled label="父级" clearable v-model="searchForm.parentId" :options="parentMenus"
+            class="inline-block q-mr-sm w-[200px]" option-value="id" option-label="name" map-options emit-value />
           <q-btn flat color="primary" class="inline vertical-top  q-mr-sm" label="" icon="search" @click="loadPage" />
           <q-btn flat color="red" class="inline vertical-top q-mr-sm" label="" icon="restart_alt" @click="resetSearch" />
         </template>
@@ -63,6 +64,13 @@
         </template>
 
         <!-- 列插槽 -->
+
+        <template v-slot:body-cell-icon="props">
+          <q-td :props="props">
+            <q-btn flat round color="primary" :icon="props.row.icon" />
+          </q-td>
+        </template>
+
         <template v-slot:body-cell-parentId="props">
           <q-td :props="props">
             {{ getParentName(props.row.parentId) }}
@@ -85,7 +93,7 @@
           <q-td :props="props">
             <div v-if="props.row.deletedAt != null">
               {{ getHumanDate(props.row.deletedAt) }}
-              <q-btn flat size="md" style="color: #FF0080" label="恢复" />
+              <q-btn flat size="md" style="color: #FF0080" label="恢复" @click="handleRecover(props.row.id)" />
             </div>
           </q-td>
         </template>
@@ -109,7 +117,7 @@
         </q-card-section>
 
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.icon" label="图表" />
+          <q-input v-model="saveForm.icon" label="图标" />
         </q-card-section>
 
 
@@ -152,7 +160,7 @@ import { api } from 'src/boot/axios';
 import { onMounted, ref } from 'vue';
 import { BaseApi } from 'src/components/models'
 import { CommonSuccess, CommonWarn, DialogConfirm } from 'src/components/dialog';
-import { getHumanDate } from 'src/components/utils';
+import { getHumanDate, resetForm } from 'src/components/utils';
 
 // 数据获取
 let currentPage = ref(1)
@@ -161,13 +169,6 @@ let total = ref(10)
 let pageNumber = ref(1)
 
 const columns: any = [
-  {
-    name: 'id',
-    required: true,
-    label: 'id',
-    align: 'left',
-    field: 'id',
-  },
   { name: 'name', align: 'center', label: '名称', field: 'name' },
   { name: 'icon', label: '图标', field: 'icon', align: 'center' },
   { name: 'url', label: '地址', field: 'url', align: 'center' },
@@ -181,12 +182,7 @@ const columns: any = [
 const parentMenus = ref([])
 const searchForm: any = ref({
   name: "",
-  id: "",
-  icon: "",
-  url: "",
   parentId: "",
-  authorityId: "",
-  orders: ""
 })
 
 let rows = ref([])
@@ -194,7 +190,8 @@ onMounted(() => {
   loadPage()
 })
 function loadPage() {
-  api.get("/menu/page?currentPage=" + currentPage.value + "&pageSize=" + pageSize.value,).then((res: BaseApi) => {
+  resetForm(saveForm.value)
+  api.get("/menu/page?currentPage=" + currentPage.value + "&pageSize=" + pageSize.value, { params: searchForm.value }).then((res: BaseApi) => {
     rows.value = res.data.records
     total.value = res.data.total
     pageNumber.value = Math.ceil(total.value / pageSize.value);
@@ -244,6 +241,7 @@ let saveTitle = ref("")
 const selected = ref([])
 // 新增按钮
 function handelAdd() {
+  resetForm(saveForm.value)
   saveTitle.value = "新增"
   saveDialog.value = true
 }
@@ -271,7 +269,42 @@ function handleDelete() {
     return
   }
   DialogConfirm("确定要删除" + length + "项吗？").onOk(() => {
-    console.log()
+    const numbers = selected.value.map((item: any) => {
+      return item.id
+    })
+    api.delete("/menu/del/batch", { data: numbers }).then((res: BaseApi) => {
+      if (res.data == 200) {
+        CommonSuccess("")
+      }
+      loadPage()
+    })
+  })
+}
+function handleRecover(id: number) {
+  api.put("/menu/recover/" + id).then((res: BaseApi) => {
+    if (res.data == 200) {
+      CommonSuccess("")
+    }
+    loadPage()
+  })
+}
+// 标记删除
+function handleSignDelete() {
+  const length = selected.value.length
+  if (length == 0) {
+    CommonWarn("请选择至少一个")
+    return
+  }
+  DialogConfirm("确定要删除" + length + "项吗？").onOk(() => {
+    const numbers = selected.value.map((item: any) => {
+      return item.id
+    })
+    api.delete("/menu/del/sign", { data: numbers }).then((res: BaseApi) => {
+      if (res.data == 200) {
+        CommonSuccess("")
+      }
+      loadPage()
+    })
   })
 }
 // Api
@@ -279,8 +312,8 @@ function save() {
   api.post("/menu", saveForm.value).then((res: BaseApi) => {
     if (res.code == 200) {
       CommonSuccess("操作成功")
-      loadPage()
     }
+    loadPage()
   })
 }
 </script>

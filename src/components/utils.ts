@@ -21,7 +21,12 @@ export function getHumanDate(date: string) {
   }
 }
 
-
+// 充值表单
+export function resetForm(array: any[any]) {
+  for (const key in array) {
+    array[key] = ""
+  }
+}
 //导出表格
 export default function exportTable(columns: any, rows: any, fileName: string) {
   // naive encoding to csv format

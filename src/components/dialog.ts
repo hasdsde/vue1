@@ -16,7 +16,10 @@ export function LoadingFinish($q: any) {
 }
 
 // 一般成功消息
-export function CommonSuccess(msg: string) {
+export function CommonSuccess(msg: string | null) {
+  if (msg == null) {
+    msg = "操作成功"
+  }
   Notify.create({
     type: 'positive',
     message: msg,
@@ -24,7 +27,17 @@ export function CommonSuccess(msg: string) {
     group: false
   })
 }
-
+export function CommonGroupSuccess(msg: string | null) {
+  if (msg == null) {
+    msg = "操作成功"
+  }
+  Notify.create({
+    type: 'positive',
+    message: msg,
+    position: 'top',
+    group: true
+  })
+}
 
 export function Success() {
   Notify.create({

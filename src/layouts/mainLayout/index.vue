@@ -3,11 +3,9 @@
     <q-header elevated>
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
-
         <q-toolbar-title>
           DD-Code管理系统
         </q-toolbar-title>
-
         <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
@@ -84,7 +82,8 @@
                 tailWind生成器
               </q-item-section>
             </q-item>
-            <q-item clickable v-ripple :active="link === 'outbox'" @click="link = 'outbox'" active-class="my-menu-link">
+            <q-item clickable v-ripple to="/icons" :active="link === 'outbox'" @click="link = 'outbox'"
+              active-class="my-menu-link">
               <q-item-section avatar>
                 <q-icon name="send" class="pl-5" />
               </q-item-section>

@@ -51,7 +51,7 @@ export default boot(({ app }) => {
   }, (error) => {
     // 错误处理，错误不会有 res.data.code，不走上面
     console.log(error.response.data.message);
-    // CommonFail('请求失败' + '  错误码:' + error.response.status)
+    CommonFail('请求失败' + '  错误码:' + error.response.status)
   })
 });
 

@@ -9,6 +9,7 @@
             <q-btn color="primary" class="q-mr-md" label="刷新" icon="refresh" @click="loadPage" />
             <q-btn color="secondary" class="q-mr-md" label="新增" icon="add" @click="handelAdd" />
             <q-btn color="purple" class="q-mr-md" label="修改" icon="update" @click="handleUpdate" />
+            <q-btn color="purple" class="q-mr-md" label="标记删除" icon="delete" @click="handleUpdate" />
             <q-btn color="red" class="q-mr-md" label="删除" icon="delete" @click="handleDelete" />
           </div>
         </div>
@@ -60,25 +61,74 @@
           </div>
           <q-pagination v-model="currentPage" :max="pageNumber" input @update:model-value="loadPage" />
         </template>
+
+        <!-- 列插槽 -->
+        <template v-slot:body-cell-parentId="props">
+          <q-td :props="props">
+            {{ getParentName(props.row.parentId) }}
+          </q-td>
+        </template>
+
+        <template v-slot:body-cell-updatedAt="props">
+          <q-td :props="props">
+            {{ getHumanDate(props.row.updatedAt) }}
+          </q-td>
+        </template>
+
+        <template v-slot:body-cell-createdAt="props">
+          <q-td :props="props">
+            {{ getHumanDate(props.row.createdAt) }}
+          </q-td>
+        </template>
+
+        <template v-slot:body-cell-deletedAt="props">
+          <q-td :props="props">
+            <div v-if="props.row.deletedAt != null">
+              {{ getHumanDate(props.row.deletedAt) }}
+              <q-btn flat size="md" style="color: #FF0080" label="恢复" />
+            </div>
+          </q-td>
+        </template>
       </q-table>
     </div>
 
     <!-- 新增/修改 -->
     <q-dialog v-model="saveDialog" full-height position="right">
-      <q-card class="column full-height max-w-[80vw] w-fit min-w-[300px]">
+      <q-card class="column full-height max-w-[80vw] w-fit min-w-[400px] q-pa-sm">
         <q-card-section>
           <div class="text-h6">{{ saveTitle }}</div>
         </q-card-section>
 
 
-        <!-- <q-card-section class="q-pa-md" v-if="item.type == 'primary-key' && info.mode == 'update'">
-          <q-input v-model="item.value" :label="item.label" readonly />
+        <!-- <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.id" label="Id" readonly />
         </q-card-section> -->
 
-        <!-- <q-card-section class="q-pa-md" v-if="item.type == 'input' && item.new">
-          <q-input v-model="item.value" :label="item.label" />
-        </q-card-section> -->
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.name" label="名称" />
+        </q-card-section>
 
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.icon" label="图表" />
+        </q-card-section>
+
+
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.url" label="地址" />
+        </q-card-section>
+
+        <q-card-section class="q-pa-md">
+          <q-select label="父级" clearable v-model="saveForm.parentId" :options="parentMenus" option-value="id"
+            option-label="name" map-options emit-value />
+        </q-card-section>
+
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.authorityId" label="权限ID" />
+        </q-card-section>
+
+        <q-card-section class="q-pa-md">
+          <q-input type="number" v-model="saveForm.orders" label="顺序" />
+        </q-card-section>
         <!--    提交按钮    -->
         <q-card-section class="text-primary">
 
@@ -101,7 +151,8 @@
 import { api } from 'src/boot/axios';
 import { onMounted, ref } from 'vue';
 import { BaseApi } from 'src/components/models'
-import { CommonWarn, DialogConfirm } from 'src/components/dialog';
+import { CommonSuccess, CommonWarn, DialogConfirm } from 'src/components/dialog';
+import { getHumanDate } from 'src/components/utils';
 
 // 数据获取
 let currentPage = ref(1)
@@ -118,18 +169,24 @@ const columns: any = [
     field: 'id',
   },
   { name: 'name', align: 'center', label: '名称', field: 'name' },
-  { name: 'icon', label: '图标', field: 'icon' },
-  { name: 'url', label: '地址', field: 'url' },
-  { name: 'parentId', label: '父级名称', field: 'parentId' },
-  { name: 'authorityId', label: '权限id', field: 'authorityId' },
+  { name: 'icon', label: '图标', field: 'icon', align: 'center' },
+  { name: 'url', label: '地址', field: 'url', align: 'center' },
+  { name: 'parentId', label: '父级名称', field: 'parentId', align: 'center' },
+  { name: 'authorityId', label: '权限id', field: 'authorityId', align: 'center' },
   { name: 'orders', label: '顺序', field: 'orders' },
   { name: 'createdAt', label: '创建时间', field: 'createdAt', align: 'center' },
   { name: 'updatedAt', label: '修改时间', field: 'updatedAt', align: 'center' },
   { name: 'deletedAt', label: '删除时间', field: 'deletedAt', align: 'right' },
 ]
+const parentMenus = ref([])
 const searchForm: any = ref({
   name: "",
-  id: ""
+  id: "",
+  icon: "",
+  url: "",
+  parentId: "",
+  authorityId: "",
+  orders: ""
 })
 
 let rows = ref([])
@@ -141,6 +198,12 @@ function loadPage() {
     rows.value = res.data.records
     total.value = res.data.total
     pageNumber.value = Math.ceil(total.value / pageSize.value);
+  })
+  loadParent()
+}
+function loadParent() {
+  api.get("/menu/parent").then((res: BaseApi) => {
+    parentMenus.value = res.data
   })
 }
 function resetSearch() {
@@ -154,12 +217,26 @@ function updatePage(size: number) {
   currentPage.value = 1
   loadPage()
 }
+// 数据展示
+function getParentName(parendId: number) {
+  let menuName = "/"
+  parentMenus.value.forEach((menu: any) => {
+    if (parendId == menu.id) {
+      menuName = menu.name
+    }
+  })
+  return menuName
+}
 
-// 删改查
+// 数据操作
 let saveForm = ref({
-  id: "",
   name: "",
+  id: "",
   icon: "",
+  url: "",
+  parentId: "",
+  authorityId: "",
+  orders: ""
 })
 
 let saveDialog = ref(false)
@@ -174,10 +251,14 @@ function handelAdd() {
 // 更新按钮
 function handleUpdate() {
   const length = selected.value.length
+  const form: any = selected.value[0]
+
   if (length != 1) {
     CommonWarn("只能选择一个")
     return
   }
+  saveForm.value = { ...saveForm.value, ...form }
+  console.log(saveForm.value);
   saveTitle.value = "修改"
   saveDialog.value = true
 }
@@ -195,6 +276,11 @@ function handleDelete() {
 }
 // Api
 function save() {
-
+  api.post("/menu", saveForm.value).then((res: BaseApi) => {
+    if (res.code == 200) {
+      CommonSuccess("操作成功")
+      loadPage()
+    }
+  })
 }
 </script>

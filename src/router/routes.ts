@@ -29,22 +29,6 @@ routes.push({
   path: '/:catchAll(.*)*',
   component: () => import('pages/ErrorNotFound.vue'),
 })
-console.log(routes)
-// api.get("/menu/parent").then((parnet: BaseApi) => {
-//   parentMenu = parnet.data.data.map((p: any) => {
-//     return { id: p.id, url: p.url, icon: p.icon, name: p.name }
-//   })
-//   parentMenu.forEach((parent: any) => {
-//     menuMap[parent.id] = { ...parent, children: [] }
-//   })
-//   api.get("/menu/child").then((children: BaseApi) => {
-//     childrenMenu = children.data.map((c: any) => {
-//       return { id: c.id, url: c.url, icon: c.icon, name: c.name, parentId: c.parentId }
-//     })
-//     childrenMenu.forEach((child: any) => {
-//       menuMap[child.parentId].children.push(child)
-//     });
-//   })
-// })
+
 
 export default routes;

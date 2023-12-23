@@ -21,19 +21,27 @@ const routes: RouteRecordRaw[] = [
       { path: '/sys/authority', component: () => import('pages/sys/authority/index.vue') },
       { path: '/sys/user', component: () => import('pages/sys/user/index.vue') },
       { path: '/dashboard/home', component: () => import('pages/dashboard/home/index.vue') },
-
     ],
   },
 ];
 
-api.get("/menu/child").then((children: BaseApi) => {
-  let childrenMenu: any[] = []
-  childrenMenu = children.data.data.map((c: any) => {
+
+let childrenMenu: any[] = []
+// 该代码在firefox中不可用
+if (localStorage.getItem("childrenMenu") !== null) {
+  childrenMenu = JSON.parse(localStorage.getItem("childrenMenu") as string)
+  // @ts-ignore
+  routes[0].children.push(...childrenMenu.map((c: any) => {
     return { name: c.name, path: c.url, component: () => import('../pages' + c.url + '/index.vue') }
+  }))
+} else {
+  api.get("/menu/child").then((children: BaseApi) => {
+    //@ts-ignore
+    routes[0].children.push(...children.data.data.map((c: any) => {
+      return { name: c.name, path: c.url, component: () => import('../pages' + c.url + '/index.vue'), meta: c.name }
+    }))
   })
-  //@ts-ignore
-  routes[0].children.push(...childrenMenu)
-})
+}
 
 routes.push({
   path: '/:catchAll(.*)*',

@@ -45,7 +45,6 @@ function toggleLeftDrawer() {
 }
 loadMenu()
 
-
 // 获取远程Menu
 function loadMenu() {
   const menuMap: any = []
@@ -72,7 +71,6 @@ function loadMenu() {
     menuMap.map((menu: any) => {
       menus.value.push(menu)
     });
-    console.log(menus.value);
   })
 
 

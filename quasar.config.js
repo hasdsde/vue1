@@ -90,10 +90,10 @@ module.exports = configure(function (/* ctx */) {
           rewrite: (path) => path.replace(/^\/api/, '')
         },
         // Proxying websockets or socket.io
-        '/socket.io': {
-          target: 'ws://localhost:3000',
-          ws: true
-        }
+        // '/socket.io': {
+        //   target: 'ws://localhost:3000',
+        //   ws: true
+        // }
       }
 
     },

@@ -4,9 +4,9 @@ import {
   createRouter,
   createWebHashHistory,
   createWebHistory,
+  useRoute,
 } from 'vue-router';
 import { StateInterface } from '../store';
-
 import routes from './routes';
 
 /*
@@ -32,6 +32,7 @@ export default route<StateInterface>(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
-
   return Router;
 });
+
+

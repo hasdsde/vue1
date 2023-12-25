@@ -1,13 +1,14 @@
 import { exportFile, useQuasar } from "quasar"
 const $q = useQuasar()
 
+// 获取格式化后localstrong数据
 export function getLocalItem(item: string) {
   if (localStorage.getItem(item) == null) {
     setLocalItem(item, "")
   }
   return JSON.parse(item)
 }
-
+// 添加格式化后localstrong数据
 export function setLocalItem(name: string, item: any) {
   localStorage.setItem(name, JSON.stringify(item))
 }

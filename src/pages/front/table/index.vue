@@ -4,17 +4,19 @@
       <q-select filled dense class="inline w-[200px] q-pr-md  align-middle" v-model="currentTable" :options="allTables"
         label="选择对象" option-label="title" @update:model-value="handleTablesUpdate" />
       <q-btn color="primary" class="col q-mr-md" label="重新获取" icon="refresh" @click="loadPage" />
-      <q-btn class="col q-mr-md" label="新建" color="secondary" icon="add" @click="building()" />
-      <q-btn class="col q-mr-md" label="删除" color="red" icon="delete" @click="building()" />
-      <q-btn class="col q-mr-md" label="下载" color="primary" icon="save" @click="building()" />
+      <q-btn class="col q-mr-md" label="保存全部" color="secondary" icon="save" @click="building()" />
     </q-card>
 
     <q-card class="q-pa-md q-mt-md">
-      <q-expansion-item switch-toggle-side default-opened label="Table表格" :header-style="{ fontSize: 'large' }"
-        class="rounded-borders">
-        <q-separator />
+      <q-expansion-item switch-toggle-side label="Table表格" :header-style="{ fontSize: 'large' }" class="rounded-borders">
         <q-card>
 
+          <q-card-section class="q-pa-sm">
+            <q-btn flat color="primary" class="q-mr-md" label="新增列" />
+            <q-btn flat color="primary" class="q-mr-md" label="新增行" />
+            <q-btn flat color="primary" class="q-mr-md" label="保存到剪切板" />
+          </q-card-section>
+          <q-separator />
           <q-card-section class="q-pb-none">
             <div class="row justify-center">
               <div class="col text-subtitle1" v-for="item in tableList">
@@ -27,8 +29,7 @@
           <q-card-section class="q-pt-none">
             <div class="row justify-between" v-for="(table, tableKey) in tableForm" :key="tableKey">
               <div class="col q-pr-sm " v-for="(item, itemKey) in tableList">
-                <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense
-                  v-model="tableForm[tableKey][item.name]" />
+                <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense v-model="table[item.name]" />
                 <q-select filled v-if="item.type === 'select'" :options="item.options" class="q-mt-md" dense
                   v-model="table[item.name]" />
                 <q-toggle class="q-mt-md bg-grey-3 w-full text-center" v-if="item.type === 'boolean'"
@@ -43,8 +44,7 @@
     </q-card>
 
     <q-card class="q-pa-md q-mt-md">
-      <q-expansion-item switch-toggle-side default-opened label="查询表单" :header-style="{ fontSize: 'large' }"
-        class="rounded-borders">
+      <q-expansion-item switch-toggle-side label="查询表单" :header-style="{ fontSize: 'large' }" class="rounded-borders">
         <q-separator />
         <q-card>
 
@@ -68,6 +68,39 @@
       </q-expansion-item>
     </q-card>
 
+
+    <q-card class="q-pa-md q-mt-md">
+      <q-expansion-item switch-toggle-side label="新增/保存表单" :header-style="{ fontSize: 'large' }" class="rounded-borders">
+        <q-separator />
+        <q-card>
+
+          <q-card-section class="q-pb-none">
+            <div class="row justify-center">
+              <div class="col text-subtitle1" v-for="item in saveList">
+                {{ item.label }}
+                ({{ item.name }})
+              </div>
+            </div>
+          </q-card-section>
+
+          <q-card-section class="q-pt-none">
+            <div class="row justify-between" v-for="(form, tableKey) in saveForm" :key="tableKey">
+              <div class="col q-pr-sm " v-for="(item, itemKey) in saveList">
+                <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense v-model="form[item.name]" />
+                <q-select filled v-if="item.type === 'select'" :options="item.option" class="q-mt-md" dense
+                  v-model="form[item.name]" />
+                <q-toggle class="q-mt-md bg-grey-3 w-full text-center" v-if="item.type === 'boolean'"
+                  v-model="form[item.name]" />
+                <q-select class="q-mt-md" v-if="item.type === 'option'" dense filled v-model="form[item.name]" use-input
+                  use-chips multiple hide-dropdown-icon input-debounce="0" new-value-mode="add-unique" />
+              </div>
+            </div>
+          </q-card-section>
+        </q-card>
+      </q-expansion-item>
+    </q-card>
+
+
   </div>
 </template>
 <script setup lang="ts">
@@ -84,8 +117,7 @@ const currentTable = ref([])
 // 表格行
 const tableForm: any = ref([])
 const queryForm: any = ref([])
-const addForm: any = ref([])
-const updateForm: any = ref([])
+const saveForm: any = ref([])
 
 
 loadPage()
@@ -106,9 +138,8 @@ function loadPage() {
 function handleTablesUpdate(table: any) {
   // 传输表格数据
   tableForm.value = []
-  addForm.value = []
   queryForm.value = []
-  updateForm.value = []
+  saveForm.value = []
   for (const key in table.properties) {
     tableForm.value.push({
       name: key,
@@ -116,20 +147,22 @@ function handleTablesUpdate(table: any) {
       align: 'center',
       required: true,
       sortable: true,
-      label: table.properties[key].description,
+      label: table.properties[key].description == null ? key : table.properties[key].description,
       field: key,
       option: []
     })
-    addForm.value.push({
+    saveForm.value.push({
       name: key,
-      label: table.properties[key].description,
+      label: table.properties[key].description == null ? key : table.properties[key].description,
       type: "string",
-      placeholder: table.properties[key].description,
+      placeholder: table.properties[key].description == null ? key : table.properties[key].description,
       rules: "",
       readonly: false,
       disable: false,
       clearable: false,
-      option: ""
+      new: true,
+      update: true,
+      option: []
     })
   }
   queryForm.value.push(
@@ -157,15 +190,18 @@ const queryList = ref([
   { label: '名称', name: "name" },
   { label: '默认值', name: "default" }
 ])
-const addList = ref([
+const saveList = ref([
   { label: '唯一标识', name: 'name', type: 'string' },
   { label: '名称', name: 'label', type: 'string' },
-  { label: '表单类型', name: 'type', type: 'string', option: ['string', 'number', 'boolean', 'time'] },
+  { label: '表单类型', name: 'type', type: 'select', option: ['string', 'number', 'boolean', 'time', 'select'] },
   { label: '提示', name: 'placeholder', type: 'string' },
   { label: '规则', name: 'rules', type: 'string' },
   { label: '只读', name: 'readonly', type: 'boolean' },
   { label: '不可用', name: 'disable', type: 'boolean' },
+  { label: '新增表单Form', name: 'new', type: 'boolean' },
+  { label: '更新表单Form', name: 'update', type: 'boolean' },
   { label: '带删除按钮', name: 'clearable', type: 'boolean' },
-  { label: '选项内容(如果是select)', name: 'option', type: 'option' },
+  { label: '选项内容', name: 'option', type: 'option' },
 ])
+
 </script>

@@ -12,8 +12,8 @@
         <q-card>
 
           <q-card-section class="q-pa-sm">
-            <q-btn flat color="primary" class="q-mr-md" label="新增列" />
-            <q-btn flat color="primary" class="q-mr-md" label="新增行" />
+            <q-btn flat color="primary" class="q-mr-md" label="新增列" @click="building" />
+            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="building" />
             <q-btn flat color="primary" class="q-mr-md" label="保存到剪切板" />
           </q-card-section>
           <q-separator />
@@ -105,6 +105,7 @@
 </template>
 <script setup lang="ts">
 import { api } from 'src/boot/axios';
+import { CommonWarn } from 'src/components/dialog';
 import { ref } from 'vue';
 // TODO:可以导入数据然后做修改
 // TODO:可以导出到WebSocket
@@ -173,7 +174,9 @@ function handleTablesUpdate(table: any) {
   )
   console.log(tableForm.value);
 }
-function building() { }
+function building() {
+  CommonWarn("稍后开发")
+}
 
 
 // 表格列

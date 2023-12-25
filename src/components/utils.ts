@@ -1,14 +1,24 @@
 import { exportFile, useQuasar } from "quasar"
+import {CommonFail, CommonGroupSuccess} from "components/dialog";
 const $q = useQuasar()
 
-// 获取格式化后localstrong数据
+//复制到剪切板
+export function copyToClickBoard(str:string) {
+  navigator.clipboard.writeText(str).then(function () {
+    CommonGroupSuccess("复制到剪切板")
+  }, function (err) {
+    CommonFail("错误"+err)
+  });
+}
+
+// 获取格式化后local-strong数据
 export function getLocalItem(item: string) {
   if (localStorage.getItem(item) == null) {
     setLocalItem(item, "")
   }
   return JSON.parse(item)
 }
-// 添加格式化后localstrong数据
+// 添加格式化后local-strong数据
 export function setLocalItem(name: string, item: any) {
   localStorage.setItem(name, JSON.stringify(item))
 }
@@ -29,7 +39,7 @@ export function resetForm(array: any[any]) {
   }
 }
 //导出表格
-export default function exportTable(columns: any, rows: any, fileName: string) {
+export  function exportTable(columns: any, rows: any, fileName: string) {
   // naive encoding to csv format
   // @ts-ignore
   const content = [columns.map((col: any) => wrapCsvValue(col.label))].concat(

@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import icons from 'src/components/icons.json'
 import {ref} from 'vue';
-import {copyToClickBoard} from "components/utils";
+import {CopyToClickBoard} from "components/utils";
 
 const loading = ref(false)
 const filter = ref('')
@@ -62,6 +62,6 @@ const columns: any[] = [
 ]
 
 function handleCopy(name: string) {
-  copyToClickBoard(name)
+  CopyToClickBoard(name)
 }
 </script>

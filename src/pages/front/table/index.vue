@@ -2,21 +2,21 @@
   <div class="q-pa-md">
     <q-card class="q-mb-md q-pa-md">
       <q-select filled dense class="inline w-[200px] q-pr-md  align-middle" v-model="currentTable" :options="allTables"
-        label="选择对象" option-label="title" @update:model-value="handleTablesUpdate" />
-      <q-btn color="primary" class="col q-mr-md" label="重新获取" icon="refresh" @click="loadPage" />
-      <q-btn class="col q-mr-md" label="保存全部" color="secondary" icon="save" @click="building()" />
+                label="选择对象" option-label="title" @update:model-value="handleTablesUpdate"/>
+      <q-btn color="primary" class="col q-mr-md" label="重新获取" icon="refresh" @click="loadPage"/>
+      <q-btn class="col q-mr-md" label="保存全部" color="secondary" icon="save" @click="building()"/>
     </q-card>
 
     <q-card class="q-pa-md q-mt-md">
-      <q-expansion-item switch-toggle-side label="Table表格" :header-style="{ fontSize: 'large' }" class="rounded-borders">
+      <q-expansion-item switch-toggle-side label="Table表格" :header-style="{ fontSize: 'large' }"
+                        class="rounded-borders">
         <q-card>
-
           <q-card-section class="q-pa-sm">
-            <q-btn flat color="primary" class="q-mr-md" label="新增列" @click="building" />
-            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="building" />
-            <q-btn flat color="primary" class="q-mr-md" label="保存到剪切板" />
+            <q-btn flat color="primary" class="q-mr-md" label="新增列" @click="building"/>
+            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="building"/>
+            <q-btn flat color="primary" class="q-mr-md" label="保存表单到剪切板" @click="handleTableForm"/>
           </q-card-section>
-          <q-separator />
+          <q-separator/>
           <q-card-section class="q-pb-none">
             <div class="row justify-center">
               <div class="col text-subtitle1" v-for="item in tableList">
@@ -29,13 +29,14 @@
           <q-card-section class="q-pt-none">
             <div class="row justify-between" v-for="(table, tableKey) in tableForm" :key="tableKey">
               <div class="col q-pr-sm " v-for="(item, itemKey) in tableList">
-                <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense v-model="table[item.name]" />
+                <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense v-model="table[item.name]"/>
                 <q-select filled v-if="item.type === 'select'" :options="item.options" class="q-mt-md" dense
-                  v-model="table[item.name]" />
+                          v-model="table[item.name]"/>
                 <q-toggle class="q-mt-md bg-grey-3 w-full text-center" v-if="item.type === 'boolean'"
-                  v-model="table[item.name]" />
-                <q-select class="q-mt-md" v-if="item.type === 'option'" dense filled v-model="table[item.name]" use-input
-                  use-chips multiple hide-dropdown-icon input-debounce="0" new-value-mode="add-unique" />
+                          v-model="table[item.name]"/>
+                <q-select class="q-mt-md" v-if="item.type === 'option'" dense filled v-model="table[item.name]"
+                          use-input
+                          use-chips multiple hide-dropdown-icon input-debounce="0" new-value-mode="add-unique"/>
               </div>
             </div>
           </q-card-section>
@@ -44,10 +45,15 @@
     </q-card>
 
     <q-card class="q-pa-md q-mt-md">
-      <q-expansion-item switch-toggle-side label="查询表单" :header-style="{ fontSize: 'large' }" class="rounded-borders">
-        <q-separator />
+      <q-expansion-item switch-toggle-side label="查询表单" :header-style="{ fontSize: 'large' }"
+                        class="rounded-borders">
+        <q-separator/>
         <q-card>
-
+          <q-card-section class="q-pa-sm">
+            <q-btn flat color="primary" class="q-mr-md" label="新增列" @click="building"/>
+            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="building"/>
+            <q-btn flat color="primary" class="q-mr-md" label="保存表单到剪切板" @click="handleQueryForm"/>
+          </q-card-section>
           <q-card-section class="q-pb-none">
             <div class="row justify-center">
               <div class="col text-subtitle1" v-for="item in queryList">
@@ -56,11 +62,10 @@
               </div>
             </div>
           </q-card-section>
-
           <q-card-section class="q-pt-none">
             <div class="row justify-between" v-for="(form, formKey) in queryForm" :key="formKey">
               <div class="col q-pr-sm " v-for="(item, itemKey) in queryList">
-                <q-input filled class="q-mt-md" dense v-model="form[item.name]" />
+                <q-input filled class="q-mt-md" dense v-model="form[item.name]"/>
               </div>
             </div>
           </q-card-section>
@@ -68,12 +73,16 @@
       </q-expansion-item>
     </q-card>
 
-
     <q-card class="q-pa-md q-mt-md">
-      <q-expansion-item switch-toggle-side label="新增/保存表单" :header-style="{ fontSize: 'large' }" class="rounded-borders">
-        <q-separator />
+      <q-expansion-item switch-toggle-side label="新增/保存表单" :header-style="{ fontSize: 'large' }"
+                        class="rounded-borders">
+        <q-separator/>
         <q-card>
-
+          <q-card-section class="q-pa-sm">
+            <q-btn flat color="primary" class="q-mr-md" label="新增列" @click="building"/>
+            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="building"/>
+            <q-btn flat color="primary" class="q-mr-md" label="保存表单到剪切板" @click="handleSaveForm"/>
+          </q-card-section>
           <q-card-section class="q-pb-none">
             <div class="row justify-center">
               <div class="col text-subtitle1" v-for="item in saveList">
@@ -86,42 +95,39 @@
           <q-card-section class="q-pt-none">
             <div class="row justify-between" v-for="(form, tableKey) in saveForm" :key="tableKey">
               <div class="col q-pr-sm " v-for="(item, itemKey) in saveList">
-                <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense v-model="form[item.name]" />
-                <q-select filled v-if="item.type === 'select'" :options="item.option" class="q-mt-md" dense
-                  v-model="form[item.name]" />
+                <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense v-model="form[item.name]"/>
+                <q-select filled v-if="item.type === 'select'" :options="item.options" class="q-mt-md" dense
+                          v-model="form[item.name]"/>
                 <q-toggle class="q-mt-md bg-grey-3 w-full text-center" v-if="item.type === 'boolean'"
-                  v-model="form[item.name]" />
+                          v-model="form[item.name]"/>
                 <q-select class="q-mt-md" v-if="item.type === 'option'" dense filled v-model="form[item.name]" use-input
-                  use-chips multiple hide-dropdown-icon input-debounce="0" new-value-mode="add-unique" />
+                          use-chips multiple hide-dropdown-icon input-debounce="0" new-value-mode="add-unique"/>
               </div>
             </div>
           </q-card-section>
         </q-card>
       </q-expansion-item>
     </q-card>
-
-
   </div>
 </template>
 <script setup lang="ts">
-import { api } from 'src/boot/axios';
-import { CommonWarn } from 'src/components/dialog';
-import { ref } from 'vue';
+import {api} from 'src/boot/axios';
+import {CommonWarn, DialogPrompt} from 'src/components/dialog';
+import {ref, toRaw} from 'vue';
+import {CopyToClickBoard} from "components/utils";
 // TODO:可以导入数据然后做修改
 // TODO:可以导出到WebSocket
 // TODO:可以新增或删除行和列
+
 // 来自Swagger的数据
-const allTables: any = ref([])
-const currentTable = ref([])
-
-
+const allTables = ref<any[]>([])
+const currentTable = ref<any[]>([])
 // 表格行
 const tableForm: any = ref([])
 const queryForm: any = ref([])
 const saveForm: any = ref([])
-
-
 loadPage()
+
 function loadPage() {
   api.get('/v2/api-docs').then((res: any) => {
     for (const key in res.definitions) {
@@ -144,13 +150,11 @@ function handleTablesUpdate(table: any) {
   for (const key in table.properties) {
     tableForm.value.push({
       name: key,
-      type: 'string',
       align: 'center',
       required: true,
       sortable: true,
       label: table.properties[key].description == null ? key : table.properties[key].description,
       field: key,
-      option: []
     })
     saveForm.value.push({
       name: key,
@@ -163,48 +167,79 @@ function handleTablesUpdate(table: any) {
       clearable: false,
       new: true,
       update: true,
-      option: []
+      option: [],
+      defaultValue: ""
     })
   }
   queryForm.value.push(
-    { name: "id", default: "" },
-    { name: "name", default: "" },
-    { name: "currentPage", default: "1" },
-    { name: "pageSize", default: "10" },
+      {name: "id", default: ""},
+      {name: "name", default: ""},
+      {name: "currentPage", default: "1"},
+      {name: "pageSize", default: "10"},
   )
-  console.log(tableForm.value);
 }
+
 function building() {
   CommonWarn("稍后开发")
 }
 
+//表格数据保存表单到剪切板
+function handleTableForm() {
+  const code = JSON.stringify(toRaw(tableForm.value))
+  DialogPrompt("输入", "变量名称", "tableColumns").onOk((val: string) => {
+    CopyToClickBoard("const " + val + ":any[] = " + code)
+  })
+}
+
+function handleQueryForm() {
+  let code: any = {}
+  queryForm.value.forEach((item: any) => {
+    code[item.name] = item.default
+  })
+  code = JSON.stringify(toRaw(code))
+  DialogPrompt("输入", "变量名称", "queryForm").onOk((val: string) => {
+    CopyToClickBoard("const " + val + ":any = ref(" + code + ")")
+  })
+}
+
+function handleSaveForm() {
+  let code: any = {}
+  saveForm.value.forEach((item: any) => {
+    code[item.name] = item.defaultValue
+  })
+  code = JSON.stringify(toRaw(code))
+  DialogPrompt("输入", "变量名称", "saveForm").onOk((val: string) => {
+    CopyToClickBoard("const " + val + ":any = ref(" + code + ")")
+  })
+}
 
 // 表格列
-const tableList = ref([
-  { label: '唯一标识', name: 'name', type: 'string' },
-  { label: '对齐', name: 'align', type: 'select', options: ['left', 'right', 'center'] },
-  { label: '列可见性', name: 'required', type: 'boolean' },
-  { label: '排序开关', name: 'sortable', type: 'boolean' },
-  { label: '显示名称', name: 'label', type: 'string' },
-  { label: '数据名称', name: 'field', type: 'string' },
+const tableList: any = ref([
+  {label: '唯一标识', name: 'name', type: 'string'},
+  {label: '显示名称', name: 'label', type: 'string'},
+  {label: '数据名称', name: 'field', type: 'string'},
+  {label: '对齐', name: 'align', type: 'select', options: ['left', 'right', 'center']},
+  {label: '列可见性', name: 'required', type: 'boolean'},
+  {label: '排序开关', name: 'sortable', type: 'boolean'},
 
 ])
-const queryList = ref([
-  { label: '名称', name: "name" },
-  { label: '默认值', name: "default" }
+const queryList: any = ref([
+  {label: '名称', name: "name"},
+  {label: '默认值', name: "default"}
 ])
-const saveList = ref([
-  { label: '唯一标识', name: 'name', type: 'string' },
-  { label: '名称', name: 'label', type: 'string' },
-  { label: '表单类型', name: 'type', type: 'select', option: ['string', 'number', 'boolean', 'time', 'select'] },
-  { label: '提示', name: 'placeholder', type: 'string' },
-  { label: '规则', name: 'rules', type: 'string' },
-  { label: '只读', name: 'readonly', type: 'boolean' },
-  { label: '不可用', name: 'disable', type: 'boolean' },
-  { label: '新增表单Form', name: 'new', type: 'boolean' },
-  { label: '更新表单Form', name: 'update', type: 'boolean' },
-  { label: '带删除按钮', name: 'clearable', type: 'boolean' },
-  { label: '选项内容', name: 'option', type: 'option' },
+const saveList: any = ref([
+  {label: '唯一标识', name: 'name', type: 'string'},
+  {label: '名称', name: 'label', type: 'string'},
+  {label: '表单类型', name: 'type', type: 'select', option: ['string', 'number', 'boolean', 'time', 'select']},
+  {label: '提示', name: 'placeholder', type: 'string'},
+  {label: '规则', name: 'rules', type: 'string'},
+  {label: '只读', name: 'readonly', type: 'boolean'},
+  {label: '不可用', name: 'disable', type: 'boolean'},
+  {label: '新增表单Form', name: 'new', type: 'boolean'},
+  {label: '更新表单Form', name: 'update', type: 'boolean'},
+  {label: '带删除按钮', name: 'clearable', type: 'boolean'},
+  {label: '选项内容', name: 'option', type: 'option'},
+  {label: '默认值', name: 'defaultValue', type: 'string'},
 ])
 
 </script>

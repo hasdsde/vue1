@@ -21,7 +21,7 @@ export function getHumanDate(date: string) {
   }
 }
 
-// 充值表单
+// 使用反射重置表单
 export function resetForm(array: any[any]) {
   for (const key in array) {
     array[key] = ""

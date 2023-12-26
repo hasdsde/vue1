@@ -48,7 +48,7 @@
           </q-tab-panel>
 
           <!--    变量     -->
-          <q-tab-panel name="vars">
+          <q-tab-panel name="vars" class="no-padding q-mt-md">
             <q-expansion-item
                 expand-separator
                 icon="perm_identity"
@@ -63,7 +63,6 @@
                 </q-card-section>
               </q-card>
             </q-expansion-item>
-
             <q-expansion-item
                 expand-separator
                 icon="signal_wifi_off"
@@ -77,10 +76,11 @@
                 </q-card-section>
               </q-card>
             </q-expansion-item>
+
           </q-tab-panel>
 
           <!--     函数     -->
-          <q-tab-panel name="fun">
+          <q-tab-panel name="fun" class="no-padding q-mt-md">
             <q-expansion-item
                 expand-separator
                 icon="perm_identity"
@@ -112,7 +112,7 @@
           </q-tab-panel>
 
           <!--     引入     -->
-          <q-tab-panel name="import">
+          <q-tab-panel name="import" class="no-padding q-mt-md">
             <q-expansion-item
                 expand-separator
                 icon="perm_identity"

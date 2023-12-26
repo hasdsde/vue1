@@ -4,26 +4,27 @@
     <!--    <BackgroundImg />-->
     <div class="column justify-center" style="height: 90vh;">
       <div class="col-auto row justify-center">
-        <q-card class="col-auto shadow-10 text-h5" style="background-color: rgb(255,255,255);padding: 50px;width: 400px">
+        <q-card class="col-auto shadow-10 text-h5"
+                style="background-color: rgb(255,255,255);padding: 50px;width: 400px">
           <q-card-section class="row justify-between">
             <p class="op-font">登录</p>
-            <q-btn icon="close" dense rounded flat to="/" />
+            <q-btn icon="close" dense rounded flat to="/"/>
           </q-card-section>
 
           <q-card-section class="op-font">
             <q-input rounded ref="usernameRef" v-model="name" label="用户名" :lazy-rules="true"
-              :rules="[(val) => (val.length > 0) || '输入值为空']" />
+                     :rules="[(val) => (val.length > 0) || '输入值为空']"/>
           </q-card-section>
 
           <q-card-section class="op-font">
             <q-input rounded ref="passwordRef" v-model="password" label="密码" lazy-rules
-              :rules="[(val) => (val && val.length > 0) || '输入值为空']" type="password" />
+                     :rules="[(val) => (val && val.length > 0) || '输入值为空']" type="password"/>
           </q-card-section>
 
           <q-card-section>
             <q-btn-group rounded>
-              <q-btn @click="handleLogin" color="primary" style="width: 205px;" label="登录" />
-              <q-btn @click="handleRegister" color="secondary" label="注册" />
+              <q-btn @click="handleLogin" color="primary" style="width: 205px;" label="登录"/>
+              <q-btn @click="handleRegister" color="secondary" label="注册"/>
             </q-btn-group>
           </q-card-section>
         </q-card>
@@ -33,10 +34,10 @@
 </template>
 
 <script setup lang="ts">
-import { api } from 'src/boot/axios';
-import { CommonWarn, CommonSuccess, CommonFail } from 'src/components/dialog';
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import {api} from 'src/boot/axios';
+import {CommonFail, CommonSuccess, CommonWarn} from 'src/components/dialog';
+import {ref} from 'vue'
+import {useRouter} from 'vue-router'
 
 
 const $router = useRouter()
@@ -87,7 +88,6 @@ async function handleLogin() {
 
 <style scoped>
 .main {
-  background-image: url('../../../op-dl-ui/src/assets/bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }

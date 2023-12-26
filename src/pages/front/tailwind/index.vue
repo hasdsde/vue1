@@ -1,7 +1,11 @@
 <template>
-  <div class="q-pa-sm flex">
-    <q-card class="w-1/5 h-full">
-      <div class="q-pa-md">
+  <div class="q-pa-sm flex justify-around">
+    <q-card class="w-[20%] h-full q-pa-md">
+      <!--      <div class="q-pb-md">-->
+      <!--        已连接-->
+      <!--        <q-btn color="primary" label="Primary"/>-->
+      <!--      </div>-->
+      <div>
         <q-btn-toggle
             v-model="leftTab"
             spread
@@ -41,14 +45,14 @@
         </q-tab-panels>
       </div>
     </q-card>
-    <q-card class="w-3/5 h-full">
+    <q-card class="w-[58%] h-full ">
       <q-card-section>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat.
       </q-card-section>
     </q-card>
-    <q-card class="w-3/5 h-full">
+    <q-card class="w-[20%] h-full">
       <q-card-section>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -60,6 +64,8 @@
 </template>
 <script lang="ts" setup>
 import {ref} from "vue";
+
+// const fs = require('fs')
 
 const leftTab = ref('template')
 </script>

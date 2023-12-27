@@ -1,10 +1,6 @@
 <template>
-  <div class="q-pa-sm flex justify-around">
-    <q-card class="w-[20%] h-full q-pa-md">
-      <!--      <div class="q-pb-md">-->
-      <!--        已连接-->
-      <!--        <q-btn color="primary" label="Primary"/>-->
-      <!--      </div>-->
+  <div class="q-pa-sm flex justify-around h-[90vh]">
+    <q-card class="w-[20%]  q-pa-md ">
       <div>
         <q-btn-toggle
             v-model="leftTab"
@@ -23,9 +19,8 @@
         ]"
         />
         <q-tab-panels v-model="leftTab" animated>
-
           <!--     模板     -->
-          <q-tab-panel name="template">
+          <q-tab-panel name="template" class="no-padding q-mt-md">
             <q-tree
                 :nodes="customize"
                 node-key="label"
@@ -145,53 +140,63 @@
         </q-tab-panels>
       </div>
     </q-card>
-    <q-card class="w-[58%] h-full ">
-      <q-card-section>
-        <iframe src="http://localhost:9000/#/template" frameborder="0"></iframe>
+
+    <q-card class="w-[58%] h-full">
+      <q-card-section class="h-full">
+        <iframe src="http://localhost:9000/#/template" frameborder="0" class="w-full h-full"/>
       </q-card-section>
     </q-card>
+
     <q-card class="w-[20%] h-full">
-      <q-card-section>
-        <div>
+      <q-card-section class="">
+        <div class="text-body1 q-pb-md">
           设置
         </div>
-        <q-select filled dense v-model="model" :options="['1','2','3']" label="自动更新时间"/>
-        <q-btn color="primary" label="重新加载"/>
+        <div class="flex no-wrap">
+          <q-select filled dense v-model="reloadTime" :options="['1','2','3']" label="自动更新时间"
+                    class="inline w-[150px] "/>
+          <q-btn class="q-ml-md" color="primary" label="刷新"/>
+          <q-btn class="q-ml-md" color="secondary" icon="file_download" label="导出"/>
+        </div>
       </q-card-section>
 
       <q-card-section>
-        代码预览：
+        <div class="text-body1 q-pb-md">
+          代码预览
+        </div>
         <q-input
-            v-model="text"
+            v-model="sourceCode"
             filled
             type="textarea"
+            class="overflow-auto"
+            autogrow
         />
       </q-card-section>
     </q-card>
-
   </div>
 </template>
 <script lang="ts" setup>
 import {ref} from "vue";
 
 // const fs = require('fs')
-
+const reloadTime = ref(1)
 const leftTab = ref('template')
+const sourceCode = ref("")
 const customize = [
   {
-    label: 'Satisfied customers',
+    label: 'Div1',
     header: 'root',
     children: [
       {
-        label: 'Good food',
+        label: 'div2',
         icon: 'restaurant_menu',
         header: 'generic',
         children: [
           {
-            label: 'Quality ingredients',
+            label: 'div3',
             header: 'generic',
             body: 'story',
-            story: 'Lorem ipsum dolor sit amet.'
+            story: '点击修改这里的样式'
           },
           {
             label: 'Good recipe',
@@ -201,10 +206,10 @@ const customize = [
         ]
       },
       {
-        label: 'Good service',
+        label: 'BTN',
         header: 'generic',
         body: 'toggle',
-        caption: 'Why are we as consumers so captivated by stories of great customer service? Perhaps it is because...',
+        caption: '点击修改按钮样式',
         enabled: false,
         children: [
           {label: 'Prompt attention'},
@@ -212,10 +217,10 @@ const customize = [
         ]
       },
       {
-        label: 'Pleasant surroundings',
+        label: 'div',
         children: [
-          {label: 'Happy atmosphere'},
-          {label: 'Good table presentation', header: 'generic'},
+          {label: 'q-Input'},
+          {label: 'q-Card', header: 'generic'},
           {label: 'Pleasing decor'}
         ]
       }

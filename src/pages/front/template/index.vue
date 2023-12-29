@@ -1,38 +1,6 @@
 <template>
   <div>
-    <div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+    <div class="q-mt-md">
       <br>
       这是模板文件22222222222222222222222
     </div>
@@ -40,6 +8,8 @@
   </div>
 </template>
 <script setup lang="ts">
+const item = "aa"
+const item2 = "aa"
 </script>
 
 <style scoped lang="sass">

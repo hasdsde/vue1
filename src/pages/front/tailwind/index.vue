@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-sm flex justify-around h-[90vh]">
+  <div class="q-pa-sm flex justify-around h-[95vh]">
     <q-card class="w-[20%]  q-pa-md ">
       <div>
         <q-btn-toggle
@@ -155,8 +155,9 @@
         <div class="flex no-wrap">
           <q-select filled dense v-model="reloadTime" :options="['1','2','3']" label="自动更新时间"
                     class="inline w-[150px] "/>
-          <q-btn class="q-ml-md" color="primary" label="刷新"/>
-          <q-btn class="q-ml-md" color="secondary" icon="file_download" label="导出"/>
+          <q-btn class="q-ml-md" color="primary" label="刷新" :loading="refresh" @click="getCode"
+                 icon="cloud_download"/>
+          <q-btn class="q-ml-md" color="secondary" label="更新" :loading="refresh" @click="uploadCode" icon="backup"/>
         </div>
       </q-card-section>
 
@@ -166,6 +167,7 @@
         </div>
         <q-input
             v-model="sourceCode"
+            debounce="1000"
             filled
             type="textarea"
             class="overflow-auto"
@@ -176,12 +178,14 @@
   </div>
 </template>
 <script lang="ts" setup>
-import {ref} from "vue";
+import {ref, toRaw, watch} from "vue";
+import axios from "axios";
+import {CommonFail, CommonGroupFastSuccess} from "components/dialog";
 
 // const fs = require('fs')
 const reloadTime = ref(1)
 const leftTab = ref('template')
-const sourceCode = ref("")
+const sourceCode = ref<string>("")
 const customize = [
   {
     label: 'Div1',
@@ -227,6 +231,51 @@ const customize = [
     ]
   }
 ]
+const refresh = ref(false)
+
+watch(sourceCode, (o, n) => {
+  uploadCode()
+})
+
+getCode()
+
+function getCode() {
+  refresh.value = true
+  axios.get("/twc/get", {timeout: 2000}).then((res: any) => {
+    sourceCode.value = res.data
+    getTemplateTree(res.data)
+    getScript(res.data)
+    refresh.value = false
+  }).catch((e) => {
+    CommonFail("错误：" + e.message)
+  })
+
+}
+
+function uploadCode() {
+  var data = new FormData;
+  data.set("file", toRaw(sourceCode.value))
+  axios.post("/twc/upload", data, {timeout: 2000}).then((res: any) => {
+    if (res.status == 200) {
+      CommonGroupFastSuccess("更新已完成")
+      getCode()
+    }
+  }).catch((e) => {
+    CommonFail("错误：" + e.message)
+  })
+}
+
+function getTemplateTree(sourceCode: string) {
+  const regex = /<template([\s\S]*?)<\/template>/
+  const match = sourceCode.match(regex) as RegExpMatchArray
+  console.log(match[0])
+}
+
+function getScript(sourceCode: string) {
+  const regex = /<script([\s\S]*?)<\/script>/
+  const match = sourceCode.match(regex) as RegExpMatchArray
+  // console.log(match[0])
+}
 </script>
 <style lang="sass" scoped>
 .my-custom-toggle

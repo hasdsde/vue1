@@ -40,6 +40,19 @@ export function CommonGroupSuccess(msg: string | null) {
     })
 }
 
+export function CommonGroupFastSuccess(msg: string | null) {
+    if (msg == null) {
+        msg = "操作成功"
+    }
+    Notify.create({
+        type: 'positive',
+        message: msg,
+        position: 'top',
+        group: true,
+        timeout: 200
+    })
+}
+
 export function Success() {
     Notify.create({
         type: 'positive',

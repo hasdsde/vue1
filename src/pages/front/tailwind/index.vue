@@ -270,9 +270,18 @@ function getTemplateTree(sourceCode: string) {
 
 function cycleGetNode(node: Cheerio<AnyNode>, codeTree: any) {
   $(node).attr("d_key", String(d_key += 1))
-  codeTree.push({name: $(node).get(0).name, attr: $(node).attr(), text: $(node).text().replaceAll("\n", "").replaceAll(" ", ""), children: []})
-  console.log(codeTree.value)
-  // console.log($(node).get(0))
+  codeTree.push({
+        //@ts-ignore
+        name: $(node).get(0).name,
+        attr: $(node).attr(),
+        children: [],
+        text: $(node).children().length == 0 ? $(node).text().replaceAll("\n", "").replaceAll(" ", "") : ''
+      }
+  )
+  // console.log(codeTree.value)
+  // if ($(node).children().length == 0) {
+  //   codeTree.push({text: $(node).text().replaceAll("\n", "").replaceAll(" ", ""), children: []})
+  // }
   $(node).children().map((i, el) => {
     cycleGetNode($(el), codeTree[0].children)
   })

@@ -1,3 +1,4 @@
+<!--@formatter:on-->
 <template>
   <div class="q-pa-sm flex justify-around h-[95vh]">
     <q-card class="w-[20%]  q-pa-md ">
@@ -22,22 +23,39 @@
           <!--     模板     -->
           <q-tab-panel name="template" class="no-padding q-mt-md">
             <q-tree
-                :nodes="customize"
-                node-key="label"
+                :nodes="codeTree"
+                node-key="d_key"
                 default-expand-all
             >
               <template v-slot:default-header="prop">
-                <div class="row items-center">
+                <div class="row items-center ">
                   <q-icon :name="prop.node.icon || 'category'" color="orange" size="28px" class="q-mr-sm"/>
-                  <div class="text-weight-bold text-primary">{{ prop.node.label }}</div>
+                  <div class="text-weight-bold text-primary">{{ prop.node.label.toString().toUpperCase() }}</div>
+                </div>
+                <q-space></q-space>
+                <div class="float-right">
+                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="add" @click.stop="test"/>
+                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="edit" @click.stop="test"/>
+                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="close" @click.stop="test"/>
                 </div>
               </template>
 
               <template v-slot:default-body="prop">
-                <div v-if="prop.node.story">
-                  <span class="text-weight-bold">This node has a story</span>: {{ prop.node.story }}
-                </div>
-                <span v-else class="text-weight-light text-black">This is some default content.</span>
+                <span v-for="(value,key) in prop.node.attr">
+                  <q-badge v-if="key=='id'" color="orange" class="q-mr-sm">
+                    {{ key + " : " + value }}
+                  </q-badge>
+                  <q-badge v-else-if="key=='class'" color="primary" class="q-mr-sm">
+                    {{ key + " : " + value }}
+                  </q-badge>
+                  <span v-else-if="key=='d_key'" color="primary" class="q-mr-sm">
+                  </span>
+                  <q-badge v-else color="secondary" class="q-mr-sm">
+                    {{ key + " : " + value }}
+                  </q-badge>
+                </span>
+                <span v-if="prop.node.text!=''" class="text-weight-light text-black">文本：{{ prop.node.text }}</span>
+
               </template>
             </q-tree>
           </q-tab-panel>
@@ -183,6 +201,7 @@ import {ref, toRaw, watch} from "vue";
 import axios from "axios";
 import {CommonFail, CommonGroupFastSuccess} from "components/dialog";
 
+const fab1 = ref(false)
 const reloadTime = ref(1) //自动更新时间
 const leftTab = ref('template') //选项卡
 const sourceCode = ref<string>("")
@@ -195,11 +214,9 @@ const customize = [
       {
         label: 'div2',
         icon: 'folder',
-        header: 'generic',
         children: [
           {
             label: 'div3',
-            header: 'generic',
             body: 'story',
             story: '点击修改这里的样式'
           },
@@ -261,32 +278,33 @@ function getTemplateTree(sourceCode: string) {
   const match = sourceCode.match(regex) as RegExpMatchArray
   $ = cheerio.load(match[0]);
   const template = $('body')
-  // console.log($('.number').text())
+  codeTree.value = []
   cycleGetNode(template.children(), codeTree.value)
-  console.log("all", template.children())
-  console.log("codeTree", codeTree.value)
-  // console.log($('[d_key=4]').text().replaceAll("\n", "").replaceAll(" ", ""))
+  // console.log("all", template.children())
+  // console.log("codeTree", codeTree.value)
 }
 
 function cycleGetNode(node: Cheerio<AnyNode>, codeTree: any) {
   $(node).attr("d_key", String(d_key += 1))
   codeTree.push({
         //@ts-ignore
-        name: $(node).get(0).name,
+        label: $(node).get(0).name,
         attr: $(node).attr(),
         children: [],
+        d_key: d_key,
+        //@ts-ignore
+        icon: $(node).get(0).name == "div" ? 'folder' : 'category',
         text: $(node).children().length == 0 ? $(node).text().replaceAll("\n", "").replaceAll(" ", "") : ''
       }
   )
-  // console.log(codeTree.value)
-  // if ($(node).children().length == 0) {
-  //   codeTree.push({text: $(node).text().replaceAll("\n", "").replaceAll(" ", ""), children: []})
-  // }
   $(node).children().map((i, el) => {
     cycleGetNode($(el), codeTree[0].children)
   })
 }
 
+function test() {
+
+}
 
 function getScript(sourceCode: string) {
   const regex = /<script([\s\S]*?)<\/script>/

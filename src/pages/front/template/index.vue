@@ -3,7 +3,7 @@
   <div id="div_id" class="first second" v-ripple="">
     <div class="q-pa-md">
       <div class="q-mt-md id_1">
-        123
+        123{aaa}111
       </div>
       <div class="q-pa-md hahahaha">
         <div class="haha">aaa</div>

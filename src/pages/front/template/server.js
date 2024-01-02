@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const cheerio = require('cheerio');
 const app = express();
 const port = 3000;
 // app.use(express.json());
@@ -14,9 +15,11 @@ app.get('/get', (req, res) => {
     const filePath = './src/pages/front/template/index.vue'; // 指定文件的路径
 
     fs.readFile(filePath, 'utf8', (err, data) => {
+        let $html;
         if (err) {
             res.status(500).send('Error reading the file');
         } else {
+            $html = cheerio.load(data);
             res.send(data); // 返回文件文本内容
         }
     });

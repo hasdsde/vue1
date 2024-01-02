@@ -28,7 +28,7 @@
             >
               <template v-slot:default-header="prop">
                 <div class="row items-center">
-                  <q-icon :name="prop.node.icon || 'share'" color="orange" size="28px" class="q-mr-sm"/>
+                  <q-icon :name="prop.node.icon || 'category'" color="orange" size="28px" class="q-mr-sm"/>
                   <div class="text-weight-bold text-primary">{{ prop.node.label }}</div>
                 </div>
               </template>
@@ -178,22 +178,23 @@
   </div>
 </template>
 <script lang="ts" setup>
+import cheerio, {AnyNode, Cheerio, CheerioAPI} from 'cheerio';
 import {ref, toRaw, watch} from "vue";
 import axios from "axios";
 import {CommonFail, CommonGroupFastSuccess} from "components/dialog";
 
-// const fs = require('fs')
-const reloadTime = ref(1)
-const leftTab = ref('template')
+const reloadTime = ref(1) //自动更新时间
+const leftTab = ref('template') //选项卡
 const sourceCode = ref<string>("")
 const customize = [
   {
-    label: 'Div1',
+    label: 'div1',
     header: 'root',
+    icon: 'folder',
     children: [
       {
         label: 'div2',
-        icon: 'restaurant_menu',
+        icon: 'folder',
         header: 'generic',
         children: [
           {
@@ -212,30 +213,21 @@ const customize = [
       {
         label: 'BTN',
         header: 'generic',
-        body: 'toggle',
-        caption: '点击修改按钮样式',
-        enabled: false,
-        children: [
-          {label: 'Prompt attention'},
-          {label: 'Professional waiter'}
-        ]
-      },
-      {
-        label: 'div',
-        children: [
-          {label: 'q-Input'},
-          {label: 'q-Card', header: 'generic'},
-          {label: 'Pleasing decor'}
-        ]
+        children: []
       }
     ]
   }
 ]
-const refresh = ref(false)
-
-watch(sourceCode, (o, n) => {
+const refresh = ref(false) //刷新
+const codeTree: any = ref([]) //代码树
+let d_key = 0 //代码树的唯一id
+let $: CheerioAPI = cheerio.load('')
+watch(sourceCode, (n, o) => {
+  if (o == null) {
+    return
+  }
   uploadCode()
-})
+}, {immediate: false})
 
 getCode()
 
@@ -258,7 +250,6 @@ function uploadCode() {
   axios.post("/twc/upload", data, {timeout: 2000}).then((res: any) => {
     if (res.status == 200) {
       CommonGroupFastSuccess("更新已完成")
-      getCode()
     }
   }).catch((e) => {
     CommonFail("错误：" + e.message)
@@ -266,10 +257,27 @@ function uploadCode() {
 }
 
 function getTemplateTree(sourceCode: string) {
-  const regex = /<template([\s\S]*?)<\/template>/
+  const regex = /(?<=<template>)([\s\S]*?)(?=<\/template>)/
   const match = sourceCode.match(regex) as RegExpMatchArray
-  console.log(match[0])
+  $ = cheerio.load(match[0]);
+  const template = $('body')
+  // console.log($('.number').text())
+  cycleGetNode(template.children(), codeTree.value)
+  console.log("all", template.children())
+  console.log("codeTree", codeTree.value)
+  // console.log($('[d_key=4]').text().replaceAll("\n", "").replaceAll(" ", ""))
 }
+
+function cycleGetNode(node: Cheerio<AnyNode>, codeTree: any) {
+  $(node).attr("d_key", String(d_key += 1))
+  codeTree.push({name: $(node).get(0).name, attr: $(node).attr(), text: $(node).text().replaceAll("\n", "").replaceAll(" ", ""), children: []})
+  console.log(codeTree.value)
+  // console.log($(node).get(0))
+  $(node).children().map((i, el) => {
+    cycleGetNode($(el), codeTree[0].children)
+  })
+}
+
 
 function getScript(sourceCode: string) {
   const regex = /<script([\s\S]*?)<\/script>/

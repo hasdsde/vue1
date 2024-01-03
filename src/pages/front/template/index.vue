@@ -21,16 +21,14 @@
 import {ref} from "vue";
 
 const item = "aa"
-const item2 = "aaaa"
+const item2:string = "aaaa"
 const group = ref([]);
-const options = [
-  {label: 'Battery too low', value: 'bat'},
-  {label: 'Friend request', value: 'friend', color: 'green'},
-  {label: 'Picture uploaded', value: 'upload', color: 'red'}
-]
-
+const options = [{label: 'Battery', value: 'bat'},{label: 'Friend', value: 'friend', color: 'green'},{label: 'Picture', value: 'upload', color: 'red'}]
 function handleClick() {
-
+ console.log("这里是函数体")
+}
+function getInput(input:number){
+  return input+1
 }
 </script>
 

@@ -68,9 +68,9 @@
                 v-for="item in codeVariable"
                 expand-separator
                 :icon="item.ref?'motion_photos_on':'radio_button_checked'"
-                :label="item.name"
+                :label="item.name +' = '+item.value"
                 :caption="item.format"
-                header-class="text-primary text-bold"
+                header-class="text-primary text-bold text-subtitle1"
             >
               <q-card class="no-padding">
                 <q-card-section class="q-pa-sm">
@@ -88,8 +88,6 @@
                   <div class="q-mt-md">
                     <q-input filled v-model="item.value" dense class=" q-pr-sm" label="值" autogrow/>
                   </div>
-                  <!--                  <q-select filled v-model="model" :options="options" label="Filled" />-->
-                  <!--                  <q-select filled v-model="model" :options="options" label="Filled" />-->
                 </q-card-section>
               </q-card>
             </q-expansion-item>
@@ -98,62 +96,53 @@
           <!--     函数     -->
           <q-tab-panel name="fun" class="no-padding q-mt-md">
             <q-expansion-item
+                v-for="item in codeFunction"
                 expand-separator
-                icon="perm_identity"
-                label="Account settings"
-                caption="John Doe"
+                icon="functions"
+                :label="`${item.functionName} (${item.paramsStr})`"
+                header-class="text-primary text-bold text-subtitle1"
             >
               <q-card>
-                <q-card-section>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                  commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                  eveniet doloribus ullam aliquid.
+                <q-card-section class="q-pa-sm">
+                  <div class="">
+                    <q-input filled v-model="item.functionName" dense
+                             class="w-full q-pr-sm"
+                             label="名称"/>
+                    <div v-for="(param,index) in item.params" class="w-full flex justify-between q-pt-md">
+                      <q-input filled v-model="param.name" dense
+                               class="w-1/2 q-pr-sm"
+                               :label="'形参'+(index+1)"/>
+                      <q-input filled v-model="param.type" dense
+                               class="w-1/2 q-pr-sm"
+                               :label="'类型'+(index+1)"/>
+                    </div>
+                  </div>
+                  <div class="q-mt-md">
+                    <q-input filled v-model="item.body" dense class=" q-pr-sm" label="函数体" autogrow/>
+                  </div>
                 </q-card-section>
               </q-card>
             </q-expansion-item>
 
-            <q-expansion-item
-                expand-separator
-                icon="signal_wifi_off"
-                label="Wifi settings"
-            >
-              <q-card>
-                <q-card-section>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                  commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                  eveniet doloribus ullam aliquid.
-                </q-card-section>
-              </q-card>
-            </q-expansion-item>
           </q-tab-panel>
 
           <!--     引入     -->
           <q-tab-panel name="import" class="no-padding q-mt-md">
             <q-expansion-item
+                v-for="item in codeImport"
                 expand-separator
-                icon="adjust"
-                label="Account settings"
-                caption="John Doe"
+                :icon="item.icon"
+                :label="item.origin"
+                header-class="text-primary text-bold text-subtitle1 "
             >
               <q-card>
-                <q-card-section>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                  commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                  eveniet doloribus ullam aliquid.
-                </q-card-section>
-              </q-card>
-            </q-expansion-item>
-
-            <q-expansion-item
-                expand-separator
-                icon="signal_wifi_off"
-                label="Wifi settings"
-            >
-              <q-card>
-                <q-card-section>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                  commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                  eveniet doloribus ullam aliquid.
+                <q-card-section class="q-pa-sm">
+                  <q-input filled v-model="item.items" dense
+                           class="w-full"
+                           label="Import"/>
+                  <q-input filled v-model="item.path" dense
+                           class="w-full q-pt-md"
+                           label="Path"/>
                 </q-card-section>
               </q-card>
             </q-expansion-item>
@@ -214,7 +203,6 @@ import {CommonFail, CommonGroupFastSuccess} from "components/dialog";
 
 const fab1 = ref(false)
 const leftTab = ref('template') //选项卡
-const sourceCode = ref<string>("")
 const customize = [
   {
     label: 'div1',
@@ -247,11 +235,14 @@ const customize = [
 ]
 const codeEditable = ref('可编辑')
 const refresh = ref(false)//刷新
-const codeTree: any = ref([]) //代码树
 let d_key: number = 0 //代码树的唯一id
 let $: CheerioAPI = cheerio.load('')
-const codeVariable: any = ref([])
 
+const sourceCode = ref<string>("")
+const codeTree: any = ref([]) //代码树
+const codeVariable: any = ref([])
+const codeFunction: any = ref([])
+const codeImport: any = ref([])
 watch(sourceCode, (n, o) => {
   if (o == null) {
     return
@@ -261,6 +252,7 @@ watch(sourceCode, (n, o) => {
 
 getCode()
 
+// 下载代码
 function getCode() {
   refresh.value = true
   axios.get("/twc/get", {timeout: 2000}).then((res: any) => {
@@ -274,6 +266,7 @@ function getCode() {
 
 }
 
+// 上传代码
 function uploadCode() {
   var data = new FormData;
   data.set("file", toRaw(sourceCode.value))
@@ -286,6 +279,7 @@ function uploadCode() {
   })
 }
 
+// 解析模板树
 function parseTemplateTree(sourceCode: string) {
   const regex = /(?<=<template>)([\s\S]*?)(?=<\/template>)/
   const match = sourceCode.match(regex) as RegExpMatchArray
@@ -295,6 +289,7 @@ function parseTemplateTree(sourceCode: string) {
   cycleGetNode(template.children(), codeTree.value)
 }
 
+// 循环获取节点
 function cycleGetNode(node: Cheerio<AnyNode>, codeTree: any) {
   $(node).attr("d_key", String(d_key += 1))
   codeTree.push({
@@ -317,13 +312,16 @@ function test() {
 
 }
 
+//解析代码
 function getScript(sourceCode: string) {
   const regex = /<script([\s\S]*?)<\/script>/
   const match = sourceCode.match(regex) as RegExpMatchArray
   parseVariables(match[0])
   parseFunction(match[0])
+  parseImports(match[0])
 }
 
+// 解析变量
 function parseVariables(sourceCode: string) {
   const regex = /(const|let|var)\s+(.+?)(?::(\w+))?\s*=\s*(.*)/g;
   let match = sourceCode.match(regex);
@@ -343,21 +341,50 @@ function parseVariables(sourceCode: string) {
   }
 }
 
+// 解析函数
 function parseFunction(sourceCode: string) {
-  const regex = /function\s+(\w+)\s*\(([^)]*)\)\s*{([\s\S]*)}/;
-  let match = sourceCode.match(regex);
-  // while ((match = regex.exec(sourceCode)) !== null) {
-  //   console.log(match)
-  //
-  // }
-  // if (match) {
-  //   const functionName = match[1];
-  //   const params = match[2].split(',').map(param => param.trim());
-  //   const body = match[3];
-  //   return {functionName, params, body};
-  // }
+  codeFunction.value = []
+  const regex = /function\s+(\w+)\s*\(([^)]*)\)\s*{([\s\S]*?)}/g;
+  let match;
+  while ((match = regex.exec(sourceCode)) !== null) {
+    const functionName = match[1];
+    let params: any = []
+    let paramsStr = ""
+    if (match[2] != "") {
+      params = match[2].split(',').map(param => {
+        var split = param.split(":");
+        paramsStr += `${split[0]}:${split[1]},`
+        return {name: split[0], type: split[1]}
+      });
+    }
+    const body = match[3].trim()
+    //去掉结尾逗号
+    const i = paramsStr.lastIndexOf(",")
+    if (i) {
+      paramsStr = paramsStr.slice(0, i)
+    }
+    codeFunction.value.push({functionName, params, paramsStr, body});
+  }
 }
 
+// 解析引入
+function parseImports(sourceCode: string) {
+  let regex = /import\s+{([^}]*)}\s+from\s+"([^"]+)";/g;
+  let match;
+  while ((match = regex.exec(sourceCode)) !== null) {
+    const items = match[1].split(',').map(item => item.trim());
+    const path = match[2];
+    codeImport.value.push({origin: match[0], items: items, path: path, icon: 'account_tree'});
+  }
+  regex = /import\s+(\w+)\s+from\s+"([^"]+)";/g;
+  while ((match = regex.exec(sourceCode)) !== null) {
+    const items = match[1];
+    const path = match[2];
+    codeImport.value.push({origin: match[0], items: items, path: path, icon: 'streetview'});
+  }
+}
+
+// 移除引号
 function removeQuotes(str: string) {
   if (str.startsWith('"') && str.endsWith('"')) {
     return str.slice(1, -1);
@@ -365,6 +392,8 @@ function removeQuotes(str: string) {
     return str;
   }
 }
+
+
 </script>
 <style lang="sass" scoped>
 .my-custom-toggle

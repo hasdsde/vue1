@@ -19,15 +19,21 @@
 </template>
 <script setup lang="ts">
 import {ref} from "vue";
+import {CommonFail, CommonSuccess} from "components/dialog";
+import axios from "axios";
 
 const item = "aa"
 const item2:string = "aaaa"
 const group = ref([]);
 const options = [{label: 'Battery', value: 'bat'},{label: 'Friend', value: 'friend', color: 'green'},{label: 'Picture', value: 'upload', color: 'red'}]
 function handleClick() {
+  CommonSuccess("ok"),
+      CommonFail("aa")
+  axios
  console.log("这里是函数体")
 }
-function getInput(input:number){
+function getInput(input:number,input2:string){
+  console.log("这里是函数体")
   return input+1
 }
 </script>

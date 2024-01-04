@@ -34,7 +34,7 @@
                 </div>
                 <q-space></q-space>
                 <div class="float-right">
-                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="add" @click.stop="test"/>
+                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="add" @click.stop="handleDialogOpen"/>
                   <q-btn flat color="grey" class="q-ml-sm" dense round icon="edit" @click.stop="test"/>
                   <q-btn flat color="grey" class="q-ml-sm" dense round icon="close" @click.stop="test"/>
                 </div>
@@ -150,13 +150,11 @@
         </q-tab-panels>
       </div>
     </q-card>
-
     <q-card class="w-[58%] h-full">
       <q-card-section class="h-full">
         <iframe src="http://localhost:9000/#/template" frameborder="0" class="w-full h-full"/>
       </q-card-section>
     </q-card>
-
     <q-card class="w-[20%] h-full">
       <q-card-section class="">
         <div class="text-body1 q-pb-md">
@@ -194,6 +192,174 @@
       </q-card-section>
     </q-card>
   </div>
+  <!-- 弹窗 -->
+  <q-dialog v-model="saveDialog">
+    <q-card class="min-w-[1000px] w-3/5">
+      <q-card-section class="row items-center q-pb-none">
+        <div class="text-h6">{{ saveTitle }}</div>
+        <q-space/>
+        <q-btn color="primary" flat label="保存" class="q-mr-md "/>
+        <q-btn icon="close" flat round dense v-close-popup/>
+      </q-card-section>
+      <q-card-section class=" justify-around flex ">
+        <div class="flex w-1/3 content-center">
+          <q-input filled v-model="text" readonly dense label="Filled" class="w-fit q-mr-sm"/>
+          <q-btn color="primary" icon="autorenew" label="更换" class=""/>
+        </div>
+        <div class="w-2/3">
+          <q-select
+              label="Css样式"
+              filled
+              dense
+              v-model="modelAddUnique"
+              use-input
+              use-chips
+              multiple
+              hide-dropdown-icon
+              input-debounce="0"
+              new-value-mode="add-unique"
+          />
+        </div>
+        <q-select
+            label="Options"
+            class="w-full q-mt-md"
+            filled
+            dense
+            v-model="modelAddUnique"
+            use-input
+            use-chips
+            multiple
+            hide-dropdown-icon
+            input-debounce="0"
+            new-value-mode="add-unique"
+        />
+      </q-card-section>
+      <q-separator/>
+      <q-card-section class=" q-pa-md">
+        <q-card class="border-2 no-shadow">
+          <q-tabs
+              v-model="tab"
+              class="text-black text-base"
+              active-color="primary"
+              indicator-color="primary"
+              align="justify"
+          >
+            <q-tab name="css" label="Css样式"/>
+            <q-tab name="attribute" label="属性"/>
+            <q-tab name="event" label="事件"/>
+            <q-tab name="slot" label="插槽"/>
+          </q-tabs>
+          <q-separator/>
+
+          <q-tab-panels v-model="tab" animated class="min-h-[300px]">
+            <q-tab-panel name="css" class="q-pa-none">
+
+              <q-splitter
+                  v-model="splitterModel"
+              >
+                <template v-slot:before>
+                  <q-tabs
+                      v-model="innerTab"
+                      vertical
+                      class="text-primary"
+                  >
+                    <q-tab name="innerMails" label="Mails"/>
+                    <q-tab name="innerAlarms" label="Alarms"/>
+                    <q-tab name="innerMovies" label="Movies"/>
+                  </q-tabs>
+                </template>
+
+                <template v-slot:after>
+                  <q-tab-panels
+                      v-model="innerTab"
+                      animated
+                      transition-prev="slide-down"
+                      transition-next="slide-up"
+                  >
+                    <q-tab-panel name="innerMails" class="flex">
+                      <q-item tag="label" v-ripple>
+                        <q-item-section avatar>
+                          <q-checkbox v-model="color" val="orange" color="orange"/>
+                        </q-item-section>
+                        <q-item-section>
+                          <q-item-label>Orange</q-item-label>
+                          <q-item-label caption>With description</q-item-label>
+                        </q-item-section>
+                      </q-item>
+                      <q-item tag="label" v-ripple>
+                        <q-item-section avatar>
+                          <q-checkbox v-model="color" val="orange" color="orange"/>
+                        </q-item-section>
+                        <q-item-section>
+                          <q-item-label>Orange</q-item-label>
+                          <q-item-label caption>With description</q-item-label>
+                        </q-item-section>
+                      </q-item>
+                      <q-item tag="label" v-ripple>
+                        <q-item-section avatar>
+                          <q-checkbox v-model="color" val="orange" color="orange"/>
+                        </q-item-section>
+                        <q-item-section>
+                          <q-item-label>Orange</q-item-label>
+                          <q-item-label caption>With description</q-item-label>
+                        </q-item-section>
+                      </q-item>
+                      <q-item tag="label" v-ripple>
+                        <q-item-section avatar>
+                          <q-checkbox v-model="color" val="orange" color="orange"/>
+                        </q-item-section>
+                        <q-item-section>
+                          <q-item-label>Orange</q-item-label>
+                          <q-item-label caption>With description</q-item-label>
+                        </q-item-section>
+                      </q-item>
+                    </q-tab-panel>
+
+                    <q-tab-panel name="innerAlarms">
+                      <div class="text-h4 q-mb-md">Alarms</div>
+                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio
+                        iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa
+                        fuga nulla ullam. In, libero.</p>
+                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio
+                        iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa
+                        fuga nulla ullam. In, libero.</p>
+                    </q-tab-panel>
+
+                    <q-tab-panel name="innerMovies">
+                      <div class="text-h4 q-mb-md">Movies</div>
+                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio
+                        iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa
+                        fuga nulla ullam. In, libero.</p>
+                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio
+                        iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa
+                        fuga nulla ullam. In, libero.</p>
+                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio
+                        iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa
+                        fuga nulla ullam. In, libero.</p>
+                    </q-tab-panel>
+                  </q-tab-panels>
+                </template>
+
+              </q-splitter>
+            </q-tab-panel>
+            <q-tab-panel name="attribute">
+              <div class="text-h6">Alarms</div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </q-tab-panel>
+            <q-tab-panel name="event">
+              <div class="text-h6">Movies</div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </q-tab-panel>
+            <q-tab-panel name="slot">
+              <div class="text-h6">Movies</div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </q-tab-panel>
+          </q-tab-panels>
+        </q-card>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
+  <span class="text-deep-orange q-mt-sm"></span>
 </template>
 <script lang="ts" setup>
 import cheerio, {AnyNode, Cheerio, CheerioAPI} from 'cheerio';
@@ -201,38 +367,7 @@ import {ref, toRaw, watch} from "vue";
 import axios from "axios";
 import {CommonFail, CommonGroupFastSuccess} from "components/dialog";
 
-const fab1 = ref(false)
 const leftTab = ref('template') //选项卡
-const customize = [
-  {
-    label: 'div1',
-    header: 'root',
-    icon: 'folder',
-    children: [
-      {
-        label: 'div2',
-        icon: 'folder',
-        children: [
-          {
-            label: 'div3',
-            body: 'story',
-            story: '点击修改这里的样式'
-          },
-          {
-            label: 'Good recipe',
-            body: 'story',
-            story: 'A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.'
-          }
-        ]
-      },
-      {
-        label: 'BTN',
-        header: 'generic',
-        children: []
-      }
-    ]
-  }
-]
 const codeEditable = ref('可编辑')
 const refresh = ref(false)//刷新
 let d_key: number = 0 //代码树的唯一id
@@ -308,9 +443,6 @@ function cycleGetNode(node: Cheerio<AnyNode>, codeTree: any) {
   })
 }
 
-function test() {
-
-}
 
 //解析代码
 function getScript(sourceCode: string) {
@@ -393,7 +525,24 @@ function removeQuotes(str: string) {
   }
 }
 
+// 添加弹窗
+const saveDialog = ref(false)
+const saveTitle = ref('新增')
 
+const text = ref("")
+const modelAddUnique = ref([])
+const tab = ref('css')
+const innerTab = ref('innerMails')
+const splitterModel = ref(10)
+
+function handleDialogOpen() {
+  saveTitle.value = "新增"
+  saveDialog.value = true
+}
+
+function test() {
+
+}
 </script>
 <style lang="sass" scoped>
 .my-custom-toggle

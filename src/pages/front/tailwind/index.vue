@@ -194,7 +194,7 @@
   </div>
   <!-- 弹窗 -->
   <q-dialog v-model="saveDialog">
-    <q-card class="min-w-[1000px] w-3/5">
+    <q-card class="min-w-[1200px] w-4/5">
       <q-card-section class="row items-center q-pb-none">
         <div class="text-h6">{{ saveTitle }}</div>
         <q-space/>
@@ -263,9 +263,7 @@
                       vertical
                       class="text-primary"
                   >
-                    <q-tab name="innerMails" label="Mails"/>
-                    <q-tab name="innerAlarms" label="Alarms"/>
-                    <q-tab name="innerMovies" label="Movies"/>
+                    <q-tab :name="css.name" :label="css.name" v-for="css in cssList"/>
                   </q-tabs>
                 </template>
 
@@ -276,43 +274,21 @@
                       transition-prev="slide-down"
                       transition-next="slide-up"
                   >
-                    <q-tab-panel name="innerMails" class="flex">
-                      <q-item tag="label" v-ripple>
-                        <q-item-section avatar>
-                          <q-checkbox v-model="color" val="orange" color="orange"/>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Orange</q-item-label>
-                          <q-item-label caption>With description</q-item-label>
-                        </q-item-section>
-                      </q-item>
-                      <q-item tag="label" v-ripple>
-                        <q-item-section avatar>
-                          <q-checkbox v-model="color" val="orange" color="orange"/>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Orange</q-item-label>
-                          <q-item-label caption>With description</q-item-label>
-                        </q-item-section>
-                      </q-item>
-                      <q-item tag="label" v-ripple>
-                        <q-item-section avatar>
-                          <q-checkbox v-model="color" val="orange" color="orange"/>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Orange</q-item-label>
-                          <q-item-label caption>With description</q-item-label>
-                        </q-item-section>
-                      </q-item>
-                      <q-item tag="label" v-ripple>
-                        <q-item-section avatar>
-                          <q-checkbox v-model="color" val="orange" color="orange"/>
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>Orange</q-item-label>
-                          <q-item-label caption>With description</q-item-label>
-                        </q-item-section>
-                      </q-item>
+                    <q-tab-panel :name="css.name" class="flex" v-for="css in cssList">
+                      <div v-for="child in css.children" class="w-full flex">
+                        <div class="w-full">
+                          {{ child.name }}
+                        </div>
+                        <q-item tag="label" v-ripple v-for="c in child.children" class="w-1/5 ">
+                          <q-item-section avatar>
+                            <q-checkbox v-model="color" val="orange" color="orange"/>
+                          </q-item-section>
+                          <q-item-section>
+                            <q-item-label>{{ c.value }}</q-item-label>
+                            <q-item-label caption>{{ c.desc }}</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                      </div>
                     </q-tab-panel>
 
                     <q-tab-panel name="innerAlarms">
@@ -366,6 +342,7 @@ import cheerio, {AnyNode, Cheerio, CheerioAPI} from 'cheerio';
 import {ref, toRaw, watch} from "vue";
 import axios from "axios";
 import {CommonFail, CommonGroupFastSuccess} from "components/dialog";
+import {CssList, cssList} from "pages/front/tailwind/struct";
 
 const leftTab = ref('template') //选项卡
 const codeEditable = ref('可编辑')
@@ -529,11 +506,12 @@ function removeQuotes(str: string) {
 const saveDialog = ref(false)
 const saveTitle = ref('新增')
 
+const cssList = CssList
 const text = ref("")
 const modelAddUnique = ref([])
 const tab = ref('css')
-const innerTab = ref('innerMails')
-const splitterModel = ref(10)
+const innerTab = ref(cssList[0].name)
+const splitterModel = ref(15)
 
 function handleDialogOpen() {
   saveTitle.value = "新增"

@@ -193,8 +193,8 @@
     </q-card>
   </div>
   <!-- 弹窗 -->
-  <q-dialog v-model="saveDialog">
-    <q-card class="min-w-[1200px] w-4/5">
+  <q-dialog v-model="saveDialog" full-width full-height>
+    <q-card>
       <q-card-section class="row items-center q-pb-none">
         <div class="text-h6">{{ saveTitle }}</div>
         <q-space/>
@@ -251,8 +251,8 @@
           </q-tabs>
           <q-separator/>
 
-          <q-tab-panels v-model="tab" animated class="min-h-[300px]">
-            <q-tab-panel name="css" class="q-pa-none">
+          <q-tab-panels v-model="tab" animated class="min-h-[300px] overflow-y-auto">
+            <q-tab-panel name="css" class="q-pa-none ">
 
               <q-splitter
                   v-model="splitterModel"
@@ -273,18 +273,24 @@
                       animated
                       transition-prev="slide-down"
                       transition-next="slide-up"
+                      class=" min-h-[500px] max-h-[1000px] overflow-y-auto"
                   >
-                    <q-tab-panel :name="css.name" class="flex" v-for="css in cssList">
+                    <q-tab-panel :name="css.name" class="flex " v-for="css in cssList">
                       <div v-for="child in css.children" class="w-full flex">
                         <div class="w-full">
+                          <q-separator/>
                           {{ child.name }}
                         </div>
-                        <q-item tag="label" v-ripple v-for="c in child.children" class="w-1/5 ">
+                        <q-item tag="label" v-ripple v-for="c in child.children" class="w-1/6 "
+                                :style="{backgroundColor:c.desc.indexOf('#')=='0'?c.desc:''}">
                           <q-item-section avatar>
                             <q-checkbox v-model="color" val="orange" color="orange"/>
                           </q-item-section>
                           <q-item-section>
-                            <q-item-label>{{ c.value }}</q-item-label>
+                            <q-item-label>{{
+                                c.value
+                              }}
+                            </q-item-label>
                             <q-item-label caption>{{ c.desc }}</q-item-label>
                           </q-item-section>
                         </q-item>

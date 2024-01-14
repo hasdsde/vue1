@@ -34,8 +34,10 @@
                 </div>
                 <q-space></q-space>
                 <div class="float-right">
-                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="add" @click.stop="handleDialogOpen"/>
-                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="edit" @click.stop="test"/>
+                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="add"
+                         @click.stop="handleDialogOpen(prop.node)"/>
+                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="edit"
+                         @click.stop="handleDialogOpen(prop.node)"/>
                   <q-btn flat color="grey" class="q-ml-sm" dense round icon="close" @click.stop="test"/>
                 </div>
               </template>
@@ -163,7 +165,8 @@
         <div class="flex no-wrap">
           <q-btn class="q-ml-md" color="primary" label="刷新" :loading="refresh" @click="getCode"
                  icon="cloud_download"/>
-          <q-btn class="q-ml-md" color="secondary" label="更新" :loading="refresh" @click="uploadCode" icon="backup"/>
+          <q-btn class="q-ml-md" color="secondary" label="更新" :loading="refresh" @click="uploadCode(sourceCode)"
+                 icon="backup"/>
         </div>
       </q-card-section>
 
@@ -185,57 +188,73 @@
             v-model="sourceCode"
             debounce="1000"
             filled
-            type="textarea"
-            class="overflow-auto"
             autogrow
+            type="textarea"
+            class="overflow-auto h-[1000px]"
         />
       </q-card-section>
     </q-card>
   </div>
   <!-- 弹窗 -->
-  <q-dialog v-model="saveDialog" full-width full-height>
+  <q-dialog v-model="saveDialog" full-width full-height @hide="handleDialogClose">
     <q-card>
       <q-card-section class="row items-center q-pb-none">
         <div class="text-h6">{{ saveTitle }}</div>
         <q-space/>
-        <q-btn color="primary" flat label="保存" class="q-mr-md "/>
         <q-btn icon="close" flat round dense v-close-popup/>
       </q-card-section>
       <q-card-section class=" justify-around flex ">
-        <div class="flex w-1/3 content-center">
-          <q-input filled v-model="text" readonly dense label="Filled" class="w-fit q-mr-sm"/>
+        <div class="flex w-1/6 content-center">
+          <q-input filled v-model="currentDivName" readonly dense label="Filled" class="w-fit q-mr-sm"/>
           <q-btn color="primary" icon="autorenew" label="更换" class=""/>
         </div>
-        <div class="w-2/3">
-          <q-select
-              label="Css样式"
-              filled
-              dense
-              v-model="modelAddUnique"
-              use-input
-              use-chips
-              multiple
-              hide-dropdown-icon
-              input-debounce="0"
-              new-value-mode="add-unique"
-          />
+        <div class="w-5/6">
+          <q-field filled label="Css样式" dense stack-label>
+            <template v-slot:control>
+              <!--              <div class="self-center  no-outline" tabindex="0"/>-->
+              <q-chip v-for="item in currentDivClass" removable dense v-model="icecream" @remove="log('Icecream')"
+                      color="primary" text-color="white">
+                {{ item }}
+                <q-popup-proxy>
+                  <q-card class="q-pa-md">
+                    <q-input filled v-model="text" dense label="修改"/>
+                  </q-card>
+                </q-popup-proxy>
+
+              </q-chip>
+            </template>
+          </q-field>
+          <!--          <q-select-->
+          <!--              label="Css样式"-->
+          <!--              filled-->
+          <!--              dense-->
+          <!--              v-model="divClass"-->
+          <!--              use-input-->
+          <!--              use-chips-->
+          <!--              multiple-->
+          <!--              hide-dropdown-icon-->
+          <!--              input-debounce="0"-->
+          <!--              new-value-mode="add-unique"-->
+          <!--          />-->
         </div>
-        <q-select
-            label="Options"
-            class="w-full q-mt-md"
-            filled
-            dense
-            v-model="modelAddUnique"
-            use-input
-            use-chips
-            multiple
-            hide-dropdown-icon
-            input-debounce="0"
-            new-value-mode="add-unique"
-        />
+        <q-field filled label="属性" dense stack-label class="w-full q-mt-md">
+          <template v-slot:control>
+            <!--              <div class="self-center  no-outline" tabindex="0"/>-->
+            <q-chip v-for="item in currentDivAttr" removable dense v-model="icecream" @remove="log('Icecream')"
+                    color="primary" text-color="white">
+              {{ `${item.key} = ${item.value}` }}
+              <q-popup-proxy>
+                <q-card class="q-pa-md">
+                  <q-input filled v-model="text" dense label="Key"/>
+                  <q-input class="q-mt-md" filled v-model="text" dense label="Value"/>
+                </q-card>
+              </q-popup-proxy>
+            </q-chip>
+          </template>
+        </q-field>
       </q-card-section>
       <q-separator/>
-      <q-card-section class=" q-pa-md">
+      <q-card-section class="q-pa-md">
         <q-card class="border-2 no-shadow">
           <q-tabs
               v-model="tab"
@@ -250,18 +269,17 @@
             <q-tab name="slot" label="插槽"/>
           </q-tabs>
           <q-separator/>
-
-          <q-tab-panels v-model="tab" animated class="min-h-[300px] overflow-y-auto">
-            <q-tab-panel name="css" class="q-pa-none ">
-
+          <q-tab-panels v-model="tab" animated class="h-[1000px] overflow-y-auto ">
+            <q-tab-panel name="css" class="q-pa-none h-fit">
               <q-splitter
                   v-model="splitterModel"
+                  class="overflow-hidden h-full"
               >
                 <template v-slot:before>
                   <q-tabs
-                      v-model="innerTab"
+                      v-model="cssTab"
                       vertical
-                      class="text-primary"
+                      class="text-primary h-fit"
                   >
                     <q-tab :name="css.name" :label="css.name" v-for="css in cssList"/>
                   </q-tabs>
@@ -269,22 +287,22 @@
 
                 <template v-slot:after>
                   <q-tab-panels
-                      v-model="innerTab"
+                      v-model="cssTab"
                       animated
                       transition-prev="slide-down"
                       transition-next="slide-up"
-                      class=" min-h-[500px] max-h-[1000px] overflow-y-auto"
+                      class=" min-h-[500px]  overflow-y-auto"
                   >
                     <q-tab-panel :name="css.name" class="flex " v-for="css in cssList">
                       <div v-for="child in css.children" class="w-full flex">
-                        <div class="w-full">
+                        <div class="w-full q-mt-md">
+                          <span class="text-lg">{{ child.name }}</span>
                           <q-separator/>
-                          {{ child.name }}
                         </div>
                         <q-item tag="label" v-ripple v-for="c in child.children" class="w-1/6 "
                                 :style="{backgroundColor:c.desc.indexOf('#')=='0'?c.desc:''}">
                           <q-item-section avatar>
-                            <q-checkbox v-model="color" val="orange" color="orange"/>
+                            <q-checkbox v-model="currentDivClass" :val="c.value" color="orange"/>
                           </q-item-section>
                           <q-item-section>
                             <q-item-label>{{
@@ -348,7 +366,9 @@ import cheerio, {AnyNode, Cheerio, CheerioAPI} from 'cheerio';
 import {ref, toRaw, watch} from "vue";
 import axios from "axios";
 import {CommonFail, CommonGroupFastSuccess} from "components/dialog";
-import {CssList, cssList} from "pages/front/tailwind/struct";
+import {CssList} from "pages/front/tailwind/struct";
+import {QTreeNode} from "quasar/dist/types/api/qtree";
+import {Ref, UnwrapRef} from "@vue/reactivity";
 
 const leftTab = ref('template') //选项卡
 const codeEditable = ref('可编辑')
@@ -357,7 +377,7 @@ let d_key: number = 0 //代码树的唯一id
 let $: CheerioAPI = cheerio.load('')
 
 const sourceCode = ref<string>("")
-const codeTree: any = ref([]) //代码树
+const codeTree: Ref<UnwrapRef<QTreeNode>> = ref([]) //代码树
 const codeVariable: any = ref([])
 const codeFunction: any = ref([])
 const codeImport: any = ref([])
@@ -365,7 +385,7 @@ watch(sourceCode, (n, o) => {
   if (o == null) {
     return
   }
-  uploadCode()
+  uploadCode(sourceCode.value)
 }, {immediate: false})
 
 getCode()
@@ -385,9 +405,9 @@ function getCode() {
 }
 
 // 上传代码
-function uploadCode() {
-  var data = new FormData;
-  data.set("file", toRaw(sourceCode.value))
+function uploadCode(htmlString: string) {
+  let data = new FormData;
+  data.set("file", toRaw(htmlString))
   axios.post("/twc/upload", data, {timeout: 2000}).then((res: any) => {
     if (res.status == 200) {
       CommonGroupFastSuccess("更新已完成")
@@ -438,19 +458,20 @@ function getScript(sourceCode: string) {
 
 // 解析变量
 function parseVariables(sourceCode: string) {
-  const regex = /(const|let|var)\s+(.+?)(?::(\w+))?\s*=\s*(.*)/g;
+  const regex = /(const|let|var)\s+(\w+)\s*:\s*(\w+)\s*=\s*(.*)/g;
   let match = sourceCode.match(regex);
   while ((match = regex.exec(sourceCode)) !== null) {
+    console.log(match)
     const modifier = match[1];
     const variableName = match[2];
     const format = match[3];
-    const value = match[4].trim();
+    const value = match[4];
 
     codeVariable.value.push({
       name: variableName,
       modifier: modifier,
       format: format,
-      value: removeQuotes(value),
+      value: value,
       ref: value.includes("ref")
     });
   }
@@ -484,14 +505,15 @@ function parseFunction(sourceCode: string) {
 
 // 解析引入
 function parseImports(sourceCode: string) {
-  let regex = /import\s+{([^}]*)}\s+from\s+"([^"]+)";/g;
+  codeImport.value = []
+  let regex = /import\s+{([^}]*)}\s+from\s+"([^"]+)"/g;
   let match;
   while ((match = regex.exec(sourceCode)) !== null) {
     const items = match[1].split(',').map(item => item.trim());
     const path = match[2];
     codeImport.value.push({origin: match[0], items: items, path: path, icon: 'account_tree'});
   }
-  regex = /import\s+(\w+)\s+from\s+"([^"]+)";/g;
+  regex = /import\s+(\w+)\s+from\s+"([^"]+)"/g;
   while ((match = regex.exec(sourceCode)) !== null) {
     const items = match[1];
     const path = match[2];
@@ -499,29 +521,114 @@ function parseImports(sourceCode: string) {
   }
 }
 
-// 移除引号
-function removeQuotes(str: string) {
-  if (str.startsWith('"') && str.endsWith('"')) {
-    return str.slice(1, -1);
-  } else {
-    return str;
-  }
-}
 
 // 添加弹窗
 const saveDialog = ref(false)
 const saveTitle = ref('新增')
 
 const cssList = CssList
-const text = ref("")
-const modelAddUnique = ref([])
+const currentNode: Ref<UnwrapRef<QTreeNode>> = ref({})
+const currentDivClass = ref<string[]>([])
+const currentDivAttr: any = ref([])
+const currentDivName = ref<string>("")
+//选卡
 const tab = ref('css')
-const innerTab = ref(cssList[0].name)
+const cssTab = ref(cssList[0].name)
 const splitterModel = ref(15)
 
-function handleDialogOpen() {
+function handleDialogOpen(node: QTreeNode) {
+
+  currentNode.value = node
+  resolveForm(node)
   saveTitle.value = "新增"
   saveDialog.value = true
+}
+
+// 解析到dialog
+function resolveForm(node: QTreeNode) {
+  currentDivName.value = node.label?.toString() as string
+  currentDivClass.value = node.attr.class.split(" ")
+  for (const a in node.attr) {
+    if (a != 'class' && a != 'd_key') {
+      currentDivAttr.value.push({key: a, value: node.attr[a]})
+    }
+  }
+}
+
+function handleDialogClose() {
+  $(`[d_key = ${currentNode.value.d_key}]`).attr('class', currentDivClass.value.toString().replaceAll(',', ' '))
+  generateCode()
+}
+
+function generateCode() {
+  let template = ""
+  let variable = ""
+  codeVariable.value.forEach((code: { format: string, modifier: string, name: string, ref: string, value: string }) => {
+    let v = code.modifier + " " + code.name
+    console.log(code)
+    if (code.format == null) {
+      // v += ":any"
+    } else {
+      v += " :" + code.format
+    }
+    v += " = " + code.value
+    variable = variable + v + "\n"
+  })
+
+  let imports = ""
+  codeImport.value.forEach((im: { items: string | string[], path: string, icon: string }) => {
+    let i = "import "
+    if (im.icon == 'account_tree') {
+      i += '{' + im.items.toString() + '}'
+    } else {
+      i += im.items.toString()
+    }
+    i += ' from "' + im.path + '"\n'
+    imports += i
+  })
+
+  let functions = ""
+  codeFunction.value.forEach((func: {
+    body: string,
+    functionName: string,
+    params: { name: string, type: string }[]
+  }) => {
+    let fun: string = "function " + func.functionName
+    if (func.params.length == 0) {
+      fun += '()'
+    } else {
+      fun += '('
+      func.params.forEach(item => {
+        if (item.type == undefined) {
+          item.type = 'any'
+        }
+        fun += item.name += ":" + item.type + ","
+      })
+      fun = removeLastComma(fun)
+      fun += ')'
+    }
+    fun += "{\n  " + func.body + "\n}\n\n"
+    functions += fun
+  })
+
+  template += "<template>\n" + $('body').html()?.toString() + "\n</template>\n"
+  template += `<script setup lang="ts">`
+  template += "\n" + imports + "\n\n"
+  template += variable + "\n\n"
+  template += functions + "\n\n"
+  template += '<\/script>'
+  template = template.replaceAll(/d_key="\d"/g, '')
+  // console.log(template)
+  // uploadCode(template)
+}
+
+//删除最后一个逗号
+function removeLastComma(str: string) {
+  if (str.lastIndexOf(',') === -1) {
+    return str;
+  } else {
+    return str.substring(0, str.lastIndexOf(',')) + str.substring(str.lastIndexOf(',') + 1);
+  }
 }
 
 function test() {

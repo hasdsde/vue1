@@ -1,22 +1,23 @@
-import { AxiosResponse } from "axios";
-import { extend } from "quasar";
-
 export interface Todo {
-  id: number;
-  content: string;
+    id: number;
+    content: string;
 }
 
 export interface Meta {
-  totalCount: number;
+    totalCount: number;
 }
+
 // 对话框输入内容
 export interface DialogRadioItems {
-  label: string;
-  value: string;
-  color: string;
+    label: string;
+    value: string;
+    color: string;
 }
+
 export interface BaseApi {
-  code: number,
-  msg: string,
-  data: any,
+    code: number,
+    msg: string,
+    data: any,
 }
+
+

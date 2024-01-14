@@ -3,8 +3,8 @@ interface ICss {
     children: {
         name: string,
         children: {
-            value: string, desc: string
-        }[]
+            "value": string, "desc": string
+        }[],
     }[]
 }
 
@@ -15,6 +15,49 @@ const size = {
     lg: "24px",
     xl: "48",
 }
+export const vueAttrList = [
+    {
+        name: "条件", children: [
+            {value: "v-if", desc: "条件渲染"},
+            {value: "v-else", desc: ""},
+            {value: "v-else-if", desc: ""},
+            {value: "v-show", desc: ""},
+        ]
+    },
+    {
+        name: "列表", children: [
+            {value: "v-for", desc: ""},
+        ]
+    },
+    {
+        name: "事件", children: [
+            {value: "v-on", desc: ""},
+            {value: "@", desc: ""},
+            {value: "@click", desc: ""},
+            {value: "@keyup", desc: ""},
+            {value: "@keydown", desc: ""},
+            {value: "@scroll", desc: ""},
+        ]
+    },
+    {
+        name: "表单", children: [
+            {value: "v-model", desc: ""},
+        ]
+    },
+
+]
+export const ComponentAttr = [
+    {
+        name: "q-input", children: [
+            {
+                name: "行为", children: [
+                    {name: "name", desc: "唯一id", example: ["user_id"]}
+                ]
+            }
+        ]
+    }
+]
+
 export const CssList: ICss[] = [
     {
         name: "quasar文字", children: [
@@ -426,12 +469,12 @@ export const CssList: ICss[] = [
             },
             {
                 name: "容器大小", children: [
-                    {value: "container-None", desc: "width: 100%;"},
-                    {value: "container-sm (640px)", desc: "max-width: 640px;"},
-                    {value: "container-md (768px)", desc: "max-width: 768px;"},
-                    {value: "container-lg (1024px)", desc: "max-width: 1024px;"},
-                    {value: "container-xl (1280px)", desc: "max-width: 1280px;"},
-                    {value: "container-2xl (1536px)", desc: "max-width: 1536px;"},
+                    {value: "None", desc: "width: 100%;"},
+                    {value: "sm:$", desc: "max-width: 640px;"},
+                    {value: "md:$", desc: "max-width: 768px;"},
+                    {value: "lg:$", desc: "max-width: 1024px;"},
+                    {value: "xl:$", desc: "max-width: 1280px;"},
+                    {value: "2xl:$", desc: "max-width: 1536px;"},
 
                 ],
             },
@@ -2916,7 +2959,8 @@ export const CssList: ICss[] = [
                 ]
             },
         ]
-    }, {
+    },
+    {
         "name": "表格table", "children": [
             {
                 name: "Border Collapse", "children": [
@@ -2941,7 +2985,8 @@ export const CssList: ICss[] = [
                 ]
             },
         ]
-    }, {
+    },
+    {
         "name": "Transitions & Animation", "children": [
             {
                 name: "Transition Property", "children": [
@@ -3016,7 +3061,8 @@ export const CssList: ICss[] = [
                 ]
             }
         ]
-    }, {
+    },
+    {
         "name": "Transforms", "children": [
             {
                 name: "Scale", "children": [
@@ -3076,7 +3122,8 @@ export const CssList: ICss[] = [
                 ]
             },
         ]
-    }, {
+    },
+    {
         "name": "Interactivity", "children": [
             {
                 name: "Accent Color", "children": [
@@ -3225,7 +3272,8 @@ export const CssList: ICss[] = [
                 ]
             },
         ]
-    }, {
+    },
+    {
         "name": "SVG", "children": [
             {
                 name: "Fill", "children": [
@@ -3253,7 +3301,8 @@ export const CssList: ICss[] = [
                 ]
             },
         ]
-    }, {
+    },
+    {
         "name": "Accessibility", "children": [
             {
                 name: "bbbb", "children": [

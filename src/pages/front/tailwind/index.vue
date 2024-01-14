@@ -458,10 +458,10 @@ function getScript(sourceCode: string) {
 
 // 解析变量
 function parseVariables(sourceCode: string) {
+  codeVariable.value = []
   const regex = /(const|let|var)\s+(\w+)\s*:\s*(\w+)\s*=\s*(.*)/g;
   let match = sourceCode.match(regex);
   while ((match = regex.exec(sourceCode)) !== null) {
-    console.log(match)
     const modifier = match[1];
     const variableName = match[2];
     const format = match[3];
@@ -565,7 +565,6 @@ function generateCode() {
   let variable = ""
   codeVariable.value.forEach((code: { format: string, modifier: string, name: string, ref: string, value: string }) => {
     let v = code.modifier + " " + code.name
-    console.log(code)
     if (code.format == null) {
       // v += ":any"
     } else {
@@ -599,10 +598,13 @@ function generateCode() {
     } else {
       fun += '('
       func.params.forEach(item => {
-        if (item.type == undefined) {
-          item.type = 'any'
+        if (item.type == null) {
+          fun += item.name
+          fun += ": any" + ","
+        } else {
+          fun += item.name
+          fun += ":" + item.type + ","
         }
-        fun += item.name += ":" + item.type + ","
       })
       fun = removeLastComma(fun)
       fun += ')'
@@ -618,7 +620,7 @@ function generateCode() {
   template += functions + "\n\n"
   template += '<\/script>'
   template = template.replaceAll(/d_key="\d"/g, '')
-  // console.log(template)
+  console.log(template)
   // uploadCode(template)
 }
 

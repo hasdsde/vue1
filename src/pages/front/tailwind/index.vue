@@ -565,14 +565,11 @@ let tagList = ref(tagLists)
 const tagSearch = ref("")
 
 function handleChangeDivName(name: string) {
-  console.log("id=" + currentNode.value.d_key)
   var selector = $(`[d_key = ${currentNode.value.d_key}]`)
-  console.log(selector)
-  var clone = selector.clone()
-  clone.children().first().addClass("aaaaaaaaaaaaaa")
-  console.log(clone.html())
+  const clone = selector.clone().wrap('<div>').parent()
+  clone.children()[0].name = name.toString()
   selector.replaceWith(clone.html() as string);
-  // console.log($.html())
+  console.log($.html())
   currentDivName.value = name
   divNamDialog.value = false
 }
@@ -592,7 +589,6 @@ function handleNewDialog(node: QTreeNode) {
   currentDivClass.value = []
   divNamDialog.value = true
   console.log($(`[d_key = ${currentNode.value.d_key}]`).clone().wrap('<div>').parent().html())
-  console.log($(`[d_key = ${currentNode.value.d_key}]`).html())
 }
 
 function handleUpdateDialog(node: QTreeNode) {
@@ -610,7 +606,7 @@ function handleChangeLabel() {
 // 解析到dialog
 function resolveForm(node: QTreeNode) {
   currentDivName.value = node.label?.toString() as string
-  currentDivClass.value = node.attr.class.split(" ")
+  currentDivClass.value = node.attr.class != null ? node.attr.class.split(" ") : []
   for (const a in node.attr) {
     if (a != 'class' && a != 'd_key') {
       currentDivAttr.value.push({key: a, value: node.attr[a]})

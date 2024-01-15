@@ -35,9 +35,9 @@
                 <q-space></q-space>
                 <div class="float-right">
                   <q-btn flat color="grey" class="q-ml-sm" dense round icon="add"
-                         @click.stop="handleDialogOpen(prop.node)"/>
+                         @click.stop="handleNewDialog(prop.node)"/>
                   <q-btn flat color="grey" class="q-ml-sm" dense round icon="edit"
-                         @click.stop="handleDialogOpen(prop.node)"/>
+                         @click.stop="handleUpdateDialog(prop.node)"/>
                   <q-btn flat color="grey" class="q-ml-sm" dense round icon="close" @click.stop="test"/>
                 </div>
               </template>
@@ -206,52 +206,62 @@
       <q-card-section class=" justify-around flex ">
         <div class="flex w-1/6 content-center">
           <q-input filled v-model="currentDivName" readonly dense label="Filled" class="w-fit q-mr-sm"/>
-          <q-btn color="primary" icon="autorenew" label="更换" class=""/>
+          <q-btn color="primary" icon="autorenew" label="更换" class="" @click="handleChangeLabel"/>
         </div>
         <div class="w-5/6">
-          <q-field filled label="Css样式" dense stack-label>
-            <template v-slot:control>
-              <!--              <div class="self-center  no-outline" tabindex="0"/>-->
-              <q-chip v-for="item in currentDivClass" removable dense v-model="icecream" @remove="log('Icecream')"
+          <q-select
+              label="CSS样式"
+              filled
+              dense
+              v-model="currentDivClass"
+              use-input
+              use-chips
+              multiple
+              hide-dropdown-icon
+              input-debounce="0"
+              new-value-mode="add-unique"
+          >
+            <template v-slot:selected-item="prop">
+              <q-chip removable dense
+                      @remove="prop.removeAtIndex(prop.index)"
                       color="primary" text-color="white">
-                {{ item }}
+                {{ prop.opt }}
                 <q-popup-proxy>
                   <q-card class="q-pa-md">
-                    <q-input filled v-model="text" dense label="修改"/>
+                    <q-input filled v-model="currentDivClass[prop.index]" dense label="修改"/>
                   </q-card>
                 </q-popup-proxy>
-
               </q-chip>
             </template>
-          </q-field>
-          <!--          <q-select-->
-          <!--              label="Css样式"-->
-          <!--              filled-->
-          <!--              dense-->
-          <!--              v-model="divClass"-->
-          <!--              use-input-->
-          <!--              use-chips-->
-          <!--              multiple-->
-          <!--              hide-dropdown-icon-->
-          <!--              input-debounce="0"-->
-          <!--              new-value-mode="add-unique"-->
-          <!--          />-->
+          </q-select>
         </div>
-        <q-field filled label="属性" dense stack-label class="w-full q-mt-md">
-          <template v-slot:control>
-            <!--              <div class="self-center  no-outline" tabindex="0"/>-->
-            <q-chip v-for="item in currentDivAttr" removable dense v-model="icecream" @remove="log('Icecream')"
+        <q-select
+            class="w-full q-mt-md"
+            label="CSS样式"
+            filled
+            dense
+            v-model="currentDivAttr"
+            use-input
+            use-chips
+            multiple
+            hide-dropdown-icon
+            input-debounce="0"
+            new-value-mode="add-unique"
+        >
+          <template v-slot:selected-item="prop">
+            <q-chip removable dense
+                    @remove="prop.removeAtIndex(prop.index)"
                     color="primary" text-color="white">
-              {{ `${item.key} = ${item.value}` }}
+              {{ prop.opt.key }} = {{ prop.opt.value }}
               <q-popup-proxy>
                 <q-card class="q-pa-md">
-                  <q-input filled v-model="text" dense label="Key"/>
-                  <q-input class="q-mt-md" filled v-model="text" dense label="Value"/>
+                  <q-input filled v-model="prop.opt.key" dense/>
+                  <q-input class="q-mt-sm" filled v-model="prop.opt.value" dense/>
                 </q-card>
               </q-popup-proxy>
             </q-chip>
           </template>
-        </q-field>
+        </q-select>
       </q-card-section>
       <q-separator/>
       <q-card-section class="q-pa-md">
@@ -528,7 +538,7 @@ const saveTitle = ref('新增')
 
 const cssList = CssList
 const currentNode: Ref<UnwrapRef<QTreeNode>> = ref({})
-const currentDivClass = ref<string[]>([])
+const currentDivClass: any = ref([])
 const currentDivAttr: any = ref([])
 const currentDivName = ref<string>("")
 //选卡
@@ -536,12 +546,25 @@ const tab = ref('css')
 const cssTab = ref(cssList[0].name)
 const splitterModel = ref(15)
 
-function handleDialogOpen(node: QTreeNode) {
-
+function handleNewDialog(node: QTreeNode) {
   currentNode.value = node
-  resolveForm(node)
   saveTitle.value = "新增"
   saveDialog.value = true
+  currentDivName.value = "div"
+  currentDivAttr.value = []
+  currentDivClass.value = []
+}
+
+function handleUpdateDialog(node: QTreeNode) {
+  currentNode.value = node
+  resolveForm(node)
+  saveTitle.value = "修改"
+  saveDialog.value = true
+}
+
+//修改标签名字
+function handleChangeLabel() {
+
 }
 
 // 解析到dialog
@@ -620,7 +643,7 @@ function generateCode() {
   template += functions + "\n\n"
   template += '<\/script>'
   template = template.replaceAll(/d_key="\d"/g, '')
-  console.log(template)
+  // console.log(template)
   // uploadCode(template)
 }
 

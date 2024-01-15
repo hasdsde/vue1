@@ -8,6 +8,49 @@ interface ICss {
     }[]
 }
 
+// 可用的标签
+export const tagLists = [
+    {name: "div", desc: "div2"},
+    {name: "html", desc: "html2"},
+    {name: "head", desc: ""},
+    {name: "span", desc: ""},
+    {name: "title", desc: ""},
+    {name: "link", desc: ""},
+    {name: "style", desc: ""},
+    {name: "a", desc: ""},
+    {name: "script", desc: ""},
+    {name: "strong", desc: ""},
+    {name: "br", desc: ""},
+    {name: "p", desc: ""},
+    {name: "ul", desc: ""},
+    {name: "ol", desc: ""},
+    {name: "li", desc: ""},
+    {name: "input", desc: ""},
+    {name: "textarea", desc: ""},
+    {name: "form", desc: ""},
+    {name: "select", desc: ""},
+    {name: "button", desc: ""},
+    {name: "option", desc: ""},
+    {name: "body", desc: ""},
+    {name: "h1", desc: ""},
+    {name: "h2", desc: ""},
+    {name: "h3", desc: ""},
+    {name: "h4", desc: ""},
+    {name: "h5", desc: ""},
+    {name: "h6", desc: ""},
+    {name: "header", desc: ""},
+    {name: "nav", desc: ""},
+    {name: "article", desc: ""},
+    {name: "col", desc: ""},
+    {name: "table", desc: ""},
+    {name: "td", desc: ""},
+    {name: "th", desc: ""},
+    {name: "tbody", desc: ""},
+    {name: "thead", desc: ""},
+    {name: "tfoot", desc: ""},
+    {name: "img", desc: ""},
+    {name: "video", desc: ""},
+]
 const size = {
     xs: "4px",
     sm: "8px",
@@ -15,6 +58,7 @@ const size = {
     lg: "24px",
     xl: "48",
 }
+// vue属性
 export const vueAttrList = [
     {
         name: "条件", children: [

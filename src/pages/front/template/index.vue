@@ -7,6 +7,7 @@
       <div class="q-pa-md hahahaha">
         <div class="haha">aaa</div>
         <q-option-group :options="options" type="checkbox" v-model="group">
+          <div>2222</div>
         </q-option-group>
       </div>
     </div>
@@ -16,10 +17,9 @@
     </div>
     <q-slider class="q-pa-xl" v-model="priceModel" color="green" markers="" :marker-labels="arrayMarkerLabel"
               label-always="" :label-value="priceLabel" switch-label-side="" switch-marker-labels-side="" snap=""
-              :min="0" :max="3"></q-slider>
-    <div class="q-mt-md id_1" d_key="10">
-      123{aaa}111
-    </div>
+              :min="0" :max="3">
+      <div>222</div>
+    </q-slider>
   </div>
 </template>
 <script setup lang="ts">

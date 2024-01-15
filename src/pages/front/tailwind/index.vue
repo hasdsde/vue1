@@ -206,7 +206,7 @@
       <q-card-section class=" justify-around flex ">
         <div class="flex w-1/6 content-center">
           <q-input filled v-model="currentDivName" readonly dense label="Filled" class="w-fit q-mr-sm"/>
-          <q-btn color="primary" icon="autorenew" label="更换" class="" @click="handleChangeLabel"/>
+          <q-btn color="primary" icon="autorenew" label="更换" class="" @click="divNamDialog = true"/>
         </div>
         <div class="w-5/6">
           <q-select
@@ -369,14 +369,28 @@
       </q-card-section>
     </q-card>
   </q-dialog>
-  <span class="text-deep-orange q-mt-sm"></span>
+  <q-dialog v-model="divNamDialog">
+    <q-card class="w-3/5 h-2/3 q-pa-sm">
+      <q-card-section class="no-padding">
+        <q-input outlined v-model="tagSearch" @update:model-value="handleFilter" label="搜索" class="q-my-md"
+                 debounce="400"/>
+        <q-list bordered separator class="overflow-y-scroll h-[730px]">
+          <q-item clickable v-ripple v-for="item in tagList" @click="handleChangeDivName(item.name)">
+            <q-item-section>{{ item.name }}
+            </q-item-section>
+            <q-item-label caption>{{ item.desc }}</q-item-label>
+          </q-item>
+        </q-list>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 <script lang="ts" setup>
 import cheerio, {AnyNode, Cheerio, CheerioAPI} from 'cheerio';
 import {ref, toRaw, watch} from "vue";
 import axios from "axios";
 import {CommonFail, CommonGroupFastSuccess} from "components/dialog";
-import {CssList} from "pages/front/tailwind/struct";
+import {CssList, tagLists} from "pages/front/tailwind/struct";
 import {QTreeNode} from "quasar/dist/types/api/qtree";
 import {Ref, UnwrapRef} from "@vue/reactivity";
 
@@ -452,7 +466,7 @@ function cycleGetNode(node: Cheerio<AnyNode>, codeTree: any) {
       }
   )
   $(node).children().map((i, el) => {
-    cycleGetNode($(el), codeTree[0].children)
+    cycleGetNode($(el), codeTree[codeTree.length - 1].children)
   })
 }
 
@@ -545,6 +559,29 @@ const currentDivName = ref<string>("")
 const tab = ref('css')
 const cssTab = ref(cssList[0].name)
 const splitterModel = ref(15)
+const divNamDialog = ref(false)
+// 更换标签名称
+let tagList = ref(tagLists)
+const tagSearch = ref("")
+
+function handleChangeDivName(name: string) {
+  console.log("id=" + currentNode.value.d_key)
+  var selector = $(`[d_key = ${currentNode.value.d_key}]`)
+  console.log(selector)
+  var clone = selector.clone()
+  clone.children().first().addClass("aaaaaaaaaaaaaa")
+  console.log(clone.html())
+  selector.replaceWith(clone.html() as string);
+  // console.log($.html())
+  currentDivName.value = name
+  divNamDialog.value = false
+}
+
+function handleFilter() {
+  tagList.value = tagLists.filter((item) => {
+    return item.name.includes(tagSearch.value.toLowerCase()) || item.desc.includes(tagSearch.value.toLowerCase())
+  })
+}
 
 function handleNewDialog(node: QTreeNode) {
   currentNode.value = node
@@ -553,6 +590,9 @@ function handleNewDialog(node: QTreeNode) {
   currentDivName.value = "div"
   currentDivAttr.value = []
   currentDivClass.value = []
+  divNamDialog.value = true
+  console.log($(`[d_key = ${currentNode.value.d_key}]`).clone().wrap('<div>').parent().html())
+  console.log($(`[d_key = ${currentNode.value.d_key}]`).html())
 }
 
 function handleUpdateDialog(node: QTreeNode) {

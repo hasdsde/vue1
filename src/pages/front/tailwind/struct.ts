@@ -3,53 +3,327 @@ interface ICss {
     children: {
         name: string,
         children: {
-            "value": string, "desc": string
+            "value": string,
+            "desc": string
         }[],
     }[]
 }
 
+interface ITag {
+    name: string,
+    desc: string,
+    props: {
+        name: string,
+        children: ITagInfo[]
+    }[] | undefined,
+    slots: ITagInfo[],
+    events: ITagInfo[],
+    methods: ITagInfo[],
+}
+
+interface ITagInfo {
+    name: string,
+    desc: string,
+    example: string[] | any
+}
+
+const quasarColorsExample = ["text-primary", "text-secondary", "text-accent", "text-dark", "text-positive", "text-negative", "text-info", "text-warning", "text-red", "text-pink", "text-purple", "text-deep-purple", "text-indigo", "text-blue", "text-light-blue", "text-cyan", "text-teal", "text-green", "text-light-green", "text-lime", "text-yellow", "text-amber", "text-orange", "text-deep-orange", "text-brown", "text-grey", "text-blue-grey",]
+const quasarFontSizeExample = ["2px", "16px", "2rem"]
+const quasarSizeExample = ["xs", "sm", "md", "lg", "xl"]
+const quasarAllSize = [...quasarFontSizeExample, ...quasarSizeExample]
+const quasarBoolExample = ["true", "false"]
+const quasarAlignExample = ["middle", "top", "bottom"]
 // 可用的标签
-export const tagLists = [
-    {name: "div", desc: "div2"},
-    {name: "html", desc: "html2"},
-    {name: "head", desc: ""},
-    {name: "span", desc: ""},
-    {name: "title", desc: ""},
-    {name: "link", desc: ""},
-    {name: "style", desc: ""},
-    {name: "a", desc: ""},
-    {name: "script", desc: ""},
-    {name: "strong", desc: ""},
-    {name: "br", desc: ""},
-    {name: "p", desc: ""},
-    {name: "ul", desc: ""},
-    {name: "ol", desc: ""},
-    {name: "li", desc: ""},
-    {name: "input", desc: ""},
-    {name: "textarea", desc: ""},
-    {name: "form", desc: ""},
-    {name: "select", desc: ""},
-    {name: "button", desc: ""},
-    {name: "option", desc: ""},
-    {name: "body", desc: ""},
-    {name: "h1", desc: ""},
-    {name: "h2", desc: ""},
-    {name: "h3", desc: ""},
-    {name: "h4", desc: ""},
-    {name: "h5", desc: ""},
-    {name: "h6", desc: ""},
-    {name: "header", desc: ""},
-    {name: "nav", desc: ""},
-    {name: "article", desc: ""},
-    {name: "col", desc: ""},
-    {name: "table", desc: ""},
-    {name: "td", desc: ""},
-    {name: "th", desc: ""},
-    {name: "tbody", desc: ""},
-    {name: "thead", desc: ""},
-    {name: "tfoot", desc: ""},
-    {name: "img", desc: ""},
-    {name: "video", desc: ""},
+
+export const tagLists: ITag[] = [
+    {name: "div", desc: "div2", props: [], slots: [], events: [], methods: []},
+    {name: "html", desc: "html2", props: [], slots: [], events: [], methods: []},
+    {name: "head", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "span", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "title", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "link", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "style", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "a", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "script", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "strong", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "br", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "p", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "ul", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "ol", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "li", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "input", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "textarea", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "form", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "select", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "button", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "option", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "body", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "h1", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "h2", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "h3", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "h4", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "h5", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "h6", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "header", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "nav", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "article", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "col", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "table", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "td", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "th", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "tbody", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "thead", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "tfoot", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "img", desc: "", props: [], slots: [], events: [], methods: []},
+    {name: "video", desc: "", props: [], slots: [], events: [], methods: []},
+    {
+        name: "q-ajax-bar", desc: "Ajax栏", props: [
+            {
+                name: "behavior", children: [
+                    {name: "reverse", desc: "bool 反转进度条", example: []},
+                    {name: "skip-hijack", desc: "bool 跳过Ajax hijacking", example: quasarBoolExample},
+                ]
+            },
+            {
+                name: "style", children: [
+                    {name: "position", desc: "string 位置", example: ["top", "right", "bottom", "left"]},
+                    {name: "size", desc: "string 大小", example: quasarFontSizeExample},
+                    {name: "color", desc: "string 颜色", example: quasarColorsExample},
+                ]
+            }
+
+        ],
+        slots: [],
+        events: [
+            {name: "@start", desc: "@start -> function() 栏出现时触发", example: []},
+            {name: "@stop", desc: "@start -> function() 栏结束时触发", example: []}
+        ],
+        methods: [
+            {name: "start", desc: "start ([speed]) => Number 等待时通知", example: []},
+            {name: "increment", desc: "increment ([amount]) => Number 手动触发增量", example: []},
+            {name: "start", desc: "stop () => Number 完成后通知", example: []},
+        ]
+    },
+    {
+        name: "q-avatar", desc: "头像", props: [
+            {
+                name: "behavior", children: [{name: "icon", desc: "string material icon或url", example: []},]
+            },
+            {
+                name: "style", children: [
+                    {name: "size", desc: "string 大小", example: quasarAllSize},
+                    {name: "font-size", desc: "string 文字大小", example: quasarFontSizeExample},
+                    {name: "color", desc: "string 颜色", example: quasarColorsExample},
+                    {name: "text-color", desc: "string text颜色", example: quasarColorsExample},
+                    {name: "square", desc: "bool 方形", example: quasarBoolExample},
+                    {name: "rounded", desc: "bool 圆角", example: quasarBoolExample},
+                ]
+            },
+        ], slots: [
+            {name: "default", desc: "覆盖img", example: []},
+        ], events: [], methods: []
+    },
+    {
+        name: "q-badge", desc: "标记", props: [
+            {
+                name: "content", children: [{name: "floating", desc: "bool 是否应该浮动到相对定位的父元素的右上角", example: quasarBoolExample},
+                    {name: "multi-line", desc: "bool 内容可以换行到多行", example: quasarBoolExample},
+                    {name: "label", desc: "string 字符", example: []},
+                    {name: "align", desc: "string 位置", example: quasarAlignExample},]
+            },
+            {
+                name: "style", children: [{name: "color", desc: "string 颜色", example: quasarColorsExample},
+                    {name: "text-color", desc: "string text颜色", example: quasarColorsExample},
+                    {name: "transparent", desc: "bool半透明", example: quasarBoolExample},
+                    {name: "outline", desc: "bool外边框", example: quasarBoolExample},
+                    {name: "rounded", desc: "bool圆角", example: quasarBoolExample},]
+            },
+
+
+        ], slots: [
+            {name: "default", desc: "覆盖label", example: []},
+        ], events: [], methods: []
+    },
+    {
+        name: "q-banner", desc: "横幅", props: [
+            {
+                name: "content", children: [{name: "inline-actions", desc: "顶部文字", example: []},]
+            },
+            {
+                name: "style", children: [{name: "dense", desc: "bool 密集模式", example: quasarColorsExample},
+                    {name: "rounded", desc: "bool 圆角", example: quasarColorsExample},
+                    {name: "dark", desc: "bool 深色", example: quasarColorsExample},]
+            },
+
+
+        ], slots: [
+            {name: "default", desc: "string 内容去向", example: []},
+            {name: "avatar", desc: "string 头像", example: []},
+            {name: "action", desc: "string 操作", example: []},
+        ], events: [], methods: []
+    },
+    {
+        name: "q-bar", desc: "顶栏", props: [
+            {
+                name: "content", children: [{name: "dense", desc: "bool 密集模式", example: quasarColorsExample},
+                    {name: "dark", desc: "bool 深色", example: quasarColorsExample},]
+            },
+
+        ], slots: [
+            {name: "default", desc: "string 默认内容", example: []},
+        ], events: [], methods: []
+    },
+    {
+        name: "q-breadcrumbs", desc: "面包屑组", props: [
+            {
+                name: "content", children: [
+                    {name: "separator", desc: "string 用于分隔痕迹导航的字符串", example: ["/", "-", ">"]},
+                    {name: "gutter", desc: "string 装订线值允许您控制痕迹导航元素之间的空间", example: quasarSizeExample},
+                    {name: "align", desc: "string 指定如何水平对齐痕迹导航", example: ["left", "right", "center", "around", "between", "evenly"]},
+                ]
+            },
+            {
+                name: "style", children: [
+                    {name: "active-color", desc: "string 活动痕迹导航的颜色", example: []},
+                    {name: "separator-color", desc: "string separator-color", example: []},
+
+                ]
+            },
+        ],
+        slots: [
+            {name: "default", desc: "string 内容", example: []},
+            {name: "separator", desc: "string separator", example: []},
+        ],
+        events: [], methods: []
+    },
+    {
+        name: "q-breadcrumbs-el", desc: "面包屑", props: [
+            {
+                name: "content", children: [{name: "label", desc: "string 字符", example: []},
+                    {name: "icon", desc: "string material icon或url", example: []},
+                    {name: "tag", desc: "string html的tag", example: ["span", "div"]},]
+            },
+            {
+                name: "nav", children: [{name: "to", desc: "string 字符", example: ["/home/dashboard", ":to={ name: 'my-route-name' }"]},
+                    {name: "exact", desc: "bool  等同于 Vue Router 的 'exact' 属性", example: quasarBoolExample},
+                    {name: "replace", desc: "bool  等同于 Vue Router 的 'replace' 属性", example: quasarBoolExample},
+                    {name: "active-class", desc: "String\n  等同于 Vue Router 的 'active-class' 属性", example: []},
+                    {name: "exact-active-class", desc: "String\n  等同于 Vue Router 的 'exact-active-class' 属性", example: []},
+                    {name: "href", desc: "string  属性", example: []},
+                    {name: "target", desc: "string  属性", example: ["_blank", "_self", "_parent", "_top"]},]
+            },
+            {
+                name: "state", children: [{name: "disable", desc: "bool  禁用", example: quasarBoolExample},]
+            },
+        ], slots: [{name: "default", desc: "string 内容", example: []},], events: [{
+            name: "@click", desc: "@click -> function(evt, go)", example: []
+        },], methods: []
+    },
+    {
+        name: "q-btn", desc: "按钮", props: [
+            {
+                name: "behavior", children: [
+                    {name: "loading", desc: "bool 字符", example: quasarBoolExample},
+                    {name: "percentage", desc: "number 1-100进度条", example: []},
+                    {name: "dark-percentage", desc: "number 深色1-100进度条", example: []},]
+            }, {
+                name: "content", children: [{name: "label", desc: "string 字符", example: []},
+                    {name: "icon", desc: "string material icon或url", example: []},
+                    {name: "icon-right", desc: "string material icon或url", example: []},
+                    {name: "no-caps", desc: "bool 取消自动大写", example: quasarBoolExample},
+                    {name: "no-wrap", desc: "bool 避免标签文本换行", example: quasarBoolExample},
+                    {name: "align", desc: "string 对齐", example: ["left", "right", "center", "around", "between", "evenly"]},
+                    {name: "stack", desc: "bool 垂直堆叠图标和标签", example: quasarBoolExample},
+                    {name: "stretch", desc: "bool 按钮将拉伸到父项的高度", example: quasarBoolExample},]
+            }, {
+                name: "general", children: [{name: "type", desc: "string 类型", example: ["button", "submit", "a", "reset"]},
+                    {name: "tabindex", desc: "string html tabindex", example: ["0", "100",]},]
+            },
+            {
+                name: "nav", children: [{name: "to", desc: "string 字符", example: ["/home/dashboard", ":to={ name: 'my-route-name' }"]},
+                    {name: "exact", desc: "bool  等同于 Vue Router 的 'exact' 属性", example: quasarBoolExample},
+                    {name: "replace", desc: "bool  等同于 Vue Router 的 'replace' 属性", example: quasarBoolExample},
+                    {name: "href", desc: "string  属性", example: []},
+                    {name: "target", desc: "string  属性", example: ["_blank", "_self", "_parent", "_top"]},]
+            },
+            {
+                name: "state", children: [
+                    {name: "loading", desc: "bool 字符", example: quasarBoolExample},
+                    {name: "disable", desc: "bool  禁用", example: quasarBoolExample},
+                ]
+            },
+            {
+                name: "state", children: [{name: "size", desc: "string 大小", example: quasarAllSize},
+                    {name: "outline", desc: "bool外边框", example: quasarBoolExample},
+                    {name: "rounded", desc: "bool圆角", example: quasarBoolExample},
+                    {name: "flat", desc: "bool 空心", example: quasarBoolExample},
+                    {name: "unelevated", desc: "bool 移除阴影", example: quasarBoolExample},
+                    {name: "push", desc: "bool push design", example: quasarBoolExample},
+                    {name: "square", desc: "bool 方形", example: quasarBoolExample},
+                    {name: "glossy", desc: "bool 光泽", example: quasarBoolExample},
+                    {name: "fab", desc: "bool 使按钮大小和形状适合浮动操作按钮", example: quasarBoolExample},
+                    {name: "fab-mini", desc: "bool 使按钮大小和形状适合浮动操作按钮", example: quasarBoolExample},
+                    {name: "color", desc: "string 颜色", example: quasarColorsExample},
+                    {name: "text-color", desc: "string text颜色", example: quasarColorsExample},
+                    {name: "dense", desc: "bool 密集模式", example: quasarColorsExample},
+                    {name: "ripple", desc: "string 波纹", example: quasarColorsExample},]
+            },
+
+
+        ], slots: [], events: [], methods: []
+    },
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
+
 ]
 const size = {
     xs: "4px",
@@ -101,7 +375,6 @@ export const ComponentAttr = [
         ]
     }
 ]
-
 export const CssList: ICss[] = [
     {
         name: "quasar文字", children: [

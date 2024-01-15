@@ -569,7 +569,6 @@ function handleChangeDivName(name: string) {
   const clone = selector.clone().wrap('<div>').parent()
   clone.children()[0].name = name.toString()
   selector.replaceWith(clone.html() as string);
-  console.log($.html())
   currentDivName.value = name
   divNamDialog.value = false
 }
@@ -588,7 +587,7 @@ function handleNewDialog(node: QTreeNode) {
   currentDivAttr.value = []
   currentDivClass.value = []
   divNamDialog.value = true
-  console.log($(`[d_key = ${currentNode.value.d_key}]`).clone().wrap('<div>').parent().html())
+  // console.log($(`[d_key = ${currentNode.value.d_key}]`).clone().wrap('<div>').parent().html())
 }
 
 function handleUpdateDialog(node: QTreeNode) {

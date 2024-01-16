@@ -277,6 +277,7 @@
             <q-tab name="attribute" label="属性"/>
             <q-tab name="event" label="事件"/>
             <q-tab name="slot" label="插槽"/>
+            <q-tab name="methods" label="方法"/>
           </q-tabs>
           <q-separator/>
           <q-tab-panels v-model="tab" animated class="h-[1000px] overflow-y-auto ">
@@ -324,45 +325,98 @@
                         </q-item>
                       </div>
                     </q-tab-panel>
-
-                    <q-tab-panel name="innerAlarms">
-                      <div class="text-h4 q-mb-md">Alarms</div>
-                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio
-                        iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa
-                        fuga nulla ullam. In, libero.</p>
-                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio
-                        iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa
-                        fuga nulla ullam. In, libero.</p>
-                    </q-tab-panel>
-
-                    <q-tab-panel name="innerMovies">
-                      <div class="text-h4 q-mb-md">Movies</div>
-                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio
-                        iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa
-                        fuga nulla ullam. In, libero.</p>
-                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio
-                        iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa
-                        fuga nulla ullam. In, libero.</p>
-                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio
-                        iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa
-                        fuga nulla ullam. In, libero.</p>
-                    </q-tab-panel>
                   </q-tab-panels>
                 </template>
-
               </q-splitter>
             </q-tab-panel>
             <q-tab-panel name="attribute">
-              <div class="text-h6">Alarms</div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div v-for="tags in tagLists">
+                <div v-if="tags.name==currentDivName">
+                  <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.props" class="w-full ">
+                    <q-item-section avatar>
+                      <q-checkbox v-model="currentDivAttr" :val="index" color="orange"/>
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label>
+                        <q-badge rounded color="primary" :label="prop.category" class="text-md q-mr-md float-right"/>
+                        <q-badge rounded color="primary" :label="index" class="text-md q-mr-md"/>
+                        <q-badge v-if="prop.type!=null" rounded color="orange" :label="prop.type" class="text-md"/>
+                      </q-item-label>
+                      <q-item-label caption>描述：{{ prop.desc }}</q-item-label>
+                      <q-item-label caption v-if="prop.examples!=null">
+                        举例：
+                        <q-badge outline color="primary" class="q-mr-sm" :label="exp" v-for="exp in prop.examples"/>
+                      </q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </div>
+              </div>
             </q-tab-panel>
             <q-tab-panel name="event">
-              <div class="text-h6">Movies</div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div v-for="tags in tagLists">
+                <div v-if="tags.name==currentDivName">
+                  <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.events" class="w-full ">
+                    <q-item-section avatar>
+                      <q-checkbox v-model="currentDivAttr" :val="index" color="orange"/>
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label>
+                        <q-badge rounded color="primary" :label="index" class="text-md q-mr-md"/>
+                        <q-badge v-if="prop.type!=null" rounded color="orange" :label="prop.type" class="text-md"/>
+                      </q-item-label>
+                      <q-item-label caption>描述：{{ prop.desc }}</q-item-label>
+                      <q-item-label caption v-if="prop.examples!=null">
+                        举例：
+                        <q-badge outline color="primary" class="q-mr-sm" :label="exp" v-for="exp in prop.examples"/>
+                      </q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </div>
+              </div>
             </q-tab-panel>
             <q-tab-panel name="slot">
-              <div class="text-h6">Movies</div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <div v-for="tags in tagLists">
+                <div v-if="tags.name==currentDivName">
+                  <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.slots" class="w-full ">
+                    <q-item-section avatar>
+                      <q-checkbox v-model="currentDivAttr" :val="index" color="orange"/>
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label>
+                        <q-badge rounded color="primary" :label="index" class="text-md q-mr-md"/>
+                        <q-badge v-if="prop.type!=null" rounded color="orange" :label="prop.type" class="text-md"/>
+                      </q-item-label>
+                      <q-item-label caption>描述：{{ prop.desc }}</q-item-label>
+                      <q-item-label caption v-if="prop.examples!=null">
+                        举例：
+                        <q-badge outline color="primary" class="q-mr-sm" :label="exp" v-for="exp in prop.examples"/>
+                      </q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </div>
+              </div>
+            </q-tab-panel>
+            <q-tab-panel name="methods">
+              <div v-for="tags in tagLists">
+                <div v-if="tags.name==currentDivName">
+                  <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.methods" class="w-full ">
+                    <q-item-section avatar>
+                      <q-checkbox v-model="currentDivAttr" :val="index" color="orange"/>
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label>
+                        <q-badge rounded color="primary" :label="index" class="text-md q-mr-md"/>
+                        <q-badge v-if="prop.type!=null" rounded color="orange" :label="prop.type" class="text-md"/>
+                      </q-item-label>
+                      <q-item-label caption>描述：{{ prop.desc }}</q-item-label>
+                      <q-item-label caption v-if="prop.examples!=null">
+                        举例：
+                        <q-badge outline color="primary" class="q-mr-sm" :label="exp" v-for="exp in prop.examples"/>
+                      </q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </div>
+              </div>
             </q-tab-panel>
           </q-tab-panels>
         </q-card>

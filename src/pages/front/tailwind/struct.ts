@@ -35,296 +35,6 @@ const quasarBoolExample = ["true", "false"]
 const quasarAlignExample = ["middle", "top", "bottom"]
 // 可用的标签
 
-export const tagLists: ITag[] = [
-    {name: "div", desc: "div2", props: [], slots: [], events: [], methods: []},
-    {name: "html", desc: "html2", props: [], slots: [], events: [], methods: []},
-    {name: "head", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "span", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "title", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "link", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "style", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "a", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "script", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "strong", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "br", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "p", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "ul", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "ol", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "li", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "input", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "textarea", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "form", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "select", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "button", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "option", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "body", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "h1", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "h2", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "h3", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "h4", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "h5", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "h6", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "header", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "nav", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "article", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "col", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "table", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "td", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "th", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "tbody", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "thead", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "tfoot", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "img", desc: "", props: [], slots: [], events: [], methods: []},
-    {name: "video", desc: "", props: [], slots: [], events: [], methods: []},
-    {
-        name: "q-ajax-bar", desc: "Ajax栏", props: [
-            {
-                name: "behavior", children: [
-                    {name: "reverse", desc: "bool 反转进度条", example: []},
-                    {name: "skip-hijack", desc: "bool 跳过Ajax hijacking", example: quasarBoolExample},
-                ]
-            },
-            {
-                name: "style", children: [
-                    {name: "position", desc: "string 位置", example: ["top", "right", "bottom", "left"]},
-                    {name: "size", desc: "string 大小", example: quasarFontSizeExample},
-                    {name: "color", desc: "string 颜色", example: quasarColorsExample},
-                ]
-            }
-
-        ],
-        slots: [],
-        events: [
-            {name: "@start", desc: "@start -> function() 栏出现时触发", example: []},
-            {name: "@stop", desc: "@start -> function() 栏结束时触发", example: []}
-        ],
-        methods: [
-            {name: "start", desc: "start ([speed]) => Number 等待时通知", example: []},
-            {name: "increment", desc: "increment ([amount]) => Number 手动触发增量", example: []},
-            {name: "start", desc: "stop () => Number 完成后通知", example: []},
-        ]
-    },
-    {
-        name: "q-avatar", desc: "头像", props: [
-            {
-                name: "behavior", children: [{name: "icon", desc: "string material icon或url", example: []},]
-            },
-            {
-                name: "style", children: [
-                    {name: "size", desc: "string 大小", example: quasarAllSize},
-                    {name: "font-size", desc: "string 文字大小", example: quasarFontSizeExample},
-                    {name: "color", desc: "string 颜色", example: quasarColorsExample},
-                    {name: "text-color", desc: "string text颜色", example: quasarColorsExample},
-                    {name: "square", desc: "bool 方形", example: quasarBoolExample},
-                    {name: "rounded", desc: "bool 圆角", example: quasarBoolExample},
-                ]
-            },
-        ], slots: [
-            {name: "default", desc: "覆盖img", example: []},
-        ], events: [], methods: []
-    },
-    {
-        name: "q-badge", desc: "标记", props: [
-            {
-                name: "content", children: [{name: "floating", desc: "bool 是否应该浮动到相对定位的父元素的右上角", example: quasarBoolExample},
-                    {name: "multi-line", desc: "bool 内容可以换行到多行", example: quasarBoolExample},
-                    {name: "label", desc: "string 字符", example: []},
-                    {name: "align", desc: "string 位置", example: quasarAlignExample},]
-            },
-            {
-                name: "style", children: [{name: "color", desc: "string 颜色", example: quasarColorsExample},
-                    {name: "text-color", desc: "string text颜色", example: quasarColorsExample},
-                    {name: "transparent", desc: "bool半透明", example: quasarBoolExample},
-                    {name: "outline", desc: "bool外边框", example: quasarBoolExample},
-                    {name: "rounded", desc: "bool圆角", example: quasarBoolExample},]
-            },
-
-
-        ], slots: [
-            {name: "default", desc: "覆盖label", example: []},
-        ], events: [], methods: []
-    },
-    {
-        name: "q-banner", desc: "横幅", props: [
-            {
-                name: "content", children: [{name: "inline-actions", desc: "顶部文字", example: []},]
-            },
-            {
-                name: "style", children: [{name: "dense", desc: "bool 密集模式", example: quasarColorsExample},
-                    {name: "rounded", desc: "bool 圆角", example: quasarColorsExample},
-                    {name: "dark", desc: "bool 深色", example: quasarColorsExample},]
-            },
-
-
-        ], slots: [
-            {name: "default", desc: "string 内容去向", example: []},
-            {name: "avatar", desc: "string 头像", example: []},
-            {name: "action", desc: "string 操作", example: []},
-        ], events: [], methods: []
-    },
-    {
-        name: "q-bar", desc: "顶栏", props: [
-            {
-                name: "content", children: [{name: "dense", desc: "bool 密集模式", example: quasarColorsExample},
-                    {name: "dark", desc: "bool 深色", example: quasarColorsExample},]
-            },
-
-        ], slots: [
-            {name: "default", desc: "string 默认内容", example: []},
-        ], events: [], methods: []
-    },
-    {
-        name: "q-breadcrumbs", desc: "面包屑组", props: [
-            {
-                name: "content", children: [
-                    {name: "separator", desc: "string 用于分隔痕迹导航的字符串", example: ["/", "-", ">"]},
-                    {name: "gutter", desc: "string 装订线值允许您控制痕迹导航元素之间的空间", example: quasarSizeExample},
-                    {name: "align", desc: "string 指定如何水平对齐痕迹导航", example: ["left", "right", "center", "around", "between", "evenly"]},
-                ]
-            },
-            {
-                name: "style", children: [
-                    {name: "active-color", desc: "string 活动痕迹导航的颜色", example: []},
-                    {name: "separator-color", desc: "string separator-color", example: []},
-
-                ]
-            },
-        ],
-        slots: [
-            {name: "default", desc: "string 内容", example: []},
-            {name: "separator", desc: "string separator", example: []},
-        ],
-        events: [], methods: []
-    },
-    {
-        name: "q-breadcrumbs-el", desc: "面包屑", props: [
-            {
-                name: "content", children: [{name: "label", desc: "string 字符", example: []},
-                    {name: "icon", desc: "string material icon或url", example: []},
-                    {name: "tag", desc: "string html的tag", example: ["span", "div"]},]
-            },
-            {
-                name: "nav", children: [{name: "to", desc: "string 字符", example: ["/home/dashboard", ":to={ name: 'my-route-name' }"]},
-                    {name: "exact", desc: "bool  等同于 Vue Router 的 'exact' 属性", example: quasarBoolExample},
-                    {name: "replace", desc: "bool  等同于 Vue Router 的 'replace' 属性", example: quasarBoolExample},
-                    {name: "active-class", desc: "String\n  等同于 Vue Router 的 'active-class' 属性", example: []},
-                    {name: "exact-active-class", desc: "String\n  等同于 Vue Router 的 'exact-active-class' 属性", example: []},
-                    {name: "href", desc: "string  属性", example: []},
-                    {name: "target", desc: "string  属性", example: ["_blank", "_self", "_parent", "_top"]},]
-            },
-            {
-                name: "state", children: [{name: "disable", desc: "bool  禁用", example: quasarBoolExample},]
-            },
-        ], slots: [{name: "default", desc: "string 内容", example: []},], events: [{
-            name: "@click", desc: "@click -> function(evt, go)", example: []
-        },], methods: []
-    },
-    {
-        name: "q-btn", desc: "按钮", props: [
-            {
-                name: "behavior", children: [
-                    {name: "loading", desc: "bool 字符", example: quasarBoolExample},
-                    {name: "percentage", desc: "number 1-100进度条", example: []},
-                    {name: "dark-percentage", desc: "number 深色1-100进度条", example: []},]
-            }, {
-                name: "content", children: [{name: "label", desc: "string 字符", example: []},
-                    {name: "icon", desc: "string material icon或url", example: []},
-                    {name: "icon-right", desc: "string material icon或url", example: []},
-                    {name: "no-caps", desc: "bool 取消自动大写", example: quasarBoolExample},
-                    {name: "no-wrap", desc: "bool 避免标签文本换行", example: quasarBoolExample},
-                    {name: "align", desc: "string 对齐", example: ["left", "right", "center", "around", "between", "evenly"]},
-                    {name: "stack", desc: "bool 垂直堆叠图标和标签", example: quasarBoolExample},
-                    {name: "stretch", desc: "bool 按钮将拉伸到父项的高度", example: quasarBoolExample},]
-            }, {
-                name: "general", children: [{name: "type", desc: "string 类型", example: ["button", "submit", "a", "reset"]},
-                    {name: "tabindex", desc: "string html tabindex", example: ["0", "100",]},]
-            },
-            {
-                name: "nav", children: [{name: "to", desc: "string 字符", example: ["/home/dashboard", ":to={ name: 'my-route-name' }"]},
-                    {name: "exact", desc: "bool  等同于 Vue Router 的 'exact' 属性", example: quasarBoolExample},
-                    {name: "replace", desc: "bool  等同于 Vue Router 的 'replace' 属性", example: quasarBoolExample},
-                    {name: "href", desc: "string  属性", example: []},
-                    {name: "target", desc: "string  属性", example: ["_blank", "_self", "_parent", "_top"]},]
-            },
-            {
-                name: "state", children: [
-                    {name: "loading", desc: "bool 字符", example: quasarBoolExample},
-                    {name: "disable", desc: "bool  禁用", example: quasarBoolExample},
-                ]
-            },
-            {
-                name: "state", children: [{name: "size", desc: "string 大小", example: quasarAllSize},
-                    {name: "outline", desc: "bool外边框", example: quasarBoolExample},
-                    {name: "rounded", desc: "bool圆角", example: quasarBoolExample},
-                    {name: "flat", desc: "bool 空心", example: quasarBoolExample},
-                    {name: "unelevated", desc: "bool 移除阴影", example: quasarBoolExample},
-                    {name: "push", desc: "bool push design", example: quasarBoolExample},
-                    {name: "square", desc: "bool 方形", example: quasarBoolExample},
-                    {name: "glossy", desc: "bool 光泽", example: quasarBoolExample},
-                    {name: "fab", desc: "bool 使按钮大小和形状适合浮动操作按钮", example: quasarBoolExample},
-                    {name: "fab-mini", desc: "bool 使按钮大小和形状适合浮动操作按钮", example: quasarBoolExample},
-                    {name: "color", desc: "string 颜色", example: quasarColorsExample},
-                    {name: "text-color", desc: "string text颜色", example: quasarColorsExample},
-                    {name: "dense", desc: "bool 密集模式", example: quasarColorsExample},
-                    {name: "ripple", desc: "string 波纹", example: quasarColorsExample},]
-            },
-
-
-        ], slots: [], events: [], methods: []
-    },
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-    {name: "q-avatar", desc: "头像", props: [], slots: [], events: [], methods: []},
-
-]
 const size = {
     xs: "4px",
     sm: "8px",
@@ -363,17 +73,6 @@ export const vueAttrList = [
         ]
     },
 
-]
-export const ComponentAttr = [
-    {
-        name: "q-input", children: [
-            {
-                name: "行为", children: [
-                    {name: "name", desc: "唯一id", example: ["user_id"]}
-                ]
-            }
-        ]
-    }
 ]
 export const CssList: ICss[] = [
     {
@@ -3634,4 +3333,20913 @@ export const CssList: ICss[] = [
             },
         ]
     },
+]
+export const tagLists = [
+    {name: "div", desc: "div2", info: {}},
+    {name: "html", desc: "html2", info: {}},
+    {name: "head", desc: "", info: {}},
+    {name: "span", desc: "", info: {}},
+    {name: "title", desc: "", info: {}},
+    {name: "link", desc: "", info: {}},
+    {name: "style", desc: "", info: {}},
+    {name: "a", desc: "", info: {}},
+    {name: "script", desc: "", info: {}},
+    {name: "strong", desc: "", info: {}},
+    {name: "br", desc: "", info: {}},
+    {name: "p", desc: "", info: {}},
+    {name: "ul", desc: "", info: {}},
+    {name: "ol", desc: "", info: {}},
+    {name: "li", desc: "", info: {}},
+    {name: "input", desc: "", info: {}},
+    {name: "textarea", desc: "", info: {}},
+    {name: "form", desc: "", info: {}},
+    {name: "select", desc: "", info: {}},
+    {name: "button", desc: "", info: {}},
+    {name: "option", desc: "", info: {}},
+    {name: "body", desc: "", info: {}},
+    {name: "h1", desc: "", info: {}},
+    {name: "h2", desc: "", info: {}},
+    {name: "h3", desc: "", info: {}},
+    {name: "h4", desc: "", info: {}},
+    {name: "h5", desc: "", info: {}},
+    {name: "h6", desc: "", info: {}},
+    {name: "header", desc: "", info: {}},
+    {name: "nav", desc: "", info: {}},
+    {name: "article", desc: "", info: {}},
+    {name: "col", desc: "", info: {}},
+    {name: "table", desc: "", info: {}},
+    {name: "td", desc: "", info: {}},
+    {name: "th", desc: "", info: {}},
+    {name: "tbody", desc: "", info: {}},
+    {name: "thead", desc: "", info: {}},
+    {name: "tfoot", desc: "", info: {}},
+    {name: "img", desc: "", info: {}},
+    {name: "video", desc: "", info: {}},
+    {
+        name: "q-ajax-bar", desc: "ajax栏", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/ajax-bar"
+            },
+            "props": {
+                "position": {
+                    "type": "String",
+                    "desc": "Position within window of where QAjaxBar should be displayed",
+                    "default": "top",
+                    "values": [
+                        "top",
+                        "right",
+                        "bottom",
+                        "left"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style",
+                    "default": "2px",
+                    "required": false
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "reverse": {
+                    "type": "Boolean",
+                    "desc": "Reverse direction of progress",
+                    "category": "behavior"
+                },
+                "skip-hijack": {
+                    "type": "Boolean",
+                    "desc": "Skip Ajax hijacking (not a reactive prop)",
+                    "category": "behavior"
+                },
+                "hijack-filter": {
+                    "type": "Function",
+                    "desc": "Filter which URL should trigger start() + stop()",
+                    "params": {
+                        "url": {
+                            "type": "String",
+                            "desc": "The URL being triggered",
+                            "examples": [
+                                "https://some.url/path"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "Should the URL received as param trigger start() + stop()?"
+                    },
+                    "category": "behavior",
+                    "addedIn": "v2.4.5"
+                }
+            },
+            "events": {
+                "start": {
+                    "desc": "Emitted when bar is triggered to appear"
+                },
+                "stop": {
+                    "desc": "Emitted when bar has finished its job"
+                }
+            },
+            "methods": {
+                "start": {
+                    "desc": "Notify bar you are waiting for a new process to finish",
+                    "params": {
+                        "speed": {
+                            "type": "Number",
+                            "default": 300,
+                            "desc": "Delay (in milliseconds) between progress auto-increments; If delay is 0 then it disables auto-incrementing",
+                            "required": false
+                        }
+                    },
+                    "returns": {
+                        "type": "Number",
+                        "desc": "Number of active simultaneous sessions"
+                    }
+                },
+                "increment": {
+                    "desc": "Manually trigger a bar progress increment",
+                    "params": {
+                        "amount": {
+                            "type": "Number",
+                            "desc": "Amount (0 < x <= 100) to increment with"
+                        }
+                    },
+                    "returns": {
+                        "type": "Number",
+                        "desc": "Number of active simultaneous sessions"
+                    }
+                },
+                "stop": {
+                    "desc": "Notify bar that one process you were waiting has finished",
+                    "returns": {
+                        "type": "Number",
+                        "desc": "Number of active simultaneous sessions"
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-avatar", desc: "头像", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/avatar"
+            },
+            "props": {
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "font-size": {
+                    "type": "String",
+                    "desc": "The size in CSS units, including unit name, of the content (icon, text)",
+                    "examples": [
+                        "18px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a small standard border-radius for a squared shape of the component",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Optional; Suggestions: one character string, /<img> tag"
+                }
+            }
+        }
+    },
+    {
+        name: "q-badge", desc: "标记", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/badge"
+            },
+            "props": {
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "floating": {
+                    "type": "Boolean",
+                    "desc": "Tell QBadge if it should float to the top right side of the relative positioned parent element or not",
+                    "category": "content"
+                },
+                "transparent": {
+                    "type": "Boolean",
+                    "desc": "Applies a 0.8 opacity; Useful especially for floating QBadge",
+                    "category": "style"
+                },
+                "multi-line": {
+                    "type": "Boolean",
+                    "desc": "Content can wrap to multiple lines",
+                    "category": "content"
+                },
+                "label": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Badge's content as string; overrides default slot if specified",
+                    "examples": [
+                        "John Doe",
+                        22
+                    ],
+                    "category": "content"
+                },
+                "align": {
+                    "type": "String",
+                    "desc": "Sets vertical-align CSS prop",
+                    "values": [
+                        "top",
+                        "middle",
+                        "bottom"
+                    ],
+                    "category": "content"
+                },
+                "outline": {
+                    "type": "Boolean",
+                    "desc": "Use 'outline' design (colored text and borders only)",
+                    "category": "style"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Makes a rounded shaped badge",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where QBadge content goes, if not using 'label' property"
+                }
+            }
+        }
+    },
+    {
+        name: "q-banner", desc: "横幅", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/banner"
+            },
+            "props": {
+                "inline-actions": {
+                    "type": "Boolean",
+                    "desc": "Display actions on same row as content",
+                    "category": "content"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a small standard border-radius for a squared shape of the component",
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where Banner content goes"
+                },
+                "avatar": {
+                    "desc": "Slot for displaying an avatar (suggestions: QIcon, QAvatar)"
+                },
+                "action": {
+                    "desc": "Slot for Banner action (suggestions: QBtn)"
+                }
+            }
+        }
+    },
+    {
+        name: "q-bar", desc: "栏", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/bar"
+            },
+            "props": {
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "The component background color lights up the parent's background (as opposed to default behavior which is to darken it); Works unless you specify a CSS background color for it",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-breadcrumbs", desc: "面包屑组", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/breadcrumbs"
+            },
+            "props": {
+                "separator": {
+                    "type": "String",
+                    "desc": "The string used to separate the breadcrumbs",
+                    "default": "/",
+                    "examples": [
+                        "-",
+                        "|",
+                        ">"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "active-color": {
+                    "type": "String",
+                    "desc": "The color of the active breadcrumb, which can be any color from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "default": "primary",
+                    "required": false
+                },
+                "gutter": {
+                    "type": "String",
+                    "desc": "The gutter value allows you control over the space between the breadcrumb elements.",
+                    "default": "sm",
+                    "values": [
+                        "none",
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "separator-color": {
+                    "type": "String",
+                    "desc": "The color used to color the separator, which can be any color from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "align": {
+                    "type": "String",
+                    "default": "left",
+                    "desc": "Specify how to align the breadcrumbs horizontally",
+                    "values": [
+                        "left",
+                        "center",
+                        "right",
+                        "between",
+                        "around",
+                        "evenly"
+                    ],
+                    "category": "content",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                },
+                "separator": {
+                    "desc": "HTML or component you can slot in to separate the breadcrumbs"
+                }
+            }
+        }
+    },
+    {
+        name: "q-breadcrumbs-el", desc: "面包屑", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/breadcrumbs"
+            },
+            "props": {
+                "to": {
+                    "type": [
+                        "String",
+                        "Object"
+                    ],
+                    "desc": "Equivalent to Vue Router <router-link> 'to' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "/home/dashboard",
+                        ":to=\"{ name: 'my-route-name' }\""
+                    ],
+                    "category": "navigation"
+                },
+                "exact": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to Vue Router <router-link> 'exact' property; Superseded by 'href' prop if used",
+                    "category": "navigation"
+                },
+                "replace": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to Vue Router <router-link> 'replace' property; Superseded by 'href' prop if used",
+                    "category": "navigation"
+                },
+                "active-class": {
+                    "type": "String",
+                    "desc": "Equivalent to Vue Router <router-link> 'active-class' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "my-active-class"
+                    ],
+                    "category": "navigation"
+                },
+                "exact-active-class": {
+                    "type": "String",
+                    "desc": "Equivalent to Vue Router <router-link> 'active-class' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "my-exact-active-class"
+                    ],
+                    "category": "navigation"
+                },
+                "href": {
+                    "type": "String",
+                    "desc": "Native <a> link href attribute; Has priority over the 'to'/'exact'/'replace'/'active-class'/'exact-active-class' props",
+                    "examples": [
+                        "https://quasar.dev"
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "target": {
+                    "type": "String",
+                    "desc": "Native <a> link target attribute; Use it only along with 'href' prop; Has priority over the 'to'/'exact'/'replace'/'active-class'/'exact-active-class' props",
+                    "examples": [
+                        "_blank",
+                        "_self",
+                        "_parent",
+                        "_top"
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "The label text for the breadcrumb",
+                    "examples": [
+                        "Home",
+                        "Index"
+                    ],
+                    "category": "content"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "tag": {
+                    "type": "String",
+                    "desc": "HTML tag to use",
+                    "examples": [
+                        "div",
+                        "span",
+                        "div",
+                        "span"
+                    ],
+                    "category": "content",
+                    "default": "span",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where custom content goes, unless 'icon' and 'label' props are not enough"
+                }
+            },
+            "events": {
+                "click": {
+                    "desc": "Emitted when the component is clicked",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object; If you are using route navigation ('to'/'replace' props) and you want to cancel navigation then call evt.preventDefault() synchronously in your event handler"
+                        },
+                        "go": {
+                            "type": "Function",
+                            "desc": "Available ONLY if you are using route navigation ('to'/'replace' props); When you need to control the time at which the component should trigger the route navigation then call evt.preventDefault() synchronously and then call this function at your convenience; Useful if you have async work to be done before the actual route navigation or if you want to redirect somewhere else",
+                            "required": false,
+                            "addedIn": "v2.9",
+                            "params": {
+                                "opts": {
+                                    "type": "Object",
+                                    "desc": "Optional options",
+                                    "required": false,
+                                    "definition": {
+                                        "to": {
+                                            "type": [
+                                                "String",
+                                                "Object"
+                                            ],
+                                            "desc": "Equivalent to Vue Router <router-link> 'to' property; Specify it explicitly otherwise it will be set with same value as component's 'to' prop",
+                                            "required": false,
+                                            "examples": [
+                                                "/home/dashboard",
+                                                "{ name: 'my-route-name' }"
+                                            ]
+                                        },
+                                        "replace": {
+                                            "type": "Boolean",
+                                            "desc": "Equivalent to Vue Router <router-link> 'replace' property; Specify it explicitly otherwise it will be set with same value as component's 'replace' prop",
+                                            "required": false
+                                        },
+                                        "returnRouterError": {
+                                            "type": "Boolean",
+                                            "desc": "Return the router error, if any; Otherwise the returned Promise will always fulfill",
+                                            "required": false
+                                        }
+                                    }
+                                }
+                            },
+                            "returns": {
+                                "type": "Promise<any>",
+                                "desc": "Returns the router's navigation promise"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-btn", desc: "按钮", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/button"
+            },
+            "props": {
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "type": {
+                    "type": "String",
+                    "desc": "1) Define the button native type attribute (submit, reset, button) or 2) render component with <a> tag so you can access events even if disable or 3) Use 'href' prop and specify 'type' as a media tag",
+                    "default": "button",
+                    "examples": [
+                        "a",
+                        "submit",
+                        "button",
+                        "reset",
+                        "image/png",
+                        "href=\"https://quasar.dev\" target=\"_blank\""
+                    ],
+                    "category": "general",
+                    "required": false
+                },
+                "to": {
+                    "type": [
+                        "String",
+                        "Object"
+                    ],
+                    "desc": "Equivalent to Vue Router <router-link> 'to' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "/home/dashboard",
+                        ":to=\"{ name: 'my-route-name' }\""
+                    ],
+                    "category": "navigation"
+                },
+                "replace": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to Vue Router <router-link> 'replace' property; Superseded by 'href' prop if used",
+                    "category": "navigation"
+                },
+                "href": {
+                    "type": "String",
+                    "desc": "Native <a> link href attribute; Has priority over the 'to' and 'replace' props",
+                    "examples": [
+                        "https://quasar.dev",
+                        "href=\"https://quasar.dev\" target=\"_blank\""
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "target": {
+                    "type": "String",
+                    "desc": "Native <a> link target attribute; Use it only with 'to' or 'href' props",
+                    "examples": [
+                        "_blank",
+                        "_self",
+                        "_parent",
+                        "_top"
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "label": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "The text that will be shown on the button",
+                    "examples": [
+                        "Button Label"
+                    ],
+                    "category": "content"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-right": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "outline": {
+                    "type": "Boolean",
+                    "desc": "Use 'outline' design",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Use 'flat' design",
+                    "category": "style"
+                },
+                "unelevated": {
+                    "type": "Boolean",
+                    "desc": "Remove shadow",
+                    "category": "style"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a more prominent border-radius for a squared shape button",
+                    "category": "style"
+                },
+                "push": {
+                    "type": "Boolean",
+                    "desc": "Use 'push' design",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style",
+                    "addedIn": "v2.7.6"
+                },
+                "glossy": {
+                    "type": "Boolean",
+                    "desc": "Applies a glossy effect",
+                    "category": "style"
+                },
+                "fab": {
+                    "type": "Boolean",
+                    "desc": "Makes button size and shape to fit a Floating Action Button",
+                    "category": "style"
+                },
+                "fab-mini": {
+                    "type": "Boolean",
+                    "desc": "Makes button size and shape to fit a small Floating Action Button",
+                    "category": "style"
+                },
+                "padding": {
+                    "type": "String",
+                    "desc": "Apply custom padding (vertical [horizontal]); Size in CSS units, including unit name or standard size name (none|xs|sm|md|lg|xl); Also removes the min width and height when set",
+                    "examples": [
+                        "16px",
+                        "10px 5px",
+                        "2rem",
+                        "xs",
+                        "md lg",
+                        "2px 2px 5px 7px"
+                    ],
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "no-caps": {
+                    "type": "Boolean",
+                    "desc": "Avoid turning label text into caps (which happens by default)",
+                    "category": "content"
+                },
+                "no-wrap": {
+                    "type": "Boolean",
+                    "desc": "Avoid label text wrapping",
+                    "category": "content"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "ripple": {
+                    "type": [
+                        "Boolean",
+                        "Object"
+                    ],
+                    "desc": "Configure material ripple (disable it by setting it to 'false' or supply a config object)",
+                    "default": true,
+                    "examples": [
+                        false,
+                        "{ early: true, center: true, color: 'teal', keyCodes: [] }"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "align": {
+                    "type": "String",
+                    "desc": "Label or content alignment",
+                    "default": "center",
+                    "values": [
+                        "left",
+                        "right",
+                        "center",
+                        "around",
+                        "between",
+                        "evenly"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "stack": {
+                    "type": "Boolean",
+                    "desc": "Stack icon and label vertically instead of on same line (like it is by default)",
+                    "category": "content"
+                },
+                "stretch": {
+                    "type": "Boolean",
+                    "desc": "When used on flexbox parent, button will stretch to parent's height",
+                    "category": "content"
+                },
+                "loading": {
+                    "type": "Boolean",
+                    "desc": "Put button into loading state (displays a QSpinner -- can be overridden by using a 'loading' slot)",
+                    "category": "behavior|state"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "round": {
+                    "type": "Boolean",
+                    "desc": "Makes a circle shaped button",
+                    "category": "style"
+                },
+                "percentage": {
+                    "type": "Number",
+                    "desc": "Percentage (0.0 < x < 100.0); To be used along 'loading' prop; Display a progress bar on the background",
+                    "category": "behavior"
+                },
+                "dark-percentage": {
+                    "type": "Boolean",
+                    "desc": "Progress bar on the background should have dark color; To be used along with 'percentage' and 'loading' props",
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Use for custom content, instead of relying on 'icon' and 'label' props"
+                },
+                "loading": {
+                    "desc": "Override the default QSpinner when in 'loading' state"
+                }
+            },
+            "events": {
+                "click": {
+                    "desc": "Emitted when the component is clicked",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object; If you are using route navigation ('to'/'replace' props) and you want to cancel navigation then call evt.preventDefault() synchronously in your event handler"
+                        },
+                        "go": {
+                            "type": "Function",
+                            "desc": "Available ONLY if you are using route navigation ('to'/'replace' props); When you need to control the time at which the component should trigger the route navigation then call evt.preventDefault() synchronously and then call this function at your convenience; Useful if you have async work to be done before the actual route navigation or if you want to redirect somewhere else",
+                            "required": false,
+                            "addedIn": "v2.9",
+                            "params": {
+                                "opts": {
+                                    "type": "Object",
+                                    "desc": "Optional options",
+                                    "required": false,
+                                    "definition": {
+                                        "to": {
+                                            "type": [
+                                                "String",
+                                                "Object"
+                                            ],
+                                            "desc": "Equivalent to Vue Router <router-link> 'to' property; Specify it explicitly otherwise it will be set with same value as component's 'to' prop",
+                                            "required": false,
+                                            "examples": [
+                                                "/home/dashboard",
+                                                "{ name: 'my-route-name' }"
+                                            ]
+                                        },
+                                        "replace": {
+                                            "type": "Boolean",
+                                            "desc": "Equivalent to Vue Router <router-link> 'replace' property; Specify it explicitly otherwise it will be set with same value as component's 'replace' prop",
+                                            "required": false
+                                        },
+                                        "returnRouterError": {
+                                            "type": "Boolean",
+                                            "desc": "Return the router error, if any; Otherwise the returned Promise will always fulfill",
+                                            "required": false
+                                        }
+                                    }
+                                }
+                            },
+                            "returns": {
+                                "type": "Promise<any>",
+                                "desc": "Returns the router's navigation promise"
+                            }
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "click": {
+                    "desc": "Emulate click on QBtn",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-btn-group", desc: "按钮组", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/button-group"
+            },
+            "props": {
+                "spread": {
+                    "type": "Boolean",
+                    "desc": "Spread horizontally to all available space",
+                    "category": "content"
+                },
+                "outline": {
+                    "type": "Boolean",
+                    "desc": "Use 'outline' design for buttons",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Use 'flat' design for buttons",
+                    "category": "style"
+                },
+                "unelevated": {
+                    "type": "Boolean",
+                    "desc": "Remove shadow on buttons",
+                    "category": "style"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a more prominent border-radius for squared shape buttons",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style",
+                    "addedIn": "v2.7.6"
+                },
+                "push": {
+                    "type": "Boolean",
+                    "desc": "Use 'push' design for buttons",
+                    "category": "style"
+                },
+                "stretch": {
+                    "type": "Boolean",
+                    "desc": "When used on flexbox parent, buttons will stretch to parent's height",
+                    "category": "content"
+                },
+                "glossy": {
+                    "type": "Boolean",
+                    "desc": "Applies a glossy effect",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Suggestion: QBtn"
+                }
+            }
+        }
+    },
+    {
+        name: "q-btn-dropdown", desc: "按钮下拉", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/button-dropdown"
+            },
+            "props": {
+                "transition-show": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-hide": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-duration": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Transition duration (in milliseconds, without unit)",
+                    "default": 300,
+                    "category": "transition",
+                    "required": false
+                },
+                "model-value": {
+                    "desc": "Controls Menu show/hidden state; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": false,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Boolean",
+                    "examples": [
+                        "v-model=\"menuState\""
+                    ]
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "type": {
+                    "type": "String",
+                    "desc": "1) Define the button native type attribute (submit, reset, button) or 2) render component with <a> tag so you can access events even if disable or 3) Use 'href' prop and specify 'type' as a media tag",
+                    "default": "button",
+                    "examples": [
+                        "a",
+                        "submit",
+                        "button",
+                        "reset",
+                        "image/png",
+                        "href=\"https://quasar.dev\" target=\"_blank\""
+                    ],
+                    "category": "general",
+                    "required": false
+                },
+                "to": {
+                    "type": [
+                        "String",
+                        "Object"
+                    ],
+                    "desc": "Equivalent to Vue Router <router-link> 'to' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "/home/dashboard",
+                        ":to=\"{ name: 'my-route-name' }\""
+                    ],
+                    "category": "navigation"
+                },
+                "replace": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to Vue Router <router-link> 'replace' property; Superseded by 'href' prop if used",
+                    "category": "navigation"
+                },
+                "href": {
+                    "type": "String",
+                    "desc": "Native <a> link href attribute; Has priority over the 'to' and 'replace' props",
+                    "examples": [
+                        "https://quasar.dev",
+                        "href=\"https://quasar.dev\" target=\"_blank\""
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "target": {
+                    "type": "String",
+                    "desc": "Native <a> link target attribute; Use it only with 'to' or 'href' props",
+                    "examples": [
+                        "_blank",
+                        "_self",
+                        "_parent",
+                        "_top"
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "label": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "The text that will be shown on the button",
+                    "examples": [
+                        "Button Label"
+                    ],
+                    "category": "content"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-right": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "outline": {
+                    "type": "Boolean",
+                    "desc": "Use 'outline' design",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Use 'flat' design",
+                    "category": "style"
+                },
+                "unelevated": {
+                    "type": "Boolean",
+                    "desc": "Remove shadow",
+                    "category": "style"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a more prominent border-radius for a squared shape button",
+                    "category": "style"
+                },
+                "push": {
+                    "type": "Boolean",
+                    "desc": "Use 'push' design",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style",
+                    "addedIn": "v2.7.6"
+                },
+                "glossy": {
+                    "type": "Boolean",
+                    "desc": "Applies a glossy effect",
+                    "category": "style"
+                },
+                "fab": {
+                    "type": "Boolean",
+                    "desc": "Makes button size and shape to fit a Floating Action Button",
+                    "category": "style"
+                },
+                "fab-mini": {
+                    "type": "Boolean",
+                    "desc": "Makes button size and shape to fit a small Floating Action Button",
+                    "category": "style"
+                },
+                "padding": {
+                    "type": "String",
+                    "desc": "Apply custom padding (vertical [horizontal]); Size in CSS units, including unit name or standard size name (none|xs|sm|md|lg|xl); Also removes the min width and height when set",
+                    "examples": [
+                        "16px",
+                        "10px 5px",
+                        "2rem",
+                        "xs",
+                        "md lg",
+                        "2px 2px 5px 7px"
+                    ],
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "no-caps": {
+                    "type": "Boolean",
+                    "desc": "Avoid turning label text into caps (which happens by default)",
+                    "category": "content"
+                },
+                "no-wrap": {
+                    "type": "Boolean",
+                    "desc": "Avoid label text wrapping",
+                    "category": "content"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "ripple": {
+                    "type": [
+                        "Boolean",
+                        "Object"
+                    ],
+                    "desc": "Configure material ripple (disable it by setting it to 'false' or supply a config object)",
+                    "default": true,
+                    "examples": [
+                        false,
+                        "{ early: true, center: true, color: 'teal', keyCodes: [] }"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "align": {
+                    "type": "String",
+                    "desc": "Label or content alignment",
+                    "default": "center",
+                    "values": [
+                        "left",
+                        "right",
+                        "center",
+                        "around",
+                        "between",
+                        "evenly"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "stack": {
+                    "type": "Boolean",
+                    "desc": "Stack icon and label vertically instead of on same line (like it is by default)",
+                    "category": "content"
+                },
+                "stretch": {
+                    "type": "Boolean",
+                    "desc": "When used on flexbox parent, button will stretch to parent's height",
+                    "category": "content"
+                },
+                "loading": {
+                    "type": "Boolean",
+                    "desc": "Put button into loading state (displays a QSpinner -- can be overridden by using a 'loading' slot)",
+                    "category": "behavior|state"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "split": {
+                    "type": "Boolean",
+                    "desc": "Split dropdown icon into its own button",
+                    "category": "content|behavior"
+                },
+                "dropdown-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "disable-main-btn": {
+                    "type": "Boolean",
+                    "desc": "Disable main button (useful along with 'split' prop)",
+                    "category": "behavior"
+                },
+                "disable-dropdown": {
+                    "type": "Boolean",
+                    "desc": "Disables dropdown (dropdown button if using along 'split' prop)",
+                    "category": "behavior"
+                },
+                "no-icon-animation": {
+                    "type": "Boolean",
+                    "desc": "Disables the rotation of the dropdown icon when state is toggled",
+                    "category": "style"
+                },
+                "content-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Style definitions to be attributed to the menu",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":content-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "content-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Class definitions to be attributed to the menu",
+                    "examples": [
+                        "my-special-class",
+                        ":content-class=\"{ 'my-special-class': <condition> }\""
+                    ],
+                    "category": "style"
+                },
+                "cover": {
+                    "type": "Boolean",
+                    "desc": "Allows the menu to cover the button. When used, the 'menu-self' and 'menu-fit' props are no longer effective",
+                    "category": "position"
+                },
+                "persistent": {
+                    "type": "Boolean",
+                    "desc": "Allows the menu to not be dismissed by a click/tap outside of the menu or by hitting the ESC key",
+                    "category": "behavior"
+                },
+                "no-route-dismiss": {
+                    "type": "Boolean",
+                    "desc": "Changing route app won't dismiss the popup; No need to set it if 'persistent' prop is also set",
+                    "category": "behavior"
+                },
+                "auto-close": {
+                    "type": "Boolean",
+                    "desc": "Allows any click/tap in the menu to close it; Useful instead of attaching events to each menu item that should close the menu on click/tap",
+                    "category": "behavior"
+                },
+                "menu-anchor": {
+                    "type": "String",
+                    "desc": "Two values setting the starting position or anchor point of the menu relative to its target",
+                    "values": [
+                        "top left",
+                        "top middle",
+                        "top right",
+                        "top start",
+                        "top end",
+                        "center left",
+                        "center middle",
+                        "center right",
+                        "center start",
+                        "center end",
+                        "bottom left",
+                        "bottom middle",
+                        "bottom right",
+                        "bottom start",
+                        "bottom end"
+                    ],
+                    "default": "bottom end",
+                    "category": "position",
+                    "required": false
+                },
+                "menu-self": {
+                    "type": "String",
+                    "desc": "Two values setting the menu's own position relative to its target",
+                    "values": [
+                        "top left",
+                        "top middle",
+                        "top right",
+                        "top start",
+                        "top end",
+                        "center left",
+                        "center middle",
+                        "center right",
+                        "center start",
+                        "center end",
+                        "bottom left",
+                        "bottom middle",
+                        "bottom right",
+                        "bottom start",
+                        "bottom end"
+                    ],
+                    "default": "top end",
+                    "category": "position",
+                    "required": false
+                },
+                "menu-offset": {
+                    "type": "Array",
+                    "desc": "An array of two numbers to offset the menu horizontally and vertically in pixels",
+                    "examples": [
+                        "[8, 8]",
+                        "[5, 10]"
+                    ],
+                    "category": "position"
+                },
+                "toggle-aria-label": {
+                    "type": "String",
+                    "desc": "aria-label to be used on the dropdown toggle element",
+                    "examples": [
+                        "Open menu"
+                    ],
+                    "category": "accessibility",
+                    "addedIn": "v2.8.4"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                },
+                "label": {
+                    "desc": "Customize main button's content through this slot, unless you're using the 'icon' and 'label' props"
+                },
+                "loading": {
+                    "desc": "Override the default QSpinner when in 'loading' state",
+                    "addedIn": "v2.8"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when showing/hidden state changes; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Boolean",
+                            "desc": "New state (showing/hidden)"
+                        }
+                    }
+                },
+                "show": {
+                    "desc": "Emitted after component has triggered show()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-show": {
+                    "desc": "Emitted when component triggers show() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Emitted after component has triggered hide()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-hide": {
+                    "desc": "Emitted when component triggers hide() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "click": {
+                    "desc": "Emitted when user clicks/taps on the main button (not the icon one, if using 'split')",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "show": {
+                    "desc": "Triggers component to show",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Triggers component to hide",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "toggle": {
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    },
+                    "desc": "Triggers component to toggle between show/hide"
+                }
+            }
+        }
+    },
+    {
+        name: "q-card", desc: "卡片", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/card"
+            },
+            "props": {
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Applies a 'flat' design (no default shadow)",
+                    "category": "style"
+                },
+                "bordered": {
+                    "type": "Boolean",
+                    "desc": "Applies a default border to the component",
+                    "category": "style"
+                },
+                "tag": {
+                    "type": "String",
+                    "desc": "HTML tag to use",
+                    "examples": [
+                        "div",
+                        "span",
+                        "div",
+                        "form"
+                    ],
+                    "category": "content",
+                    "default": "div",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-card-section", desc: "卡片内部组", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/card"
+            },
+            "props": {
+                "horizontal": {
+                    "type": "Boolean",
+                    "desc": "Display a horizontal section (will have no padding and can contain other QCardSection)",
+                    "category": "content"
+                },
+                "tag": {
+                    "type": "String",
+                    "desc": "HTML tag to use",
+                    "examples": [
+                        "div",
+                        "span",
+                        "div",
+                        "form"
+                    ],
+                    "category": "content",
+                    "default": "div",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-card-actions", desc: "卡片操作", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/card"
+            },
+            "props": {
+                "align": {
+                    "type": "String",
+                    "desc": "Specify how to align the actions",
+                    "default": "left (for horizontal mode) / stretch (for vertical mode)",
+                    "values": [
+                        "left",
+                        "center",
+                        "right",
+                        "between",
+                        "around",
+                        "evenly",
+                        "stretch"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "vertical": {
+                    "type": "Boolean",
+                    "desc": "Display actions one below the other",
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Suggestions: QBtn"
+                }
+            }
+        }
+    },
+    {
+        name: "q-carousel", desc: "转盘", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/carousel"
+            },
+            "props": {
+                "fullscreen": {
+                    "type": "Boolean",
+                    "sync": true,
+                    "desc": "Fullscreen mode",
+                    "examples": [
+                        "v-model:fullscreen=\"isFullscreen\""
+                    ],
+                    "category": "behavior",
+                    "syncable": true
+                },
+                "no-route-fullscreen-exit": {
+                    "type": "Boolean",
+                    "desc": "Changing route app won't exit fullscreen",
+                    "category": "behavior"
+                },
+                "model-value": {
+                    "type": "Any",
+                    "desc": "Model of the component defining the current panel's name; If a Number is used, it does not define the panel's index, but rather the panel's name which can also be an Integer; Either use this property (along with a listener for 'update:model-value' event) OR use the v-model directive.",
+                    "examples": [
+                        "v-model=\"panelName\""
+                    ],
+                    "category": "model"
+                },
+                "keep-alive": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to using Vue's native <keep-alive> component on the content",
+                    "category": "behavior"
+                },
+                "keep-alive-include": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "RegExp"
+                    ],
+                    "desc": "Equivalent to using Vue's native include prop for <keep-alive>; Values must be valid Vue component names",
+                    "examples": [
+                        "a,b",
+                        "/a|b/",
+                        "['a', 'b']"
+                    ],
+                    "category": "behavior"
+                },
+                "keep-alive-exclude": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "RegExp"
+                    ],
+                    "desc": "Equivalent to using Vue's native exclude prop for <keep-alive>; Values must be valid Vue component names",
+                    "examples": [
+                        "a,b",
+                        "/a|b/",
+                        "['a', 'b']"
+                    ],
+                    "category": "behavior"
+                },
+                "keep-alive-max": {
+                    "type": "Number",
+                    "desc": "Equivalent to using Vue's native max prop for <keep-alive>",
+                    "category": "behavior"
+                },
+                "animated": {
+                    "type": "Boolean",
+                    "desc": "Enable transitions between panel (also see 'transition-prev' and 'transition-next' props)",
+                    "category": "behavior"
+                },
+                "infinite": {
+                    "type": "Boolean",
+                    "desc": "Makes component appear as infinite (when reaching last panel, next one will become the first one)",
+                    "category": "behavior"
+                },
+                "swipeable": {
+                    "type": "Boolean",
+                    "desc": "Enable swipe events (may interfere with content's touch/mouse events)",
+                    "category": "behavior"
+                },
+                "vertical": {
+                    "type": "Boolean",
+                    "desc": "Default transitions and swipe actions will be on the vertical axis",
+                    "category": "behavior"
+                },
+                "transition-prev": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions (has effect only if 'animated' prop is set)",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-next": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions (has effect only if 'animated' prop is set)",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-duration": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Transition duration (in milliseconds, without unit)",
+                    "default": 300,
+                    "category": "transition",
+                    "addedIn": "v2.2",
+                    "required": false
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "height": {
+                    "type": "String",
+                    "desc": "Height of Carousel in CSS units, including unit name",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "padding": {
+                    "type": "Boolean",
+                    "desc": "Applies a default padding to each slide, according to the usage of 'arrows' and 'navigation' props",
+                    "category": "content"
+                },
+                "control-color": {
+                    "type": "String",
+                    "desc": "Color name for QCarousel button controls (arrows, navigation) from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "control-text-color": {
+                    "type": "String",
+                    "desc": "Color name for text color of QCarousel button controls (arrows, navigation) from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "control-type": {
+                    "type": "String",
+                    "desc": "Type of button to use for controls (arrows, navigation)",
+                    "values": [
+                        "regular",
+                        "flat",
+                        "outline",
+                        "push",
+                        "unelevated"
+                    ],
+                    "category": "style"
+                },
+                "autoplay": {
+                    "type": [
+                        "Number",
+                        "Boolean"
+                    ],
+                    "desc": "Jump to next slide (if 'true' or val > 0) or previous slide (if val < 0) at fixed time intervals (in milliseconds); 'false' disables autoplay, 'true' enables it for 5000ms intervals",
+                    "default": false,
+                    "examples": [
+                        ":autoplay=\"2500\"",
+                        true,
+                        false
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "arrows": {
+                    "type": "Boolean",
+                    "desc": "Show navigation arrow buttons",
+                    "category": "content"
+                },
+                "prev-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "next-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "navigation": {
+                    "type": "Boolean",
+                    "desc": "Show navigation dots",
+                    "category": "content"
+                },
+                "navigation-position": {
+                    "type": "String",
+                    "desc": "Side to stick navigation to",
+                    "default": "bottom/right",
+                    "values": [
+                        "top",
+                        "right",
+                        "bottom",
+                        "left"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "navigation-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "navigation-active-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention for the active (current slide) navigation icon; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "thumbnails": {
+                    "type": "Boolean",
+                    "desc": "Show thumbnails",
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Suggestion: QCarouselSlide"
+                },
+                "control": {
+                    "desc": "Slot specific for QCarouselControl"
+                },
+                "navigation-icon": {
+                    "desc": "Slot for navigation icon/btn; Suggestion: QBtn",
+                    "scope": {
+                        "index": {
+                            "type": "Number",
+                            "desc": "The 0-based index of corresponding slide"
+                        },
+                        "maxIndex": {
+                            "type": "Number",
+                            "desc": "The available number of slides"
+                        },
+                        "name": {
+                            "type": "Any",
+                            "desc": "The name of the corresponding slide"
+                        },
+                        "active": {
+                            "type": "Boolean",
+                            "desc": "Is this the current slide?"
+                        },
+                        "btnProps": {
+                            "type": "Object",
+                            "desc": "Default QBtn props that can be binded to your own QBtn"
+                        },
+                        "onClick": {
+                            "type": "Function",
+                            "desc": "Default trigger when clicked/tapped on",
+                            "params": {
+                                "evt": {
+                                    "type": "Event",
+                                    "desc": "JS event object",
+                                    "required": true
+                                }
+                            },
+                            "returns": null
+                        }
+                    }
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component changes the model; This event _isn't_ fired if the model is changed externally; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "New current panel name",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                },
+                "before-transition": {
+                    "desc": "Emitted before transitioning to a new panel",
+                    "params": {
+                        "newVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name towards transition is going",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        },
+                        "oldVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name from which transition is happening",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                },
+                "transition": {
+                    "desc": "Emitted after component transitioned to a new panel",
+                    "params": {
+                        "newVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name towards transition has occurred",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        },
+                        "oldVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name from which transition has happened",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "toggleFullscreen": {
+                    "desc": "Toggle the view to be fullscreen or not fullscreen"
+                },
+                "setFullscreen": {
+                    "desc": "Enter the fullscreen view"
+                },
+                "exitFullscreen": {
+                    "desc": "Leave the fullscreen view"
+                },
+                "next": {
+                    "desc": "Go to next panel"
+                },
+                "previous": {
+                    "desc": "Go to previous panel"
+                },
+                "goTo": {
+                    "desc": "Go to specific panel",
+                    "params": {
+                        "panelName": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel's name, which may be a String or Number; Number does not refers to panel index, but to its name, which may be an Integer",
+                            "required": true,
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-carouselControl", desc: "转盘控制", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/carousel"
+            },
+            "props": {
+                "position": {
+                    "type": "String",
+                    "desc": "Side/corner to stick to",
+                    "default": "bottom-right",
+                    "values": [
+                        "top-right",
+                        "top-left",
+                        "bottom-right",
+                        "bottom-left",
+                        "top",
+                        "right",
+                        "bottom",
+                        "left"
+                    ],
+                    "category": "position",
+                    "required": false
+                },
+                "offset": {
+                    "type": "Array",
+                    "desc": "An array of two numbers to offset the component horizontally and vertically (in pixels)",
+                    "default": "[18, 18]",
+                    "examples": [
+                        "[8, 8]",
+                        "[5, 10]"
+                    ],
+                    "category": "position",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-carousel-slide", desc: "转盘内容", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/carousel"
+            },
+            "props": {
+                "name": {
+                    "type": "Any",
+                    "desc": "Slide name",
+                    "required": true,
+                    "examples": [
+                        "accounts",
+                        "firstPanel",
+                        ":name=\"1\"",
+                        "accounts",
+                        "firstSlide",
+                        ":name=\"1\""
+                    ],
+                    "category": "model"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "img-src": {
+                    "type": "String",
+                    "desc": "URL pointing to a slide background image (use public folder)",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "(public folder) src=\"img/my-bg.png\"",
+                        "(assets folder) src=\"~assets/my-img.png\"",
+                        "(relative path format) :src=\"require('./my_img.jpg')\"",
+                        "(URL) src=\"https://placeimg.com/500/300/nature\""
+                    ],
+                    "category": "model"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-chat-message", desc: "聊天消息", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/chat"
+            },
+            "props": {
+                "sent": {
+                    "type": "Boolean",
+                    "desc": "Render as a sent message (so from current user)",
+                    "category": "content"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "Renders a label header/section only",
+                    "examples": [
+                        "Friday, 18th"
+                    ],
+                    "category": "content"
+                },
+                "bg-color": {
+                    "type": "String",
+                    "desc": "Color name (from the Quasar Color Palette) for chat bubble background",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Color name (from the Quasar Color Palette) for chat bubble text",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "name": {
+                    "type": "String",
+                    "desc": "Author's name",
+                    "examples": [
+                        "John Doe"
+                    ],
+                    "category": "content"
+                },
+                "avatar": {
+                    "type": "String",
+                    "desc": "URL to the avatar image of the author",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "(public folder) src=\"boy-avatar.png\"",
+                        "(assets folder) src=\"~assets/boy-avatar.png\"",
+                        "(relative path format) :src=\"require('./my_img.jpg')\"",
+                        "(URL) src=\"https://placeimg.com/500/300/nature\""
+                    ],
+                    "category": "content"
+                },
+                "text": {
+                    "type": "Array",
+                    "desc": "Array of strings that are the message body. Strings are not sanitized (see details in docs)",
+                    "examples": [
+                        ":text=\"['How are you?']\"",
+                        ":text=\"['I\\'m good, thank you!', 'And you?']\""
+                    ],
+                    "category": "content"
+                },
+                "stamp": {
+                    "type": "String",
+                    "desc": "Creation timestamp",
+                    "examples": [
+                        "13:55",
+                        "Yesterday at 13:51"
+                    ],
+                    "category": "content"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "1-12 out of 12 (same as col-*)",
+                    "examples": [
+                        "4",
+                        "6",
+                        "12"
+                    ],
+                    "category": "style"
+                },
+                "label-html": {
+                    "type": "Boolean",
+                    "desc": "Render the label as HTML; This can lead to XSS attacks so make sure that you sanitize the message first",
+                    "category": "behavior"
+                },
+                "name-html": {
+                    "type": "Boolean",
+                    "desc": "Render the name as HTML; This can lead to XSS attacks so make sure that you sanitize the message first",
+                    "category": "behavior"
+                },
+                "text-html": {
+                    "type": "Boolean",
+                    "desc": "Render the text as HTML; This can lead to XSS attacks so make sure that you sanitize the message first",
+                    "category": "behavior"
+                },
+                "stamp-html": {
+                    "type": "Boolean",
+                    "desc": "Render the stamp as HTML; This can lead to XSS attacks so make sure that you sanitize the message first",
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "You can use this slot to define a custom message (overrides props)"
+                },
+                "avatar": {
+                    "desc": "Slot for avatar; Suggestion: QAvatar, img"
+                },
+                "name": {
+                    "desc": "Slot for name; Overrides the 'name' prop"
+                },
+                "stamp": {
+                    "desc": "Slot for stamp; Overrides the 'stamp' prop"
+                },
+                "label": {
+                    "desc": "Slot for label; Overrides the 'label' prop"
+                }
+            }
+        }
+    },
+    {
+        name: "q-chip", desc: "碎片", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/chip"
+            },
+            "props": {
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "QChip size name or a CSS unit including unit name",
+                    "examples": [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                        "25px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-right": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-remove": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-selected": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "label": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Chip's content as string; overrides default slot if specified",
+                    "examples": [
+                        "John Doe",
+                        "Book"
+                    ],
+                    "category": "content"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "model-value": {
+                    "desc": "Model of the component determining if QChip should be rendered or not",
+                    "required": false,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Boolean",
+                    "default": true
+                },
+                "selected": {
+                    "type": "Boolean",
+                    "sync": true,
+                    "desc": "Model for QChip if it's selected or not",
+                    "examples": [
+                        "v-model:selected=\"myState\""
+                    ],
+                    "category": "model",
+                    "syncable": true
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Sets a low value for border-radius instead of the default one, making it close to a square",
+                    "category": "style"
+                },
+                "outline": {
+                    "type": "Boolean",
+                    "desc": "Display using the 'outline' design",
+                    "category": "style"
+                },
+                "clickable": {
+                    "type": "Boolean",
+                    "desc": "Is QChip clickable? If it's the case, then it will add hover effects and emit 'click' events",
+                    "category": "state"
+                },
+                "removable": {
+                    "type": "Boolean",
+                    "desc": "If set, then it displays a 'remove' icon that when clicked the QChip emits 'remove' event",
+                    "category": "state"
+                },
+                "ripple": {
+                    "type": [
+                        "Boolean",
+                        "Object"
+                    ],
+                    "desc": "Configure material ripple (disable it by setting it to 'false' or supply a config object)",
+                    "default": true,
+                    "examples": [
+                        false,
+                        "{ early: true, center: true, color: 'teal', keyCodes: [] }"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "remove-aria-label": {
+                    "type": "String",
+                    "desc": "aria-label to be used on the remove icon",
+                    "examples": [
+                        "Remove item"
+                    ],
+                    "category": "accessibility",
+                    "addedIn": "v2.8.4"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where QChip content goes, if not using 'label' property"
+                }
+            },
+            "events": {
+                "click": {
+                    "desc": "Emitted on QChip click if 'clickable' property is set",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                },
+                "update:selected": {
+                    "desc": "Used by Vue on 'v-model:selected' for updating its value",
+                    "params": {
+                        "state": {
+                            "type": "Boolean",
+                            "desc": "Selected state"
+                        }
+                    }
+                },
+                "remove": {
+                    "desc": "Works along with 'value' and 'removable' prop. Emitted when toggling rendering state of the QChip",
+                    "params": {
+                        "state": {
+                            "type": "Boolean",
+                            "desc": "Render state (render or not)"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-circular-progress", desc: "循环进度", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/circular-progress"
+            },
+            "props": {
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "value": {
+                    "type": "Number",
+                    "default": 0,
+                    "desc": "Current progress (must be between min/max)",
+                    "category": "model",
+                    "required": false
+                },
+                "min": {
+                    "type": "Number",
+                    "default": 0,
+                    "desc": "Minimum value defining 'no progress' (must be lower than 'max')",
+                    "category": "model",
+                    "required": false
+                },
+                "max": {
+                    "type": "Number",
+                    "default": 100,
+                    "desc": "Maximum value defining 100% progress made (must be higher than 'min')",
+                    "category": "model",
+                    "required": false
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for the arc progress from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "center-color": {
+                    "type": "String",
+                    "desc": "Color name for the center part of the component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "track-color": {
+                    "type": "String",
+                    "desc": "Color name for the track of the component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "font-size": {
+                    "type": "String",
+                    "desc": "Size of text in CSS units, including unit name. Suggestion: use 'em' units to sync with component size",
+                    "default": "0.25em",
+                    "examples": [
+                        "1em",
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Rounding the arc of progress",
+                    "category": "style",
+                    "addedIn": "v2.8.4"
+                },
+                "thickness": {
+                    "type": "Number",
+                    "default": 0.2,
+                    "desc": "Thickness of progress arc as a ratio (0.0 < x < 1.0) of component size",
+                    "category": "style",
+                    "required": false
+                },
+                "angle": {
+                    "type": "Number",
+                    "desc": "Angle to rotate progress arc by",
+                    "default": 0,
+                    "category": "content",
+                    "required": false
+                },
+                "indeterminate": {
+                    "type": "Boolean",
+                    "desc": "Put component into 'indeterminate' state; Ignores 'value' prop",
+                    "category": "behavior"
+                },
+                "show-value": {
+                    "type": "Boolean",
+                    "desc": "Enables the default slot and uses it (if available), otherwise it displays the 'value' prop as text; Make sure the text has enough space to be displayed inside the component",
+                    "category": "content|behavior"
+                },
+                "reverse": {
+                    "type": "Boolean",
+                    "desc": "Reverses the direction of progress; Only for determined state",
+                    "category": "behavior"
+                },
+                "instant-feedback": {
+                    "type": "Boolean",
+                    "desc": "No animation when model changes",
+                    "category": "behavior"
+                },
+                "animation-speed": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Animation speed (in milliseconds, without unit)",
+                    "examples": [
+                        500,
+                        "1200"
+                    ],
+                    "category": "style",
+                    "default": 600,
+                    "addedIn": "v2.3",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Used for component content only if 'show-value' prop is set; Make sure the content has enough space to be displayed inside the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-color", desc: "颜色选择器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/color-picker"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "String",
+                        "null",
+                        "undefined"
+                    ],
+                    "examples": [
+                        "v-model=\"myColor\""
+                    ]
+                },
+                "default-value": {
+                    "type": "String",
+                    "desc": "The default value to show when the model doesn't have one",
+                    "examples": [
+                        "default-value=\"#c0c0c0\""
+                    ],
+                    "category": "model"
+                },
+                "default-view": {
+                    "type": "String",
+                    "desc": "The default view of the picker",
+                    "default": "spectrum",
+                    "values": [
+                        "spectrum",
+                        "tune",
+                        "palette"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "format-model": {
+                    "type": "String",
+                    "desc": "Forces a certain model format upon the model",
+                    "default": "auto",
+                    "values": [
+                        "auto",
+                        "hex",
+                        "rgb",
+                        "hexa",
+                        "rgba"
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "palette": {
+                    "type": "Array",
+                    "desc": "Use a custom palette of colors for the palette tab",
+                    "default": "(hard-coded palette)",
+                    "examples": [
+                        ":palette=\"[ '#019A9D', '#D9B801', 'rgb(23,120,0)', '#B2028A' ]\""
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Applies a 'flat' design (no default shadow)",
+                    "category": "style"
+                },
+                "bordered": {
+                    "type": "Boolean",
+                    "desc": "Applies a default border to the component",
+                    "category": "style"
+                },
+                "no-header": {
+                    "type": "Boolean",
+                    "desc": "Do not render header",
+                    "category": "content"
+                },
+                "no-header-tabs": {
+                    "type": "Boolean",
+                    "desc": "Do not render header tabs (only the input)",
+                    "category": "content",
+                    "addedIn": "v2.2"
+                },
+                "no-footer": {
+                    "type": "Boolean",
+                    "desc": "Do not render footer; Useful when you want a specific view ('default-view' prop) and don't want the user to be able to switch it",
+                    "category": "content"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": [
+                                "String",
+                                "null"
+                            ],
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                },
+                "change": {
+                    "desc": "Emitted on lazy model value change (after user finishes selecting a color)",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-dialog", desc: "对话框", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/dialog"
+            },
+            "props": {
+                "transition-show": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-hide": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-duration": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Transition duration (in milliseconds, without unit)",
+                    "default": 300,
+                    "category": "transition",
+                    "required": false
+                },
+                "model-value": {
+                    "type": "Boolean",
+                    "desc": "Model of the component defining shown/hidden state; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "category": "model"
+                },
+                "persistent": {
+                    "type": "Boolean",
+                    "desc": "User cannot dismiss Dialog if clicking outside of it or hitting ESC key; Also, an app route change won't dismiss it",
+                    "category": "behavior"
+                },
+                "no-esc-dismiss": {
+                    "type": "Boolean",
+                    "desc": "User cannot dismiss Dialog by hitting ESC key; No need to set it if 'persistent' prop is also set",
+                    "category": "behavior"
+                },
+                "no-backdrop-dismiss": {
+                    "type": "Boolean",
+                    "desc": "User cannot dismiss Dialog by clicking outside of it; No need to set it if 'persistent' prop is also set",
+                    "category": "behavior"
+                },
+                "no-route-dismiss": {
+                    "type": "Boolean",
+                    "desc": "Changing route app won't dismiss Dialog; No need to set it if 'persistent' prop is also set",
+                    "category": "behavior"
+                },
+                "auto-close": {
+                    "type": "Boolean",
+                    "desc": "Any click/tap inside of the dialog will close it",
+                    "category": "behavior"
+                },
+                "seamless": {
+                    "type": "Boolean",
+                    "desc": "Put Dialog into seamless mode; Does not use a backdrop so user is able to interact with the rest of the page too",
+                    "category": "content"
+                },
+                "maximized": {
+                    "type": "Boolean",
+                    "desc": "Put Dialog into maximized mode",
+                    "category": "content"
+                },
+                "full-width": {
+                    "type": "Boolean",
+                    "desc": "Dialog will try to render with same width as the window",
+                    "category": "content"
+                },
+                "full-height": {
+                    "type": "Boolean",
+                    "desc": "Dialog will try to render with same height as the window",
+                    "category": "content"
+                },
+                "position": {
+                    "type": "String",
+                    "desc": "Stick dialog to one of the sides (top, right, bottom or left)",
+                    "default": "standard",
+                    "values": [
+                        "standard",
+                        "top",
+                        "right",
+                        "bottom",
+                        "left"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Forces content to have squared borders",
+                    "category": "style"
+                },
+                "no-refocus": {
+                    "type": "Boolean",
+                    "desc": "(Accessibility) When Dialog gets hidden, do not refocus on the DOM element that previously had focus",
+                    "category": "behavior"
+                },
+                "no-focus": {
+                    "type": "Boolean",
+                    "desc": "(Accessibility) When Dialog gets shown, do not switch focus on it",
+                    "category": "behavior"
+                },
+                "no-shake": {
+                    "type": "Boolean",
+                    "desc": "Do not shake up the Dialog to catch user's attention",
+                    "category": "behavior",
+                    "addedIn": "v2.1.1"
+                },
+                "allow-focus-outside": {
+                    "type": "Boolean",
+                    "desc": "Allow elements outside of the Dialog to be focusable; By default, for accessibility reasons, QDialog does not allow outer focus",
+                    "category": "behavior",
+                    "addedIn": "v2.7.2"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when showing/hidden state changes; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Boolean",
+                            "desc": "New state (showing/hidden)"
+                        }
+                    }
+                },
+                "show": {
+                    "desc": "Emitted after component has triggered show()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-show": {
+                    "desc": "Emitted when component triggers show() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Emitted after component has triggered hide()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-hide": {
+                    "desc": "Emitted when component triggers hide() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "shake": {
+                    "desc": "Emitted when the Dialog shakes in order to catch user's attention, unless the 'no-shake' property is set"
+                },
+                "escape-key": {
+                    "desc": "Emitted when ESC key is pressed; Does not get emitted if Dialog is 'persistent' or it has 'no-esc-key' set"
+                }
+            },
+            "methods": {
+                "show": {
+                    "desc": "Triggers component to show",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Triggers component to hide",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "toggle": {
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    },
+                    "desc": "Triggers component to toggle between show/hide"
+                },
+                "focus": {
+                    "desc": "Focus dialog; if you have content with autofocus attribute, it will directly focus it",
+                    "params": {
+                        "selector": {
+                            "type": "String",
+                            "required": false,
+                            "desc": "Optional CSS selector to override default focusable element",
+                            "examples": [
+                                "[tabindex]:not([tabindex=\"-1\"])"
+                            ],
+                            "addedIn": "v2.6.5"
+                        }
+                    }
+                },
+                "shake": {
+                    "desc": "Shakes dialog",
+                    "params": {
+                        "focusTarget": {
+                            "type": "Element",
+                            "desc": "Optional DOM Element to be focused after shake",
+                            "examples": [
+                                "document.getElementById('example')"
+                            ],
+                            "addedIn": "v2.10.1"
+                        }
+                    }
+                }
+            },
+            "computedProps": {
+                "contentEl": {
+                    "type": "Element",
+                    "desc": "The DOM Element of the rendered content",
+                    "addedIn": "v2.10.1"
+                }
+            }
+        }
+    },
+    {
+        name: "q-editor", desc: "富文本编辑器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/editor"
+            },
+            "props": {
+                "fullscreen": {
+                    "type": "Boolean",
+                    "sync": true,
+                    "desc": "Fullscreen mode",
+                    "examples": [
+                        "v-model:fullscreen=\"isFullscreen\""
+                    ],
+                    "category": "behavior",
+                    "syncable": true
+                },
+                "no-route-fullscreen-exit": {
+                    "type": "Boolean",
+                    "desc": "Changing route app won't exit fullscreen",
+                    "category": "behavior"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "String",
+                    "examples": [
+                        "v-model=\"content\""
+                    ]
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Applies a 'flat' design (no borders)",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; toolbar buttons are shown on one-line only",
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "min-height": {
+                    "type": "String",
+                    "desc": "CSS unit for the minimum height of the editable area",
+                    "default": "10rem",
+                    "examples": [
+                        "15rem",
+                        "50vh"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "max-height": {
+                    "type": "String",
+                    "desc": "CSS unit for maximum height of the input area",
+                    "examples": [
+                        "1000px",
+                        "90vh"
+                    ],
+                    "category": "style"
+                },
+                "height": {
+                    "type": "String",
+                    "desc": "CSS value to set the height of the editable area",
+                    "examples": [
+                        "100px",
+                        "50vh"
+                    ],
+                    "category": "style"
+                },
+                "definitions": {
+                    "type": "Object",
+                    "desc": "Definition of commands and their buttons to be included in the 'toolbar' prop",
+                    "examples": [
+                        ":definitions=\"{ save: { tip: 'Save your work', icon: 'save', label: 'Save', handler: saveWork }, upload: { tip: 'Upload to cloud', icon: 'cloud_upload', label: 'Upload', handler: uploadIt } }\""
+                    ],
+                    "definition": {
+                        "...commandName": {
+                            "type": "Object",
+                            "tsType": "QEditorCommand",
+                            "autoDefineTsType": true,
+                            "desc": "Command definition",
+                            "definition": {
+                                "label": {
+                                    "type": "String",
+                                    "desc": "Label of the button",
+                                    "examples": [
+                                        "Addresses"
+                                    ]
+                                },
+                                "tip": {
+                                    "type": "String",
+                                    "desc": "Text to be displayed as a tooltip on hover",
+                                    "examples": [
+                                        "Add a contact from the Address Book"
+                                    ]
+                                },
+                                "htmlTip": {
+                                    "type": "String",
+                                    "desc": "HTML formatted text to be displayed within a tooltip on hover",
+                                    "examples": [
+                                        "Add a <span class=\"red\">user</span> from the address book"
+                                    ]
+                                },
+                                "icon": {
+                                    "type": "String",
+                                    "desc": "Icon of the button",
+                                    "examples": [
+                                        "fas fa-address-book"
+                                    ]
+                                },
+                                "key": {
+                                    "type": "Number",
+                                    "desc": "Keycode of a key to be used together with the <ctrl> key for use as a shortcut to trigger this element",
+                                    "examples": [
+                                        "12",
+                                        "36"
+                                    ]
+                                },
+                                "handler": {
+                                    "type": "Function",
+                                    "desc": "Either this or \"cmd\" is required. Function for when button gets clicked/tapped.",
+                                    "params": null,
+                                    "returns": null,
+                                    "examples": [
+                                        "() => this.uploadFile()"
+                                    ]
+                                },
+                                "cmd": {
+                                    "type": "String",
+                                    "desc": "Either this or \"handler\" is required. This must be a valid execCommand method according to the designMode API.",
+                                    "examples": [
+                                        "insertHTML",
+                                        "justifyFull"
+                                    ]
+                                },
+                                "param": {
+                                    "type": "String",
+                                    "desc": "Only set a param if using a \"cmd\". This is commonly text or HTML to inject, but is highly dependent upon the specific cmd being called.",
+                                    "examples": [
+                                        "<img src=\"://uploads/001.jpg\" alt=\"nice pic\" />"
+                                    ]
+                                },
+                                "disable": {
+                                    "type": [
+                                        "Boolean",
+                                        "Function"
+                                    ],
+                                    "desc": "Is button disabled?",
+                                    "returns": {
+                                        "type": "Boolean",
+                                        "desc": "If true, the button will be disabled"
+                                    },
+                                    "examples": [
+                                        "!user.active",
+                                        "() => !checkIfUserIsActive()"
+                                    ]
+                                },
+                                "type": {
+                                    "type": "String",
+                                    "desc": "Pass the value \"no-state\" if the button should not have an \"active\" state",
+                                    "values": [
+                                        null,
+                                        "no-state"
+                                    ],
+                                    "examples": [
+                                        "no-state"
+                                    ]
+                                },
+                                "fixedLabel": {
+                                    "type": "Boolean",
+                                    "desc": "Lock the button label, so it doesn't change based on the child option selected."
+                                },
+                                "fixedIcon": {
+                                    "type": "Boolean",
+                                    "desc": "Lock the button icon, so it doesn't change based on the child option selected."
+                                },
+                                "highlight": {
+                                    "type": "Boolean",
+                                    "desc": "Highlight the toolbar button, when a child option has been selected."
+                                }
+                            }
+                        }
+                    },
+                    "category": "toolbar"
+                },
+                "fonts": {
+                    "type": "Object",
+                    "desc": "Object with definitions of fonts",
+                    "examples": [
+                        ":fonts=\"{ arial: 'Arial', arial_black: 'Arial Black', comic_sans: 'Comic Sans MS' }\""
+                    ],
+                    "category": "toolbar"
+                },
+                "toolbar": {
+                    "type": "Array",
+                    "desc": "An array of arrays of Objects/Strings that you use to define the construction of the elements and commands available in the toolbar",
+                    "default": [
+                        [
+                            "left",
+                            "center",
+                            "right",
+                            "justify"
+                        ],
+                        [
+                            "bold",
+                            "italic",
+                            "underline",
+                            "strike"
+                        ],
+                        [
+                            "undo",
+                            "redo"
+                        ]
+                    ],
+                    "examples": [
+                        [
+                            "left",
+                            "center",
+                            "right",
+                            "justify"
+                        ]
+                    ],
+                    "category": "toolbar",
+                    "required": false
+                },
+                "toolbar-color": {
+                    "type": "String",
+                    "desc": "Font color (from the Quasar Palette) of buttons and text in the toolbar",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "toolbar"
+                },
+                "toolbar-text-color": {
+                    "type": "String",
+                    "desc": "Text color (from the Quasar Palette) of toolbar commands",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "toolbar"
+                },
+                "toolbar-toggle-color": {
+                    "type": "String",
+                    "desc": "Choose the active color (from the Quasar Palette) of toolbar commands button",
+                    "default": "primary",
+                    "examples": [
+                        "secondary",
+                        "blue-3"
+                    ],
+                    "category": "toolbar",
+                    "required": false
+                },
+                "toolbar-bg": {
+                    "type": "String",
+                    "desc": "Toolbar background color (from Quasar Palette)",
+                    "default": "grey-3",
+                    "examples": [
+                        "secondary",
+                        "blue-3"
+                    ],
+                    "category": "toolbar",
+                    "required": false
+                },
+                "toolbar-outline": {
+                    "type": "Boolean",
+                    "desc": "Toolbar buttons are rendered \"outlined\"",
+                    "category": "toolbar|style"
+                },
+                "toolbar-push": {
+                    "type": "Boolean",
+                    "desc": "Toolbar buttons are rendered as a \"push-button\" type",
+                    "category": "toolbar|style"
+                },
+                "toolbar-rounded": {
+                    "type": "Boolean",
+                    "desc": "Toolbar buttons are rendered \"rounded\"",
+                    "category": "toolbar|style"
+                },
+                "paragraph-tag": {
+                    "type": "String",
+                    "desc": "Paragraph tag to be used",
+                    "values": [
+                        "div",
+                        "p"
+                    ],
+                    "category": "behavior"
+                },
+                "content-style": {
+                    "type": "Object",
+                    "tsType": "VueStyleObjectProp",
+                    "desc": "Object with CSS properties and values for styling the container of QEditor",
+                    "examples": [
+                        ":content-style=\"{ backgroundColor: '#C0C0C0' }\""
+                    ],
+                    "category": "style"
+                },
+                "content-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "CSS classes for the input area",
+                    "examples": [
+                        "my-special-class",
+                        ":content-class=\"{ 'my-special-class': <condition> }\""
+                    ],
+                    "category": "style"
+                },
+                "placeholder": {
+                    "type": "String",
+                    "desc": "Text to display as placeholder",
+                    "examples": [
+                        "Type your story here ..."
+                    ],
+                    "category": "content"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "String",
+                            "desc": "The pure HTML of the content",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "toggleFullscreen": {
+                    "desc": "Toggle the view to be fullscreen or not fullscreen"
+                },
+                "setFullscreen": {
+                    "desc": "Enter the fullscreen view"
+                },
+                "exitFullscreen": {
+                    "desc": "Leave the fullscreen view"
+                },
+                "runCmd": {
+                    "desc": "Run contentEditable command at caret position and range",
+                    "params": {
+                        "cmd": {
+                            "type": "String",
+                            "desc": "Must be a valid execCommand method according to the designMode API",
+                            "examples": [
+                                "copy",
+                                "cut",
+                                "paste"
+                            ],
+                            "required": true
+                        },
+                        "param": {
+                            "type": "String",
+                            "desc": "The argument to pass to the command",
+                            "examples": [
+                                "<small>Small Text</small>"
+                            ]
+                        },
+                        "update": {
+                            "type": "Boolean",
+                            "desc": "Refresh the toolbar",
+                            "default": true,
+                            "required": false
+                        }
+                    }
+                },
+                "refreshToolbar": {
+                    "desc": "Hide the link editor if visible and force the instance to re-render"
+                },
+                "focus": {
+                    "desc": "Focus on the contentEditable at saved cursor position"
+                },
+                "getContentEl": {
+                    "desc": "Retrieve the content of the Editor",
+                    "returns": {
+                        "type": "Element",
+                        "desc": "Provides the pure HTML within the editable area"
+                    }
+                }
+            },
+            "computedProps": {
+                "caret": {
+                    "type": "Object",
+                    "tsType": "QEditorCaret",
+                    "desc": "The current caret state"
+                }
+            }
+        }
+    },
+    {
+        name: "q-expansion-item", desc: "", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/expansion-item"
+            },
+            "props": {
+                "to": {
+                    "type": [
+                        "String",
+                        "Object"
+                    ],
+                    "desc": "Equivalent to Vue Router <router-link> 'to' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "/home/dashboard",
+                        ":to=\"{ name: 'my-route-name' }\""
+                    ],
+                    "category": "navigation"
+                },
+                "exact": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to Vue Router <router-link> 'exact' property; Superseded by 'href' prop if used",
+                    "category": "navigation"
+                },
+                "replace": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to Vue Router <router-link> 'replace' property; Superseded by 'href' prop if used",
+                    "category": "navigation"
+                },
+                "active-class": {
+                    "type": "String",
+                    "desc": "Equivalent to Vue Router <router-link> 'active-class' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "my-active-class"
+                    ],
+                    "category": "navigation"
+                },
+                "exact-active-class": {
+                    "type": "String",
+                    "desc": "Equivalent to Vue Router <router-link> 'active-class' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "my-exact-active-class"
+                    ],
+                    "category": "navigation"
+                },
+                "href": {
+                    "type": "String",
+                    "desc": "Native <a> link href attribute; Has priority over the 'to'/'exact'/'replace'/'active-class'/'exact-active-class' props",
+                    "examples": [
+                        "https://quasar.dev"
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "target": {
+                    "type": "String",
+                    "desc": "Native <a> link target attribute; Use it only along with 'href' prop; Has priority over the 'to'/'exact'/'replace'/'active-class'/'exact-active-class' props",
+                    "examples": [
+                        "_blank",
+                        "_self",
+                        "_parent",
+                        "_top"
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "model-value": {
+                    "desc": "Model of the component defining 'open' state; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": false,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Boolean"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "expand-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "expanded-icon": {
+                    "type": "String",
+                    "desc": "Expand icon name (following Quasar convention) for when QExpansionItem is expanded; When used, it also disables the rotation animation of the expand icon; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "expand-icon-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Apply custom class(es) to the expand icon item section",
+                    "examples": [
+                        "text-purple"
+                    ],
+                    "category": "style"
+                },
+                "toggle-aria-label": {
+                    "type": "String",
+                    "desc": "aria-label to be used on the expansion toggle element",
+                    "examples": [
+                        "Open details"
+                    ],
+                    "category": "accessibility",
+                    "addedIn": "v2.8.4"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "Header label (unless using 'header' slot)",
+                    "examples": [
+                        "My expansion item"
+                    ],
+                    "category": "content"
+                },
+                "label-lines": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Apply ellipsis when there's not enough space to render on the specified number of lines; If more than one line specified, then it will only work on webkit browsers because it uses the '-webkit-line-clamp' CSS property!",
+                    "examples": [
+                        "1",
+                        "3",
+                        ":label-lines=\"2\""
+                    ],
+                    "category": "content"
+                },
+                "caption": {
+                    "type": "String",
+                    "desc": "Header sub-label (unless using 'header' slot)",
+                    "examples": [
+                        "Unread message: 5"
+                    ],
+                    "category": "content"
+                },
+                "caption-lines": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Apply ellipsis when there's not enough space to render on the specified number of lines; If more than one line specified, then it will only work on webkit browsers because it uses the '-webkit-line-clamp' CSS property!",
+                    "examples": [
+                        "1",
+                        "3",
+                        ":caption-lines=\"2\""
+                    ],
+                    "category": "content"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "duration": {
+                    "type": "Number",
+                    "desc": "Animation duration (in milliseconds)",
+                    "default": 300,
+                    "category": "behavior",
+                    "required": false
+                },
+                "header-inset-level": {
+                    "type": "Number",
+                    "desc": "Apply an inset to header (unless using 'header' slot); Useful when header avatar/left side is missing but you want to align content with other items that do have a left side, or when you're building a menu",
+                    "examples": [
+                        ":header-inset-level=\"1\""
+                    ],
+                    "category": "content"
+                },
+                "content-inset-level": {
+                    "type": "Number",
+                    "desc": "Apply an inset to content (changes content padding)",
+                    "examples": [
+                        ":content-inset-level=\"1\""
+                    ],
+                    "category": "content"
+                },
+                "expand-separator": {
+                    "type": "Boolean",
+                    "desc": "Apply a top and bottom separator when expansion item is opened",
+                    "category": "content"
+                },
+                "default-opened": {
+                    "type": "Boolean",
+                    "desc": "Puts expansion item into open state on initial render; Overridden by v-model if used",
+                    "category": "behavior"
+                },
+                "hide-expand-icon": {
+                    "type": "Boolean",
+                    "desc": "Do not show the expand icon",
+                    "category": "content",
+                    "addedIn": "v2.8.4"
+                },
+                "expand-icon-toggle": {
+                    "type": "Boolean",
+                    "desc": "Applies the expansion events to the expand icon only and not to the whole header",
+                    "category": "behavior"
+                },
+                "switch-toggle-side": {
+                    "type": "Boolean",
+                    "desc": "Switch expand icon side (from default 'right' to 'left')",
+                    "category": "content"
+                },
+                "dense-toggle": {
+                    "type": "Boolean",
+                    "desc": "Use dense mode for expand icon",
+                    "category": "style"
+                },
+                "group": {
+                    "type": "String",
+                    "desc": "Register expansion item into a group (unique name that must be applied to all expansion items in that group) for coordinated open/close state within the group a.k.a. 'accordion mode'",
+                    "examples": [
+                        "my-emails"
+                    ],
+                    "category": "content|behavior"
+                },
+                "popup": {
+                    "type": "Boolean",
+                    "desc": "Put expansion list into 'popup' mode",
+                    "category": "behavior"
+                },
+                "header-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Apply custom style to the header",
+                    "examples": [
+                        "background: '#ff0000'",
+                        ":header-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "header-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Apply custom class(es) to the header",
+                    "examples": [
+                        "my-custom-class",
+                        ":header-class=\"{ 'my-custom-class': someCondition }\""
+                    ],
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Slot used for expansion item's content"
+                },
+                "header": {
+                    "desc": "Slot used for overriding default header",
+                    "scope": {
+                        "expanded": {
+                            "type": "Boolean",
+                            "desc": "QExpansionItem expanded status",
+                            "addedIn": "v2.7.6"
+                        },
+                        "detailsId": {
+                            "type": "String",
+                            "desc": "QExpansionItem details panel id (for use in aria-controls)",
+                            "addedIn": "v2.8.4"
+                        },
+                        "show": {
+                            "type": "Function",
+                            "desc": "Triggers component to show",
+                            "params": {
+                                "evt": {
+                                    "type": "Object",
+                                    "required": false,
+                                    "desc": "JS event object"
+                                }
+                            },
+                            "returns": null,
+                            "addedIn": "v2.8.4"
+                        },
+                        "hide": {
+                            "type": "Function",
+                            "desc": "Triggers component to hide",
+                            "params": {
+                                "evt": {
+                                    "type": "Object",
+                                    "required": false,
+                                    "desc": "JS event object"
+                                }
+                            },
+                            "returns": null,
+                            "addedIn": "v2.8.4"
+                        },
+                        "toggle": {
+                            "type": "Function",
+                            "desc": "Triggers component to toggle between show/hide",
+                            "params": {
+                                "evt": {
+                                    "type": "Object",
+                                    "required": false,
+                                    "desc": "JS event object"
+                                }
+                            },
+                            "returns": null,
+                            "addedIn": "v2.8.4"
+                        }
+                    }
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when showing/hidden state changes; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Boolean",
+                            "desc": "New state (showing/hidden)"
+                        }
+                    }
+                },
+                "show": {
+                    "desc": "Emitted after component has triggered show()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-show": {
+                    "desc": "Emitted when component triggers show() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Emitted after component has triggered hide()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-hide": {
+                    "desc": "Emitted when component triggers hide() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "after-show": {
+                    "desc": "Emitted when component show animation is finished"
+                },
+                "after-hide": {
+                    "desc": "Emitted when component hide animation is finished"
+                }
+            },
+            "methods": {
+                "show": {
+                    "desc": "Triggers component to show",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Triggers component to hide",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "toggle": {
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    },
+                    "desc": "Triggers component to toggle between show/hide"
+                }
+            }
+        }
+    },
+    {
+        name: "q-fab", desc: "悬浮操作", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/floating-action-button"
+            },
+            "props": {
+                "type": {
+                    "type": "String",
+                    "desc": "Define the button HTML DOM type",
+                    "default": "a",
+                    "values": [
+                        "a",
+                        "submit",
+                        "button",
+                        "reset"
+                    ],
+                    "category": "general",
+                    "required": false
+                },
+                "outline": {
+                    "type": "Boolean",
+                    "desc": "Use 'outline' design for Fab button",
+                    "category": "style"
+                },
+                "push": {
+                    "type": "Boolean",
+                    "desc": "Use 'push' design for Fab button",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Use 'flat' design for Fab button",
+                    "category": "style"
+                },
+                "unelevated": {
+                    "type": "Boolean",
+                    "desc": "Remove shadow",
+                    "category": "style"
+                },
+                "padding": {
+                    "type": "String",
+                    "desc": "Apply custom padding (vertical [horizontal]); Size in CSS units, including unit name or standard size name (none|xs|sm|md|lg|xl); Also removes the min width and height when set",
+                    "examples": [
+                        "16px",
+                        "10px 5px",
+                        "2rem",
+                        "xs",
+                        "md lg"
+                    ],
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "glossy": {
+                    "type": "Boolean",
+                    "desc": "Apply the glossy effect over the button",
+                    "category": "style"
+                },
+                "external-label": {
+                    "type": "Boolean",
+                    "desc": "Display label besides the FABs, as external content",
+                    "category": "style|content"
+                },
+                "label": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "The label that will be shown when Fab is extended",
+                    "examples": [
+                        "Button Label"
+                    ],
+                    "category": "content"
+                },
+                "label-position": {
+                    "type": "String",
+                    "desc": "Position of the label around the icon",
+                    "values": [
+                        "top",
+                        "right",
+                        "bottom",
+                        "left"
+                    ],
+                    "category": "style|content"
+                },
+                "hide-label": {
+                    "type": "Boolean",
+                    "desc": "Hide the label; Useful for animation purposes where you toggle the visibility of the label",
+                    "category": "style|content"
+                },
+                "label-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Class definitions to be attributed to the label container",
+                    "examples": [
+                        "my-special-class",
+                        ":input-class=\"{ 'my-special-class': <condition> }\""
+                    ],
+                    "category": "style"
+                },
+                "label-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Style definitions to be attributed to the label container",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":input-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Apply a rectangle aspect to the FAB",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "model-value": {
+                    "desc": "Controls state of fab actions (showing/hidden); Works best with v-model directive, otherwise use along listening to 'update:modelValue' event",
+                    "required": false,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Boolean"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "active-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "hide-icon": {
+                    "type": "Boolean",
+                    "desc": "Hide the icon (don't use any)",
+                    "category": "style|content"
+                },
+                "direction": {
+                    "type": "String",
+                    "desc": "Direction to expand Fab Actions to",
+                    "default": "right",
+                    "values": [
+                        "up",
+                        "right",
+                        "down",
+                        "left"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "vertical-actions-align": {
+                    "type": "String",
+                    "desc": "The side of the Fab where Fab Actions will expand (only when direction is 'up' or 'down')",
+                    "default": "center",
+                    "values": [
+                        "left",
+                        "center",
+                        "right"
+                    ],
+                    "category": "style|content",
+                    "required": false
+                },
+                "persistent": {
+                    "type": "Boolean",
+                    "desc": "By default, Fab Actions are hidden when user navigates to another route and this prop disables this behavior",
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where QFabActions may go into"
+                },
+                "tooltip": {
+                    "desc": "Slot specifically designed for a QTooltip"
+                },
+                "icon": {
+                    "desc": "Slot for icon shown when FAB is closed; Suggestion: QIcon",
+                    "scope": {
+                        "opened": {
+                            "type": "Boolean",
+                            "desc": "FAB is opened"
+                        }
+                    },
+                    "addedIn": "v2.4"
+                },
+                "active-icon": {
+                    "desc": "Slot for icon shown when FAB is opened; Suggestion: QIcon",
+                    "scope": {
+                        "opened": {
+                            "type": "Boolean",
+                            "desc": "FAB is opened"
+                        }
+                    },
+                    "addedIn": "v2.4"
+                },
+                "label": {
+                    "desc": "Slot for label",
+                    "scope": {
+                        "opened": {
+                            "type": "Boolean",
+                            "desc": "FAB is opened"
+                        }
+                    },
+                    "addedIn": "v2.4"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when fab actions are shown/hidden; Captured by v-model directive",
+                    "params": {
+                        "value": {
+                            "type": "Boolean",
+                            "desc": "New state (showing/hidden)"
+                        }
+                    }
+                },
+                "show": {
+                    "desc": "Emitted after component has triggered show()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-show": {
+                    "desc": "Emitted when component triggers show() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Emitted after component has triggered hide()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-hide": {
+                    "desc": "Emitted when component triggers hide() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "show": {
+                    "desc": "Expands fab actions list",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Collapses fab actions list",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "toggle": {
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    },
+                    "desc": "Triggers component to toggle between show/hide"
+                }
+            }
+        }
+    },
+    {
+        name: "q-input", desc: "输入框", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/input"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms; If not specified, it takes the value of 'for' prop, if it exists",
+                    "examples": [
+                        "car_id",
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "mask": {
+                    "type": "String",
+                    "desc": "Custom mask or one of the predefined mask names",
+                    "examples": [
+                        "###-##",
+                        "date",
+                        "datetime",
+                        "time",
+                        "fulltime",
+                        "phone",
+                        "card"
+                    ],
+                    "category": "behavior"
+                },
+                "fill-mask": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "Fills string with specified characters (or underscore if value is not string) to fill mask's length",
+                    "examples": [
+                        "true",
+                        "'0'",
+                        "'_'"
+                    ],
+                    "category": "behavior"
+                },
+                "reverse-fill-mask": {
+                    "type": "Boolean",
+                    "desc": "Fills string from the right side of the mask",
+                    "category": "behavior"
+                },
+                "unmasked-value": {
+                    "type": "Boolean",
+                    "desc": "Model will be unmasked (won't contain tokens/separation characters)",
+                    "category": "behavior"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "String",
+                        "Number",
+                        "null",
+                        "undefined"
+                    ],
+                    "examples": [
+                        "v-model=\"myText\""
+                    ]
+                },
+                "error": {
+                    "type": "Boolean",
+                    "desc": "Does field have validation errors?",
+                    "category": "behavior"
+                },
+                "error-message": {
+                    "type": "String",
+                    "desc": "Validation error message (gets displayed only if 'error' is set to 'true')",
+                    "examples": [
+                        "Username must have at least 5 characters"
+                    ],
+                    "category": "content"
+                },
+                "no-error-icon": {
+                    "type": "Boolean",
+                    "desc": "Hide error icon when there is an error",
+                    "category": "content"
+                },
+                "rules": {
+                    "type": "Array",
+                    "tsType": "ValidationRule",
+                    "desc": "Array of Functions/Strings; If String, then it must be a name of one of the embedded validation rules",
+                    "examples": [
+                        ":rules=\"[ val => val.length <= 3 || 'Please use maximum 3 characters' ]\"",
+                        ":rules=\"[ 'fulltime' ]\"",
+                        ":rules=\"[ (val, rules) => rules.email(val) || 'Please enter a valid email address' ]\""
+                    ],
+                    "category": "behavior"
+                },
+                "reactive-rules": {
+                    "type": "Boolean",
+                    "desc": "By default a change in the rules does not trigger a new validation until the model changes; If set to true then a change in the rules will trigger a validation; Has a performance penalty, so use it only when you really need it",
+                    "category": "behavior"
+                },
+                "lazy-rules": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "If set to boolean true then it checks validation status against the 'rules' only after field loses focus for first time; If set to 'ondemand' then it will trigger only when component's validate() method is manually called or when the wrapper QForm submits itself",
+                    "values": [
+                        "(Boolean) true",
+                        "(Boolean) false",
+                        "ondemand"
+                    ],
+                    "category": "behavior"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "A text label that will “float” up above the input field, once the field gets focus",
+                    "examples": [
+                        "Username"
+                    ],
+                    "category": "content"
+                },
+                "stack-label": {
+                    "type": "Boolean",
+                    "desc": "Label will be always shown above the field regardless of field content (if any)",
+                    "category": "content"
+                },
+                "hint": {
+                    "type": "String",
+                    "desc": "Helper (hint) text which gets placed below your wrapped form component",
+                    "examples": [
+                        "Fill in between 3 and 12 characters"
+                    ],
+                    "category": "content"
+                },
+                "hide-hint": {
+                    "type": "Boolean",
+                    "desc": "Hide the helper (hint) text when field doesn't have focus",
+                    "category": "content"
+                },
+                "prefix": {
+                    "type": "String",
+                    "desc": "Prefix",
+                    "examples": [
+                        "$"
+                    ],
+                    "category": "content"
+                },
+                "suffix": {
+                    "type": "String",
+                    "desc": "Suffix",
+                    "examples": [
+                        "@gmail.com"
+                    ],
+                    "category": "content"
+                },
+                "label-color": {
+                    "type": "String",
+                    "desc": "Color name for the label from the Quasar Color Palette; Overrides the 'color' prop; The difference from 'color' prop is that the label will always have this color, even when field is not focused",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "bg-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "loading": {
+                    "type": "Boolean",
+                    "desc": "Signals the user a process is in progress by displaying a spinner; Spinner can be customized by using the 'loading' slot.",
+                    "category": "behavior|content"
+                },
+                "clearable": {
+                    "type": "Boolean",
+                    "desc": "Appends clearable icon when a value (not undefined or null) is set; When clicked, model becomes null",
+                    "category": "behavior|content"
+                },
+                "clear-icon": {
+                    "type": "String",
+                    "desc": "Custom icon to use for the clear button when using along with 'clearable' prop",
+                    "examples": [
+                        "close"
+                    ],
+                    "category": "content"
+                },
+                "filled": {
+                    "type": "Boolean",
+                    "desc": "Use 'filled' design for the field",
+                    "category": "style"
+                },
+                "outlined": {
+                    "type": "Boolean",
+                    "desc": "Use 'outlined' design for the field",
+                    "category": "style"
+                },
+                "borderless": {
+                    "type": "Boolean",
+                    "desc": "Use 'borderless' design for the field",
+                    "category": "style"
+                },
+                "standout": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "Use 'standout' design for the field; Specifies classes to be applied when focused (overriding default ones)",
+                    "examples": [
+                        "standout",
+                        "standout=\"bg-primary text-white\""
+                    ],
+                    "category": "style"
+                },
+                "label-slot": {
+                    "type": "Boolean",
+                    "desc": "Enables label slot; You need to set it to force use of the 'label' slot if the 'label' prop is not set",
+                    "category": "content"
+                },
+                "bottom-slots": {
+                    "type": "Boolean",
+                    "desc": "Enables bottom slots ('error', 'hint', 'counter')",
+                    "category": "content"
+                },
+                "hide-bottom-space": {
+                    "type": "Boolean",
+                    "desc": "Do not reserve space for hint/error/counter anymore when these are not used; As a result, it also disables the animation for those; It also allows the hint/error area to stretch vertically based on its content",
+                    "category": "style"
+                },
+                "counter": {
+                    "type": "Boolean",
+                    "desc": "Show an automatic counter on bottom right",
+                    "category": "content"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a small standard border-radius for a squared shape of the component",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Remove border-radius so borders are squared; Overrides 'rounded' prop",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "item-aligned": {
+                    "type": "Boolean",
+                    "desc": "Match inner content alignment to that of QItem",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "autofocus": {
+                    "type": "Boolean",
+                    "desc": "Focus field on initial component render",
+                    "category": "behavior"
+                },
+                "for": {
+                    "type": "String",
+                    "desc": "Used to specify the 'id' of the control and also the 'for' attribute of the label that wraps it; If no 'name' prop is specified, then it is used for this attribute as well",
+                    "examples": [
+                        "myFieldsId"
+                    ],
+                    "category": "behavior"
+                },
+                "shadow-text": {
+                    "type": "String",
+                    "desc": "Text to be displayed as shadow at the end of the text in the control; Does NOT applies to type=file",
+                    "examples": [
+                        "rest of the fill value"
+                    ],
+                    "category": "content"
+                },
+                "type": {
+                    "type": "String",
+                    "desc": "Input type",
+                    "default": "text",
+                    "values": [
+                        "text",
+                        "password",
+                        "textarea",
+                        "email",
+                        "search",
+                        "tel",
+                        "file",
+                        "number",
+                        "url",
+                        "time",
+                        "date"
+                    ],
+                    "category": "general",
+                    "required": false
+                },
+                "debounce": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Debounce amount (in milliseconds) when updating model",
+                    "category": "model"
+                },
+                "maxlength": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Specify a max length of model",
+                    "category": "model"
+                },
+                "autogrow": {
+                    "type": "Boolean",
+                    "desc": "Make field autogrow along with its content (uses a textarea)",
+                    "category": "content"
+                },
+                "input-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Class definitions to be attributed to the underlying input tag",
+                    "examples": [
+                        "my-special-class",
+                        ":input-class=\"{ 'my-special-class': <condition> }\""
+                    ],
+                    "category": "style"
+                },
+                "input-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Style definitions to be attributed to the underlying input tag",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":input-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Field main content"
+                },
+                "prepend": {
+                    "desc": "Prepend inner field; Suggestions: QIcon, QBtn"
+                },
+                "append": {
+                    "desc": "Append to inner field; Suggestions: QIcon, QBtn"
+                },
+                "before": {
+                    "desc": "Prepend outer field; Suggestions: QIcon, QBtn"
+                },
+                "after": {
+                    "desc": "Append outer field; Suggestions: QIcon, QBtn"
+                },
+                "label": {
+                    "desc": "Slot for label; Used only if 'label-slot' prop is set or the 'label' prop is set; When it is used the text in the 'label' prop is ignored"
+                },
+                "error": {
+                    "desc": "Slot for errors; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "hint": {
+                    "desc": "Slot for hint text; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "counter": {
+                    "desc": "Slot for counter text; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "loading": {
+                    "desc": "Override default spinner when component is in loading mode; Use in conjunction with 'loading' prop"
+                }
+            },
+            "events": {
+                "clear": {
+                    "desc": "When using the 'clearable' property, this event is emitted when the clear icon is clicked",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "The previous value before clearing it"
+                        }
+                    }
+                },
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": [
+                                "String",
+                                "Number",
+                                "null"
+                            ],
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                },
+                "focus": {
+                    "desc": "Emitted when component gets focused",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                },
+                "blur": {
+                    "desc": "Emitted when component loses focus",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "resetValidation": {
+                    "desc": "Reset validation status"
+                },
+                "validate": {
+                    "desc": "Trigger a validation",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "Optional value to validate against"
+                        }
+                    },
+                    "returns": {
+                        "type": [
+                            "Boolean",
+                            "Promise<boolean>"
+                        ],
+                        "desc": "True/false if no async rules, otherwise a Promise with the outcome (true -> validation was a success, false -> invalid models detected)",
+                        "examples": [
+                            "true",
+                            "validate().then(outcome => { ... })"
+                        ]
+                    }
+                },
+                "focus": {
+                    "desc": "Focus underlying input tag"
+                },
+                "blur": {
+                    "desc": "Lose focus on underlying input tag"
+                },
+                "select": {
+                    "desc": "Select input text"
+                },
+                "getNativeElement": {
+                    "desc": "DEPRECATED; Access 'nativeEl' directly instead; Get the native input/textarea DOM Element",
+                    "returns": {
+                        "type": "Element",
+                        "desc": "The underlying native input/textarea DOM Element"
+                    }
+                }
+            },
+            "computedProps": {
+                "hasError": {
+                    "type": "Boolean",
+                    "desc": "Whether the component is in error state"
+                },
+                "nativeEl": {
+                    "type": "Element",
+                    "desc": "The native input/textarea DOM Element",
+                    "addedIn": "v2.10.1"
+                }
+            }
+        }
+    },
+    {
+        name: "q-select", desc: "选择框", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/select"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms; If not specified, it takes the value of 'for' prop, if it exists",
+                    "examples": [
+                        "car_id",
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "virtual-scroll-horizontal": {
+                    "type": "Boolean",
+                    "desc": "Make virtual list work in horizontal mode",
+                    "category": "behavior"
+                },
+                "virtual-scroll-slice-size": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Minimum number of items to render in the virtual list",
+                    "default": "30",
+                    "examples": [
+                        "virtual-scroll-slice-size=\"60\""
+                    ],
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-slice-ratio-before": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Ratio of number of items in visible zone to render before it",
+                    "default": 1,
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-slice-ratio-after": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Ratio of number of items in visible zone to render after it",
+                    "default": 1,
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-item-size": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Default size in pixels (height if vertical, width if horizontal) of an item; This value is used for rendering the initial list; Try to use a value close to the minimum size of an item",
+                    "default": 24,
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-sticky-size-start": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Size in pixels (height if vertical, width if horizontal) of the sticky part (if using one) at the start of the list; A correct value will improve scroll precision",
+                    "default": "0",
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-sticky-size-end": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Size in pixels (height if vertical, width if horizontal) of the sticky part (if using one) at the end of the list; A correct value will improve scroll precision",
+                    "default": "0",
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "table-colspan": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "The number of columns in the table (you need this if you use table-layout: fixed)",
+                    "category": "virtual-scroll|content"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Must be Array if using 'multiple' prop; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Any",
+                    "examples": [
+                        "v-model=\"myModel\""
+                    ]
+                },
+                "error": {
+                    "type": "Boolean",
+                    "desc": "Does field have validation errors?",
+                    "category": "behavior"
+                },
+                "error-message": {
+                    "type": "String",
+                    "desc": "Validation error message (gets displayed only if 'error' is set to 'true')",
+                    "examples": [
+                        "Username must have at least 5 characters"
+                    ],
+                    "category": "content"
+                },
+                "no-error-icon": {
+                    "type": "Boolean",
+                    "desc": "Hide error icon when there is an error",
+                    "category": "content"
+                },
+                "rules": {
+                    "type": "Array",
+                    "tsType": "ValidationRule",
+                    "desc": "Array of Functions/Strings; If String, then it must be a name of one of the embedded validation rules",
+                    "examples": [
+                        ":rules=\"[ val => val.length <= 3 || 'Please use maximum 3 characters' ]\"",
+                        ":rules=\"[ 'fulltime' ]\"",
+                        ":rules=\"[ (val, rules) => rules.email(val) || 'Please enter a valid email address' ]\""
+                    ],
+                    "category": "behavior"
+                },
+                "reactive-rules": {
+                    "type": "Boolean",
+                    "desc": "By default a change in the rules does not trigger a new validation until the model changes; If set to true then a change in the rules will trigger a validation; Has a performance penalty, so use it only when you really need it",
+                    "category": "behavior"
+                },
+                "lazy-rules": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "If set to boolean true then it checks validation status against the 'rules' only after field loses focus for first time; If set to 'ondemand' then it will trigger only when component's validate() method is manually called or when the wrapper QForm submits itself",
+                    "values": [
+                        "(Boolean) true",
+                        "(Boolean) false",
+                        "ondemand"
+                    ],
+                    "category": "behavior"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "A text label that will “float” up above the input field, once the field gets focus",
+                    "examples": [
+                        "Username"
+                    ],
+                    "category": "content"
+                },
+                "stack-label": {
+                    "type": "Boolean",
+                    "desc": "Label will be always shown above the field regardless of field content (if any)",
+                    "category": "content"
+                },
+                "hint": {
+                    "type": "String",
+                    "desc": "Helper (hint) text which gets placed below your wrapped form component",
+                    "examples": [
+                        "Fill in between 3 and 12 characters"
+                    ],
+                    "category": "content"
+                },
+                "hide-hint": {
+                    "type": "Boolean",
+                    "desc": "Hide the helper (hint) text when field doesn't have focus",
+                    "category": "content"
+                },
+                "prefix": {
+                    "type": "String",
+                    "desc": "Prefix",
+                    "examples": [
+                        "$"
+                    ],
+                    "category": "content"
+                },
+                "suffix": {
+                    "type": "String",
+                    "desc": "Suffix",
+                    "examples": [
+                        "@gmail.com"
+                    ],
+                    "category": "content"
+                },
+                "label-color": {
+                    "type": "String",
+                    "desc": "Color name for the label from the Quasar Color Palette; Overrides the 'color' prop; The difference from 'color' prop is that the label will always have this color, even when field is not focused",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "bg-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "loading": {
+                    "type": "Boolean",
+                    "desc": "Signals the user a process is in progress by displaying a spinner; Spinner can be customized by using the 'loading' slot.",
+                    "category": "behavior|content"
+                },
+                "clearable": {
+                    "type": "Boolean",
+                    "desc": "Appends clearable icon when a value (not undefined or null) is set; When clicked, model becomes null",
+                    "category": "behavior|content"
+                },
+                "clear-icon": {
+                    "type": "String",
+                    "desc": "Custom icon to use for the clear button when using along with 'clearable' prop",
+                    "examples": [
+                        "close"
+                    ],
+                    "category": "content"
+                },
+                "filled": {
+                    "type": "Boolean",
+                    "desc": "Use 'filled' design for the field",
+                    "category": "style"
+                },
+                "outlined": {
+                    "type": "Boolean",
+                    "desc": "Use 'outlined' design for the field",
+                    "category": "style"
+                },
+                "borderless": {
+                    "type": "Boolean",
+                    "desc": "Use 'borderless' design for the field",
+                    "category": "style"
+                },
+                "standout": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "Use 'standout' design for the field; Specifies classes to be applied when focused (overriding default ones)",
+                    "examples": [
+                        "standout",
+                        "standout=\"bg-primary text-white\""
+                    ],
+                    "category": "style"
+                },
+                "label-slot": {
+                    "type": "Boolean",
+                    "desc": "Enables label slot; You need to set it to force use of the 'label' slot if the 'label' prop is not set",
+                    "category": "content"
+                },
+                "bottom-slots": {
+                    "type": "Boolean",
+                    "desc": "Enables bottom slots ('error', 'hint', 'counter')",
+                    "category": "content"
+                },
+                "hide-bottom-space": {
+                    "type": "Boolean",
+                    "desc": "Do not reserve space for hint/error/counter anymore when these are not used; As a result, it also disables the animation for those; It also allows the hint/error area to stretch vertically based on its content",
+                    "category": "style"
+                },
+                "counter": {
+                    "type": "Boolean",
+                    "desc": "Show an automatic counter on bottom right",
+                    "category": "content"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a small standard border-radius for a squared shape of the component",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Remove border-radius so borders are squared; Overrides 'rounded' prop",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "item-aligned": {
+                    "type": "Boolean",
+                    "desc": "Match inner content alignment to that of QItem",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "autofocus": {
+                    "type": "Boolean",
+                    "desc": "Focus field on initial component render",
+                    "category": "behavior"
+                },
+                "for": {
+                    "type": "String",
+                    "desc": "Used to specify the 'id' of the control and also the 'for' attribute of the label that wraps it; If no 'name' prop is specified, then it is used for this attribute as well",
+                    "examples": [
+                        "myFieldsId"
+                    ],
+                    "category": "behavior"
+                },
+                "multiple": {
+                    "type": "Boolean",
+                    "desc": "Allow multiple selection; Model must be Array",
+                    "category": "model|selection"
+                },
+                "display-value": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Override default selection string, if not using 'selected' slot/scoped slot and if not using 'use-chips' prop",
+                    "examples": [
+                        "Options: x, y, z"
+                    ],
+                    "category": "selection"
+                },
+                "display-value-html": {
+                    "type": "Boolean",
+                    "desc": "Force render the selected option(s) as HTML; This can lead to XSS attacks so make sure that you sanitize the content; Does NOT apply when using 'selected' or 'selected-item' slots!",
+                    "category": "selection"
+                },
+                "options": {
+                    "type": "Array",
+                    "desc": "Available options that the user can select from. For best performance freeze the list of options.",
+                    "default": "[]",
+                    "examples": [
+                        ":options=\"[ 'BMW', 'Samsung Phone' ]\"",
+                        ":options=\"[ { label: 'BMW', value: 'car' }, { label: 'Samsung Phone', value: 'phone' } ]\""
+                    ],
+                    "category": "options",
+                    "required": false
+                },
+                "option-value": {
+                    "type": [
+                        "Function",
+                        "String"
+                    ],
+                    "desc": "Property of option which holds the 'value'; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "default": "value",
+                    "params": {
+                        "option": {
+                            "type": [
+                                "String",
+                                "Object"
+                            ],
+                            "desc": "The current option being processed",
+                            "examples": [
+                                "'BMW'",
+                                "'Samsung Phone'",
+                                "{ label: 'BMW', value: 'car', cannotSelect: true }"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Any",
+                        "desc": "Value of the current option",
+                        "examples": [
+                            "'car'",
+                            "34"
+                        ]
+                    },
+                    "examples": [
+                        "option-value=\"modelNumber\"",
+                        ":option-value=\"(item) => item === null ? null : item.modelNumber\""
+                    ],
+                    "category": "options",
+                    "required": false
+                },
+                "option-label": {
+                    "type": [
+                        "Function",
+                        "String"
+                    ],
+                    "desc": "Property of option which holds the 'label'; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "default": "label",
+                    "params": {
+                        "option": {
+                            "type": [
+                                "String",
+                                "Object"
+                            ],
+                            "desc": "The current option being processed",
+                            "examples": [
+                                "'BMW'",
+                                "'Samsung Phone'",
+                                "{ label: 'BMW', value: 'car', cannotSelect: true }"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "String",
+                        "desc": "Label of the current option",
+                        "examples": [
+                            "'BMW'",
+                            "'Samsung Phone'"
+                        ]
+                    },
+                    "examples": [
+                        "option-label=\"itemName\"",
+                        ":option-label=\"(item) => item === null ? 'Null value' : item.itemName\""
+                    ],
+                    "category": "options",
+                    "required": false
+                },
+                "option-disable": {
+                    "type": [
+                        "Function",
+                        "String"
+                    ],
+                    "desc": "Property of option which tells it's disabled; The value of the property must be a Boolean; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "default": "disable",
+                    "params": {
+                        "option": {
+                            "type": [
+                                "String",
+                                "Object"
+                            ],
+                            "desc": "The current option being processed",
+                            "examples": [
+                                "'BMW'",
+                                "'Samsung Phone'",
+                                "{ label: 'BMW', value: 'car', cannotSelect: true }"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "If true, the current option will be disabled"
+                    },
+                    "examples": [
+                        "option-disable=\"cannotSelect\"",
+                        ":option-disable=\"(item) => item === null ? true : item.cannotSelect\""
+                    ],
+                    "category": "options",
+                    "required": false
+                },
+                "hide-selected": {
+                    "type": "Boolean",
+                    "desc": "Hides selection; Use the underlying input tag to hold the label (instead of showing it to the right of the input) of the selected option; Only works for non 'multiple' Selects",
+                    "category": "selection"
+                },
+                "hide-dropdown-icon": {
+                    "type": "Boolean",
+                    "desc": "Hides dropdown icon",
+                    "category": "content|behavior"
+                },
+                "dropdown-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "max-values": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Allow a maximum number of selections that the user can do",
+                    "category": "selection"
+                },
+                "options-dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode for options list; occupies less space",
+                    "category": "options"
+                },
+                "options-dark": {
+                    "type": "Boolean",
+                    "desc": "Options menu will be colored with a dark color",
+                    "category": "options"
+                },
+                "options-selected-class": {
+                    "type": "String",
+                    "desc": "CSS class name for options that are active/selected; Set it to an empty string to stop applying the default (which is text-* where * is the 'color' prop value)",
+                    "examples": [
+                        "text-orange"
+                    ],
+                    "category": "options"
+                },
+                "options-html": {
+                    "type": "Boolean",
+                    "desc": "Force render the options as HTML; This can lead to XSS attacks so make sure that you sanitize the content; Does NOT apply when using 'option' slot!",
+                    "category": "options"
+                },
+                "options-cover": {
+                    "type": "Boolean",
+                    "desc": "Expanded menu will cover the component (will not work along with 'use-input' prop for obvious reasons)",
+                    "category": "options"
+                },
+                "menu-shrink": {
+                    "type": "Boolean",
+                    "desc": "Allow the options list to be narrower than the field (only in menu mode)",
+                    "category": "options"
+                },
+                "menu-anchor": {
+                    "type": "String",
+                    "desc": "Two values setting the starting position or anchor point of the options list relative to the field (only in menu mode)",
+                    "values": [
+                        "top left",
+                        "top middle",
+                        "top right",
+                        "top start",
+                        "top end",
+                        "center left",
+                        "center middle",
+                        "center right",
+                        "center start",
+                        "center end",
+                        "bottom left",
+                        "bottom middle",
+                        "bottom right",
+                        "bottom start",
+                        "bottom end"
+                    ],
+                    "category": "position"
+                },
+                "menu-self": {
+                    "type": "String",
+                    "desc": "Two values setting the options list's own position relative to its target (only in menu mode)",
+                    "values": [
+                        "top left",
+                        "top middle",
+                        "top right",
+                        "top start",
+                        "top end",
+                        "center left",
+                        "center middle",
+                        "center right",
+                        "center start",
+                        "center end",
+                        "bottom left",
+                        "bottom middle",
+                        "bottom right",
+                        "bottom start",
+                        "bottom end"
+                    ],
+                    "category": "position"
+                },
+                "menu-offset": {
+                    "type": "Array",
+                    "desc": "An array of two numbers to offset the options list horizontally and vertically in pixels (only in menu mode)",
+                    "examples": [
+                        "[8, 8]",
+                        "[5, 10]"
+                    ],
+                    "category": "position"
+                },
+                "popup-content-class": {
+                    "type": "String",
+                    "desc": "Class definitions to be attributed to the popup content",
+                    "examples": [
+                        "my-special-class"
+                    ],
+                    "category": "style"
+                },
+                "popup-content-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Style definitions to be attributed to the popup content",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":popup-content-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "use-input": {
+                    "type": "Boolean",
+                    "desc": "Use an input tag where users can type",
+                    "category": "content"
+                },
+                "use-chips": {
+                    "type": "Boolean",
+                    "desc": "Use QChip to show what is currently selected",
+                    "category": "selection"
+                },
+                "fill-input": {
+                    "type": "Boolean",
+                    "desc": "Fills the input with current value; Useful along with 'hide-selected'; Does NOT works along with 'multiple' selection",
+                    "category": "behavior"
+                },
+                "new-value-mode": {
+                    "type": "String",
+                    "desc": "Enables creation of new values and defines behavior when a new value is added: 'add' means it adds the value (even if possible duplicate), 'add-unique' adds only unique values, and 'toggle' adds or removes the value (based on if it exists or not already); When using this prop then listening for @new-value becomes optional (only to override the behavior defined by 'new-value-mode')",
+                    "values": [
+                        "add",
+                        "add-unique",
+                        "toggle"
+                    ],
+                    "category": "behavior"
+                },
+                "map-options": {
+                    "type": "Boolean",
+                    "desc": "Try to map labels of model from 'options' Array; has a small performance penalty; If you are using emit-value you will probably need to use map-options to display the label text in the select field rather than the value;  Refer to the 'Affecting model' section above",
+                    "category": "options"
+                },
+                "emit-value": {
+                    "type": "Boolean",
+                    "desc": "Update model with the value of the selected option instead of the whole option",
+                    "category": "model"
+                },
+                "input-debounce": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Debounce the input model update with an amount of milliseconds",
+                    "default": 500,
+                    "category": "content",
+                    "required": false
+                },
+                "input-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Class definitions to be attributed to the underlying input tag",
+                    "examples": [
+                        "my-special-class",
+                        ":input-class=\"{ 'my-special-class': <condition> }\""
+                    ],
+                    "category": "style"
+                },
+                "input-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Style definitions to be attributed to the underlying input tag",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":input-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "autocomplete": {
+                    "type": "String",
+                    "desc": "Autocomplete attribute for field",
+                    "examples": [
+                        "autocomplete=\"country\""
+                    ],
+                    "category": "behavior"
+                },
+                "transition-show": {
+                    "type": "String",
+                    "desc": "Transition when showing the menu/dialog; One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "behavior",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-hide": {
+                    "type": "String",
+                    "desc": "Transition when hiding the menu/dialog; One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "behavior",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-duration": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Transition duration when hiding the menu/dialog (in milliseconds, without unit)",
+                    "default": 300,
+                    "category": "behavior",
+                    "required": false
+                },
+                "behavior": {
+                    "type": "String",
+                    "desc": "Overrides the default dynamic mode of showing as menu on desktop and dialog on mobiles",
+                    "values": [
+                        "default",
+                        "menu",
+                        "dialog"
+                    ],
+                    "default": "default",
+                    "category": "behavior",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Field main content"
+                },
+                "prepend": {
+                    "desc": "Prepend inner field; Suggestions: QIcon, QBtn"
+                },
+                "append": {
+                    "desc": "Append to inner field; Suggestions: QIcon, QBtn"
+                },
+                "before": {
+                    "desc": "Prepend outer field; Suggestions: QIcon, QBtn"
+                },
+                "after": {
+                    "desc": "Append outer field; Suggestions: QIcon, QBtn"
+                },
+                "label": {
+                    "desc": "Slot for label; Used only if 'label-slot' prop is set or the 'label' prop is set; When it is used the text in the 'label' prop is ignored"
+                },
+                "error": {
+                    "desc": "Slot for errors; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "hint": {
+                    "desc": "Slot for hint text; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "counter": {
+                    "desc": "Slot for counter text; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "loading": {
+                    "desc": "Override default spinner when component is in loading mode; Suggestion: spinners"
+                },
+                "selected": {
+                    "desc": "Override default selection slot; Suggestion: QChip"
+                },
+                "before-options": {
+                    "desc": "Template slot for the elements that should be rendered before the list of options"
+                },
+                "after-options": {
+                    "desc": "Template slot for the elements that should be rendered after the list of options"
+                },
+                "no-option": {
+                    "desc": "What should the menu display after filtering options and none are left to be displayed; Suggestion: <div>",
+                    "scope": {
+                        "inputValue": {
+                            "type": "String",
+                            "desc": "Input textfield value, if any (not QSelect model)",
+                            "examples": [
+                                "typed something"
+                            ]
+                        }
+                    }
+                },
+                "selected-item": {
+                    "desc": "Override default selection slot; Suggestion: QChip",
+                    "scope": {
+                        "index": {
+                            "type": "Number",
+                            "desc": "Selection index"
+                        },
+                        "opt": {
+                            "type": "Any",
+                            "desc": "Selected option -- its value is taken from model"
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "Always true -- passed down as prop to QItem (when using QItem)"
+                        },
+                        "removeAtIndex": {
+                            "type": "Function",
+                            "desc": "Remove selected option located at specific index",
+                            "params": {
+                                "index": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Index at which to remove selection"
+                                }
+                            },
+                            "returns": null
+                        },
+                        "toggleOption": {
+                            "type": "Function",
+                            "desc": "Add/remove option from model",
+                            "params": {
+                                "opt": {
+                                    "type": "Any",
+                                    "required": true,
+                                    "desc": "Option to add to model"
+                                }
+                            },
+                            "returns": null
+                        },
+                        "tabindex": {
+                            "type": "Number",
+                            "desc": "Tabindex HTML attribute value associated with respective option",
+                            "values": [
+                                0,
+                                -1
+                            ]
+                        }
+                    }
+                },
+                "option": {
+                    "desc": "Customize how options are rendered; Suggestion: QItem",
+                    "scope": {
+                        "index": {
+                            "type": "Number",
+                            "desc": "Option index"
+                        },
+                        "opt": {
+                            "type": "Any",
+                            "desc": "Option -- its value is taken from 'options' prop"
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "Is option selected?"
+                        },
+                        "focused": {
+                            "type": "Boolean",
+                            "desc": "Is option focused?"
+                        },
+                        "toggleOption": {
+                            "type": "Function",
+                            "desc": "Add/remove option from model",
+                            "params": {
+                                "opt": {
+                                    "type": "Any",
+                                    "required": true,
+                                    "desc": "Option to add to model"
+                                }
+                            },
+                            "returns": null
+                        },
+                        "setOptionIndex": {
+                            "type": "Function",
+                            "desc": "Sets option from menu as 'focused'",
+                            "params": {
+                                "index": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Index of option from menu"
+                                }
+                            },
+                            "returns": null
+                        },
+                        "itemProps": {
+                            "type": "Object",
+                            "desc": "Computed properties passed down to QItem"
+                        }
+                    }
+                }
+            },
+            "events": {
+                "virtual-scroll": {
+                    "desc": "Emitted when the virtual scroll occurs",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Object of properties on the new scroll position",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Index of the list item that was scrolled into view (0 based)"
+                                },
+                                "from": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The index of the first list item that is rendered (0 based)"
+                                },
+                                "to": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The index of the last list item that is rendered (0 based)"
+                                },
+                                "direction": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Direction of change",
+                                    "values": [
+                                        "increase",
+                                        "decrease"
+                                    ]
+                                },
+                                "ref": {
+                                    "type": "Component",
+                                    "required": true,
+                                    "desc": "Vue reference to the QSelect",
+                                    "tsType": "QSelect"
+                                }
+                            }
+                        }
+                    }
+                },
+                "clear": {
+                    "desc": "When using the 'clearable' property, this event is emitted when the clear icon is clicked",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "The previous value before clearing it"
+                        }
+                    }
+                },
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                },
+                "input-value": {
+                    "desc": "Emitted when the value in the text input changes",
+                    "params": {
+                        "value": {
+                            "type": "String",
+                            "desc": "New text value"
+                        }
+                    }
+                },
+                "remove": {
+                    "desc": "Emitted when an option is removed from selection",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Removal details",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Model index at which removal took place"
+                                },
+                                "value": {
+                                    "type": "Any",
+                                    "required": true,
+                                    "desc": "The actual value that was removed"
+                                }
+                            }
+                        }
+                    }
+                },
+                "add": {
+                    "desc": "Emitted when an option is added to the selection",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Addition details",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Model index at which addition took place"
+                                },
+                                "value": {
+                                    "type": "Any",
+                                    "required": true,
+                                    "desc": "The actual value that was added"
+                                }
+                            }
+                        }
+                    }
+                },
+                "new-value": {
+                    "desc": "Enables creation of new values; Emitted when a new value has been created; You can override 'new-value-mode' property with it",
+                    "params": {
+                        "inputValue": {
+                            "type": "String",
+                            "desc": "What the user typed",
+                            "examples": [
+                                "phone"
+                            ]
+                        },
+                        "doneFn": {
+                            "type": "Function",
+                            "desc": "Adds (optional) value to the model; Do not forget to call it after you validate the newly created value; Call it with no parameters if nothing should be added",
+                            "params": {
+                                "item": {
+                                    "type": "Any",
+                                    "required": false,
+                                    "desc": "Item to add"
+                                },
+                                "mode": {
+                                    "type": "String",
+                                    "required": false,
+                                    "desc": "Override 'new-value-mode' (prop) behavior should you wish to",
+                                    "values": [
+                                        "add",
+                                        "add-unique",
+                                        "toggle"
+                                    ],
+                                    "default": "add"
+                                }
+                            },
+                            "returns": null
+                        }
+                    }
+                },
+                "filter": {
+                    "desc": "Emitted when user wants to filter a value",
+                    "params": {
+                        "inputValue": {
+                            "type": "String",
+                            "desc": "What the user typed",
+                            "examples": [
+                                "phone"
+                            ]
+                        },
+                        "doneFn": {
+                            "type": "Function",
+                            "desc": "Supply a function which makes the necessary updates",
+                            "params": {
+                                "callbackFn": {
+                                    "type": "Function",
+                                    "required": true,
+                                    "desc": "Callback to call to make the actual updates",
+                                    "params": null,
+                                    "returns": null
+                                },
+                                "afterFn": {
+                                    "type": "Function",
+                                    "required": false,
+                                    "desc": "Callback to call at the end after the update has been fully processed by QSelect",
+                                    "params": {
+                                        "ref": {
+                                            "type": "Component",
+                                            "tsType": "QSelect",
+                                            "required": true,
+                                            "desc": "Vue reference to the QSelect which triggered the filtering"
+                                        }
+                                    },
+                                    "returns": null
+                                }
+                            },
+                            "returns": null
+                        },
+                        "abortFn": {
+                            "type": "Function",
+                            "desc": "Call this function if something went wrong",
+                            "params": null,
+                            "returns": null
+                        }
+                    }
+                },
+                "filter-abort": {
+                    "desc": "Emitted when a filtering was aborted; Probably a new one was requested?"
+                },
+                "popup-show": {
+                    "desc": "Emitted when the select options menu or dialog is shown.",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                },
+                "popup-hide": {
+                    "desc": "Emitted when the select options menu or dialog is hidden.",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "scrollTo": {
+                    "desc": "Scroll the virtual scroll list to the item with the specified index (0 based)",
+                    "params": {
+                        "index": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "The index of the list item (0 based)",
+                            "required": true
+                        },
+                        "edge": {
+                            "type": "String",
+                            "desc": "The edge to align to if the item is not visible already (by default it aligns to end if scrolling towards the end and to start otherwise); If the '-force' version is used then it always aligns",
+                            "values": [
+                                "start",
+                                "center",
+                                "end",
+                                "start-force",
+                                "center-force",
+                                "end-force"
+                            ]
+                        }
+                    }
+                },
+                "reset": {
+                    "desc": "Resets the virtual scroll computations; Needed for custom edge-cases"
+                },
+                "refresh": {
+                    "desc": "Refreshes the virtual scroll list; Use it after appending items",
+                    "params": {
+                        "index": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "The index of the list item to scroll to after refresh (0 based); If it's not specified the scroll position is not changed; Use a negative value to keep scroll position"
+                        }
+                    }
+                },
+                "resetValidation": {
+                    "desc": "Reset validation status"
+                },
+                "validate": {
+                    "desc": "Trigger a validation",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "Optional value to validate against"
+                        }
+                    },
+                    "returns": {
+                        "type": [
+                            "Boolean",
+                            "Promise<boolean>"
+                        ],
+                        "desc": "True/false if no async rules, otherwise a Promise with the outcome (true -> validation was a success, false -> invalid models detected)",
+                        "examples": [
+                            "true",
+                            "validate().then(outcome => { ... })"
+                        ]
+                    }
+                },
+                "focus": {
+                    "desc": "Focus component"
+                },
+                "blur": {
+                    "desc": "Blur component (lose focus)"
+                },
+                "showPopup": {
+                    "desc": "Focus and open popup"
+                },
+                "hidePopup": {
+                    "desc": "Hide popup"
+                },
+                "removeAtIndex": {
+                    "desc": "Remove selected option located at specific index",
+                    "params": {
+                        "index": {
+                            "type": "Number",
+                            "required": true,
+                            "desc": "Index at which to remove selection"
+                        }
+                    }
+                },
+                "add": {
+                    "desc": "Adds option to model",
+                    "params": {
+                        "opt": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "Option to add to model"
+                        },
+                        "unique": {
+                            "type": "Boolean",
+                            "desc": "Option must be unique"
+                        }
+                    }
+                },
+                "toggleOption": {
+                    "desc": "Add/remove option from model",
+                    "params": {
+                        "opt": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "Option to add to model"
+                        },
+                        "keepOpen": {
+                            "type": "Boolean",
+                            "desc": "Don't close the menu and do not clear the filter"
+                        }
+                    }
+                },
+                "getOptionIndex": {
+                    "desc": "Gets current focused option index from menu; It's -1 if no option is focused",
+                    "returns": {
+                        "type": "Number",
+                        "desc": "Index of option from menu; It's -1 if no option is focused"
+                    },
+                    "addedIn": "v2.5.4"
+                },
+                "setOptionIndex": {
+                    "desc": "Sets option from menu as 'focused'; -1 to focus none",
+                    "params": {
+                        "index": {
+                            "type": "Number",
+                            "required": true,
+                            "desc": "Index of option from menu; -1 to focus none"
+                        }
+                    }
+                },
+                "moveOptionSelection": {
+                    "desc": "Move selected option from menu by index offset",
+                    "params": {
+                        "offset": {
+                            "type": "Number",
+                            "desc": "Number of options to move up or down",
+                            "default": 1,
+                            "required": false
+                        },
+                        "skipInputValue": {
+                            "type": "Boolean",
+                            "desc": "Don't set input-value on navigation"
+                        }
+                    }
+                },
+                "filter": {
+                    "desc": "Filter options",
+                    "params": {
+                        "value": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "String to filter with",
+                            "examples": [
+                                "car"
+                            ]
+                        }
+                    }
+                },
+                "updateMenuPosition": {
+                    "desc": "Recomputes menu position"
+                },
+                "updateInputValue": {
+                    "desc": "If 'use-input' is specified, this updates the value that it holds",
+                    "params": {
+                        "value": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "String to set the input value to",
+                            "examples": [
+                                "hotel"
+                            ]
+                        },
+                        "noFilter": {
+                            "type": "Boolean",
+                            "desc": "Set to true if you don't want the filter (if any) to be also triggered"
+                        }
+                    }
+                },
+                "isOptionSelected": {
+                    "desc": "Tells if an option is selected",
+                    "params": {
+                        "opt": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "Option entry"
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "Option is selected or not"
+                    }
+                },
+                "getEmittingOptionValue": {
+                    "desc": "Get the model value that would be emitted by QSelect when selecting a said option; Also takes into consideration if 'emit-value' is set",
+                    "params": {
+                        "opt": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "Option entry"
+                        }
+                    },
+                    "returns": {
+                        "type": "Any",
+                        "desc": "Emitting model value of said option"
+                    }
+                },
+                "getOptionValue": {
+                    "desc": "Get the model value of an option; Takes into consideration 'option-value' (if used), but does not looks for 'emit-value', like getEmittingOptionValue() does",
+                    "params": {
+                        "opt": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "Option entry"
+                        }
+                    },
+                    "returns": {
+                        "type": "Any",
+                        "desc": "Model value of said option"
+                    }
+                },
+                "getOptionLabel": {
+                    "desc": "Get the label of an option; Takes into consideration the 'option-label' prop (if used)",
+                    "params": {
+                        "opt": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "Option entry"
+                        }
+                    },
+                    "returns": {
+                        "type": "Any",
+                        "desc": "Label of said option"
+                    }
+                },
+                "isOptionDisabled": {
+                    "desc": "Tells if an option is disabled; Takes into consideration 'option-disable' prop (if used)",
+                    "params": {
+                        "opt": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "Option entry"
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "Option is disabled or not"
+                    }
+                }
+            },
+            "computedProps": {
+                "hasError": {
+                    "type": "Boolean",
+                    "desc": "Whether the component is in error state"
+                }
+            }
+        }
+    },
+    {
+        name: "q-file", desc: "文件选择器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/file"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms; If not specified, it takes the value of 'for' prop, if it exists",
+                    "examples": [
+                        "car_id",
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "multiple": {
+                    "type": "Boolean",
+                    "desc": "Allow multiple file uploads",
+                    "category": "behavior"
+                },
+                "accept": {
+                    "type": "String",
+                    "desc": "Comma separated list of unique file type specifiers. Maps to 'accept' attribute of native input type=file element",
+                    "examples": [
+                        ".jpg, .pdf, image/*",
+                        "image/jpeg, .pdf"
+                    ],
+                    "category": "behavior"
+                },
+                "capture": {
+                    "type": "String",
+                    "desc": "Optionally, specify that a new file should be captured, and which device should be used to capture that new media of a type defined by the 'accept' prop. Maps to 'capture' attribute of native input type=file element",
+                    "values": [
+                        "user",
+                        "environment"
+                    ],
+                    "category": "behavior"
+                },
+                "max-file-size": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Maximum size of individual file in bytes",
+                    "examples": [
+                        1024,
+                        1048576
+                    ],
+                    "category": "behavior"
+                },
+                "max-total-size": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Maximum size of all files combined in bytes",
+                    "category": "behavior"
+                },
+                "max-files": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Maximum number of files to contain",
+                    "category": "behavior"
+                },
+                "filter": {
+                    "type": "Function",
+                    "desc": "Custom filter for added files; Only files that pass this filter will be added to the queue and uploaded; For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "files": {
+                            "type": [
+                                "FileList",
+                                "Array"
+                            ],
+                            "desc": "Candidate files to be added to queue"
+                        }
+                    },
+                    "returns": {
+                        "type": "Array",
+                        "desc": "Filtered files to be added to queue"
+                    },
+                    "examples": [
+                        ":filter=\"files => files.filter(file => file.size === 1024)\""
+                    ],
+                    "category": "behavior"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Must be FileList or Array if using 'multiple' prop; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "File",
+                        "FileList",
+                        "Array",
+                        "null",
+                        "undefined"
+                    ],
+                    "examples": [
+                        "v-model=\"myModel\""
+                    ]
+                },
+                "error": {
+                    "type": "Boolean",
+                    "desc": "Does field have validation errors?",
+                    "category": "behavior"
+                },
+                "error-message": {
+                    "type": "String",
+                    "desc": "Validation error message (gets displayed only if 'error' is set to 'true')",
+                    "examples": [
+                        "Username must have at least 5 characters"
+                    ],
+                    "category": "content"
+                },
+                "no-error-icon": {
+                    "type": "Boolean",
+                    "desc": "Hide error icon when there is an error",
+                    "category": "content"
+                },
+                "rules": {
+                    "type": "Array",
+                    "tsType": "ValidationRule",
+                    "desc": "Array of Functions/Strings; If String, then it must be a name of one of the embedded validation rules",
+                    "examples": [
+                        ":rules=\"[ val => val.length <= 3 || 'Please use maximum 3 characters' ]\"",
+                        ":rules=\"[ 'fulltime' ]\"",
+                        ":rules=\"[ (val, rules) => rules.email(val) || 'Please enter a valid email address' ]\""
+                    ],
+                    "category": "behavior"
+                },
+                "reactive-rules": {
+                    "type": "Boolean",
+                    "desc": "By default a change in the rules does not trigger a new validation until the model changes; If set to true then a change in the rules will trigger a validation; Has a performance penalty, so use it only when you really need it",
+                    "category": "behavior"
+                },
+                "lazy-rules": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "If set to boolean true then it checks validation status against the 'rules' only after field loses focus for first time; If set to 'ondemand' then it will trigger only when component's validate() method is manually called or when the wrapper QForm submits itself",
+                    "values": [
+                        "(Boolean) true",
+                        "(Boolean) false",
+                        "ondemand"
+                    ],
+                    "category": "behavior"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "A text label that will “float” up above the input field, once the field gets focus",
+                    "examples": [
+                        "Username"
+                    ],
+                    "category": "content"
+                },
+                "stack-label": {
+                    "type": "Boolean",
+                    "desc": "Label will be always shown above the field regardless of field content (if any)",
+                    "category": "content"
+                },
+                "hint": {
+                    "type": "String",
+                    "desc": "Helper (hint) text which gets placed below your wrapped form component",
+                    "examples": [
+                        "Fill in between 3 and 12 characters"
+                    ],
+                    "category": "content"
+                },
+                "hide-hint": {
+                    "type": "Boolean",
+                    "desc": "Hide the helper (hint) text when field doesn't have focus",
+                    "category": "content"
+                },
+                "prefix": {
+                    "type": "String",
+                    "desc": "Prefix",
+                    "examples": [
+                        "$"
+                    ],
+                    "category": "content"
+                },
+                "suffix": {
+                    "type": "String",
+                    "desc": "Suffix",
+                    "examples": [
+                        "@gmail.com"
+                    ],
+                    "category": "content"
+                },
+                "label-color": {
+                    "type": "String",
+                    "desc": "Color name for the label from the Quasar Color Palette; Overrides the 'color' prop; The difference from 'color' prop is that the label will always have this color, even when field is not focused",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "bg-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "loading": {
+                    "type": "Boolean",
+                    "desc": "Signals the user a process is in progress by displaying a spinner; Spinner can be customized by using the 'loading' slot.",
+                    "category": "behavior|content"
+                },
+                "clearable": {
+                    "type": "Boolean",
+                    "desc": "Appends clearable icon when a value (not undefined or null) is set; When clicked, model becomes null",
+                    "category": "behavior|content"
+                },
+                "clear-icon": {
+                    "type": "String",
+                    "desc": "Custom icon to use for the clear button when using along with 'clearable' prop",
+                    "examples": [
+                        "close"
+                    ],
+                    "category": "content"
+                },
+                "filled": {
+                    "type": "Boolean",
+                    "desc": "Use 'filled' design for the field",
+                    "category": "style"
+                },
+                "outlined": {
+                    "type": "Boolean",
+                    "desc": "Use 'outlined' design for the field",
+                    "category": "style"
+                },
+                "borderless": {
+                    "type": "Boolean",
+                    "desc": "Use 'borderless' design for the field",
+                    "category": "style"
+                },
+                "standout": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "Use 'standout' design for the field; Specifies classes to be applied when focused (overriding default ones)",
+                    "examples": [
+                        "standout",
+                        "standout=\"bg-primary text-white\""
+                    ],
+                    "category": "style"
+                },
+                "label-slot": {
+                    "type": "Boolean",
+                    "desc": "Enables label slot; You need to set it to force use of the 'label' slot if the 'label' prop is not set",
+                    "category": "content"
+                },
+                "bottom-slots": {
+                    "type": "Boolean",
+                    "desc": "Enables bottom slots ('error', 'hint', 'counter')",
+                    "category": "content"
+                },
+                "hide-bottom-space": {
+                    "type": "Boolean",
+                    "desc": "Do not reserve space for hint/error/counter anymore when these are not used; As a result, it also disables the animation for those; It also allows the hint/error area to stretch vertically based on its content",
+                    "category": "style"
+                },
+                "counter": {
+                    "type": "Boolean",
+                    "desc": "Show an automatic counter on bottom right",
+                    "category": "content"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a small standard border-radius for a squared shape of the component",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Remove border-radius so borders are squared; Overrides 'rounded' prop",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "item-aligned": {
+                    "type": "Boolean",
+                    "desc": "Match inner content alignment to that of QItem",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "autofocus": {
+                    "type": "Boolean",
+                    "desc": "Focus field on initial component render",
+                    "category": "behavior"
+                },
+                "for": {
+                    "type": "String",
+                    "desc": "Used to specify the 'id' of the control and also the 'for' attribute of the label that wraps it; If no 'name' prop is specified, then it is used for this attribute as well",
+                    "examples": [
+                        "myFieldsId"
+                    ],
+                    "category": "behavior"
+                },
+                "append": {
+                    "type": "Boolean",
+                    "desc": "Append file(s) to current model rather than replacing them; Has effect only when using 'multiple' mode",
+                    "category": "behavior"
+                },
+                "display-value": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Override default selection string, if not using 'file' or 'selected' scoped slots and if not using 'use-chips' prop",
+                    "examples": [
+                        "Options: x, y, z"
+                    ],
+                    "category": "selection"
+                },
+                "use-chips": {
+                    "type": "Boolean",
+                    "desc": "Use QChip to show picked files",
+                    "category": "selection"
+                },
+                "counter-label": {
+                    "type": "Function",
+                    "desc": "Label for the counter; The 'counter' prop is necessary to enable this one",
+                    "params": {
+                        "props": {
+                            "type": "Object",
+                            "desc": "Object containing counter label information",
+                            "definition": {
+                                "totalSize": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "The total size of files in human readable format",
+                                    "examples": [
+                                        "1.42MB"
+                                    ]
+                                },
+                                "filesNumber": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Number of picked files"
+                                },
+                                "maxFiles": {
+                                    "type": [
+                                        "Number",
+                                        "String"
+                                    ],
+                                    "required": true,
+                                    "desc": "Maximum number of files (same as 'max-files' prop, if specified); When 'max-files' is not specified, this has 'void 0' as value"
+                                }
+                            }
+                        }
+                    },
+                    "returns": {
+                        "type": "String",
+                        "desc": "String to display for the counter label"
+                    },
+                    "examples": [
+                        ":counter-label=\"counterLabelFn\""
+                    ],
+                    "category": "behavior"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "input-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Class definitions to be attributed to the underlying selection container",
+                    "examples": [
+                        "my-special-class",
+                        ":input-class=\"{ 'my-special-class': <condition> }\""
+                    ],
+                    "category": "style"
+                },
+                "input-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Style definitions to be attributed to the underlying selection container",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":input-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Field main content"
+                },
+                "prepend": {
+                    "desc": "Prepend inner field; Suggestions: QIcon, QBtn"
+                },
+                "append": {
+                    "desc": "Append to inner field; Suggestions: QIcon, QBtn"
+                },
+                "before": {
+                    "desc": "Prepend outer field; Suggestions: QIcon, QBtn"
+                },
+                "after": {
+                    "desc": "Append outer field; Suggestions: QIcon, QBtn"
+                },
+                "label": {
+                    "desc": "Slot for label; Used only if 'label-slot' prop is set or the 'label' prop is set; When it is used the text in the 'label' prop is ignored"
+                },
+                "error": {
+                    "desc": "Slot for errors; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "hint": {
+                    "desc": "Slot for hint text; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "counter": {
+                    "desc": "Slot for counter text; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "loading": {
+                    "desc": "Override default spinner when component is in loading mode; Use in conjunction with 'loading' prop"
+                },
+                "file": {
+                    "desc": "Override default node to render a file from the user picked list",
+                    "scope": {
+                        "index": {
+                            "type": "Number",
+                            "desc": "Selection index"
+                        },
+                        "file": {
+                            "type": "File",
+                            "desc": "File object"
+                        },
+                        "ref": {
+                            "type": "Component",
+                            "tsType": "QFile",
+                            "desc": "Reference to the QFile component"
+                        }
+                    }
+                },
+                "selected": {
+                    "desc": "Override default selection slot; Suggestion: QChip",
+                    "scope": {
+                        "files": {
+                            "type": [
+                                "FileList",
+                                "Array"
+                            ],
+                            "desc": "Array of File objects"
+                        },
+                        "ref": {
+                            "type": "Component",
+                            "tsType": "QFile",
+                            "desc": "Reference to the QFile component"
+                        }
+                    }
+                }
+            },
+            "events": {
+                "rejected": {
+                    "desc": "Emitted after files are picked and some do not pass the validation props (accept, max-file-size, max-total-size, filter, etc)",
+                    "params": {
+                        "rejectedEntries": {
+                            "type": "Array",
+                            "tsType": "QRejectedEntry",
+                            "desc": "Array of { failedPropValidation: string, file: File } Objects for files that do not pass the validation"
+                        }
+                    }
+                },
+                "clear": {
+                    "desc": "When using the 'clearable' property, this event is emitted when the clear icon is clicked",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "The previous value before clearing it"
+                        }
+                    }
+                },
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "pickFiles": {
+                    "desc": "Trigger file pick; Must be called as a direct consequence of user interaction (eg. in a click handler), due to browsers security policy",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                },
+                "addFiles": {
+                    "desc": "Add files programmatically",
+                    "params": {
+                        "files": {
+                            "type": [
+                                "FileList",
+                                "Array"
+                            ],
+                            "desc": "Array of files (instances of File)",
+                            "required": true
+                        }
+                    }
+                },
+                "resetValidation": {
+                    "desc": "Reset validation status"
+                },
+                "validate": {
+                    "desc": "Trigger a validation",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "Optional value to validate against"
+                        }
+                    },
+                    "returns": {
+                        "type": [
+                            "Boolean",
+                            "Promise<boolean>"
+                        ],
+                        "desc": "True/false if no async rules, otherwise a Promise with the outcome (true -> validation was a success, false -> invalid models detected)",
+                        "examples": [
+                            "true",
+                            "validate().then(outcome => { ... })"
+                        ]
+                    }
+                },
+                "focus": {
+                    "desc": "Focus component"
+                },
+                "blur": {
+                    "desc": "Blur component (lose focus)"
+                },
+                "removeAtIndex": {
+                    "desc": "Remove file located at specific index in the model",
+                    "params": {
+                        "index": {
+                            "type": "Number",
+                            "desc": "Index at which to remove selection",
+                            "required": true
+                        }
+                    }
+                },
+                "removeFile": {
+                    "desc": "Remove specified file from the model",
+                    "params": {
+                        "file": {
+                            "type": "File",
+                            "desc": "File to remove (instance of File)",
+                            "required": true
+                        }
+                    }
+                },
+                "getNativeElement": {
+                    "desc": "DEPRECATED; Access 'nativeEl' directly; Gets the native input DOM Element",
+                    "returns": {
+                        "type": "Element",
+                        "desc": "The underlying native input DOM Element"
+                    }
+                }
+            },
+            "computedProps": {
+                "hasError": {
+                    "type": "Boolean",
+                    "desc": "Whether the component is in error state"
+                },
+                "nativeEl": {
+                    "type": "Element",
+                    "desc": "The native input DOM Element",
+                    "addedIn": "v2.10.1"
+                }
+            }
+        }
+    },
+    {
+        name: "q-form", desc: "表单", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/form"
+            },
+            "props": {
+                "autofocus": {
+                    "type": "Boolean",
+                    "desc": "Focus first focusable element on initial component render",
+                    "category": "behavior"
+                },
+                "no-error-focus": {
+                    "type": "Boolean",
+                    "desc": "Do not try to focus on first component that has a validation error when submitting form",
+                    "category": "behavior"
+                },
+                "no-reset-focus": {
+                    "type": "Boolean",
+                    "desc": "Do not try to focus on first component when resetting form",
+                    "category": "behavior"
+                },
+                "greedy": {
+                    "type": "Boolean",
+                    "desc": "Validate all fields in form (by default it stops after finding the first invalid field with synchronous validation)",
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            },
+            "events": {
+                "submit": {
+                    "desc": "Emitted when all validations have passed when tethered to a submit button",
+                    "params": {
+                        "evt": {
+                            "type": [
+                                "Event",
+                                "SubmitEvent"
+                            ],
+                            "desc": "Form submission event object"
+                        }
+                    }
+                },
+                "reset": {
+                    "desc": "Emitted when all validations have been reset when tethered to a reset button; It is recommended to manually reset the wrapped components models in this handler"
+                },
+                "validation-success": {
+                    "desc": "Emitted after a validation was triggered and all inner Quasar components models are valid"
+                },
+                "validation-error": {
+                    "desc": "Emitted after a validation was triggered and at least one of the inner Quasar components models are NOT valid",
+                    "params": {
+                        "ref": {
+                            "type": "Component",
+                            "desc": "Vue reference to the first component that triggered the validation error"
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "focus": {
+                    "desc": "Focus on first focusable element/component in the form"
+                },
+                "validate": {
+                    "desc": "Triggers a validation on all applicable inner Quasar components",
+                    "params": {
+                        "shouldFocus": {
+                            "type": "Boolean",
+                            "desc": "Tell if it should focus or not on component with error on submitting form; Overrides 'no-focus-error' prop if specified"
+                        }
+                    },
+                    "returns": {
+                        "type": "Promise<boolean>",
+                        "desc": "Promise is always fulfilled and receives the outcome (true -> validation was a success, false -> invalid models detected)",
+                        "examples": [
+                            "validate().then(outcome => { ... })"
+                        ]
+                    }
+                },
+                "resetValidation": {
+                    "desc": "Resets the validation on all applicable inner Quasar components"
+                },
+                "submit": {
+                    "desc": "Manually trigger form validation and submit",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                },
+                "reset": {
+                    "desc": "Manually trigger form reset",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                },
+                "getValidationComponents": {
+                    "desc": "Get array of children vue components that support validation",
+                    "returns": {
+                        "type": "Array",
+                        "desc": "Vue components that support Quasar validation API"
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-field", desc: "字段", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/field"
+            },
+            "props": {
+                "model-value": {
+                    "type": "Any",
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "category": "model"
+                },
+                "error": {
+                    "type": "Boolean",
+                    "desc": "Does field have validation errors?",
+                    "category": "behavior"
+                },
+                "error-message": {
+                    "type": "String",
+                    "desc": "Validation error message (gets displayed only if 'error' is set to 'true')",
+                    "examples": [
+                        "Username must have at least 5 characters"
+                    ],
+                    "category": "content"
+                },
+                "no-error-icon": {
+                    "type": "Boolean",
+                    "desc": "Hide error icon when there is an error",
+                    "category": "content"
+                },
+                "rules": {
+                    "type": "Array",
+                    "tsType": "ValidationRule",
+                    "desc": "Array of Functions/Strings; If String, then it must be a name of one of the embedded validation rules",
+                    "examples": [
+                        ":rules=\"[ val => val.length <= 3 || 'Please use maximum 3 characters' ]\"",
+                        ":rules=\"[ 'fulltime' ]\"",
+                        ":rules=\"[ (val, rules) => rules.email(val) || 'Please enter a valid email address' ]\""
+                    ],
+                    "category": "behavior"
+                },
+                "reactive-rules": {
+                    "type": "Boolean",
+                    "desc": "By default a change in the rules does not trigger a new validation until the model changes; If set to true then a change in the rules will trigger a validation; Has a performance penalty, so use it only when you really need it",
+                    "category": "behavior"
+                },
+                "lazy-rules": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "If set to boolean true then it checks validation status against the 'rules' only after field loses focus for first time; If set to 'ondemand' then it will trigger only when component's validate() method is manually called or when the wrapper QForm submits itself",
+                    "values": [
+                        "(Boolean) true",
+                        "(Boolean) false",
+                        "ondemand"
+                    ],
+                    "category": "behavior"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "A text label that will “float” up above the input field, once the field gets focus",
+                    "examples": [
+                        "Username"
+                    ],
+                    "category": "content"
+                },
+                "stack-label": {
+                    "type": "Boolean",
+                    "desc": "Label will be always shown above the field regardless of field content (if any)",
+                    "category": "content"
+                },
+                "hint": {
+                    "type": "String",
+                    "desc": "Helper (hint) text which gets placed below your wrapped form component",
+                    "examples": [
+                        "Fill in between 3 and 12 characters"
+                    ],
+                    "category": "content"
+                },
+                "hide-hint": {
+                    "type": "Boolean",
+                    "desc": "Hide the helper (hint) text when field doesn't have focus",
+                    "category": "content"
+                },
+                "prefix": {
+                    "type": "String",
+                    "desc": "Prefix",
+                    "examples": [
+                        "$"
+                    ],
+                    "category": "content"
+                },
+                "suffix": {
+                    "type": "String",
+                    "desc": "Suffix",
+                    "examples": [
+                        "@gmail.com"
+                    ],
+                    "category": "content"
+                },
+                "label-color": {
+                    "type": "String",
+                    "desc": "Color name for the label from the Quasar Color Palette; Overrides the 'color' prop; The difference from 'color' prop is that the label will always have this color, even when field is not focused",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "bg-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "loading": {
+                    "type": "Boolean",
+                    "desc": "Signals the user a process is in progress by displaying a spinner; Spinner can be customized by using the 'loading' slot.",
+                    "category": "behavior|content"
+                },
+                "clearable": {
+                    "type": "Boolean",
+                    "desc": "Appends clearable icon when a value (not undefined or null) is set; When clicked, model becomes null",
+                    "category": "behavior|content"
+                },
+                "clear-icon": {
+                    "type": "String",
+                    "desc": "Custom icon to use for the clear button when using along with 'clearable' prop",
+                    "examples": [
+                        "close"
+                    ],
+                    "category": "content"
+                },
+                "filled": {
+                    "type": "Boolean",
+                    "desc": "Use 'filled' design for the field",
+                    "category": "style"
+                },
+                "outlined": {
+                    "type": "Boolean",
+                    "desc": "Use 'outlined' design for the field",
+                    "category": "style"
+                },
+                "borderless": {
+                    "type": "Boolean",
+                    "desc": "Use 'borderless' design for the field",
+                    "category": "style"
+                },
+                "standout": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "Use 'standout' design for the field; Specifies classes to be applied when focused (overriding default ones)",
+                    "examples": [
+                        "standout",
+                        "standout=\"bg-primary text-white\""
+                    ],
+                    "category": "style"
+                },
+                "label-slot": {
+                    "type": "Boolean",
+                    "desc": "Enables label slot; You need to set it to force use of the 'label' slot if the 'label' prop is not set",
+                    "category": "content"
+                },
+                "bottom-slots": {
+                    "type": "Boolean",
+                    "desc": "Enables bottom slots ('error', 'hint', 'counter')",
+                    "category": "content"
+                },
+                "hide-bottom-space": {
+                    "type": "Boolean",
+                    "desc": "Do not reserve space for hint/error/counter anymore when these are not used; As a result, it also disables the animation for those; It also allows the hint/error area to stretch vertically based on its content",
+                    "category": "style"
+                },
+                "counter": {
+                    "type": "Boolean",
+                    "desc": "Show an automatic counter on bottom right",
+                    "category": "content"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a small standard border-radius for a squared shape of the component",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Remove border-radius so borders are squared; Overrides 'rounded' prop",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "item-aligned": {
+                    "type": "Boolean",
+                    "desc": "Match inner content alignment to that of QItem",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "autofocus": {
+                    "type": "Boolean",
+                    "desc": "Focus field on initial component render",
+                    "category": "behavior"
+                },
+                "for": {
+                    "type": "String",
+                    "desc": "Used to specify the 'id' of the control and also the 'for' attribute of the label that wraps it; If no 'name' prop is specified, then it is used for this attribute as well",
+                    "examples": [
+                        "myFieldsId"
+                    ],
+                    "category": "behavior"
+                },
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms; If not specified, it takes the value of 'for' prop, if it exists",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "maxlength": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Specify a max length of model",
+                    "category": "model"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Field main content"
+                },
+                "prepend": {
+                    "desc": "Prepend inner field; Suggestions: QIcon, QBtn"
+                },
+                "append": {
+                    "desc": "Append to inner field; Suggestions: QIcon, QBtn"
+                },
+                "before": {
+                    "desc": "Prepend outer field; Suggestions: QIcon, QBtn"
+                },
+                "after": {
+                    "desc": "Append outer field; Suggestions: QIcon, QBtn"
+                },
+                "label": {
+                    "desc": "Slot for label; Used only if 'label-slot' prop is set or the 'label' prop is set; When it is used the text in the 'label' prop is ignored"
+                },
+                "error": {
+                    "desc": "Slot for errors; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "hint": {
+                    "desc": "Slot for hint text; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "counter": {
+                    "desc": "Slot for counter text; Enabled only if 'bottom-slots' prop is used; Suggestion: <div>"
+                },
+                "loading": {
+                    "desc": "Override default spinner when component is in loading mode; Use in conjunction with 'loading' prop"
+                },
+                "control": {
+                    "desc": "Slot for controls; Suggestion QSlider, QRange, QKnob, ...",
+                    "scope": {
+                        "id": {
+                            "type": "String",
+                            "desc": "Element id used in the `for` attribute of the field label. Can be used to link the control to the label",
+                            "examples": [
+                                "qf_363270c0-7a83-62b1-8dcf-6dfd64ee38fa"
+                            ]
+                        },
+                        "field": {
+                            "type": "Element",
+                            "desc": "DOM element of the field"
+                        },
+                        "editable": {
+                            "type": "Boolean",
+                            "desc": "Field is editable"
+                        },
+                        "focused": {
+                            "type": "Boolean",
+                            "desc": "Field has focus"
+                        },
+                        "floatingLabel": {
+                            "type": "Boolean",
+                            "desc": "Field's label is floating"
+                        },
+                        "modelValue": {
+                            "type": "Any",
+                            "desc": "Field's value",
+                            "examples": [
+                                0.241,
+                                "Text"
+                            ]
+                        },
+                        "emitValue": {
+                            "type": "Function",
+                            "desc": "Function that emits an @input event in the context of the field",
+                            "params": {
+                                "value": {
+                                    "type": "Any",
+                                    "required": true,
+                                    "desc": "Value to be emitted",
+                                    "examples": [
+                                        0,
+                                        "Changed text"
+                                    ]
+                                }
+                            },
+                            "returns": null
+                        }
+                    }
+                },
+                "rawControl": {
+                    "internal": true
+                }
+            },
+            "events": {
+                "clear": {
+                    "desc": "When using the 'clearable' property, this event is emitted when the clear icon is clicked",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "The previous value before clearing it"
+                        }
+                    }
+                },
+                "update:model-value": {
+                    "desc": "Emitted when the model changes, only when used with 'clearable' or the 'control' scoped slot.",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                },
+                "focus": {
+                    "desc": "Emitted when component gets focused",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                },
+                "blur": {
+                    "desc": "Emitted when component loses focus",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "resetValidation": {
+                    "desc": "Reset validation status"
+                },
+                "validate": {
+                    "desc": "Trigger a validation",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "Optional value to validate against"
+                        }
+                    },
+                    "returns": {
+                        "type": [
+                            "Boolean",
+                            "Promise<boolean>"
+                        ],
+                        "desc": "True/false if no async rules, otherwise a Promise with the outcome (true -> validation was a success, false -> invalid models detected)",
+                        "examples": [
+                            "true",
+                            "validate().then(outcome => { ... })"
+                        ]
+                    }
+                },
+                "focus": {
+                    "desc": "Focus field"
+                },
+                "blur": {
+                    "desc": "Blur field (lose focus)"
+                }
+            },
+            "computedProps": {
+                "hasError": {
+                    "type": "Boolean",
+                    "desc": "Whether the component is in error state"
+                }
+            }
+        }
+    },
+    {
+        name: "q-radio", desc: "单选框", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/radio"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "Number",
+                        "String",
+                        "null",
+                        "undefined"
+                    ],
+                    "examples": [
+                        "v-model=\"option\""
+                    ]
+                },
+                "val": {
+                    "type": [
+                        "Number",
+                        "String",
+                        "null",
+                        "undefined"
+                    ],
+                    "required": true,
+                    "desc": "The actual value of the option with which model value is changed",
+                    "examples": [
+                        "opt1",
+                        50
+                    ],
+                    "category": "model"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "Label to display along the radio control (or use the default slot instead of this prop)",
+                    "examples": [
+                        "label=\"Option 1\""
+                    ],
+                    "category": "label"
+                },
+                "left-label": {
+                    "type": "Boolean",
+                    "desc": "Label (if any specified) should be displayed on the left side of the checkbox",
+                    "category": "label"
+                },
+                "checked-icon": {
+                    "type": "String",
+                    "desc": "The icon to be used when selected (instead of the default design)",
+                    "examples": [
+                        "visibility"
+                    ],
+                    "category": "icons",
+                    "addedIn": "v2.5"
+                },
+                "unchecked-icon": {
+                    "type": "String",
+                    "desc": "The icon to be used when un-selected (instead of the default design)",
+                    "examples": [
+                        "visibility_off"
+                    ],
+                    "category": "icons",
+                    "addedIn": "v2.5"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "keep-color": {
+                    "type": "Boolean",
+                    "desc": "Should the color (if specified any) be kept when checkbox is unticked?",
+                    "category": "behavior"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot can be used as label, unless 'label' prop is specified; Suggestion: string"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        },
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "set": {
+                    "desc": "Sets the Radio's v-model to equal the val"
+                }
+            }
+        }
+    },
+    {
+        name: "q-checkbox", desc: "复选框", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/checkbox"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "Any",
+                        "Array"
+                    ],
+                    "examples": [
+                        "false",
+                        "['car', 'building']"
+                    ]
+                },
+                "val": {
+                    "type": "Any",
+                    "desc": "Works when model ('value') is Array. It tells the component which value should add/remove when ticked/unticked",
+                    "examples": [
+                        "car"
+                    ],
+                    "category": "model"
+                },
+                "true-value": {
+                    "type": "Any",
+                    "desc": "What model value should be considered as checked/ticked/on?",
+                    "default": true,
+                    "examples": [
+                        "Agreed"
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "false-value": {
+                    "type": "Any",
+                    "desc": "What model value should be considered as unchecked/unticked/off?",
+                    "default": false,
+                    "examples": [
+                        "Disagree"
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "indeterminate-value": {
+                    "type": "Any",
+                    "desc": "What model value should be considered as 'indeterminate'?",
+                    "default": null,
+                    "examples": [
+                        0,
+                        "not_answered"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "toggle-order": {
+                    "type": "String",
+                    "desc": "Determines toggle order of the two states ('t' stands for state of true, 'f' for state of false); If 'toggle-indeterminate' is true, then the order is: indet -> first state -> second state -> indet (and repeat), otherwise: indet -> first state -> second state -> first state -> second state -> ...",
+                    "default": "tf",
+                    "values": [
+                        "tf",
+                        "ft"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "toggle-indeterminate": {
+                    "type": "Boolean",
+                    "desc": "When user clicks/taps on the component, should we toggle through the indeterminate state too?",
+                    "category": "behavior"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "Label to display along the component (or use the default slot instead of this prop)",
+                    "examples": [
+                        "I agree with the Terms and Conditions"
+                    ],
+                    "category": "label"
+                },
+                "left-label": {
+                    "type": "Boolean",
+                    "desc": "Label (if any specified) should be displayed on the left side of the component",
+                    "category": "label"
+                },
+                "checked-icon": {
+                    "type": "String",
+                    "examples": [
+                        "visibility"
+                    ],
+                    "category": "icons",
+                    "desc": "The icon to be used when the model is truthy (instead of the default design)",
+                    "addedIn": "v2.5"
+                },
+                "unchecked-icon": {
+                    "type": "String",
+                    "examples": [
+                        "visibility_off"
+                    ],
+                    "category": "icons",
+                    "desc": "The icon to be used when the toggle is falsy (instead of the default design)",
+                    "addedIn": "v2.5"
+                },
+                "indeterminate-icon": {
+                    "type": "String",
+                    "examples": [
+                        "help"
+                    ],
+                    "category": "icons",
+                    "desc": "The icon to be used when the model is indeterminate (instead of the default design)",
+                    "addedIn": "v2.5"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "keep-color": {
+                    "type": "Boolean",
+                    "desc": "Should the color (if specified any) be kept when the component is unticked/ off?",
+                    "category": "behavior"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot can be used as label, unless 'label' prop is specified; Suggestion: string"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        },
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "toggle": {
+                    "desc": "Toggle the state (of the model)"
+                }
+            }
+        }
+    },
+    {
+        name: "q-toggle", desc: "switch切换", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/toggle"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "Any",
+                        "Array"
+                    ],
+                    "examples": [
+                        "false",
+                        "['car', 'building']"
+                    ]
+                },
+                "val": {
+                    "type": "Any",
+                    "desc": "Works when model ('value') is Array. It tells the component which value should add/remove when ticked/unticked",
+                    "examples": [
+                        "car"
+                    ],
+                    "category": "model"
+                },
+                "true-value": {
+                    "type": "Any",
+                    "desc": "What model value should be considered as checked/ticked/on?",
+                    "default": true,
+                    "examples": [
+                        "Agreed"
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "false-value": {
+                    "type": "Any",
+                    "desc": "What model value should be considered as unchecked/unticked/off?",
+                    "default": false,
+                    "examples": [
+                        "Disagree"
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "indeterminate-value": {
+                    "type": "Any",
+                    "desc": "What model value should be considered as 'indeterminate'?",
+                    "default": null,
+                    "examples": [
+                        0,
+                        "not_answered"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "toggle-order": {
+                    "type": "String",
+                    "desc": "Determines toggle order of the two states ('t' stands for state of true, 'f' for state of false); If 'toggle-indeterminate' is true, then the order is: indet -> first state -> second state -> indet (and repeat), otherwise: indet -> first state -> second state -> first state -> second state -> ...",
+                    "default": "tf",
+                    "values": [
+                        "tf",
+                        "ft"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "toggle-indeterminate": {
+                    "type": "Boolean",
+                    "desc": "When user clicks/taps on the component, should we toggle through the indeterminate state too?",
+                    "category": "behavior"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "Label to display along the component (or use the default slot instead of this prop)",
+                    "examples": [
+                        "I agree with the Terms and Conditions"
+                    ],
+                    "category": "label"
+                },
+                "left-label": {
+                    "type": "Boolean",
+                    "desc": "Label (if any specified) should be displayed on the left side of the component",
+                    "category": "label"
+                },
+                "checked-icon": {
+                    "type": "String",
+                    "examples": [
+                        "visibility"
+                    ],
+                    "category": "icons",
+                    "desc": "The icon to be used when the toggle is on"
+                },
+                "unchecked-icon": {
+                    "type": "String",
+                    "examples": [
+                        "visibility_off"
+                    ],
+                    "category": "icons",
+                    "desc": "The icon to be used when the toggle is off"
+                },
+                "indeterminate-icon": {
+                    "type": "String",
+                    "examples": [
+                        "help"
+                    ],
+                    "category": "icons",
+                    "desc": "The icon to be used when the model is indeterminate"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "keep-color": {
+                    "type": "Boolean",
+                    "desc": "Should the color (if specified any) be kept when the component is unticked/ off?",
+                    "category": "behavior"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-color": {
+                    "type": "String",
+                    "desc": "Override default icon color (for truthy state only); Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot can be used as label, unless 'label' prop is specified; Suggestion: string"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        },
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "toggle": {
+                    "desc": "Toggle the state (of the model)"
+                }
+            }
+        }
+    },
+    {
+        name: "q-btn-toggle", desc: "按钮切换", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/button-toggle"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Any",
+                    "examples": [
+                        "v-model=\"selected\""
+                    ]
+                },
+                "options": {
+                    "type": "Array",
+                    "desc": "Array of Objects defining each option",
+                    "required": true,
+                    "definition": {
+                        "attrs": {
+                            "type": "Object",
+                            "desc": "Key-value for attributes to be set on the button",
+                            "examples": [
+                                "{ 'aria-label': 'Button label' }"
+                            ]
+                        },
+                        "label": {
+                            "type": "String",
+                            "desc": "Label of option button; Use this prop and/or 'icon', but at least one is required",
+                            "examples": [
+                                "Option 1"
+                            ]
+                        },
+                        "icon": {
+                            "type": "String",
+                            "desc": "Icon of option button; Use this prop and/or 'label', but at least one is required",
+                            "examples": [
+                                "map",
+                                "ion-add",
+                                "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                                "img:path/to/some_image.png"
+                            ],
+                            "category": "content"
+                        },
+                        "value": {
+                            "type": "Any",
+                            "desc": "Value of the option that will be used by component model",
+                            "required": true
+                        },
+                        "slot": {
+                            "type": "String",
+                            "desc": "Slot name to use for this button content; Useful for customizing content or even add tooltips",
+                            "examples": [
+                                "mySlot"
+                            ]
+                        },
+                        "...props": {
+                            "type": "Any",
+                            "desc": "Any other QBtn props (including class and style)"
+                        }
+                    },
+                    "examples": [
+                        "[ {label: 'One', value: 'one'}, {label: 'Two', value: 'two'} ]"
+                    ],
+                    "category": "model"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "toggle-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "default": "primary",
+                    "required": false
+                },
+                "toggle-text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "spread": {
+                    "type": "Boolean",
+                    "desc": "Spread horizontally to all available space",
+                    "category": "content"
+                },
+                "outline": {
+                    "type": "Boolean",
+                    "desc": "Use 'outline' design",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Use 'flat' design",
+                    "category": "style"
+                },
+                "unelevated": {
+                    "type": "Boolean",
+                    "desc": "Remove shadow",
+                    "category": "style"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a more prominent border-radius for a squared shape button",
+                    "category": "style"
+                },
+                "push": {
+                    "type": "Boolean",
+                    "desc": "Use 'push' design",
+                    "category": "style"
+                },
+                "glossy": {
+                    "type": "Boolean",
+                    "desc": "Applies a glossy effect",
+                    "category": "style"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Button size name or a CSS unit including unit name",
+                    "examples": [
+                        "xs",
+                        "sm",
+                        "md",
+                        "lg",
+                        "xl",
+                        "25px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "padding": {
+                    "type": "String",
+                    "desc": "Apply custom padding (vertical [horizontal]); Size in CSS units, including unit name or standard size name (none|xs|sm|md|lg|xl); Also removes the min width and height when set",
+                    "examples": [
+                        "16px",
+                        "10px 5px",
+                        "2rem",
+                        "xs",
+                        "md lg",
+                        "2px 2px 5px 7px"
+                    ],
+                    "category": "style"
+                },
+                "no-caps": {
+                    "type": "Boolean",
+                    "desc": "Avoid turning label text into caps (which happens by default)",
+                    "category": "content"
+                },
+                "no-wrap": {
+                    "type": "Boolean",
+                    "desc": "Avoid label text wrapping",
+                    "category": "content"
+                },
+                "ripple": {
+                    "type": [
+                        "Boolean",
+                        "Object"
+                    ],
+                    "desc": "Configure material ripple (disable it by setting it to 'false' or supply a config object)",
+                    "default": true,
+                    "examples": [
+                        false,
+                        "{ early: true, center: true, color: 'teal', keyCodes: [] }"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "stack": {
+                    "type": "Boolean",
+                    "desc": "Stack icon and label vertically instead of on same line (like it is by default)",
+                    "category": "content"
+                },
+                "stretch": {
+                    "type": "Boolean",
+                    "desc": "When used on flexbox parent, button will stretch to parent's height",
+                    "category": "content"
+                },
+                "clearable": {
+                    "type": "Boolean",
+                    "desc": "Clears model on click of the already selected button",
+                    "category": "model"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Suggestions: QTooltip, QBadge"
+                },
+                "...": {
+                    "desc": "Any other dynamic slots to be used with 'slot' property of the 'options' prop"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                },
+                "clear": {
+                    "desc": "When using the 'clearable' property, this event is emitted when the already selected button is clicked"
+                }
+            }
+        }
+    },
+    {
+        name: "q-option-group", desc: "选项组", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/option-group"
+            },
+            "props": {
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Any",
+                    "examples": [
+                        "v-model=\"group\""
+                    ]
+                },
+                "options": {
+                    "type": "Array",
+                    "desc": "Array of objects with value, label, and disable (optional) props. The binary components will be created according to this array; Props from QToggle, QCheckbox or QRadio can also be added as key/value pairs to control the components singularly",
+                    "definition": {
+                        "label": {
+                            "type": "String",
+                            "desc": "Label to display along the component",
+                            "required": true,
+                            "examples": [
+                                "Option 1",
+                                "Option 2",
+                                "Option 3"
+                            ]
+                        },
+                        "value": {
+                            "type": "Any",
+                            "desc": "Value of the option that will be used by the component model",
+                            "required": true,
+                            "examples": [
+                                "op1",
+                                "op2",
+                                "op3"
+                            ]
+                        },
+                        "disable": {
+                            "type": "Boolean",
+                            "desc": "If true, the option will be disabled"
+                        },
+                        "...props": {
+                            "type": "Any",
+                            "desc": "Any other props from QToggle, QCheckbox, or QRadio",
+                            "examples": [
+                                "val=\"car\"",
+                                ":true-value=\"trueValue\"",
+                                "checked-icon=\"visibility\""
+                            ]
+                        }
+                    },
+                    "examples": [
+                        ":options=\"[ { label: 'Option 1', value: 'op1' }, { label: 'Option 2', value: 'op2' }, { label: 'Option 3', value: 'op3', disable: true } ]\""
+                    ],
+                    "category": "model"
+                },
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the controls; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "type": {
+                    "type": "String",
+                    "desc": "The type of input component to be used",
+                    "values": [
+                        "radio",
+                        "checkbox",
+                        "toggle"
+                    ],
+                    "default": "radio",
+                    "category": "content",
+                    "required": false
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "keep-color": {
+                    "type": "Boolean",
+                    "desc": "Should the color (if specified any) be kept when input components are unticked?",
+                    "category": "behavior"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "left-label": {
+                    "type": "Boolean",
+                    "desc": "Label (if any specified) should be displayed on the left side of the input components",
+                    "category": "content"
+                },
+                "inline": {
+                    "type": "Boolean",
+                    "desc": "Show input components as inline-block rather than each having their own row",
+                    "category": "content"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                }
+            },
+            "slots": {
+                "label": {
+                    "desc": "Generic slot for all labels",
+                    "scope": {
+                        "...self": {
+                            "type": "Object",
+                            "desc": "The corresponding option entry from the 'options' prop",
+                            "definition": {
+                                "label": {
+                                    "type": "String",
+                                    "desc": "Label to display along the component",
+                                    "required": true,
+                                    "examples": [
+                                        "Option 1",
+                                        "Option 2",
+                                        "Option 3"
+                                    ]
+                                },
+                                "value": {
+                                    "type": "Any",
+                                    "desc": "Value of the option that will be used by the component model",
+                                    "required": true,
+                                    "examples": [
+                                        "op1",
+                                        "op2",
+                                        "op3"
+                                    ]
+                                },
+                                "disable": {
+                                    "type": "Boolean",
+                                    "desc": "If true, the option will be disabled"
+                                },
+                                "...props": {
+                                    "type": "Any",
+                                    "desc": "Any other props from QToggle, QCheckbox, or QRadio",
+                                    "examples": [
+                                        "val=\"car\"",
+                                        ":true-value=\"trueValue\"",
+                                        "checked-icon=\"visibility\""
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "addedIn": "v2.2"
+                },
+                "label-[name]": {
+                    "desc": "Slot to define the specific label for the option at '[name]' where name is a 0-based index; Overrides the generic 'label' slot if used",
+                    "scope": {
+                        "...self": {
+                            "type": "Object",
+                            "desc": "The corresponding option entry from the 'options' prop",
+                            "definition": {
+                                "label": {
+                                    "type": "String",
+                                    "desc": "Label to display along the component",
+                                    "required": true,
+                                    "examples": [
+                                        "Option 1",
+                                        "Option 2",
+                                        "Option 3"
+                                    ]
+                                },
+                                "value": {
+                                    "type": "Any",
+                                    "desc": "Value of the option that will be used by the component model",
+                                    "required": true,
+                                    "examples": [
+                                        "op1",
+                                        "op2",
+                                        "op3"
+                                    ]
+                                },
+                                "disable": {
+                                    "type": "Boolean",
+                                    "desc": "If true, the option will be disabled"
+                                },
+                                "...props": {
+                                    "type": "Any",
+                                    "desc": "Any other props from QToggle, QCheckbox, or QRadio",
+                                    "examples": [
+                                        "val=\"car\"",
+                                        ":true-value=\"trueValue\"",
+                                        "checked-icon=\"visibility\""
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "addedIn": "v2.2"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-slider", desc: "滑块", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/slider"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "min": {
+                    "type": "Number",
+                    "desc": "Minimum value of the model; Set track's minimum value",
+                    "default": 0,
+                    "examples": [
+                        ":min=\"0\""
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "max": {
+                    "type": "Number",
+                    "desc": "Maximum value of the model; Set track's maximum value",
+                    "default": 100,
+                    "category": "model",
+                    "required": false
+                },
+                "inner-min": {
+                    "type": "Number",
+                    "desc": "Inner minimum value of the model; Use in case you need the model value to be inside of the track's min-max values; Needs to be higher or equal to 'min' prop; Defaults to 'min' prop",
+                    "category": "model",
+                    "addedIn": "v2.4"
+                },
+                "inner-max": {
+                    "type": "Number",
+                    "desc": "Inner maximum value of the model; Use in case you need the model value to be inside of the track's min-max values; Needs to be lower or equal to 'max' prop; Defaults to 'max' prop",
+                    "category": "model",
+                    "addedIn": "v2.4"
+                },
+                "step": {
+                    "type": "Number",
+                    "desc": "Specify step amount between valid values (> 0.0); When step equals to 0 it defines infinite granularity",
+                    "default": 1,
+                    "category": "model",
+                    "required": false
+                },
+                "snap": {
+                    "type": "Boolean",
+                    "desc": "Snap on valid values, rather than sliding freely; Suggestion: use with 'step' prop",
+                    "category": "behavior"
+                },
+                "reverse": {
+                    "type": "Boolean",
+                    "desc": "Work in reverse (changes direction)",
+                    "category": "behavior"
+                },
+                "vertical": {
+                    "type": "Boolean",
+                    "desc": "Display in vertical direction",
+                    "category": "behavior"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "track-color": {
+                    "type": "String",
+                    "desc": "Color name for the track (can be 'transparent' too) from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "track-img": {
+                    "type": "String",
+                    "desc": "Apply a pattern image on the track",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "~assets/my-pattern.png"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "inner-track-color": {
+                    "type": "String",
+                    "desc": "Color name for the inner track (can be 'transparent' too) from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "inner-track-img": {
+                    "type": "String",
+                    "desc": "Apply a pattern image on the inner track",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "~assets/my-pattern.png"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "selection-color": {
+                    "type": "String",
+                    "desc": "Color name for the selection bar (can be 'transparent' too) from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "selection-img": {
+                    "type": "String",
+                    "desc": "Apply a pattern image on the selection bar",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "~assets/my-pattern.png"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "label": {
+                    "type": "Boolean",
+                    "desc": "Popup a label when user clicks/taps on the slider thumb and moves it",
+                    "category": "content"
+                },
+                "label-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "label-text-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "switch-label-side": {
+                    "type": "Boolean",
+                    "desc": "Switch the position of the label (top <-> bottom or left <-> right)",
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "label-always": {
+                    "type": "Boolean",
+                    "desc": "Always display the label",
+                    "category": "behavior|content"
+                },
+                "markers": {
+                    "type": [
+                        "Boolean",
+                        "Number"
+                    ],
+                    "desc": "Display markers on the track, one for each possible value for the model or using a custom step (when specifying a Number)",
+                    "category": "content",
+                    "examples": [
+                        "markers",
+                        ":markers=\"5\""
+                    ]
+                },
+                "marker-labels": {
+                    "type": [
+                        "Boolean",
+                        "Array",
+                        "Object",
+                        "Function"
+                    ],
+                    "tsType": "SliderMarkerLabels",
+                    "desc": "Configure the marker labels (or show the default ones if 'true'); Array of definition Objects or Object with key-value where key is the model and the value is the marker label definition",
+                    "definition": {
+                        "value": {
+                            "type": "Number",
+                            "required": true,
+                            "desc": "Value of equivalent model where to position the marker"
+                        },
+                        "label": {
+                            "type": [
+                                "Number",
+                                "String"
+                            ],
+                            "desc": "Label to use"
+                        },
+                        "classes": {
+                            "type": [
+                                "String",
+                                "Array",
+                                "Object"
+                            ],
+                            "tsType": "VueClassProp",
+                            "desc": "CSS classes to be attributed to the marker label",
+                            "examples": [
+                                "my-class-name"
+                            ]
+                        },
+                        "style": {
+                            "type": "Object",
+                            "tsType": "VueStyleObjectProp",
+                            "desc": "Style definitions to be attributed to the marker label",
+                            "examples": [
+                                "{ height: '24px' }"
+                            ]
+                        }
+                    },
+                    "params": {
+                        "value": {
+                            "type": "Number",
+                            "desc": "The marker value to transform",
+                            "required": true
+                        }
+                    },
+                    "returns": {
+                        "type": [
+                            "String",
+                            "Object"
+                        ],
+                        "desc": "Marker definition Object or directly a String for the label of the marker",
+                        "definition": {
+                            "value": {
+                                "type": "Number",
+                                "desc": "Value of equivalent model where to position the marker"
+                            },
+                            "label": {
+                                "type": [
+                                    "Number",
+                                    "String"
+                                ],
+                                "desc": "Label to use"
+                            },
+                            "classes": {
+                                "type": [
+                                    "String",
+                                    "Array",
+                                    "Object"
+                                ],
+                                "tsType": "VueClassProp",
+                                "desc": "CSS classes to be attributed to the marker label",
+                                "examples": [
+                                    "my-class-name"
+                                ]
+                            },
+                            "style": {
+                                "type": "Object",
+                                "tsType": "VueStyleObjectProp",
+                                "desc": "Style definitions to be attributed to the marker label",
+                                "examples": [
+                                    "{ height: '24px' }"
+                                ]
+                            }
+                        }
+                    },
+                    "category": "content",
+                    "examples": [
+                        true,
+                        "[ { value: 0, label: '0%' }, { value: 5, classes: 'my-class', style: { width: '24px' } } ]",
+                        "{ 0: '0%', 5: { label: '5%', classes: 'my-class', style: { width: '24px' } } }",
+                        "val => (10 * val) + '%'",
+                        "val => ({ label: (10 * val) + '%', classes: 'my-class', style: { width: '24px' } })"
+                    ],
+                    "addedIn": "v2.4"
+                },
+                "marker-labels-class": {
+                    "type": "String",
+                    "desc": "CSS class(es) to apply to the marker labels container",
+                    "examples": [
+                        "text-orange"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "switch-marker-labels-side": {
+                    "type": "Boolean",
+                    "desc": "Switch the position of the marker labels (top <-> bottom or left <-> right)",
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "track-size": {
+                    "type": "String",
+                    "desc": "Track size (including CSS unit)",
+                    "default": "4px",
+                    "examples": [
+                        "35px"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4",
+                    "required": false
+                },
+                "thumb-size": {
+                    "type": "String",
+                    "desc": "Thumb size (including CSS unit)",
+                    "default": "20px",
+                    "examples": [
+                        "20px"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4",
+                    "required": false
+                },
+                "thumb-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "thumb-path": {
+                    "type": "String",
+                    "desc": "Set custom thumb svg path",
+                    "default": "M 4, 10 a 6,6 0 1,0 12,0 a 6,6 0 1,0 -12,0",
+                    "examples": [
+                        "M5 5 h10 v10 h-10 v-10"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "model-value": {
+                    "desc": "Model of the component (must be between min/max); Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "Number",
+                        "null",
+                        "undefined"
+                    ],
+                    "examples": [
+                        "v-model=\"positionModel\""
+                    ]
+                },
+                "label-value": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Override default label value",
+                    "examples": [
+                        ":label-value=\"model + 'px'\""
+                    ],
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "marker-label": {
+                    "desc": "What should the menu display after filtering options and none are left to be displayed; Suggestion: <div>",
+                    "addedIn": "v2.4",
+                    "scope": {
+                        "marker": {
+                            "type": "Object",
+                            "tsType": "SliderMarkerLabelConfig",
+                            "desc": "Config for current marker label",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "desc": "Index of the marker label (0-based)"
+                                },
+                                "value": {
+                                    "type": "Number",
+                                    "desc": "Equivalent model value for the marker label"
+                                },
+                                "label": {
+                                    "type": [
+                                        "Number",
+                                        "String"
+                                    ],
+                                    "desc": "Configured label for the marker"
+                                },
+                                "classes": {
+                                    "type": "String",
+                                    "desc": "Required CSS classes to be applied to the marker element"
+                                },
+                                "style": {
+                                    "type": "Object",
+                                    "tsType": "VueStyleObjectProp",
+                                    "desc": "Style definitions to be attributed to the marker label",
+                                    "examples": [
+                                        "{ height: '24px' }"
+                                    ]
+                                }
+                            }
+                        },
+                        "markerList": {
+                            "type": "Array",
+                            "tsType": "SliderMarkerLabelArrayConfig",
+                            "desc": "Array of marker label configs",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "desc": "Index of the marker label (0-based)"
+                                },
+                                "value": {
+                                    "type": "Number",
+                                    "desc": "Equivalent model value for the marker label"
+                                },
+                                "label": {
+                                    "type": [
+                                        "Number",
+                                        "String"
+                                    ],
+                                    "desc": "Configured label for the marker"
+                                },
+                                "classes": {
+                                    "type": "String",
+                                    "desc": "Required CSS classes to be applied to the marker element"
+                                },
+                                "style": {
+                                    "type": "Object",
+                                    "tsType": "VueStyleObjectProp",
+                                    "desc": "Style definitions to be attributed to the marker label",
+                                    "examples": [
+                                        "{ height: '24px' }"
+                                    ]
+                                }
+                            }
+                        },
+                        "markerMap": {
+                            "type": "Object",
+                            "tsType": "SliderMarkerLabelObjectConfig",
+                            "desc": "Object with key-value where key is the model and the value is the marker label config",
+                            "definition": {
+                                "...key": {
+                                    "type": "Object",
+                                    "desc": "Marker label config",
+                                    "definition": {
+                                        "index": {
+                                            "type": "Number",
+                                            "desc": "Index of the marker label (0-based)"
+                                        },
+                                        "value": {
+                                            "type": "Number",
+                                            "desc": "Equivalent model value for the marker label"
+                                        },
+                                        "label": {
+                                            "type": [
+                                                "Number",
+                                                "String"
+                                            ],
+                                            "desc": "Configured label for the marker"
+                                        },
+                                        "classes": {
+                                            "type": "String",
+                                            "desc": "Required CSS classes to be applied to the marker element"
+                                        },
+                                        "style": {
+                                            "type": "Object",
+                                            "tsType": "VueStyleObjectProp",
+                                            "desc": "Style definitions to be attributed to the marker label",
+                                            "examples": [
+                                                "{ height: '24px' }"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "classes": {
+                            "type": "String",
+                            "desc": "Required CSS classes to be applied to the marker element"
+                        },
+                        "getStyle": {
+                            "type": "Function",
+                            "desc": "Get CSS style Object to apply to a marker element at respective model value; For perf reasons, use only if requested model value is not already part of markerMap",
+                            "params": {
+                                "value": {
+                                    "type": "Number",
+                                    "desc": "The marker label equivalent model value",
+                                    "required": true
+                                }
+                            },
+                            "returns": {
+                                "type": "Object",
+                                "desc": "CSS style Object to apply to a marker element at respective model value"
+                            }
+                        }
+                    }
+                },
+                "marker-label-group": {
+                    "desc": "What should the menu display after filtering options and none are left to be displayed; Suggestion: <div>",
+                    "addedIn": "v2.4",
+                    "scope": {
+                        "markerList": {
+                            "type": "Array",
+                            "tsType": "SliderMarkerLabelArrayConfig",
+                            "desc": "Array of marker label configs",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "desc": "Index of the marker label (0-based)"
+                                },
+                                "value": {
+                                    "type": "Number",
+                                    "desc": "Equivalent model value for the marker label"
+                                },
+                                "label": {
+                                    "type": [
+                                        "Number",
+                                        "String"
+                                    ],
+                                    "desc": "Configured label for the marker"
+                                },
+                                "classes": {
+                                    "type": "String",
+                                    "desc": "Required CSS classes to be applied to the marker element"
+                                },
+                                "style": {
+                                    "type": "Object",
+                                    "tsType": "VueStyleObjectProp",
+                                    "desc": "Style definitions to be attributed to the marker label",
+                                    "examples": [
+                                        "{ height: '24px' }"
+                                    ]
+                                }
+                            }
+                        },
+                        "markerMap": {
+                            "type": "Object",
+                            "tsType": "SliderMarkerLabelObjectConfig",
+                            "desc": "Object with key-value where key is the model and the value is the marker label config",
+                            "definition": {
+                                "...key": {
+                                    "type": "Object",
+                                    "desc": "Marker label config",
+                                    "definition": {
+                                        "index": {
+                                            "type": "Number",
+                                            "desc": "Index of the marker label (0-based)"
+                                        },
+                                        "value": {
+                                            "type": "Number",
+                                            "desc": "Equivalent model value for the marker label"
+                                        },
+                                        "label": {
+                                            "type": [
+                                                "Number",
+                                                "String"
+                                            ],
+                                            "desc": "Configured label for the marker"
+                                        },
+                                        "classes": {
+                                            "type": "String",
+                                            "desc": "Required CSS classes to be applied to the marker element"
+                                        },
+                                        "style": {
+                                            "type": "Object",
+                                            "tsType": "VueStyleObjectProp",
+                                            "desc": "Style definitions to be attributed to the marker label",
+                                            "examples": [
+                                                "{ height: '24px' }"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "classes": {
+                            "type": "String",
+                            "desc": "Required CSS classes to be applied to the marker element"
+                        },
+                        "getStyle": {
+                            "type": "Function",
+                            "desc": "Get CSS style Object to apply to a marker element at respective model value; For perf reasons, use only if requested model value is not already part of markerMap",
+                            "params": {
+                                "value": {
+                                    "type": "Number",
+                                    "desc": "The marker label equivalent model value",
+                                    "required": true
+                                }
+                            },
+                            "returns": {
+                                "type": "Object",
+                                "desc": "CSS style Object to apply to a marker element at respective model value"
+                            }
+                        }
+                    }
+                }
+            },
+            "events": {
+                "change": {
+                    "desc": "Emitted on lazy model value change (after user slides then releases the thumb)",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                },
+                "pan": {
+                    "desc": "Triggered when user starts panning on the component",
+                    "params": {
+                        "phase": {
+                            "type": "String",
+                            "desc": "Phase of panning",
+                            "values": [
+                                "start",
+                                "end"
+                            ]
+                        }
+                    }
+                },
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": [
+                                "Number",
+                                "null"
+                            ],
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-range", desc: "范围", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/range"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "min": {
+                    "type": "Number",
+                    "desc": "Minimum value of the model; Set track's minimum value",
+                    "default": 0,
+                    "examples": [
+                        ":min=\"0\""
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "max": {
+                    "type": "Number",
+                    "desc": "Maximum value of the model; Set track's maximum value",
+                    "default": 100,
+                    "category": "model",
+                    "required": false
+                },
+                "inner-min": {
+                    "type": "Number",
+                    "desc": "Inner minimum value of the model; Use in case you need the model value to be inside of the track's min-max values; Needs to be higher or equal to 'min' prop; Defaults to 'min' prop",
+                    "category": "model",
+                    "addedIn": "v2.4"
+                },
+                "inner-max": {
+                    "type": "Number",
+                    "desc": "Inner maximum value of the model; Use in case you need the model value to be inside of the track's min-max values; Needs to be lower or equal to 'max' prop; Defaults to 'max' prop",
+                    "category": "model",
+                    "addedIn": "v2.4"
+                },
+                "step": {
+                    "type": "Number",
+                    "desc": "Specify step amount between valid values (> 0.0); When step equals to 0 it defines infinite granularity",
+                    "default": 1,
+                    "category": "model",
+                    "required": false
+                },
+                "snap": {
+                    "type": "Boolean",
+                    "desc": "Snap on valid values, rather than sliding freely; Suggestion: use with 'step' prop",
+                    "category": "behavior"
+                },
+                "reverse": {
+                    "type": "Boolean",
+                    "desc": "Work in reverse (changes direction)",
+                    "category": "behavior"
+                },
+                "vertical": {
+                    "type": "Boolean",
+                    "desc": "Display in vertical direction",
+                    "category": "behavior"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "track-color": {
+                    "type": "String",
+                    "desc": "Color name for the track (can be 'transparent' too) from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "track-img": {
+                    "type": "String",
+                    "desc": "Apply a pattern image on the track",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "~assets/my-pattern.png"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "inner-track-color": {
+                    "type": "String",
+                    "desc": "Color name for the inner track (can be 'transparent' too) from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "inner-track-img": {
+                    "type": "String",
+                    "desc": "Apply a pattern image on the inner track",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "~assets/my-pattern.png"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "selection-color": {
+                    "type": "String",
+                    "desc": "Color name for the selection bar (can be 'transparent' too) from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "selection-img": {
+                    "type": "String",
+                    "desc": "Apply a pattern image on the selection bar",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "~assets/my-pattern.png"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "label": {
+                    "type": "Boolean",
+                    "desc": "Popup a label when user clicks/taps on the slider thumb and moves it",
+                    "category": "content"
+                },
+                "label-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "label-text-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "switch-label-side": {
+                    "type": "Boolean",
+                    "desc": "Switch the position of the label (top <-> bottom or left <-> right)",
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "label-always": {
+                    "type": "Boolean",
+                    "desc": "Always display the label",
+                    "category": "behavior|content"
+                },
+                "markers": {
+                    "type": [
+                        "Boolean",
+                        "Number"
+                    ],
+                    "desc": "Display markers on the track, one for each possible value for the model or using a custom step (when specifying a Number)",
+                    "category": "content",
+                    "examples": [
+                        "markers",
+                        ":markers=\"5\""
+                    ]
+                },
+                "marker-labels": {
+                    "type": [
+                        "Boolean",
+                        "Array",
+                        "Object",
+                        "Function"
+                    ],
+                    "tsType": "SliderMarkerLabels",
+                    "desc": "Configure the marker labels (or show the default ones if 'true'); Array of definition Objects or Object with key-value where key is the model and the value is the marker label definition",
+                    "definition": {
+                        "value": {
+                            "type": "Number",
+                            "required": true,
+                            "desc": "Value of equivalent model where to position the marker"
+                        },
+                        "label": {
+                            "type": [
+                                "Number",
+                                "String"
+                            ],
+                            "desc": "Label to use"
+                        },
+                        "classes": {
+                            "type": [
+                                "String",
+                                "Array",
+                                "Object"
+                            ],
+                            "tsType": "VueClassProp",
+                            "desc": "CSS classes to be attributed to the marker label",
+                            "examples": [
+                                "my-class-name"
+                            ]
+                        },
+                        "style": {
+                            "type": "Object",
+                            "tsType": "VueStyleObjectProp",
+                            "desc": "Style definitions to be attributed to the marker label",
+                            "examples": [
+                                "{ height: '24px' }"
+                            ]
+                        }
+                    },
+                    "params": {
+                        "value": {
+                            "type": "Number",
+                            "desc": "The marker value to transform",
+                            "required": true
+                        }
+                    },
+                    "returns": {
+                        "type": [
+                            "String",
+                            "Object"
+                        ],
+                        "desc": "Marker definition Object or directly a String for the label of the marker",
+                        "definition": {
+                            "value": {
+                                "type": "Number",
+                                "desc": "Value of equivalent model where to position the marker"
+                            },
+                            "label": {
+                                "type": [
+                                    "Number",
+                                    "String"
+                                ],
+                                "desc": "Label to use"
+                            },
+                            "classes": {
+                                "type": [
+                                    "String",
+                                    "Array",
+                                    "Object"
+                                ],
+                                "tsType": "VueClassProp",
+                                "desc": "CSS classes to be attributed to the marker label",
+                                "examples": [
+                                    "my-class-name"
+                                ]
+                            },
+                            "style": {
+                                "type": "Object",
+                                "tsType": "VueStyleObjectProp",
+                                "desc": "Style definitions to be attributed to the marker label",
+                                "examples": [
+                                    "{ height: '24px' }"
+                                ]
+                            }
+                        }
+                    },
+                    "category": "content",
+                    "examples": [
+                        true,
+                        "[ { value: 0, label: '0%' }, { value: 5, classes: 'my-class', style: { width: '24px' } } ]",
+                        "{ 0: '0%', 5: { label: '5%', classes: 'my-class', style: { width: '24px' } } }",
+                        "val => (10 * val) + '%'",
+                        "val => ({ label: (10 * val) + '%', classes: 'my-class', style: { width: '24px' } })"
+                    ],
+                    "addedIn": "v2.4"
+                },
+                "marker-labels-class": {
+                    "type": "String",
+                    "desc": "CSS class(es) to apply to the marker labels container",
+                    "examples": [
+                        "text-orange"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "switch-marker-labels-side": {
+                    "type": "Boolean",
+                    "desc": "Switch the position of the marker labels (top <-> bottom or left <-> right)",
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "track-size": {
+                    "type": "String",
+                    "desc": "Track size (including CSS unit)",
+                    "default": "4px",
+                    "examples": [
+                        "35px"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4",
+                    "required": false
+                },
+                "thumb-size": {
+                    "type": "String",
+                    "desc": "Thumb size (including CSS unit)",
+                    "default": "20px",
+                    "examples": [
+                        "20px"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4",
+                    "required": false
+                },
+                "thumb-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.4"
+                },
+                "thumb-path": {
+                    "type": "String",
+                    "desc": "Set custom thumb svg path",
+                    "default": "M 4, 10 a 6,6 0 1,0 12,0 a 6,6 0 1,0 -12,0",
+                    "examples": [
+                        "M5 5 h10 v10 h-10 v-10"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "model-value": {
+                    "desc": "Model of the component of type { min, max } (both values must be between global min/max); Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "Object",
+                        "null",
+                        "undefined"
+                    ],
+                    "definition": {
+                        "min": {
+                            "type": [
+                                "Number",
+                                "null"
+                            ],
+                            "desc": "Model value for left thumb"
+                        },
+                        "max": {
+                            "type": [
+                                "Number",
+                                "null"
+                            ],
+                            "desc": "Model value for right thumb"
+                        }
+                    },
+                    "examples": [
+                        "v-model=\"positionModel\""
+                    ]
+                },
+                "drag-range": {
+                    "type": "Boolean",
+                    "desc": "User can drag range instead of just the two thumbs",
+                    "category": "content"
+                },
+                "drag-only-range": {
+                    "type": "Boolean",
+                    "desc": "User can drag only the range instead and NOT the two thumbs",
+                    "category": "content"
+                },
+                "left-label-color": {
+                    "type": "String",
+                    "desc": "Color name for left label background from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "labels"
+                },
+                "left-label-text-color": {
+                    "type": "String",
+                    "desc": "Color name for left label text from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "labels"
+                },
+                "right-label-color": {
+                    "type": "String",
+                    "desc": "Color name for right label background from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "labels"
+                },
+                "right-label-text-color": {
+                    "type": "String",
+                    "desc": "Color name for right label text from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "labels"
+                },
+                "left-label-value": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Override default label for min value",
+                    "examples": [
+                        ":left-label-value=\"model.min + 'px'\""
+                    ],
+                    "category": "labels"
+                },
+                "right-label-value": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Override default label for max value",
+                    "examples": [
+                        ":right-label-value=\"model.max + 'px'\""
+                    ],
+                    "category": "labels"
+                },
+                "left-thumb-color": {
+                    "type": "String",
+                    "desc": "Color name (from the Quasar Color Palette) for left thumb",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "labels",
+                    "addedIn": "v2.4"
+                },
+                "right-thumb-color": {
+                    "type": "String",
+                    "desc": "Color name (from the Quasar Color Palette) for right thumb",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "labels",
+                    "addedIn": "v2.4"
+                }
+            },
+            "slots": {
+                "marker-label": {
+                    "desc": "What should the menu display after filtering options and none are left to be displayed; Suggestion: <div>",
+                    "addedIn": "v2.4",
+                    "scope": {
+                        "marker": {
+                            "type": "Object",
+                            "tsType": "SliderMarkerLabelConfig",
+                            "desc": "Config for current marker label",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "desc": "Index of the marker label (0-based)"
+                                },
+                                "value": {
+                                    "type": "Number",
+                                    "desc": "Equivalent model value for the marker label"
+                                },
+                                "label": {
+                                    "type": [
+                                        "Number",
+                                        "String"
+                                    ],
+                                    "desc": "Configured label for the marker"
+                                },
+                                "classes": {
+                                    "type": "String",
+                                    "desc": "Required CSS classes to be applied to the marker element"
+                                },
+                                "style": {
+                                    "type": "Object",
+                                    "tsType": "VueStyleObjectProp",
+                                    "desc": "Style definitions to be attributed to the marker label",
+                                    "examples": [
+                                        "{ height: '24px' }"
+                                    ]
+                                }
+                            }
+                        },
+                        "markerList": {
+                            "type": "Array",
+                            "tsType": "SliderMarkerLabelArrayConfig",
+                            "desc": "Array of marker label configs",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "desc": "Index of the marker label (0-based)"
+                                },
+                                "value": {
+                                    "type": "Number",
+                                    "desc": "Equivalent model value for the marker label"
+                                },
+                                "label": {
+                                    "type": [
+                                        "Number",
+                                        "String"
+                                    ],
+                                    "desc": "Configured label for the marker"
+                                },
+                                "classes": {
+                                    "type": "String",
+                                    "desc": "Required CSS classes to be applied to the marker element"
+                                },
+                                "style": {
+                                    "type": "Object",
+                                    "tsType": "VueStyleObjectProp",
+                                    "desc": "Style definitions to be attributed to the marker label",
+                                    "examples": [
+                                        "{ height: '24px' }"
+                                    ]
+                                }
+                            }
+                        },
+                        "markerMap": {
+                            "type": "Object",
+                            "tsType": "SliderMarkerLabelObjectConfig",
+                            "desc": "Object with key-value where key is the model and the value is the marker label config",
+                            "definition": {
+                                "...key": {
+                                    "type": "Object",
+                                    "desc": "Marker label config",
+                                    "definition": {
+                                        "index": {
+                                            "type": "Number",
+                                            "desc": "Index of the marker label (0-based)"
+                                        },
+                                        "value": {
+                                            "type": "Number",
+                                            "desc": "Equivalent model value for the marker label"
+                                        },
+                                        "label": {
+                                            "type": [
+                                                "Number",
+                                                "String"
+                                            ],
+                                            "desc": "Configured label for the marker"
+                                        },
+                                        "classes": {
+                                            "type": "String",
+                                            "desc": "Required CSS classes to be applied to the marker element"
+                                        },
+                                        "style": {
+                                            "type": "Object",
+                                            "tsType": "VueStyleObjectProp",
+                                            "desc": "Style definitions to be attributed to the marker label",
+                                            "examples": [
+                                                "{ height: '24px' }"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "classes": {
+                            "type": "String",
+                            "desc": "Required CSS classes to be applied to the marker element"
+                        },
+                        "getStyle": {
+                            "type": "Function",
+                            "desc": "Get CSS style Object to apply to a marker element at respective model value; For perf reasons, use only if requested model value is not already part of markerMap",
+                            "params": {
+                                "value": {
+                                    "type": "Number",
+                                    "desc": "The marker label equivalent model value",
+                                    "required": true
+                                }
+                            },
+                            "returns": {
+                                "type": "Object",
+                                "desc": "CSS style Object to apply to a marker element at respective model value"
+                            }
+                        }
+                    }
+                },
+                "marker-label-group": {
+                    "desc": "What should the menu display after filtering options and none are left to be displayed; Suggestion: <div>",
+                    "addedIn": "v2.4",
+                    "scope": {
+                        "markerList": {
+                            "type": "Array",
+                            "tsType": "SliderMarkerLabelArrayConfig",
+                            "desc": "Array of marker label configs",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "desc": "Index of the marker label (0-based)"
+                                },
+                                "value": {
+                                    "type": "Number",
+                                    "desc": "Equivalent model value for the marker label"
+                                },
+                                "label": {
+                                    "type": [
+                                        "Number",
+                                        "String"
+                                    ],
+                                    "desc": "Configured label for the marker"
+                                },
+                                "classes": {
+                                    "type": "String",
+                                    "desc": "Required CSS classes to be applied to the marker element"
+                                },
+                                "style": {
+                                    "type": "Object",
+                                    "tsType": "VueStyleObjectProp",
+                                    "desc": "Style definitions to be attributed to the marker label",
+                                    "examples": [
+                                        "{ height: '24px' }"
+                                    ]
+                                }
+                            }
+                        },
+                        "markerMap": {
+                            "type": "Object",
+                            "tsType": "SliderMarkerLabelObjectConfig",
+                            "desc": "Object with key-value where key is the model and the value is the marker label config",
+                            "definition": {
+                                "...key": {
+                                    "type": "Object",
+                                    "desc": "Marker label config",
+                                    "definition": {
+                                        "index": {
+                                            "type": "Number",
+                                            "desc": "Index of the marker label (0-based)"
+                                        },
+                                        "value": {
+                                            "type": "Number",
+                                            "desc": "Equivalent model value for the marker label"
+                                        },
+                                        "label": {
+                                            "type": [
+                                                "Number",
+                                                "String"
+                                            ],
+                                            "desc": "Configured label for the marker"
+                                        },
+                                        "classes": {
+                                            "type": "String",
+                                            "desc": "Required CSS classes to be applied to the marker element"
+                                        },
+                                        "style": {
+                                            "type": "Object",
+                                            "tsType": "VueStyleObjectProp",
+                                            "desc": "Style definitions to be attributed to the marker label",
+                                            "examples": [
+                                                "{ height: '24px' }"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "classes": {
+                            "type": "String",
+                            "desc": "Required CSS classes to be applied to the marker element"
+                        },
+                        "getStyle": {
+                            "type": "Function",
+                            "desc": "Get CSS style Object to apply to a marker element at respective model value; For perf reasons, use only if requested model value is not already part of markerMap",
+                            "params": {
+                                "value": {
+                                    "type": "Number",
+                                    "desc": "The marker label equivalent model value",
+                                    "required": true
+                                }
+                            },
+                            "returns": {
+                                "type": "Object",
+                                "desc": "CSS style Object to apply to a marker element at respective model value"
+                            }
+                        }
+                    }
+                }
+            },
+            "events": {
+                "change": {
+                    "desc": "Emitted on lazy model value change (after user slides then releases the thumb)",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                },
+                "pan": {
+                    "desc": "Triggered when user starts panning on the component",
+                    "params": {
+                        "phase": {
+                            "type": "String",
+                            "desc": "Phase of panning",
+                            "values": [
+                                "start",
+                                "end"
+                            ]
+                        }
+                    }
+                },
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-time", desc: "时间选择器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/time"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "landscape": {
+                    "type": "Boolean",
+                    "desc": "Display the component in landscape mode",
+                    "category": "behavior"
+                },
+                "mask": {
+                    "type": "String",
+                    "desc": "Mask (formatting string) used for parsing and formatting value",
+                    "category": "model",
+                    "default": "HH:mm",
+                    "examples": [
+                        "HH:mm:ss",
+                        "YYYY-MM-DD HH:mm:ss",
+                        "HH:mm MMMM Do, YYYY"
+                    ],
+                    "required": false
+                },
+                "locale": {
+                    "type": "Object",
+                    "desc": "Locale formatting options",
+                    "examples": [
+                        ":locale=\"{ monthsShort: ['Ian', 'Feb', 'Mar', '...'] }\""
+                    ],
+                    "definition": {
+                        "days": {
+                            "type": "Array",
+                            "desc": "List of full day names (DDDD), starting with Sunday",
+                            "examples": [
+                                "['Duminica', 'Luni', 'Marti', '...']"
+                            ]
+                        },
+                        "daysShort": {
+                            "type": "Array",
+                            "desc": "List of short day names (DDD), starting with Sunday",
+                            "examples": [
+                                "['Dum', 'Lun', 'Mar', '...']"
+                            ]
+                        },
+                        "months": {
+                            "type": "Array",
+                            "desc": "List of full month names (MMMM), starting with January",
+                            "examples": [
+                                "['Ianuarie', 'Februarie', 'Martie', '...']"
+                            ]
+                        },
+                        "monthsShort": {
+                            "type": "Array",
+                            "desc": "List of short month names (MMM), starting with January",
+                            "examples": [
+                                "['Ian', 'Feb', 'Mar', '...']"
+                            ]
+                        }
+                    },
+                    "category": "model"
+                },
+                "calendar": {
+                    "type": "String",
+                    "desc": "Specify calendar type",
+                    "default": "gregorian",
+                    "values": [
+                        "gregorian",
+                        "persian"
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Applies a 'flat' design (no default shadow)",
+                    "category": "style"
+                },
+                "bordered": {
+                    "type": "Boolean",
+                    "desc": "Applies a default border to the component",
+                    "category": "style"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "model-value": {
+                    "desc": "Time of the component; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "String",
+                        "null",
+                        "undefined"
+                    ],
+                    "examples": [
+                        "v-model=\"currentTime\""
+                    ]
+                },
+                "format24h": {
+                    "type": "Boolean",
+                    "desc": "Forces 24 hour time display instead of AM/PM system",
+                    "default": "(based on Quasar lang language being used)",
+                    "category": "behavior",
+                    "required": false
+                },
+                "default-date": {
+                    "type": "String",
+                    "desc": "The default date to use (in YYYY/MM/DD format) when model is unfilled (undefined or null)",
+                    "default": "current day",
+                    "examples": [
+                        "1995/02/23"
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "options": {
+                    "type": "Function",
+                    "desc": "Optionally configure what time is the user allowed to set; Overridden by 'hour-options', 'minute-options' and 'second-options' if those are set; For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "hr": {
+                            "type": "Number",
+                            "desc": "Hour"
+                        },
+                        "min": {
+                            "type": [
+                                "Number",
+                                "null"
+                            ],
+                            "desc": "Minutes"
+                        },
+                        "sec": {
+                            "type": [
+                                "Number",
+                                "null"
+                            ],
+                            "desc": "Seconds"
+                        }
+                    },
+                    "returns": null,
+                    "examples": [
+                        ":options=\"(hr, min, sec) => hr <= 6\""
+                    ],
+                    "category": "behavior"
+                },
+                "hour-options": {
+                    "type": "Array",
+                    "desc": "Optionally configure what hours is the user allowed to set; Overrides 'options' prop if that is also set",
+                    "examples": [
+                        ":hour-options=\"[ 3, 6, 9 ]\""
+                    ],
+                    "category": "behavior"
+                },
+                "minute-options": {
+                    "type": "Array",
+                    "desc": "Optionally configure what minutes is the user allowed to set; Overrides 'options' prop if that is also set",
+                    "examples": [
+                        ":minute-options=\"[0, 15, 30, 45]\""
+                    ],
+                    "category": "behavior"
+                },
+                "second-options": {
+                    "type": "Array",
+                    "desc": "Optionally configure what seconds is the user allowed to set; Overrides 'options' prop if that is also set",
+                    "examples": [
+                        ":second-options=\"[0, 7, 10, 23]\""
+                    ],
+                    "category": "behavior"
+                },
+                "with-seconds": {
+                    "type": "Boolean",
+                    "desc": "Allow the time to be set with seconds",
+                    "category": "model|behavior"
+                },
+                "now-btn": {
+                    "type": "Boolean",
+                    "desc": "Display a button that selects the current time",
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where additional buttons can go"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": [
+                                "String",
+                                "null"
+                            ],
+                            "desc": "New model value",
+                            "required": true
+                        },
+                        "details": {
+                            "type": "Object",
+                            "desc": "Object of properties on the new model",
+                            "definition": {
+                                "year": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The year"
+                                },
+                                "month": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The month"
+                                },
+                                "day": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The day of the month"
+                                },
+                                "hour": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The hour"
+                                },
+                                "minute": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The minute"
+                                },
+                                "second": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The second"
+                                },
+                                "millisecond": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The millisecond"
+                                },
+                                "changed": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Did the model change?"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "setNow": {
+                    "desc": "Change model to current moment"
+                }
+            }
+        }
+    },
+    {
+        name: "q-date", desc: "日期选择器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/date"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "landscape": {
+                    "type": "Boolean",
+                    "desc": "Display the component in landscape mode",
+                    "category": "behavior"
+                },
+                "mask": {
+                    "type": "String",
+                    "desc": "Mask (formatting string) used for parsing and formatting value",
+                    "category": "model",
+                    "default": "YYYY/MM/DD",
+                    "examples": [
+                        "YYYY-MM-DD",
+                        "MMMM Do, YYYY",
+                        "YYYY-MM-DD HH:mm:ss"
+                    ],
+                    "required": false
+                },
+                "locale": {
+                    "type": "Object",
+                    "desc": "Locale formatting options",
+                    "examples": [
+                        ":locale=\"{ monthsShort: ['Ian', 'Feb', 'Mar', '...'] }\""
+                    ],
+                    "definition": {
+                        "days": {
+                            "type": "Array",
+                            "desc": "List of full day names (DDDD), starting with Sunday",
+                            "examples": [
+                                "['Duminica', 'Luni', 'Marti', '...']"
+                            ]
+                        },
+                        "daysShort": {
+                            "type": "Array",
+                            "desc": "List of short day names (DDD), starting with Sunday",
+                            "examples": [
+                                "['Dum', 'Lun', 'Mar', '...']"
+                            ]
+                        },
+                        "months": {
+                            "type": "Array",
+                            "desc": "List of full month names (MMMM), starting with January",
+                            "examples": [
+                                "['Ianuarie', 'Februarie', 'Martie', '...']"
+                            ]
+                        },
+                        "monthsShort": {
+                            "type": "Array",
+                            "desc": "List of short month names (MMM), starting with January",
+                            "examples": [
+                                "['Ian', 'Feb', 'Mar', '...']"
+                            ]
+                        }
+                    },
+                    "category": "model"
+                },
+                "calendar": {
+                    "type": "String",
+                    "desc": "Specify calendar type",
+                    "default": "gregorian",
+                    "values": [
+                        "gregorian",
+                        "persian"
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Applies a 'flat' design (no default shadow)",
+                    "category": "style"
+                },
+                "bordered": {
+                    "type": "Boolean",
+                    "desc": "Applies a default border to the component",
+                    "category": "style"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "model-value": {
+                    "desc": "Date(s) of the component; Must be Array if using 'multiple' prop; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object",
+                        "null",
+                        "undefined"
+                    ],
+                    "examples": [
+                        "v-model=\"myDate\"",
+                        "v-model=\"[myDate1, myDate2]\"",
+                        "v-model=\"[{ from: myDateFrom, to: myDateTo }]\"",
+                        "v-model=\"[myDate1, { from: myDateFrom, to: myDateTo }, myDate2]\""
+                    ]
+                },
+                "title": {
+                    "type": "String",
+                    "desc": "When specified, it overrides the default header title; Makes sense when not in 'minimal' mode",
+                    "examples": [
+                        "Birthday"
+                    ],
+                    "category": "content"
+                },
+                "subtitle": {
+                    "type": "String",
+                    "desc": "When specified, it overrides the default header subtitle; Makes sense when not in 'minimal' mode",
+                    "examples": [
+                        "John Doe"
+                    ],
+                    "category": "content"
+                },
+                "default-year-month": {
+                    "type": "String",
+                    "desc": "The default year and month to display (in YYYY/MM format) when model is unfilled (undefined or null); Please ensure it is within the navigation min/max year-month (if using them)",
+                    "examples": [
+                        "1986/02"
+                    ],
+                    "category": "model"
+                },
+                "default-view": {
+                    "type": "String",
+                    "desc": "The view which will be displayed by default",
+                    "default": "Calendar",
+                    "values": [
+                        "Calendar",
+                        "Months",
+                        "Years"
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "years-in-month-view": {
+                    "type": "Boolean",
+                    "desc": "Show the years selector in months view",
+                    "category": "behavior"
+                },
+                "events": {
+                    "type": [
+                        "Array",
+                        "Function"
+                    ],
+                    "desc": "A list of events to highlight on the calendar; If using a function, it receives the date as a String and must return a Boolean (matches or not); If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "date": {
+                            "type": "String",
+                            "desc": "The current date being processed.",
+                            "examples": [
+                                "2018/11/05",
+                                "2021/10/25"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "If true, the current date will be highlighted"
+                    },
+                    "examples": [
+                        ":events=\"['2018/11/05', '2018/11/06', '2018/11/09', '2018/11/23']\"",
+                        ":events=\"date => date[9] % 3 === 0\""
+                    ],
+                    "category": "model"
+                },
+                "event-color": {
+                    "type": [
+                        "String",
+                        "Function"
+                    ],
+                    "desc": "Color name (from the Quasar Color Palette); If using a function, it receives the date as a String and must return a String (color for the received date); If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "date": {
+                            "type": "String",
+                            "desc": "The current date being processed.",
+                            "examples": [
+                                "2018/11/05",
+                                "2021/10/25"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "String",
+                        "desc": "Color for the current date.",
+                        "examples": [
+                            "teal",
+                            "orange"
+                        ]
+                    },
+                    "examples": [
+                        "teal-10",
+                        ":event-color=\"(date) => date[9] % 2 === 0 ? 'teal' : 'orange'\""
+                    ],
+                    "category": "style"
+                },
+                "options": {
+                    "type": [
+                        "Array",
+                        "Function"
+                    ],
+                    "desc": "Optionally configure the days that are selectable; If using a function, it receives the date as a String and must return a Boolean (is date acceptable or not); If using a function then for best performance, reference it from your scope and do not define it inline; Incompatible with 'range' prop",
+                    "params": {
+                        "date": {
+                            "type": "String",
+                            "desc": "The current date being processed.",
+                            "examples": [
+                                "2018/11/05",
+                                "2021/10/25"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "If true, the current date will be made available for selection"
+                    },
+                    "examples": [
+                        ":options=\"['2018/11/05', '2018/11/12', '2018/11/19', '2018/11/26' ]\"",
+                        ":options=\"date => date[9] % 3 === 0\"",
+                        ":options=\"date => date >= '2018/11/03' && date <= '2018/11/15'\""
+                    ],
+                    "category": "model"
+                },
+                "navigation-min-year-month": {
+                    "type": "String",
+                    "desc": "Lock user from navigating below a specific year+month (in YYYY/MM format); This prop is not used to correct the model; You might want to also use 'default-year-month' prop",
+                    "examples": [
+                        "2020/07"
+                    ],
+                    "category": "selection"
+                },
+                "navigation-max-year-month": {
+                    "type": "String",
+                    "desc": "Lock user from navigating above a specific year+month (in YYYY/MM format); This prop is not used to correct the model; You might want to also use 'default-year-month' prop",
+                    "examples": [
+                        "2020/10"
+                    ],
+                    "category": "selection"
+                },
+                "no-unset": {
+                    "type": "Boolean",
+                    "desc": "Remove ability to unselect a date; It does not apply to selecting a range over already selected dates",
+                    "category": "selection"
+                },
+                "first-day-of-week": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Sets the day of the week that is considered the first day (0 - Sunday, 1 - Monday, ...); This day will show in the left-most column of the calendar",
+                    "default": "(based on configured Quasar lang language)",
+                    "examples": [
+                        "first-day-of-week=\"1\"",
+                        ":first-day-of-week=\"selectedFirstDayOfTheWeek\""
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "today-btn": {
+                    "type": "Boolean",
+                    "desc": "Display a button that selects the current day",
+                    "category": "content"
+                },
+                "minimal": {
+                    "type": "Boolean",
+                    "desc": "Don’t display the header",
+                    "category": "content"
+                },
+                "multiple": {
+                    "type": "Boolean",
+                    "desc": "Allow multiple selection; Model must be Array",
+                    "category": "model|selection"
+                },
+                "range": {
+                    "type": "Boolean",
+                    "desc": "Allow range selection; Partial compatibility with 'options' prop: selected ranges might also include 'unselectable' days",
+                    "category": "model|selection"
+                },
+                "emit-immediately": {
+                    "type": "Boolean",
+                    "desc": "Emit model when user browses month and year too; ONLY for single selection (non-multiple, non-range)",
+                    "category": "model"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where additional buttons can go"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": [
+                                "String",
+                                "Array",
+                                "Object",
+                                "null"
+                            ],
+                            "desc": "New model value",
+                            "required": true
+                        },
+                        "reason": {
+                            "type": "String",
+                            "desc": "Reason of the user interaction (what was picked)",
+                            "values": [
+                                "add-day",
+                                "remove-day",
+                                "add-range",
+                                "remove-range",
+                                "mask",
+                                "locale",
+                                "year",
+                                "month"
+                            ]
+                        },
+                        "details": {
+                            "type": "Object",
+                            "desc": "Object of properties on the new model",
+                            "definition": {
+                                "year": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The year of the date that the user has clicked/tapped on"
+                                },
+                                "month": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The month of the date that the user has clicked/tapped on"
+                                },
+                                "day": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The day of the month that the user has clicked/tapped on"
+                                },
+                                "from": {
+                                    "type": "Object",
+                                    "required": false,
+                                    "desc": "Object of properties of the range starting point (only if range)",
+                                    "definition": {
+                                        "year": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The year"
+                                        },
+                                        "month": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The month"
+                                        },
+                                        "day": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The day of month"
+                                        }
+                                    }
+                                },
+                                "to": {
+                                    "type": "Object",
+                                    "required": false,
+                                    "desc": "Object of properties of the range ending point (only if range)",
+                                    "definition": {
+                                        "year": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The year"
+                                        },
+                                        "month": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The month"
+                                        },
+                                        "day": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The day of month"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "navigation": {
+                    "desc": "Emitted when user navigates to a different month or year (and even when the model changes from an outside source)",
+                    "params": {
+                        "view": {
+                            "type": "Object",
+                            "desc": "Definition of the current view (year, month)",
+                            "definition": {
+                                "year": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The year"
+                                },
+                                "month": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The month"
+                                }
+                            }
+                        }
+                    }
+                },
+                "range-start": {
+                    "desc": "User has started a range selection",
+                    "params": {
+                        "from": {
+                            "type": "Object",
+                            "desc": "Definition of date from where the range begins",
+                            "definition": {
+                                "year": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The year"
+                                },
+                                "month": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The month"
+                                },
+                                "day": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The day of month"
+                                }
+                            }
+                        }
+                    }
+                },
+                "range-end": {
+                    "desc": "User has ended a range selection",
+                    "params": {
+                        "range": {
+                            "type": "Object",
+                            "desc": "Definition of the range",
+                            "definition": {
+                                "from": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "Definition of date from where the range begins",
+                                    "definition": {
+                                        "year": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The year"
+                                        },
+                                        "month": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The month"
+                                        },
+                                        "day": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The day of month"
+                                        }
+                                    }
+                                },
+                                "to": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "Definition of date to where the range ends",
+                                    "definition": {
+                                        "year": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The year"
+                                        },
+                                        "month": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The month"
+                                        },
+                                        "day": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "The day of month"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "setToday": {
+                    "desc": "Change model to today"
+                },
+                "setView": {
+                    "desc": "Change current view",
+                    "params": {
+                        "view": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "QDate view name",
+                            "values": [
+                                "Calendar",
+                                "Months",
+                                "Years"
+                            ]
+                        }
+                    }
+                },
+                "offsetCalendar": {
+                    "desc": "Increment or decrement calendar view's month or year",
+                    "params": {
+                        "type": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "What to increment/decrement",
+                            "values": [
+                                "month",
+                                "year"
+                            ]
+                        },
+                        "descending": {
+                            "type": "Boolean",
+                            "desc": "Decrement?"
+                        }
+                    }
+                },
+                "setCalendarTo": {
+                    "desc": "Change current year and month of the Calendar view; It gets corrected if using navigation-min/max-year-month and sets the current view to Calendar",
+                    "params": {
+                        "year": {
+                            "type": "Number",
+                            "desc": "The year"
+                        },
+                        "month": {
+                            "type": "Number",
+                            "desc": "The month"
+                        }
+                    }
+                },
+                "setEditingRange": {
+                    "desc": "Configure the current editing range",
+                    "params": {
+                        "from": {
+                            "type": "Object",
+                            "desc": "Definition of date from where the range begins",
+                            "definition": {
+                                "year": {
+                                    "type": "Number",
+                                    "desc": "The year"
+                                },
+                                "month": {
+                                    "type": "Number",
+                                    "desc": "The month"
+                                },
+                                "day": {
+                                    "type": "Number",
+                                    "desc": "The day of month"
+                                }
+                            }
+                        },
+                        "to": {
+                            "type": "Object",
+                            "desc": "Definition of date to where the range ends",
+                            "definition": {
+                                "year": {
+                                    "type": "Number",
+                                    "desc": "The year"
+                                },
+                                "month": {
+                                    "type": "Number",
+                                    "desc": "The month"
+                                },
+                                "day": {
+                                    "type": "Number",
+                                    "desc": "The day of month"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-icon", desc: "图标", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/icon"
+            },
+            "props": {
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "tag": {
+                    "type": "String",
+                    "desc": "HTML tag to render, unless no icon is supplied or it's an svg icon",
+                    "examples": [
+                        "div",
+                        "span",
+                        "div",
+                        "i"
+                    ],
+                    "category": "content",
+                    "default": "i",
+                    "required": false
+                },
+                "name": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "model"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "left": {
+                    "type": "Boolean",
+                    "desc": "Useful if icon is on the left side of something: applies a standard margin on the right side of Icon",
+                    "category": "content"
+                },
+                "right": {
+                    "type": "Boolean",
+                    "desc": "Useful if icon is on the right side of something: applies a standard margin on the left side of Icon",
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Suggestions: QTooltip or QMenu"
+                }
+            }
+        }
+    },
+    {
+        name: "q-img", desc: "图像", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/img"
+            },
+            "props": {
+                "ratio": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Force the component to maintain an aspect ratio",
+                    "examples": [
+                        ":ratio=\"4/3\"",
+                        ":ratio=\"16/9\"",
+                        "ratio=\"1\"",
+                        "(Number format) :ratio=\"16/9\"",
+                        "(String format) ratio=\"1\""
+                    ],
+                    "category": "style"
+                },
+                "src": {
+                    "type": "String",
+                    "desc": "Path to image",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "(public folder) src=\"img/something.png\"",
+                        "(assets folder) src=\"~assets/my-img.gif\"",
+                        "(relative path format) :src=\"require('./my_img.jpg')\"",
+                        "(URL) src=\"https://placeimg.com/500/300/nature\""
+                    ],
+                    "category": "model"
+                },
+                "srcset": {
+                    "type": "String",
+                    "desc": "Same syntax as <img> srcset attribute",
+                    "link": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Resolution_switching_Different_sizes",
+                    "examples": [
+                        "elva-fairy-320w.jpg 320w, elva-fairy-480w.jpg 480w"
+                    ],
+                    "category": "model"
+                },
+                "sizes": {
+                    "type": "String",
+                    "desc": "Same syntax as <img> sizes attribute",
+                    "link": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Resolution_switching_Different_sizes",
+                    "examples": [
+                        "(max-width: 320px) 280px, (max-width: 480px) 440px, 800px"
+                    ],
+                    "category": "model"
+                },
+                "placeholder-src": {
+                    "type": "String",
+                    "desc": "While waiting for your image to load, you can use a placeholder image",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "(public folder) src=\"img/some-placeholder.png\"",
+                        "(assets folder) src=\"~assets/my-placeholder.gif\"",
+                        "(relative path format) :src=\"require('./placeholder.jpg')\"",
+                        "(URL) src=\"https://placeimg.com/500/300/nature\""
+                    ],
+                    "category": "model"
+                },
+                "initial-ratio": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Use it when not specifying 'ratio' but still wanting an initial aspect ratio",
+                    "default": "16/9",
+                    "examples": [
+                        "(Number format) :initial-ratio=\"16/9\"",
+                        "(String format) initial-ratio=\"1\""
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "width": {
+                    "type": "String",
+                    "desc": "Forces image width; Must also include the unit (px or %)",
+                    "examples": [
+                        "280px",
+                        "70%"
+                    ],
+                    "category": "style"
+                },
+                "height": {
+                    "type": "String",
+                    "desc": "Forces image height; Must also include the unit (px or %)",
+                    "examples": [
+                        "280px",
+                        "70%"
+                    ],
+                    "category": "style"
+                },
+                "loading": {
+                    "type": "String",
+                    "desc": "Lazy or immediate load; Same syntax as <img> loading attribute",
+                    "default": "lazy",
+                    "values": [
+                        "lazy",
+                        "eager"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "crossorigin": {
+                    "type": "String",
+                    "desc": "Same syntax as <img> crossorigin attribute",
+                    "values": [
+                        "anonymous",
+                        "use-credentials"
+                    ],
+                    "category": "behavior"
+                },
+                "decoding": {
+                    "type": "String",
+                    "desc": "Same syntax as <img> decoding attribute",
+                    "values": [
+                        "sync",
+                        "async",
+                        "auto"
+                    ],
+                    "category": "behavior"
+                },
+                "referrerpolicy": {
+                    "type": "String",
+                    "desc": "Same syntax as <img> referrerpolicy attribute",
+                    "values": [
+                        "no-referrer",
+                        "no-referrer-when-downgrade",
+                        "origin",
+                        "origin-when-cross-origin",
+                        "same-origin",
+                        "strict-origin",
+                        "strict-origin-when-cross-origin",
+                        "unsafe-url"
+                    ],
+                    "category": "behavior"
+                },
+                "fetchpriority": {
+                    "type": "String",
+                    "desc": "Provides a hint of the relative priority to use when fetching the image",
+                    "default": "auto",
+                    "values": [
+                        "high",
+                        "low",
+                        "auto"
+                    ],
+                    "category": "behavior",
+                    "addedIn": "v2.6.6",
+                    "required": false
+                },
+                "fit": {
+                    "type": "String",
+                    "desc": "How the image will fit into the container; Equivalent of the object-fit prop; Can be coordinated with 'position' prop",
+                    "default": "cover",
+                    "values": [
+                        "cover",
+                        "fill",
+                        "contain",
+                        "none",
+                        "scale-down"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "position": {
+                    "type": "String",
+                    "desc": "The alignment of the image into the container; Equivalent of the object-position CSS prop",
+                    "default": "50% 50%",
+                    "examples": [
+                        "0 0",
+                        "20px 50px"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "alt": {
+                    "type": "String",
+                    "desc": "Specifies an alternate text for the image, if the image cannot be displayed",
+                    "examples": [
+                        "Two cats"
+                    ],
+                    "category": "content"
+                },
+                "draggable": {
+                    "type": "Boolean",
+                    "desc": "Adds the native 'draggable' attribute",
+                    "category": "behavior"
+                },
+                "img-class": {
+                    "type": "String",
+                    "desc": "CSS classes to be attributed to the native img element",
+                    "examples": [
+                        "my-special-class"
+                    ],
+                    "category": "style"
+                },
+                "img-style": {
+                    "type": "Object",
+                    "tsType": "VueStyleObjectProp",
+                    "desc": "Apply CSS to the native img element",
+                    "examples": [
+                        ":img-style=\"{ transform: 'rotate(45deg)' }\" "
+                    ],
+                    "category": "style"
+                },
+                "spinner-color": {
+                    "type": "String",
+                    "desc": "Color name for default Spinner (unless using a 'loading' slot)",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "spinner-size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name, for default Spinner (unless using a 'loading' slot)",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "no-spinner": {
+                    "type": "Boolean",
+                    "desc": "Do not display the default spinner while waiting for the image to be loaded; It is overriden by the 'loading' slot when one is present",
+                    "category": "behavior"
+                },
+                "no-native-menu": {
+                    "type": "Boolean",
+                    "desc": "Disables the native context menu for the image",
+                    "category": "behavior"
+                },
+                "no-transition": {
+                    "type": "Boolean",
+                    "desc": "Disable default transition when switching between old and new image",
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot can be used for captions. See examples"
+                },
+                "loading": {
+                    "desc": "While image is loading, this slot is being displayed on top of the component; Suggestions: a spinner or text"
+                },
+                "error": {
+                    "desc": "Optional slot to be used when image could not be loaded; make sure you assign a min-height and min-width to the component through CSS"
+                }
+            },
+            "events": {
+                "load": {
+                    "desc": "Emitted when image has been loaded by the browser",
+                    "params": {
+                        "src": {
+                            "type": "String",
+                            "desc": "URL of image that has been loaded; useful when using 'srcset' and/or 'sizes'",
+                            "examples": [
+                                "https://some-site.net/some-img.gif"
+                            ]
+                        }
+                    }
+                },
+                "error": {
+                    "desc": "Emitted when browser could not load the image",
+                    "params": {
+                        "src": {
+                            "type": "Error",
+                            "desc": "JS Error object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-infinite-scroll", desc: "无限滚动", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/infinite-scroll"
+            },
+            "props": {
+                "offset": {
+                    "type": "Number",
+                    "desc": "Offset (pixels) to bottom of Infinite Scroll container from which the component should start loading more content in advance",
+                    "default": 500,
+                    "category": "behavior",
+                    "required": false
+                },
+                "debounce": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Debounce amount (in milliseconds)",
+                    "default": 100,
+                    "category": "behavior",
+                    "required": false
+                },
+                "initial-index": {
+                    "type": "Number",
+                    "desc": "Initialize the pagination index (used for the @load event)",
+                    "default": 0,
+                    "category": "behavior",
+                    "required": false
+                },
+                "scroll-target": {
+                    "type": [
+                        "Element",
+                        "String"
+                    ],
+                    "desc": "CSS selector or DOM element to be used as a custom scroll container instead of the auto detected one",
+                    "examples": [
+                        ":scroll-target=\"$refs.scrollTarget\"",
+                        "scroll-target=\".scroll-target-class\"",
+                        "scroll-target=\"#scroll-target-id\"",
+                        "scroll-target=\"body\""
+                    ],
+                    "category": "behavior"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "reverse": {
+                    "type": "Boolean",
+                    "desc": "Scroll area should behave like a messenger - starting scrolled to bottom and loading when reaching the top",
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                },
+                "loading": {
+                    "desc": "Slot displaying something while loading content; Example: QSpinner"
+                }
+            },
+            "events": {
+                "load": {
+                    "desc": "Emitted when Infinite Scroll needs to load more data",
+                    "params": {
+                        "index": {
+                            "type": "Number",
+                            "desc": "The index parameter can be used to make some sort of pagination on the content you load. It takes numeric values starting with 1 and incrementing with each call"
+                        },
+                        "done": {
+                            "type": "Function",
+                            "desc": "Function to call when you made all necessary updates. DO NOT forget to call it otherwise your loading message will continue to be displayed",
+                            "params": {
+                                "stop": {
+                                    "type": "Boolean",
+                                    "desc": "Stops QInfiniteScroll if it's Boolean 'true'; Specify it in case there's nothing more to load"
+                                }
+                            },
+                            "returns": null
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "poll": {
+                    "desc": "Checks scroll position and loads more content if necessary"
+                },
+                "trigger": {
+                    "desc": "Tells Infinite Scroll to load more content, regardless of the scroll position"
+                },
+                "reset": {
+                    "desc": "Resets calling index to 0"
+                },
+                "stop": {
+                    "desc": "Stops working, regardless of scroll position"
+                },
+                "resume": {
+                    "desc": "Starts working. Checks scroll position upon call and if trigger is hit, it loads more content"
+                },
+                "setIndex": {
+                    "desc": "Overwrite the current pagination index",
+                    "params": {
+                        "newIndex": {
+                            "type": "Number",
+                            "desc": "New pagination index",
+                            "required": true
+                        }
+                    }
+                },
+                "updateScrollTarget": {
+                    "desc": "Updates the scroll target; Useful when the parent elements change so that the scrolling target also changes"
+                }
+            }
+        }
+    },
+    {
+        name: "q-inner-loading", desc: "内部加载", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/inner-loading"
+            },
+            "props": {
+                "transition-show": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-hide": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-duration": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Transition duration (in milliseconds, without unit)",
+                    "default": 300,
+                    "category": "transition",
+                    "required": false
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name, or standard size name (xs|sm|md|lg|xl), for the inner Spinner (unless using the default slot)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style",
+                    "default": "42px",
+                    "required": false
+                },
+                "showing": {
+                    "type": "Boolean",
+                    "desc": "State - loading or not",
+                    "category": "state"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette for the inner Spinner (unless using the default slot)",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "Add a label; Gets overriden when using the default slot",
+                    "examples": [
+                        "Please wait..."
+                    ],
+                    "category": "label",
+                    "addedIn": "v2.2"
+                },
+                "label-class": {
+                    "type": "String",
+                    "desc": "Add CSS class(es) to the label; Works along the 'label' prop only",
+                    "examples": [
+                        "text-red q-mt-xl"
+                    ],
+                    "category": "label",
+                    "addedIn": "v2.2"
+                },
+                "label-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Apply custom style to the label; Works along the 'label' prop only",
+                    "examples": [
+                        "font-size: 28px",
+                        ":label-style=\"{ color: '#ff0000' }\""
+                    ],
+                    "category": "label",
+                    "addedIn": "v2.2"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot is used for replacing default Spinner; Suggestions: a spinner or text"
+                }
+            }
+        }
+    },
+    {
+        name: "q-intersection", desc: "交叉", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/intersection"
+            },
+            "props": {
+                "tag": {
+                    "type": "String",
+                    "desc": "HTML tag to use",
+                    "examples": [
+                        "div",
+                        "span",
+                        "div",
+                        "span",
+                        "blockquote"
+                    ],
+                    "category": "content",
+                    "default": "div",
+                    "required": false
+                },
+                "once": {
+                    "type": "Boolean",
+                    "desc": "Get triggered only once",
+                    "category": "behavior"
+                },
+                "ssr-prerender": {
+                    "type": "Boolean",
+                    "desc": "Pre-render content on server side if using SSR (use it to pre-render above the fold content)",
+                    "category": "behavior"
+                },
+                "root": {
+                    "type": "Element",
+                    "desc": "[Intersection API root prop] Lets you define an alternative to the viewport as your root (through its DOM element); It is important to keep in mind that root needs to be an ancestor of the observed element",
+                    "examples": [
+                        "$refs.myTable.$el",
+                        "getElementById(\"myTable\")"
+                    ],
+                    "category": "behavior"
+                },
+                "margin": {
+                    "type": "String",
+                    "desc": "[Intersection API rootMargin prop] Allows you to specify the margins for the root, effectively allowing you to either grow or shrink the area used for intersections",
+                    "examples": [
+                        "-20px 0px",
+                        "10px 20px 30px 40px"
+                    ],
+                    "category": "behavior"
+                },
+                "threshold": {
+                    "type": [
+                        "Array",
+                        "Number"
+                    ],
+                    "desc": "[Intersection API threshold prop] Threshold(s) at which to trigger, specified as a ratio, or list of ratios, of (visible area / total area) of the observed element",
+                    "examples": [
+                        "[ 0, 0.25, 0.5, 0.75, 1 ]",
+                        ":threshold=\"1\""
+                    ],
+                    "category": "behavior"
+                },
+                "transition": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "behavior"
+                },
+                "transition-duration": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Transition duration (in milliseconds, without unit)",
+                    "default": 300,
+                    "category": "behavior",
+                    "addedIn": "v2.3.1",
+                    "required": false
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Disable visibility observable (content will remain as it was, visible or hidden)",
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            },
+            "events": {
+                "visibility": {
+                    "desc": "Fires when visibility changes",
+                    "params": {
+                        "isVisible": {
+                            "type": "Boolean",
+                            "desc": "Visibility status (true/false)"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-knob", desc: "球形进度条", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/knob"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "model-value": {
+                    "desc": "Any number to indicate the given value of the knob. Either use this property (along with a listener for 'update:modelValue' event) OR use the v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Number",
+                    "examples": [
+                        "v-model=\"myValue\""
+                    ]
+                },
+                "min": {
+                    "type": "Number",
+                    "desc": "The minimum value that the model (the knob value) should start at",
+                    "category": "model"
+                },
+                "max": {
+                    "type": "Number",
+                    "desc": "The maximum value that the model (the knob value) should go to",
+                    "category": "model"
+                },
+                "inner-min": {
+                    "type": "Number",
+                    "desc": "Inner minimum value of the model; Use in case you need the model value to be inside of the track's min-max values; Needs to be higher or equal to 'min' prop; Defaults to 'min' prop",
+                    "category": "model",
+                    "addedIn": "v2.5.4"
+                },
+                "inner-max": {
+                    "type": "Number",
+                    "desc": "Inner maximum value of the model; Use in case you need the model value to be inside of the track's min-max values; Needs to be lower or equal to 'max' prop; Defaults to 'max' prop",
+                    "category": "model",
+                    "addedIn": "v2.5.4"
+                },
+                "step": {
+                    "type": "Number",
+                    "default": 1,
+                    "desc": "A number representing steps in the value of the model, while adjusting the knob",
+                    "category": "model",
+                    "required": false
+                },
+                "reverse": {
+                    "type": "Boolean",
+                    "desc": "Reverses the direction of progress",
+                    "category": "behavior"
+                },
+                "instant-feedback": {
+                    "type": "Boolean",
+                    "desc": "No animation when model changes",
+                    "category": "behavior"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "center-color": {
+                    "type": "String",
+                    "desc": "Color name for the center part of the component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "track-color": {
+                    "type": "String",
+                    "desc": "Color name for the track of the component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "font-size": {
+                    "type": "String",
+                    "desc": "Size of text in CSS units, including unit name. Suggestion: use 'em' units to sync with component size",
+                    "default": "0.25em",
+                    "examples": [
+                        "1em",
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "thickness": {
+                    "type": "Number",
+                    "default": 0.2,
+                    "desc": "Thickness of progress arc as a ratio (0.0 < x < 1.0) of component size",
+                    "category": "style",
+                    "required": false
+                },
+                "angle": {
+                    "type": "Number",
+                    "desc": "Angle to rotate progress arc by",
+                    "default": 0,
+                    "category": "content",
+                    "required": false
+                },
+                "show-value": {
+                    "type": "Boolean",
+                    "desc": "Enables the default slot and uses it (if available), otherwise it displays the 'value' prop as text; Make sure the text has enough space to be displayed inside the component",
+                    "category": "content|behavior"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Number",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                },
+                "change": {
+                    "desc": "Fires at the end of a knob's adjustment and offers the value of the model",
+                    "params": {
+                        "value": {
+                            "type": "Number",
+                            "desc": "New model value"
+                        }
+                    }
+                },
+                "drag-value": {
+                    "desc": "The value of the model while dragging is still in progress",
+                    "params": {
+                        "value": {
+                            "type": "Number",
+                            "desc": "New model value"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-linear-progress", desc: "线性进度", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/linear-progress"
+            },
+            "props": {
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "value": {
+                    "type": "Number",
+                    "desc": "Progress value (0.0 < x < 1.0)",
+                    "default": 0,
+                    "category": "model",
+                    "required": false
+                },
+                "buffer": {
+                    "type": "Number",
+                    "desc": "Optional buffer value (0.0 < x < 1.0)",
+                    "category": "behavior"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "track-color": {
+                    "type": "String",
+                    "desc": "Color name for component's track from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "reverse": {
+                    "type": "Boolean",
+                    "desc": "Reverse direction of progress",
+                    "category": "behavior"
+                },
+                "stripe": {
+                    "type": "Boolean",
+                    "desc": "Draw stripes; For determinate state only (for performance reasons)",
+                    "category": "content"
+                },
+                "indeterminate": {
+                    "type": "Boolean",
+                    "desc": "Put component into indeterminate mode",
+                    "category": "behavior"
+                },
+                "query": {
+                    "type": "Boolean",
+                    "desc": "Put component into query mode",
+                    "category": "behavior"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a small standard border-radius for a squared shape of the component",
+                    "category": "style"
+                },
+                "instant-feedback": {
+                    "type": "Boolean",
+                    "desc": "No transition when model changes",
+                    "category": "behavior"
+                },
+                "animation-speed": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Animation speed (in milliseconds, without unit)",
+                    "examples": [
+                        500,
+                        "1200"
+                    ],
+                    "category": "style",
+                    "default": 2100,
+                    "addedIn": "v2.3",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Suggestion: QTooltip"
+                }
+            }
+        }
+    },
+    {
+        name: "q-list", desc: "列表", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/list-and-list-items"
+            },
+            "props": {
+                "bordered": {
+                    "type": "Boolean",
+                    "desc": "Applies a default border to the component",
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "separator": {
+                    "type": "Boolean",
+                    "desc": "Applies a separator between contained items",
+                    "category": "content"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "padding": {
+                    "type": "Boolean",
+                    "desc": "Applies a material design-like padding on top and bottom",
+                    "category": "content"
+                },
+                "tag": {
+                    "type": "String",
+                    "desc": "HTML tag to use",
+                    "examples": [
+                        "div",
+                        "span",
+                        "div",
+                        "ul",
+                        "ol"
+                    ],
+                    "category": "content",
+                    "default": "div",
+                    "addedIn": "v2.10.1",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where the content goes; Suggestion: QItem, QExpansionItem, ..."
+                }
+            }
+        }
+    },
+    {
+        name: "q-item", desc: "列表项", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/list-and-list-items"
+            },
+            "props": {
+                "to": {
+                    "type": [
+                        "String",
+                        "Object"
+                    ],
+                    "desc": "Equivalent to Vue Router <router-link> 'to' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "/home/dashboard",
+                        ":to=\"{ name: 'my-route-name' }\""
+                    ],
+                    "category": "navigation"
+                },
+                "exact": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to Vue Router <router-link> 'exact' property; Superseded by 'href' prop if used",
+                    "category": "navigation"
+                },
+                "replace": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to Vue Router <router-link> 'replace' property; Superseded by 'href' prop if used",
+                    "category": "navigation"
+                },
+                "active-class": {
+                    "type": "String",
+                    "desc": "Equivalent to Vue Router <router-link> 'active-class' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "my-active-class"
+                    ],
+                    "category": "navigation"
+                },
+                "exact-active-class": {
+                    "type": "String",
+                    "desc": "Equivalent to Vue Router <router-link> 'active-class' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "my-exact-active-class"
+                    ],
+                    "category": "navigation"
+                },
+                "href": {
+                    "type": "String",
+                    "desc": "Native <a> link href attribute; Has priority over the 'to'/'exact'/'replace'/'active-class'/'exact-active-class' props",
+                    "examples": [
+                        "https://quasar.dev"
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "target": {
+                    "type": "String",
+                    "desc": "Native <a> link target attribute; Use it only along with 'href' prop; Has priority over the 'to'/'exact'/'replace'/'active-class'/'exact-active-class' props",
+                    "examples": [
+                        "_blank",
+                        "_self",
+                        "_parent",
+                        "_top"
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "active": {
+                    "type": "Boolean",
+                    "desc": "Put item into 'active' state",
+                    "category": "state",
+                    "default": null,
+                    "required": false
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "clickable": {
+                    "type": "Boolean",
+                    "desc": "Is QItem clickable? If it's the case, then it will add hover effects and emit 'click' events",
+                    "category": "state"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "inset-level": {
+                    "type": "Number",
+                    "desc": "Apply an inset; Useful when avatar/left side is missing but you want to align content with other items that do have a left side, or when you're building a menu",
+                    "examples": [
+                        ":inset-level=\"1\""
+                    ],
+                    "category": "content"
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "tag": {
+                    "type": "String",
+                    "desc": "HTML tag to render; Suggestion: use 'label' when encapsulating a QCheckbox/QRadio/QToggle so that when user clicks/taps on the whole item it will trigger a model change for the mentioned components",
+                    "examples": [
+                        "div",
+                        "span",
+                        "a",
+                        "label",
+                        "div"
+                    ],
+                    "category": "content",
+                    "default": "div",
+                    "required": false
+                },
+                "manual-focus": {
+                    "type": "Boolean",
+                    "desc": "Put item into a manual focus state; Enables 'focused' prop which will determine if item is focused or not, rather than relying on native hover/focus states",
+                    "category": "state"
+                },
+                "focused": {
+                    "type": "Boolean",
+                    "desc": "Determines focus state, ONLY if 'manual-focus' is enabled / set to true",
+                    "category": "state"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where QItem's content goes"
+                }
+            },
+            "events": {
+                "click": {
+                    "desc": "Emitted when the component is clicked",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object; If you are using route navigation ('to'/'replace' props) and you want to cancel navigation then call evt.preventDefault() synchronously in your event handler"
+                        },
+                        "go": {
+                            "type": "Function",
+                            "desc": "Available ONLY if you are using route navigation ('to'/'replace' props); When you need to control the time at which the component should trigger the route navigation then call evt.preventDefault() synchronously and then call this function at your convenience; Useful if you have async work to be done before the actual route navigation or if you want to redirect somewhere else",
+                            "required": false,
+                            "addedIn": "v2.9",
+                            "params": {
+                                "opts": {
+                                    "type": "Object",
+                                    "desc": "Optional options",
+                                    "required": false,
+                                    "definition": {
+                                        "to": {
+                                            "type": [
+                                                "String",
+                                                "Object"
+                                            ],
+                                            "desc": "Equivalent to Vue Router <router-link> 'to' property; Specify it explicitly otherwise it will be set with same value as component's 'to' prop",
+                                            "required": false,
+                                            "examples": [
+                                                "/home/dashboard",
+                                                "{ name: 'my-route-name' }"
+                                            ]
+                                        },
+                                        "replace": {
+                                            "type": "Boolean",
+                                            "desc": "Equivalent to Vue Router <router-link> 'replace' property; Specify it explicitly otherwise it will be set with same value as component's 'replace' prop",
+                                            "required": false
+                                        },
+                                        "returnRouterError": {
+                                            "type": "Boolean",
+                                            "desc": "Return the router error, if any; Otherwise the returned Promise will always fulfill",
+                                            "required": false
+                                        }
+                                    }
+                                }
+                            },
+                            "returns": {
+                                "type": "Promise<any>",
+                                "desc": "Returns the router's navigation promise"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-item-section", desc: "列表项选项", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/list-and-list-items"
+            },
+            "props": {
+                "avatar": {
+                    "type": "Boolean",
+                    "desc": "Render an avatar item side (does not needs 'side' prop to be set)",
+                    "category": "content"
+                },
+                "thumbnail": {
+                    "type": "Boolean",
+                    "desc": "Render a thumbnail item side (does not needs 'side' prop to be set)",
+                    "category": "content"
+                },
+                "side": {
+                    "type": "Boolean",
+                    "desc": "Renders as a side of the item",
+                    "category": "content"
+                },
+                "top": {
+                    "type": "Boolean",
+                    "desc": "Align content to top (useful for multi-line items)",
+                    "category": "content"
+                },
+                "no-wrap": {
+                    "type": "Boolean",
+                    "desc": "Do not wrap text (useful for item's main content)",
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Section's actual content"
+                }
+            }
+        }
+    },
+    {
+        name: "q-item-label", desc: "列表项选项", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/list-and-list-items"
+            },
+            "props": {
+                "overline": {
+                    "type": "Boolean",
+                    "desc": "Renders an overline label",
+                    "category": "content"
+                },
+                "caption": {
+                    "type": "Boolean",
+                    "desc": "Renders a caption label",
+                    "category": "content"
+                },
+                "header": {
+                    "type": "Boolean",
+                    "desc": "Renders a header label",
+                    "category": "content"
+                },
+                "lines": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Apply ellipsis when there's not enough space to render on the specified number of lines;",
+                    "category": "content|behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "The content of the label; Suggestion: text"
+                }
+            }
+        }
+    },
+    {
+        name: "q-makeup-table", desc: "表格", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/markup-table"
+            },
+            "props": {
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Applies a 'flat' design (no default shadow)",
+                    "category": "style"
+                },
+                "bordered": {
+                    "type": "Boolean",
+                    "desc": "Applies a default border to the component",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style"
+                },
+                "separator": {
+                    "type": "String",
+                    "desc": "Use a separator/border between rows, columns or all cells",
+                    "default": "horizontal",
+                    "values": [
+                        "horizontal",
+                        "vertical",
+                        "cell",
+                        "none"
+                    ],
+                    "examples": [
+                        "cell"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "wrap-cells": {
+                    "type": "Boolean",
+                    "desc": "Wrap text within table cells",
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-menu", desc: "菜单", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/menu"
+            },
+            "props": {
+                "transition-show": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-hide": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "fade",
+                    "required": false
+                },
+                "transition-duration": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Transition duration (in milliseconds, without unit)",
+                    "default": 300,
+                    "category": "transition",
+                    "required": false
+                },
+                "target": {
+                    "type": [
+                        "Boolean",
+                        "String",
+                        "Element"
+                    ],
+                    "desc": "Configure a target element to trigger component toggle; 'true' means it enables the parent DOM element, 'false' means it disables attaching events to any DOM elements; By using a String (CSS selector) or a DOM element it attaches the events to the specified DOM element (if it exists)",
+                    "default": true,
+                    "values": [
+                        "(Boolean) true",
+                        "(Boolean) false",
+                        "(CSS selector)",
+                        "(DOM Element)"
+                    ],
+                    "examples": [
+                        ":target=\"false\"",
+                        ":target=\"$refs.target\"",
+                        "target=\".my-parent\"",
+                        "target=\"#target-id\""
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "no-parent-event": {
+                    "type": "Boolean",
+                    "desc": "Skips attaching events to the target DOM element (that trigger the element to get shown)",
+                    "category": "behavior"
+                },
+                "context-menu": {
+                    "type": "Boolean",
+                    "desc": "Allows the component to behave like a context menu, which opens with a right mouse click (or long tap on mobile)",
+                    "category": "behavior"
+                },
+                "model-value": {
+                    "type": "Boolean",
+                    "desc": "Model of the component defining shown/hidden state; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "category": "model"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "fit": {
+                    "type": "Boolean",
+                    "desc": "Allows the menu to match at least the full width of its target",
+                    "category": "position"
+                },
+                "cover": {
+                    "type": "Boolean",
+                    "desc": "Allows the menu to cover its target. When used, the 'self' and 'fit' props are no longer effective",
+                    "category": "position"
+                },
+                "anchor": {
+                    "type": "String",
+                    "desc": "Two values setting the starting position or anchor point of the menu relative to its target",
+                    "values": [
+                        "top left",
+                        "top middle",
+                        "top right",
+                        "top start",
+                        "top end",
+                        "center left",
+                        "center middle",
+                        "center right",
+                        "center start",
+                        "center end",
+                        "bottom left",
+                        "bottom middle",
+                        "bottom right",
+                        "bottom start",
+                        "bottom end"
+                    ],
+                    "category": "position"
+                },
+                "self": {
+                    "type": "String",
+                    "desc": "Two values setting the menu's own position relative to its target",
+                    "values": [
+                        "top left",
+                        "top middle",
+                        "top right",
+                        "top start",
+                        "top end",
+                        "center left",
+                        "center middle",
+                        "center right",
+                        "center start",
+                        "center end",
+                        "bottom left",
+                        "bottom middle",
+                        "bottom right",
+                        "bottom start",
+                        "bottom end"
+                    ],
+                    "category": "position"
+                },
+                "offset": {
+                    "type": "Array",
+                    "desc": "An array of two numbers to offset the menu horizontally and vertically in pixels",
+                    "examples": [
+                        "[8, 8]",
+                        "[5, 10]"
+                    ],
+                    "category": "position"
+                },
+                "scroll-target": {
+                    "type": [
+                        "Element",
+                        "String"
+                    ],
+                    "desc": "CSS selector or DOM element to be used as a custom scroll container instead of the auto detected one",
+                    "examples": [
+                        ":scroll-target=\"$refs.scrollTarget\"",
+                        "scroll-target=\".scroll-target-class\"",
+                        "scroll-target=\"#scroll-target-id\"",
+                        "scroll-target=\"body\""
+                    ],
+                    "category": "behavior"
+                },
+                "touch-position": {
+                    "type": "Boolean",
+                    "desc": "Allows for the target position to be set by the mouse position, when the target of the menu is either clicked or touched",
+                    "category": "behavior"
+                },
+                "persistent": {
+                    "type": "Boolean",
+                    "desc": "Allows the menu to not be dismissed by a click/tap outside of the menu or by hitting the ESC key",
+                    "category": "behavior"
+                },
+                "no-route-dismiss": {
+                    "type": "Boolean",
+                    "desc": "Changing route app won't dismiss the popup; No need to set it if 'persistent' prop is also set",
+                    "category": "behavior"
+                },
+                "auto-close": {
+                    "type": "Boolean",
+                    "desc": "Allows any click/tap in the menu to close it; Useful instead of attaching events to each menu item that should close the menu on click/tap",
+                    "category": "behavior"
+                },
+                "separate-close-popup": {
+                    "type": "Boolean",
+                    "desc": "Separate from parent menu, marking it as a separate closing point for v-close-popup (without this, chained menus close all together)",
+                    "category": "behavior"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Forces content to have squared borders",
+                    "category": "style"
+                },
+                "no-refocus": {
+                    "type": "Boolean",
+                    "desc": "(Accessibility) When Menu gets hidden, do not refocus on the DOM element that previously had focus",
+                    "category": "behavior"
+                },
+                "no-focus": {
+                    "type": "Boolean",
+                    "desc": "(Accessibility) When Menu gets shown, do not switch focus on it",
+                    "category": "behavior"
+                },
+                "max-height": {
+                    "type": "String",
+                    "desc": "The maximum height of the menu; Size in CSS units, including unit name",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "max-width": {
+                    "type": "String",
+                    "desc": "The maximum width of the menu; Size in CSS units, including unit name",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when showing/hidden state changes; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Boolean",
+                            "desc": "New state (showing/hidden)"
+                        }
+                    }
+                },
+                "show": {
+                    "desc": "Emitted after component has triggered show()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-show": {
+                    "desc": "Emitted when component triggers show() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Emitted after component has triggered hide()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-hide": {
+                    "desc": "Emitted when component triggers hide() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "escape-key": {
+                    "desc": "Emitted when ESC key is pressed; Does not get emitted if Menu is 'persistent'"
+                }
+            },
+            "methods": {
+                "show": {
+                    "desc": "Triggers component to show",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Triggers component to hide",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "toggle": {
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    },
+                    "desc": "Triggers component to toggle between show/hide"
+                },
+                "updatePosition": {
+                    "desc": "There are some custom scenarios for which Quasar cannot automatically reposition the menu without significant performance drawbacks so the optimal solution is for you to call this method when you need it"
+                },
+                "focus": {
+                    "desc": "Focus menu; if you have content with autofocus attribute, it will directly focus it"
+                }
+            },
+            "computedProps": {
+                "contentEl": {
+                    "type": "Element",
+                    "desc": "The DOM Element of the rendered content",
+                    "addedIn": "v2.10.1"
+                }
+            }
+        }
+    },
+    {
+        name: "q-no-ssr", desc: "无ssr", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/no-ssr"
+            },
+            "props": {
+                "tag": {
+                    "type": "String",
+                    "desc": "HTML tag to use",
+                    "examples": [
+                        "div",
+                        "span",
+                        "div",
+                        "span",
+                        "blockquote"
+                    ],
+                    "category": "content",
+                    "default": "div",
+                    "required": false
+                },
+                "placeholder": {
+                    "type": "String",
+                    "desc": "Text to display on server-side render (unless using 'placeholder' slot)",
+                    "examples": [
+                        "This is server-side only"
+                    ],
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot is used to render content on client-side"
+                },
+                "placeholder": {
+                    "desc": "Slot used as placeholder on server-side render, which gets replaced by the default slot on client-side; overrides 'placeholder' prop"
+                }
+            }
+        }
+    },
+    {
+        name: "q-resize-observer", desc: "大小侦听器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/resize-observer"
+            },
+            "props": {
+                "debounce": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Debounce amount (in milliseconds)",
+                    "default": 100,
+                    "examples": [
+                        "0",
+                        "530"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                }
+            },
+            "events": {
+                "resize": {
+                    "desc": "Parent element has resized (width or height changed)",
+                    "params": {
+                        "size": {
+                            "type": "Object",
+                            "desc": "New size",
+                            "definition": {
+                                "height": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Layout height"
+                                },
+                                "width": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Layout width"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "trigger": {
+                    "desc": "Emit a 'resize' event",
+                    "params": {
+                        "immediately": {
+                            "type": "Boolean",
+                            "desc": "Skip over the debounce amount"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-scroll-observer", desc: "滚动侦听器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/scroll-observer"
+            },
+            "props": {
+                "debounce": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Debounce amount (in milliseconds)",
+                    "examples": [
+                        "0",
+                        "530"
+                    ],
+                    "category": "behavior"
+                },
+                "axis": {
+                    "type": "String",
+                    "desc": "Axis on which to detect changes",
+                    "values": [
+                        "both",
+                        "vertical",
+                        "horizontal"
+                    ],
+                    "default": "vertical",
+                    "category": "behavior",
+                    "required": false
+                },
+                "scroll-target": {
+                    "type": [
+                        "Element",
+                        "String"
+                    ],
+                    "desc": "CSS selector or DOM element to be used as a custom scroll container instead of the auto detected one",
+                    "examples": [
+                        ":scroll-target=\"$refs.scrollTarget\"",
+                        "scroll-target=\".scroll-target-class\"",
+                        "scroll-target=\"#scroll-target-id\"",
+                        "scroll-target=\"body\""
+                    ],
+                    "category": "behavior"
+                }
+            },
+            "events": {
+                "scroll": {
+                    "desc": "Emitted when scroll position changes",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Scroll details",
+                            "definition": {
+                                "position": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "Scroll offset (from top and left)",
+                                    "definition": {
+                                        "top": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "Scroll offset from top (vertical)"
+                                        },
+                                        "left": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "Scroll offset from left (horizontal)"
+                                        }
+                                    }
+                                },
+                                "direction": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Direction of scroll",
+                                    "values": [
+                                        "up",
+                                        "down",
+                                        "left",
+                                        "right"
+                                    ]
+                                },
+                                "directionChanged": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Has scroll direction changed since event was last emitted?"
+                                },
+                                "delta": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "Delta of distance (in pixels) since event was last emitted",
+                                    "definition": {
+                                        "top": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "Vertical delta distance since event was last emitted"
+                                        },
+                                        "left": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "Horizontal delta distance since event was last emitted"
+                                        }
+                                    }
+                                },
+                                "inflectionPoint": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "Last scroll offset where scroll direction has changed",
+                                    "definition": {
+                                        "top": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "Scroll offset from top (vertical)"
+                                        },
+                                        "left": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "Scroll offset from left (horizontal)"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "trigger": {
+                    "desc": "Emit a 'scroll' event",
+                    "params": {
+                        "immediately": {
+                            "type": "Boolean",
+                            "desc": "Skip over the debounce amount"
+                        }
+                    }
+                },
+                "getPosition": {
+                    "desc": "Get current scroll details under the form of an Object: { position, direction, directionChanged, inflectionPoint }"
+                }
+            }
+        }
+    },
+    {
+        name: "q-pagination", desc: "分页", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/pagination"
+            },
+            "props": {
+                "model-value": {
+                    "desc": "Current page (must be between min/max)",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Number"
+                },
+                "min": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Minimum page (must be lower than 'max')",
+                    "default": 1,
+                    "category": "model",
+                    "required": false
+                },
+                "max": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Number of last page (must be higher than 'min')",
+                    "required": true,
+                    "category": "model"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color (useful when you are using it along with the 'input' prop)",
+                    "category": "style"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Button size in CSS units, including unit name",
+                    "examples": [
+                        "20px"
+                    ],
+                    "category": "style"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "input": {
+                    "type": "Boolean",
+                    "desc": "Use an input instead of buttons",
+                    "category": "content"
+                },
+                "icon-prev": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-next": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-first": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-last": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "to-fn": {
+                    "type": "Function",
+                    "desc": "Generate link for page buttons; For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "page": {
+                            "type": "Number",
+                            "desc": "Page number to navigate to"
+                        }
+                    },
+                    "returns": {
+                        "type": [
+                            "Object",
+                            "String"
+                        ],
+                        "desc": "Object or String that can be passed to a <router-link> as `to` parameter"
+                    },
+                    "examples": [
+                        ":to-fn=\"page => ({ query: { page } })\""
+                    ],
+                    "category": "content"
+                },
+                "boundary-links": {
+                    "type": "Boolean",
+                    "desc": "Show boundary button links",
+                    "category": "content"
+                },
+                "boundary-numbers": {
+                    "type": "Boolean",
+                    "desc": "Always show first and last page buttons (if not using 'input')",
+                    "category": "content"
+                },
+                "direction-links": {
+                    "type": "Boolean",
+                    "desc": "Show direction buttons",
+                    "category": "content"
+                },
+                "ellipses": {
+                    "type": "Boolean",
+                    "desc": "Show ellipses (...) when pages are available",
+                    "category": "content"
+                },
+                "max-pages": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "default": 0,
+                    "desc": "Maximum number of page links to display at a time; 0 means Infinite",
+                    "category": "content",
+                    "required": false
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Use 'flat' design for non-active buttons (it's the default option)",
+                    "category": "style"
+                },
+                "outline": {
+                    "type": "Boolean",
+                    "desc": "Use 'outline' design for non-active buttons",
+                    "category": "style"
+                },
+                "unelevated": {
+                    "type": "Boolean",
+                    "desc": "Remove shadow for non-active buttons",
+                    "category": "style"
+                },
+                "push": {
+                    "type": "Boolean",
+                    "desc": "Use 'push' design for non-active buttons",
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name from the Quasar Color Palette for the non-active buttons",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "default": "primary",
+                    "required": false
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Text color name from the Quasar Color Palette for the ACTIVE buttons",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "active-design": {
+                    "type": "String",
+                    "desc": "The design of the ACTIVE button, similar to the flat/outline/push/unelevated props (but those are used for non-active buttons)",
+                    "values": [
+                        "flat",
+                        "outline",
+                        "push",
+                        "unelevated"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.10"
+                },
+                "active-color": {
+                    "type": "String",
+                    "desc": "Color name from the Quasar Color Palette for the ACTIVE button",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "default": "primary",
+                    "required": false
+                },
+                "active-text-color": {
+                    "type": "String",
+                    "desc": "Text color name from the Quasar Color Palette for the ACTIVE button",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "round": {
+                    "type": "Boolean",
+                    "desc": "Makes a circle shaped button for all buttons",
+                    "category": "style"
+                },
+                "rounded": {
+                    "type": "Boolean",
+                    "desc": "Applies a more prominent border-radius for a squared shape button for all buttons",
+                    "category": "style"
+                },
+                "glossy": {
+                    "type": "Boolean",
+                    "desc": "Applies a glossy effect for all buttons",
+                    "category": "style"
+                },
+                "gutter": {
+                    "type": "String",
+                    "desc": "Apply custom gutter; Size in CSS units, including unit name or standard size name (none|xs|sm|md|lg|xl)",
+                    "default": "2px",
+                    "examples": [
+                        "16px",
+                        "10px 5px",
+                        "2rem",
+                        "xs",
+                        "md lg",
+                        "2px 2px 5px 7px"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.10",
+                    "required": false
+                },
+                "padding": {
+                    "type": "String",
+                    "desc": "Apply custom padding (vertical [horizontal]); Size in CSS units, including unit name or standard size name (none|xs|sm|md|lg|xl); Also removes the min width and height when set",
+                    "examples": [
+                        "16px",
+                        "10px 5px",
+                        "2rem",
+                        "xs",
+                        "md lg",
+                        "2px 2px 5px 7px"
+                    ],
+                    "category": "style"
+                },
+                "input-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Style definitions to be attributed to the input (if using one)",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":input-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "input-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Class definitions to be attributed to the input (if using one)",
+                    "examples": [
+                        "my-special-class",
+                        ":input-class=\"{ 'my-special-class': <condition> }\""
+                    ],
+                    "category": "style"
+                },
+                "ripple": {
+                    "type": [
+                        "Boolean",
+                        "Object"
+                    ],
+                    "desc": "Configure buttons material ripple (disable it by setting it to 'false' or supply a config object); Does not applies to boundary and ellipsis buttons",
+                    "default": true,
+                    "examples": [
+                        false,
+                        "{ early: true, center: true, color: 'teal', keyCodes: [] }"
+                    ],
+                    "category": "style",
+                    "required": false
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Number",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "set": {
+                    "desc": "Go directly to the specified page",
+                    "params": {
+                        "pageNumber": {
+                            "type": "Number",
+                            "desc": "Page number to go to"
+                        }
+                    }
+                },
+                "setByOffset": {
+                    "desc": "Increment/Decrement current page by offset",
+                    "params": {
+                        "offset": {
+                            "type": "Number",
+                            "desc": "Offset page, can be negative or positive"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-parallax", desc: "视差", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/parallax"
+            },
+            "props": {
+                "src": {
+                    "type": "String",
+                    "desc": "Path to image (unless a 'media' slot is used)",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "(public folder) src=\"img/something.png\"",
+                        "(assets folder) src=\"~assets/my-img.png\"",
+                        "(relative path format) :src=\"require('./my_img.jpg')\"",
+                        "(URL) src=\"https://some-site.net/some-img.jpg\""
+                    ],
+                    "category": "model"
+                },
+                "height": {
+                    "type": "Number",
+                    "desc": "Height of component (in pixels)",
+                    "default": 500,
+                    "category": "style",
+                    "required": false
+                },
+                "speed": {
+                    "type": "Number",
+                    "desc": "Speed of parallax effect (0.0 < x < 1.0)",
+                    "category": "behavior"
+                },
+                "scroll-target": {
+                    "type": [
+                        "Element",
+                        "String"
+                    ],
+                    "desc": "CSS selector or DOM element to be used as a custom scroll container instead of the auto detected one",
+                    "examples": [
+                        ":scroll-target=\"$refs.scrollTarget\"",
+                        "scroll-target=\".scroll-target-class\"",
+                        "scroll-target=\"#scroll-target-id\"",
+                        "scroll-target=\"body\""
+                    ],
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot can be used for content that gets displayed on top of the component"
+                },
+                "media": {
+                    "desc": "Slot for describing <img> or <video> tags"
+                },
+                "content": {
+                    "desc": "Scoped slot for describing content that gets displayed on top of the component; If specified, it overrides the default slot",
+                    "scope": {
+                        "percentScrolled": {
+                            "type": "Number",
+                            "desc": "Percentage (0.0 < x < 1.0) of scroll in regards to QParallax"
+                        }
+                    }
+                }
+            },
+            "events": {
+                "scroll": {
+                    "desc": "Emitted when scrolling occurs",
+                    "params": {
+                        "percentage": {
+                            "type": "Number",
+                            "desc": "Number between 0.0 and 1.0 defining the scrolled percentage of the component"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-popup-edit", desc: "弹出编辑", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/popup-edit"
+            },
+            "props": {
+                "model-value": {
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Any",
+                    "examples": [
+                        "v-model=\"myValue\""
+                    ]
+                },
+                "title": {
+                    "type": "String",
+                    "desc": "Optional title (unless 'title' slot is used)",
+                    "examples": [
+                        "Calories"
+                    ],
+                    "category": "content"
+                },
+                "buttons": {
+                    "type": "Boolean",
+                    "desc": "Show Set and Cancel buttons",
+                    "category": "content"
+                },
+                "label-set": {
+                    "type": "String",
+                    "desc": "Override Set button label",
+                    "examples": [
+                        "OK"
+                    ],
+                    "category": "content"
+                },
+                "label-cancel": {
+                    "type": "String",
+                    "desc": "Override Cancel button label",
+                    "examples": [
+                        "Cancel"
+                    ],
+                    "category": "content"
+                },
+                "auto-save": {
+                    "type": "Boolean",
+                    "desc": "Automatically save the model (if changed) when user clicks/taps outside of the popup; It does not apply to ESC key",
+                    "category": "behavior"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "default": "primary",
+                    "required": false
+                },
+                "validate": {
+                    "type": "Function",
+                    "desc": "Validates model then triggers 'save' and closes Popup; Returns a Boolean ('true' means valid, 'false' means abort); Syntax: validate(value); For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "Model to validate",
+                            "examples": [
+                                "My car"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "Is the model valid or not?"
+                    },
+                    "examples": [
+                        ":validate=\"myValidation\""
+                    ],
+                    "category": "model"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "fit": {
+                    "type": "Boolean",
+                    "desc": "Allows the menu to match at least the full width of its target",
+                    "category": "position"
+                },
+                "cover": {
+                    "type": "Boolean",
+                    "default": true,
+                    "desc": "Allows the menu to cover its target. When used, the 'self' and 'fit' props are no longer effective",
+                    "category": "position",
+                    "required": false
+                },
+                "anchor": {
+                    "type": "String",
+                    "desc": "Two values setting the starting position or anchor point of the menu relative to its target",
+                    "values": [
+                        "top left",
+                        "top middle",
+                        "top right",
+                        "top start",
+                        "top end",
+                        "center left",
+                        "center middle",
+                        "center right",
+                        "center start",
+                        "center end",
+                        "bottom left",
+                        "bottom middle",
+                        "bottom right",
+                        "bottom start",
+                        "bottom end"
+                    ],
+                    "category": "position"
+                },
+                "self": {
+                    "type": "String",
+                    "desc": "Two values setting the menu's own position relative to its target",
+                    "values": [
+                        "top left",
+                        "top middle",
+                        "top right",
+                        "top start",
+                        "top end",
+                        "center left",
+                        "center middle",
+                        "center right",
+                        "center start",
+                        "center end",
+                        "bottom left",
+                        "bottom middle",
+                        "bottom right",
+                        "bottom start",
+                        "bottom end"
+                    ],
+                    "category": "position"
+                },
+                "offset": {
+                    "type": "Array",
+                    "desc": "An array of two numbers to offset the menu horizontally and vertically in pixels",
+                    "examples": [
+                        "[8, 8]",
+                        "[5, 10]"
+                    ],
+                    "category": "style"
+                },
+                "touch-position": {
+                    "type": "Boolean",
+                    "desc": "Allows for the target position to be set by the mouse position, when the target of the menu is either clicked or touched",
+                    "category": "behavior"
+                },
+                "persistent": {
+                    "type": "Boolean",
+                    "desc": "Avoid menu closing by hitting ESC key or by clicking/tapping outside of the Popup",
+                    "category": "behavior"
+                },
+                "separate-close-popup": {
+                    "type": "Boolean",
+                    "desc": "Separate from parent menu, marking it as a separate closing point for v-close-popup (without this, chained menus close all together)",
+                    "category": "behavior"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Forces menu to have squared borders",
+                    "category": "style"
+                },
+                "max-height": {
+                    "type": "String",
+                    "desc": "The maximum height of the menu; Size in CSS units, including unit name",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "max-width": {
+                    "type": "String",
+                    "desc": "The maximum width of the menu; Size in CSS units, including unit name",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Used for injecting the form component; Do NOT destructure it",
+                    "scope": {
+                        "initialValue": {
+                            "type": "Any",
+                            "desc": "Initial value",
+                            "examples": [
+                                0.241,
+                                "Text"
+                            ]
+                        },
+                        "value": {
+                            "type": "Any",
+                            "desc": "Current value",
+                            "examples": [
+                                0.241,
+                                "Text"
+                            ]
+                        },
+                        "validate": {
+                            "type": "Function",
+                            "desc": "Function that checks if the value is valid",
+                            "params": {
+                                "value": {
+                                    "type": "Any",
+                                    "required": true,
+                                    "desc": "Value to be checked",
+                                    "examples": [
+                                        0,
+                                        "Changed text"
+                                    ]
+                                }
+                            },
+                            "returns": {
+                                "type": "Boolean",
+                                "desc": "Checked value is valid or not"
+                            }
+                        },
+                        "set": {
+                            "type": "Function",
+                            "desc": "Function that sets the value and closes the popup",
+                            "params": null,
+                            "returns": null
+                        },
+                        "cancel": {
+                            "type": "Function",
+                            "desc": "Function that cancels the editing and reverts the value to the initialValue",
+                            "params": null,
+                            "returns": null
+                        },
+                        "updatePosition": {
+                            "type": "Function",
+                            "desc": "There are some custom scenarios for which Quasar cannot automatically reposition the component without significant performance drawbacks so the optimal solution is for you to call this method when you need it",
+                            "params": null,
+                            "returns": null
+                        }
+                    }
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when Popup gets cancelled in order to reset model to its initial value; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                },
+                "before-show": {
+                    "desc": "Emitted right before Popup gets shown"
+                },
+                "show": {
+                    "desc": "Emitted right after Popup gets shown"
+                },
+                "before-hide": {
+                    "desc": "Emitted right before Popup gets dismissed"
+                },
+                "hide": {
+                    "desc": "Emitted right after Popup gets dismissed"
+                },
+                "save": {
+                    "desc": "Emitted when value has been successfully validated and it should be saved",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "Validated value to be saved"
+                        },
+                        "initialValue": {
+                            "type": "Any",
+                            "desc": "Initial value, before changes"
+                        }
+                    }
+                },
+                "cancel": {
+                    "desc": "Emitted when user cancelled the change (hit ESC key or clicking outside of Popup or hit 'Cancel' button)",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "Edited value"
+                        },
+                        "initialValue": {
+                            "type": "Any",
+                            "desc": "Initial value, before changes"
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "set": {
+                    "desc": "Trigger a model update; Validates model (and emits 'save' event if it's the case) then closes Popup"
+                },
+                "cancel": {
+                    "desc": "Triggers a model reset to its initial value ('cancel' event is emitted) then closes Popup"
+                },
+                "show": {
+                    "desc": "Triggers component to show",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Triggers component to hide",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "updatePosition": {
+                    "desc": "There are some custom scenarios for which Quasar cannot automatically reposition the component without significant performance drawbacks so the optimal solution is for you to call this method when you need it"
+                }
+            }
+        }
+    },
+    {
+        name: "q-popup-proxy", desc: "弹出代理", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/popup-proxy"
+            },
+            "props": {
+                "target": {
+                    "type": [
+                        "Boolean",
+                        "String",
+                        "Element"
+                    ],
+                    "desc": "Configure a target element to trigger component toggle; 'true' means it enables the parent DOM element, 'false' means it disables attaching events to any DOM elements; By using a String (CSS selector) or a DOM element it attaches the events to the specified DOM element (if it exists)",
+                    "default": true,
+                    "values": [
+                        "(Boolean) true",
+                        "(Boolean) false",
+                        "(CSS selector)",
+                        "(DOM Element)"
+                    ],
+                    "examples": [
+                        ":target=\"false\"",
+                        ":target=\"$refs.target\"",
+                        "target=\".my-parent\"",
+                        "target=\"#target-id\""
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "no-parent-event": {
+                    "type": "Boolean",
+                    "desc": "Skips attaching events to the target DOM element (that trigger the element to get shown)",
+                    "category": "behavior"
+                },
+                "context-menu": {
+                    "type": "Boolean",
+                    "desc": "Allows the component to behave like a context menu, which opens with a right mouse click (or long tap on mobile)",
+                    "category": "behavior"
+                },
+                "model-value": {
+                    "desc": "Defines the state of the component (shown/hidden); Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": false,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Boolean"
+                },
+                "breakpoint": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Breakpoint (in pixels) of window width/height (whichever is smaller) from where a Menu will get to be used instead of a Dialog",
+                    "default": 450,
+                    "category": "behavior",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                },
+                "before-show": {
+                    "desc": "Emitted when component triggers show() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "show": {
+                    "desc": "Emitted after component has triggered show()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-hide": {
+                    "desc": "Emitted when component triggers hide() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Emitted after component has triggered hide()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "show": {
+                    "desc": "Triggers component to show",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Triggers component to hide",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "toggle": {
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    },
+                    "desc": "Triggers component to toggle between show/hide"
+                }
+            }
+        }
+    },
+    {
+        name: "q-pull-to-refresh", desc: "拉动刷新", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/pull-to-refresh"
+            },
+            "props": {
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for the icon from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "bg-color": {
+                    "type": "String",
+                    "desc": "Color name for background of the icon container from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon to display when refreshing the content",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "no-mouse": {
+                    "type": "Boolean",
+                    "desc": "Don't listen for mouse events",
+                    "category": "behavior"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "scroll-target": {
+                    "type": [
+                        "Element",
+                        "String"
+                    ],
+                    "desc": "CSS selector or DOM element to be used as a custom scroll container instead of the auto detected one",
+                    "examples": [
+                        ":scroll-target=\"$refs.scrollTarget\"",
+                        "scroll-target=\".scroll-target-class\"",
+                        "scroll-target=\"#scroll-target-id\"",
+                        "scroll-target=\"body\""
+                    ],
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Content (area controlled by the component) goes here"
+                }
+            },
+            "events": {
+                "refresh": {
+                    "desc": "Called whenever a refresh is triggered; at this time, your function should load more data",
+                    "params": {
+                        "done": {
+                            "type": "Function",
+                            "desc": "Call the done() function when your data has been refreshed",
+                            "params": null,
+                            "returns": null
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "trigger": {
+                    "desc": "Triggers a refresh"
+                },
+                "updateScrollTarget": {
+                    "desc": "Updates the scroll target; Useful when the parent elements change so that the scrolling target also changes"
+                }
+            }
+        }
+    },
+    {
+        name: "q-rating", desc: "评分", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/rating"
+            },
+            "props": {
+                "name": {
+                    "type": "String",
+                    "desc": "Used to specify the name of the control; Useful if dealing with forms submitted directly to a URL",
+                    "examples": [
+                        "car_id"
+                    ],
+                    "category": "behavior"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "model-value": {
+                    "desc": "Model of the component; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Number",
+                    "examples": [
+                        "v-model=\"rating\"",
+                        ":model-value=\"rating\"",
+                        ":model-value=\"2\""
+                    ]
+                },
+                "max": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Number of icons to display",
+                    "default": 5,
+                    "category": "general",
+                    "required": false
+                },
+                "icon": {
+                    "type": [
+                        "String",
+                        "Array"
+                    ],
+                    "desc": "Icon name following Quasar convention; make sure you have the icon library installed unless you are using 'img:' prefix; If an array is provided each rating value will use the corresponding icon in the array (0 based)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-selected": {
+                    "type": [
+                        "String",
+                        "Array"
+                    ],
+                    "desc": "Icon name following Quasar convention to be used when selected (optional); make sure you have the icon library installed unless you are using 'img:' prefix; If an array is provided each rating value will use the corresponding icon in the array (0 based)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-half": {
+                    "type": [
+                        "String",
+                        "Array"
+                    ],
+                    "desc": "Icon name following Quasar convention to be used when selected (optional); make sure you have the icon library installed unless you are using 'img:' prefix; If an array is provided each rating value will use the corresponding icon in the array (0 based)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-aria-label": {
+                    "type": [
+                        "String",
+                        "Array"
+                    ],
+                    "desc": "Label to be set on aria-label for Icon; If an array is provided each rating value will use the corresponding aria-label in the array (0 based); If string value is provided the rating value will be appended; If not provided the name of the icon will be used",
+                    "examples": [
+                        "Rating",
+                        "[\"Bad\", \"Normal\", \"Good\"]"
+                    ],
+                    "category": "accessibility",
+                    "addedIn": "v1.20.3"
+                },
+                "color": {
+                    "type": [
+                        "String",
+                        "Array"
+                    ],
+                    "desc": "Color name for component from the Quasar Color Palette; v1.5.0+: If an array is provided each rating value will use the corresponding color in the array (0 based)",
+                    "examples": [
+                        "primary",
+                        "teal-10",
+                        "primary",
+                        "teal-10",
+                        "[\"accent\", \"grey-7\"] "
+                    ],
+                    "category": "style"
+                },
+                "color-selected": {
+                    "type": [
+                        "String",
+                        "Array"
+                    ],
+                    "desc": "Color name from the Quasar Palette for selected icons",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "color-half": {
+                    "type": [
+                        "String",
+                        "Array"
+                    ],
+                    "desc": "Color name from the Quasar Palette for half selected icons",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "no-dimming": {
+                    "type": "Boolean",
+                    "desc": "Does not lower opacity for unselected icons",
+                    "category": "style"
+                },
+                "no-reset": {
+                    "type": "Boolean",
+                    "desc": "When used, disables default behavior of clicking/tapping on icon which represents current model value to reset model to 0",
+                    "category": "model"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                }
+            },
+            "slots": {
+                "tip-[name]": {
+                    "desc": "Slot to define the tooltip of icon at '[name]' where name is a 1-based index; Suggestion: QTooltip"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-responsive", desc: "响应式", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/responsive"
+            },
+            "props": {
+                "ratio": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Aspect ratio for the content; If value is a String, then avoid using a computational statement (like '16/9') and instead specify the String value of the result directly (eg. '1.7777')",
+                    "examples": [
+                        ":ratio=\"4/3\"",
+                        ":ratio=\"16/9\"",
+                        "ratio=\"1\""
+                    ],
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-scroll-area", desc: "滚动区域", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/scroll-area"
+            },
+            "props": {
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "bar-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Object with CSS properties and values for custom styling the scrollbars (both vertical and horizontal)",
+                    "examples": [
+                        ":bar-style=\"{ borderRadius: '5px', background: 'red', opacity: 1 }\""
+                    ],
+                    "category": "style"
+                },
+                "vertical-bar-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Object with CSS properties and values for custom styling the vertical scrollbar; Is applied on top of 'bar-style' prop",
+                    "examples": [
+                        ":bar-style=\"{ right: '4px', borderRadius: '5px', background: 'red', width: '10px', opacity: 1 }\""
+                    ],
+                    "category": "style"
+                },
+                "horizontal-bar-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Object with CSS properties and values for custom styling the horizontal scrollbar; Is applied on top of 'bar-style' prop",
+                    "examples": [
+                        ":bar-style=\"{ bottom: '4px', borderRadius: '5px', background: 'red', height: '10px', opacity: 1 }\""
+                    ],
+                    "category": "style"
+                },
+                "thumb-style": {
+                    "type": "Object",
+                    "tsType": "VueStyleObjectProp",
+                    "desc": "Object with CSS properties and values for custom styling the thumb of scrollbars (both vertical and horizontal)",
+                    "examples": [
+                        ":thumb-style=\"{ right: '4px', borderRadius: '5px', background: 'red', width: '10px', opacity: 1 }\""
+                    ],
+                    "category": "style"
+                },
+                "vertical-thumb-style": {
+                    "type": "Object",
+                    "tsType": "VueStyleObjectProp",
+                    "desc": "Object with CSS properties and values for custom styling the thumb of the vertical scrollbar; Is applied on top of 'thumb-style' prop",
+                    "examples": [
+                        ":thumb-style=\"{ right: '4px', borderRadius: '5px', background: 'red', width: '10px', opacity: 1 }\""
+                    ],
+                    "category": "style"
+                },
+                "horizontal-thumb-style": {
+                    "type": "Object",
+                    "tsType": "VueStyleObjectProp",
+                    "desc": "Object with CSS properties and values for custom styling the thumb of the horizontal scrollbar; Is applied on top of 'thumb-style' prop",
+                    "examples": [
+                        ":thumb-style=\"{ bottom: '4px', borderRadius: '5px', background: 'red', height: '10px', opacity: 1 }\""
+                    ],
+                    "category": "style"
+                },
+                "content-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Object with CSS properties and values for styling the container of QScrollArea",
+                    "examples": [
+                        ":content-style=\"{ backgroundColor: '#C0C0C0' }\""
+                    ],
+                    "category": "style"
+                },
+                "content-active-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Object with CSS properties and values for styling the container of QScrollArea when scroll area becomes active (is mouse hovered)",
+                    "examples": [
+                        ":content-active-style=\"{ backgroundColor: 'white' }\""
+                    ],
+                    "category": "style"
+                },
+                "visible": {
+                    "type": "Boolean",
+                    "desc": "Manually control the visibility of the scrollbar; Overrides default mouse over/leave behavior",
+                    "category": "behavior"
+                },
+                "delay": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "When content changes, the scrollbar appears; this delay defines the amount of time (in milliseconds) before scrollbars disappear again (if component is not hovered)",
+                    "default": 1000,
+                    "category": "behavior",
+                    "required": false
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            },
+            "events": {
+                "scroll": {
+                    "desc": "Emitted when scroll information changes (and listener is configured)",
+                    "params": {
+                        "info": {
+                            "type": "Object",
+                            "desc": "An object containing scroll information",
+                            "definition": {
+                                "ref": {
+                                    "type": "Component",
+                                    "tsType": "QScrollArea",
+                                    "required": true,
+                                    "desc": "Vue reference to the QScrollArea which triggered the event"
+                                },
+                                "verticalPosition": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Vertical scroll position (in px)"
+                                },
+                                "verticalPercentage": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Vertical scroll percentage (0.0 <= x <= 1.0)"
+                                },
+                                "verticalSize": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Vertical scroll size (in px)"
+                                },
+                                "verticalContainerSize": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Height of the container (in px)"
+                                },
+                                "horizontalPosition": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Horizontal scroll position (in px)"
+                                },
+                                "horizontalPercentage": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Horizontal scroll percentage (0.0 <= x <= 1.0)"
+                                },
+                                "horizontalSize": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Horizontal scroll size (in px)"
+                                },
+                                "horizontalContainerSize": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Width of the container (in px)"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "getScrollTarget": {
+                    "desc": "Get the scrolling DOM element target",
+                    "returns": {
+                        "type": "Element",
+                        "desc": "DOM element upon which scrolling takes place"
+                    }
+                },
+                "getScroll": {
+                    "desc": "Get the current scroll information",
+                    "returns": {
+                        "type": "Object",
+                        "desc": "Scroll information",
+                        "definition": {
+                            "verticalPosition": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Vertical scroll position (in px)"
+                            },
+                            "verticalPercentage": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Vertical scroll percentage (0.0 <= x <= 1.0)"
+                            },
+                            "verticalSize": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Vertical scroll size (in px)"
+                            },
+                            "verticalContainerSize": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Height of the container (in px)"
+                            },
+                            "horizontalPosition": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Horizontal scroll position (in px)"
+                            },
+                            "horizontalPercentage": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Horizontal scroll percentage (0.0 <= x <= 1.0)"
+                            },
+                            "horizontalSize": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Horizontal scroll size (in px)"
+                            },
+                            "horizontalContainerSize": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Width of the container (in px)"
+                            }
+                        }
+                    }
+                },
+                "getScrollPosition": {
+                    "desc": "Get current scroll position",
+                    "returns": {
+                        "type": "Object",
+                        "desc": "An object containing scroll position information",
+                        "definition": {
+                            "top": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Scroll offset from top (vertical)"
+                            },
+                            "left": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Scroll offset from left (horizontal)"
+                            }
+                        },
+                        "examples": [
+                            "{ top: 10, left: 0 }"
+                        ]
+                    }
+                },
+                "getScrollPercentage": {
+                    "desc": "Get current scroll position in percentage (0.0 <= x <= 1.0)",
+                    "returns": {
+                        "type": "Object",
+                        "desc": "An object containing scroll position information in percentage",
+                        "definition": {
+                            "top": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Scroll percentage (0.0 <= x <= 1.0) offset from top (vertical)"
+                            },
+                            "left": {
+                                "type": "Number",
+                                "required": true,
+                                "desc": "Scroll percentage (0.0 <= x <= 1.0) offset from left (horizontal)"
+                            }
+                        },
+                        "examples": [
+                            "{ top: 0.212, left: 0 }"
+                        ]
+                    }
+                },
+                "setScrollPosition": {
+                    "desc": "Set scroll position to an offset; If a duration (in milliseconds) is specified then the scroll is animated",
+                    "params": {
+                        "axis": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "Scroll axis",
+                            "values": [
+                                "vertical",
+                                "horizontal"
+                            ]
+                        },
+                        "offset": {
+                            "type": "Number",
+                            "required": true,
+                            "desc": "Scroll position offset from top (in pixels)"
+                        },
+                        "duration": {
+                            "type": "Number",
+                            "desc": "Duration (in milliseconds) enabling animated scroll"
+                        }
+                    }
+                },
+                "setScrollPercentage": {
+                    "desc": "Set scroll position to a percentage (0.0 <= x <= 1.0) of the total scrolling size; If a duration (in milliseconds) is specified then the scroll is animated",
+                    "params": {
+                        "axis": {
+                            "type": "String",
+                            "desc": "Scroll axis",
+                            "values": [
+                                "vertical",
+                                "horizontal"
+                            ],
+                            "required": true
+                        },
+                        "offset": {
+                            "type": "Number",
+                            "desc": "Scroll percentage (0.0 <= x <= 1.0) of the total scrolling size",
+                            "required": true
+                        },
+                        "duration": {
+                            "type": "Number",
+                            "desc": "Duration (in milliseconds) enabling animated scroll"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-separator", desc: "分隔条", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/separator"
+            },
+            "props": {
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "spaced": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "If set to true, the corresponding direction margins will be set to 8px; It can also be set to a size in CSS units, including unit name, or one of the xs|sm|md|lg|xl predefined sizes",
+                    "default": "md",
+                    "examples": [
+                        "12px",
+                        "sm",
+                        "md"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "inset": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "If set to Boolean true, the left and right margins will be set to 16px. If set to 'item' then it will match a QItem's design. If set to 'item-thumbnail' then it will match the design of a QItem with a thumbnail on the left side",
+                    "examples": [
+                        "item",
+                        "item-thumbnail"
+                    ],
+                    "category": "content"
+                },
+                "vertical": {
+                    "type": "Boolean",
+                    "desc": "If set to true, the separator will be vertical.",
+                    "category": "content"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                }
+            }
+        }
+    },
+    {
+        name: "q-skeleton", desc: "骨架屏", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/skeleton"
+            },
+            "props": {
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "type": {
+                    "type": "String",
+                    "desc": "Type of skeleton placeholder",
+                    "values": [
+                        "text",
+                        "rect",
+                        "circle",
+                        "QBtn",
+                        "QBadge",
+                        "QChip",
+                        "QToolbar",
+                        "QCheckbox",
+                        "QRadio",
+                        "QToggle",
+                        "QSlider",
+                        "QRange",
+                        "QInput",
+                        "QAvatar"
+                    ],
+                    "default": "rect",
+                    "category": "content",
+                    "required": false
+                },
+                "animation": {
+                    "type": "String",
+                    "desc": "The animation effect of the skeleton placeholder",
+                    "values": [
+                        "wave",
+                        "pulse",
+                        "pulse-x",
+                        "pulse-y",
+                        "fade",
+                        "blink",
+                        "none"
+                    ],
+                    "default": "wave",
+                    "category": "style",
+                    "required": false
+                },
+                "animation-speed": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Animation speed (in milliseconds, without unit)",
+                    "examples": [
+                        500,
+                        "1200"
+                    ],
+                    "category": "style",
+                    "default": 300,
+                    "addedIn": "v2.2",
+                    "required": false
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style"
+                },
+                "bordered": {
+                    "type": "Boolean",
+                    "desc": "Applies a default border to the component",
+                    "category": "style"
+                },
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name; Overrides 'height' and 'width' props and applies the value to both height and width",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "width": {
+                    "type": "String",
+                    "desc": "Width in CSS units, including unit name; Apply custom width; Use this prop or through CSS; Overridden by 'size' prop if used",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "height": {
+                    "type": "String",
+                    "desc": "Height in CSS units, including unit name; Apply custom height; Use this prop or through CSS; Overridden by 'size' prop if used",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "style"
+                },
+                "tag": {
+                    "type": "String",
+                    "desc": "HTML tag to use",
+                    "examples": [
+                        "div",
+                        "span",
+                        "div",
+                        "span"
+                    ],
+                    "category": "content",
+                    "default": "div",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-slideItem", desc: "可滑动项", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/slide-item"
+            },
+            "props": {
+                "left-color": {
+                    "type": "String",
+                    "desc": "Color name for left-side background from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "right-color": {
+                    "type": "String",
+                    "desc": "Color name for right-side background from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "top-color": {
+                    "type": "String",
+                    "desc": "Color name for top-side background from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "bottom-color": {
+                    "type": "String",
+                    "desc": "Color name for bottom-side background from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where item's sections go; Suggestion: QItemSection"
+                },
+                "left": {
+                    "desc": "Left side content when sliding"
+                },
+                "right": {
+                    "desc": "Right side content when sliding"
+                },
+                "top": {
+                    "desc": "Top side content when sliding"
+                },
+                "bottom": {
+                    "desc": "Bottom side content when sliding"
+                }
+            },
+            "events": {
+                "left": {
+                    "desc": "Emitted when user finished sliding the item to the left",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Details",
+                            "definition": {
+                                "reset": {
+                                    "type": "Function",
+                                    "required": true,
+                                    "desc": "When called, it resets the component to its initial non-slided state",
+                                    "params": null,
+                                    "returns": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "right": {
+                    "desc": "Emitted when user finished sliding the item to the right",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Details",
+                            "definition": {
+                                "reset": {
+                                    "type": "Function",
+                                    "required": true,
+                                    "desc": "When called, it resets the component to its initial non-slided state",
+                                    "params": null,
+                                    "returns": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "top": {
+                    "desc": "Emitted when user finished sliding the item up",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Details",
+                            "definition": {
+                                "reset": {
+                                    "type": "Function",
+                                    "required": true,
+                                    "desc": "When called, it resets the component to its initial non-slided state",
+                                    "params": null,
+                                    "returns": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "bottom": {
+                    "desc": "Emitted when user finished sliding the item down",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Details",
+                            "definition": {
+                                "reset": {
+                                    "type": "Function",
+                                    "required": true,
+                                    "desc": "When called, it resets the component to its initial non-slided state",
+                                    "params": null,
+                                    "returns": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "slide": {
+                    "desc": "Emitted while user is sliding the item to one of the available sides",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Details",
+                            "definition": {
+                                "side": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Side to which sliding is taking effect",
+                                    "values": [
+                                        "left",
+                                        "right",
+                                        "top",
+                                        "bottom"
+                                    ]
+                                },
+                                "ratio": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Ratio of how much of the required slide was performed (0 <= x <= 1)"
+                                },
+                                "isReset": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Ratio has been reset"
+                                }
+                            }
+                        }
+                    }
+                },
+                "action": {
+                    "desc": "Emitted when user finished sliding the item to either sides",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Details",
+                            "definition": {
+                                "side": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Side to which sliding has taken effect",
+                                    "values": [
+                                        "left",
+                                        "right",
+                                        "top",
+                                        "bottom"
+                                    ]
+                                },
+                                "reset": {
+                                    "type": "Function",
+                                    "required": true,
+                                    "desc": "When called, it resets the component to its initial non-slided state",
+                                    "params": null,
+                                    "returns": null
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "reset": {
+                    "desc": "Reset to initial state (not swiped to any side)"
+                }
+            }
+        }
+    },
+    {
+        name: "q-slide-transition", desc: "幻灯片过渡", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/slide-transition"
+            },
+            "props": {
+                "appear": {
+                    "type": "Boolean",
+                    "desc": "If set to true, the transition will be applied on the initial render.",
+                    "category": "behavior"
+                },
+                "duration": {
+                    "type": "Number",
+                    "desc": "Duration (in milliseconds) enabling animated scroll.",
+                    "default": 300,
+                    "category": "behavior",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "This is where content goes"
+                }
+            },
+            "events": {
+                "show": {
+                    "desc": "Emitted when component show animation is finished"
+                },
+                "hide": {
+                    "desc": "Emitted when component hide animation is finished"
+                }
+            }
+        }
+    },
+    {name: "q-space", desc: "间距", info: {}},
+    {
+        name: "q-spinner", desc: "旋转器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/spinners"
+            },
+            "props": {
+                "size": {
+                    "type": "String",
+                    "desc": "Size in CSS units, including unit name or standard size name (xs|sm|md|lg|xl)",
+                    "examples": [
+                        "16px",
+                        "2rem",
+                        "xs",
+                        "md"
+                    ],
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "thickness": {
+                    "type": "Number",
+                    "desc": "Override value to use for stroke-width",
+                    "default": 5,
+                    "category": "style",
+                    "required": false
+                }
+            }
+        }
+    },
+    {
+        name: "q-splitter", desc: "拆分器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/splitter"
+            },
+            "props": {
+                "model-value": {
+                    "desc": "Model of the component defining the size of first panel (or second if using reverse) in the unit specified (for '%' it's the split ratio percent - 0.0 < x < 100.0; for 'px' it's the size in px); Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": true,
+                    "syncable": true,
+                    "category": "model",
+                    "type": "Number",
+                    "examples": [
+                        "v-model=\"ratio\""
+                    ]
+                },
+                "reverse": {
+                    "type": "Boolean",
+                    "desc": "Apply the model size to the second panel (by default it applies to the first)",
+                    "category": "model"
+                },
+                "unit": {
+                    "type": "String",
+                    "desc": "CSS unit for the model",
+                    "default": "%",
+                    "values": [
+                        "%",
+                        "px"
+                    ],
+                    "category": "model",
+                    "required": false
+                },
+                "emit-immediately": {
+                    "type": "Boolean",
+                    "desc": "Emit model while user is panning on the separator",
+                    "category": "model"
+                },
+                "horizontal": {
+                    "type": "Boolean",
+                    "desc": "Allows the splitter to split its two panels horizontally, instead of vertically",
+                    "category": "content"
+                },
+                "limits": {
+                    "type": "Array",
+                    "desc": "An array of two values representing the minimum and maximum split size of the two panels; When 'px' unit is set then you can use Infinity as the second value to make it unbound on the other side",
+                    "default": "For '%' unit: [10, 90]; For 'px' unit: [50, Infinity]",
+                    "examples": [
+                        ":limits=\"[30, 70]\"",
+                        ":limits=\"[0, Infinity]\""
+                    ],
+                    "category": "content|model",
+                    "required": false
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "before-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Class definitions to be attributed to the 'before' panel",
+                    "examples": [
+                        "bg-deep-orange",
+                        ":before-class=\"{ 'my-special-class': <condition> }\""
+                    ],
+                    "category": "style"
+                },
+                "after-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Class definitions to be attributed to the 'after' panel",
+                    "examples": [
+                        "bg-deep-orange",
+                        ":after-class=\"{ 'my-special-class': <condition> }\""
+                    ],
+                    "category": "style"
+                },
+                "separator-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "Class definitions to be attributed to the splitter separator",
+                    "examples": [
+                        "bg-deep-orange",
+                        ":separator-class=\"{ 'my-special-class': <condition> }\""
+                    ],
+                    "category": "style"
+                },
+                "separator-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "Style definitions to be attributed to the splitter separator",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":separator-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Applies a default lighter color on the separator; To be used when background is darker; Avoid using when you are overriding through separator-class or separator-style props",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component; Suggestion: QTooltip, QMenu"
+                },
+                "before": {
+                    "desc": "Content of the panel on left/top"
+                },
+                "after": {
+                    "desc": "Content of the panel on right/bottom"
+                },
+                "separator": {
+                    "desc": "Content to be placed inside the separator; By default it is centered"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when component's model value changes; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Number",
+                            "desc": "New model value (0.0 < x < 100.0) defining the ratio between panels"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-stepper", desc: "步进器组", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/stepper"
+            },
+            "props": {
+                "model-value": {
+                    "type": "Any",
+                    "desc": "Model of the component defining the current panel's name; If a Number is used, it does not define the panel's index, but rather the panel's name which can also be an Integer; Either use this property (along with a listener for 'update:model-value' event) OR use the v-model directive.",
+                    "examples": [
+                        "v-model=\"panelName\""
+                    ],
+                    "category": "model"
+                },
+                "keep-alive": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to using Vue's native <keep-alive> component on the content",
+                    "category": "behavior"
+                },
+                "keep-alive-include": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "RegExp"
+                    ],
+                    "desc": "Equivalent to using Vue's native include prop for <keep-alive>; Values must be valid Vue component names",
+                    "examples": [
+                        "a,b",
+                        "/a|b/",
+                        "['a', 'b']"
+                    ],
+                    "category": "behavior"
+                },
+                "keep-alive-exclude": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "RegExp"
+                    ],
+                    "desc": "Equivalent to using Vue's native exclude prop for <keep-alive>; Values must be valid Vue component names",
+                    "examples": [
+                        "a,b",
+                        "/a|b/",
+                        "['a', 'b']"
+                    ],
+                    "category": "behavior"
+                },
+                "keep-alive-max": {
+                    "type": "Number",
+                    "desc": "Equivalent to using Vue's native max prop for <keep-alive>",
+                    "category": "behavior"
+                },
+                "animated": {
+                    "type": "Boolean",
+                    "desc": "Enable transitions between panel (also see 'transition-prev' and 'transition-next' props)",
+                    "category": "behavior"
+                },
+                "infinite": {
+                    "type": "Boolean",
+                    "desc": "Makes component appear as infinite (when reaching last panel, next one will become the first one)",
+                    "category": "behavior"
+                },
+                "swipeable": {
+                    "type": "Boolean",
+                    "desc": "Enable swipe events (may interfere with content's touch/mouse events)",
+                    "category": "behavior"
+                },
+                "vertical": {
+                    "type": "Boolean",
+                    "desc": "Put Stepper in vertical mode (instead of horizontal by default)",
+                    "category": "behavior"
+                },
+                "transition-prev": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions (has effect only if 'animated' prop is set)",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "slide-right/slide-down",
+                    "required": false
+                },
+                "transition-next": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions (has effect only if 'animated' prop is set)",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "slide-left/slide-up",
+                    "required": false
+                },
+                "transition-duration": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Transition duration (in milliseconds, without unit)",
+                    "default": 300,
+                    "category": "transition",
+                    "addedIn": "v2.2",
+                    "required": false
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Applies a 'flat' design (no default shadow)",
+                    "category": "style"
+                },
+                "bordered": {
+                    "type": "Boolean",
+                    "desc": "Applies a default border to the component",
+                    "category": "style"
+                },
+                "alternative-labels": {
+                    "type": "Boolean",
+                    "desc": "Use alternative labels - stacks the icon on top of the label (applies only to horizontal stepper)",
+                    "category": "header"
+                },
+                "header-nav": {
+                    "type": "Boolean",
+                    "desc": "Allow navigation through the header",
+                    "category": "behavior"
+                },
+                "contracted": {
+                    "type": "Boolean",
+                    "desc": "Hide header labels on narrow windows",
+                    "category": "header|behavior"
+                },
+                "inactive-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "header"
+                },
+                "inactive-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "header"
+                },
+                "done-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; If 'none' (String) is used as value, then it will defer to prefix or the regular icon for this state; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "header"
+                },
+                "done-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "header"
+                },
+                "active-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; If 'none' (String) is used as value, then it will defer to prefix or the regular icon for this state; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "header"
+                },
+                "active-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "header"
+                },
+                "error-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; If 'none' (String) is used as value, then it will defer to prefix or the regular icon for this state; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "header"
+                },
+                "error-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "header"
+                },
+                "header-class": {
+                    "type": "String",
+                    "desc": "Class definitions to be attributed to the header",
+                    "examples": [
+                        "my-special-class"
+                    ],
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Suggestion: QStep"
+                },
+                "navigation": {
+                    "desc": "Slot specific for the global navigation; Suggestion: QStepperNavigation"
+                },
+                "message": {
+                    "desc": "Slot specific for putting a message on top of each step (if horizontal stepper) or above steps (if vertical); Suggestion: QBanner, div.q-pa-lg"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component changes the model; This event _isn't_ fired if the model is changed externally; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "New current panel name",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                },
+                "before-transition": {
+                    "desc": "Emitted before transitioning to a new panel",
+                    "params": {
+                        "newVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name towards transition is going",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        },
+                        "oldVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name from which transition is happening",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                },
+                "transition": {
+                    "desc": "Emitted after component transitioned to a new panel",
+                    "params": {
+                        "newVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name towards transition has occurred",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        },
+                        "oldVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name from which transition has happened",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "next": {
+                    "desc": "Go to next panel"
+                },
+                "previous": {
+                    "desc": "Go to previous panel"
+                },
+                "goTo": {
+                    "desc": "Go to specific panel",
+                    "params": {
+                        "panelName": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel's name, which may be a String or Number; Number does not refers to panel index, but to its name, which may be an Integer",
+                            "required": true,
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-step", desc: "步进器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/stepper"
+            },
+            "props": {
+                "name": {
+                    "type": "Any",
+                    "desc": "Panel name",
+                    "required": true,
+                    "examples": [
+                        "accounts",
+                        "firstPanel",
+                        ":name=\"1\""
+                    ],
+                    "category": "general"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "header"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "title": {
+                    "type": "String",
+                    "desc": "Step title",
+                    "required": true,
+                    "examples": [
+                        "Ad Groups",
+                        "Payment"
+                    ],
+                    "category": "header"
+                },
+                "caption": {
+                    "type": "String",
+                    "desc": "Step’s additional information that appears beneath the title",
+                    "examples": [
+                        "Create an account",
+                        "Payment details"
+                    ],
+                    "category": "header"
+                },
+                "prefix": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Step's prefix (max 2 characters) which replaces the icon if step does not has error, is being edited or is marked as done",
+                    "examples": [
+                        "1",
+                        "2",
+                        "A",
+                        "B"
+                    ],
+                    "category": "header"
+                },
+                "done-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; If 'none' (String) is used as value, then it will defer to prefix or the regular icon for this state; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "header"
+                },
+                "done-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "header"
+                },
+                "active-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; If 'none' (String) is used as value, then it will defer to prefix or the regular icon for this state; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "header"
+                },
+                "active-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "header"
+                },
+                "error-icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; If 'none' (String) is used as value, then it will defer to prefix or the regular icon for this state; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "header"
+                },
+                "error-color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "header"
+                },
+                "header-nav": {
+                    "type": "Boolean",
+                    "default": true,
+                    "desc": "Allow navigation through the header",
+                    "category": "behavior",
+                    "required": false
+                },
+                "done": {
+                    "type": "Boolean",
+                    "desc": "Mark the step as 'done'",
+                    "category": "state"
+                },
+                "error": {
+                    "type": "Boolean",
+                    "desc": "Mark the step as having an error",
+                    "category": "state"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "The content of the step; Can also contain a QStepperNavigation if you want to handle step navigation and don't have a global navigation in place"
+                }
+            }
+        }
+    },
+    {
+        name: "q-stepper-navigation", desc: "步进器导航按钮", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/stepper"
+            },
+            "slots": {
+                "default": {
+                    "desc": "The content of the custom navigation, child of a QStep or of a QStepper (globally, through 'navigation' slot)"
+                }
+            }
+        }
+    },
+    {
+        name: "q-table", desc: "表格", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/table"
+            },
+            "props": {
+                "fullscreen": {
+                    "type": "Boolean",
+                    "sync": true,
+                    "desc": "Fullscreen mode",
+                    "examples": [
+                        "v-model:fullscreen=\"isFullscreen\""
+                    ],
+                    "category": "behavior",
+                    "syncable": true
+                },
+                "no-route-fullscreen-exit": {
+                    "type": "Boolean",
+                    "desc": "Changing route app won't exit fullscreen",
+                    "category": "behavior"
+                },
+                "rows": {
+                    "type": "Array",
+                    "desc": "Rows of data to display",
+                    "examples": [
+                        ":rows=\"myData\""
+                    ],
+                    "category": "general"
+                },
+                "row-key": {
+                    "type": [
+                        "String",
+                        "Function"
+                    ],
+                    "desc": "Property of each row that defines the unique key of each row (the result must be a primitive, not Object, Array, etc); The value of property must be string or a function taking a row and returning the desired (nested) key in the row; If supplying a function then for best performance, reference it from your scope and do not define it inline",
+                    "default": "id",
+                    "params": {
+                        "row": {
+                            "type": "Object",
+                            "desc": "The current row being processed",
+                            "examples": [
+                                "{ name: 'Lorem Ipsum', price: 19 }"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Any",
+                        "desc": "Current row's key",
+                        "examples": [
+                            "'34f39dda-6206-4071-a9df-4393aabe49ac'",
+                            "34"
+                        ]
+                    },
+                    "examples": [
+                        "row-key=\"name\"",
+                        ":row-key=\"row => row.name\""
+                    ],
+                    "category": "general",
+                    "required": false
+                },
+                "virtual-scroll": {
+                    "type": "Boolean",
+                    "desc": "Display data using QVirtualScroll (for non-grid mode only)",
+                    "category": "virtual-scroll"
+                },
+                "virtual-scroll-target": {
+                    "type": [
+                        "Element",
+                        "String"
+                    ],
+                    "desc": "CSS selector or DOM element to be used as a custom scroll container instead of the auto detected one",
+                    "examples": [
+                        ":scroll-target=\"$refs.scrollTarget\"",
+                        "scroll-target=\".scroll-target-class\"",
+                        "scroll-target=\"#scroll-target-id\"",
+                        "scroll-target=\"body\""
+                    ],
+                    "category": "behavior"
+                },
+                "virtual-scroll-slice-size": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Minimum number of rows to render in the virtual list",
+                    "default": 30,
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-slice-ratio-before": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Ratio of number of rows in visible zone to render before it",
+                    "default": 1,
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-slice-ratio-after": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Ratio of number of rows in visible zone to render after it",
+                    "default": 1,
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-item-size": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Default size in pixels of a row; This value is used for rendering the initial table; Try to use a value close to the minimum size of a row",
+                    "default": "48 (24 if dense)",
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-sticky-size-start": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Size in pixels of the sticky header (if using one); A correct value will improve scroll precision; Will be also used for non-virtual-scroll tables for fixing top alignment when using scrollTo method",
+                    "default": "0",
+                    "category": "virtual-scroll|behavior",
+                    "required": false
+                },
+                "virtual-scroll-sticky-size-end": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Size in pixels of the sticky footer part (if using one); A correct value will improve scroll precision",
+                    "default": "0",
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "table-colspan": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "The number of columns in the table (you need this if you use table-layout: fixed)",
+                    "category": "virtual-scroll|content"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style",
+                    "default": "grey-8",
+                    "required": false
+                },
+                "icon-first-page": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention for stepping to first page; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-prev-page": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention for stepping to previous page; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-next-page": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention for stepping to next page; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "icon-last-page": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention for stepping to last page; Make sure you have the icon library installed unless you are using 'img:' prefix",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "grid": {
+                    "type": "Boolean",
+                    "desc": "Display data as a grid instead of the default table",
+                    "category": "behavior"
+                },
+                "grid-header": {
+                    "type": "Boolean",
+                    "desc": "Display header for grid-mode also",
+                    "category": "behavior|content"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; Connect with $q.screen for responsive behavior",
+                    "category": "style"
+                },
+                "columns": {
+                    "type": "Array",
+                    "desc": "The column definitions (Array of Objects)",
+                    "examples": [
+                        ":columns=\"tableColumns\""
+                    ],
+                    "category": "column",
+                    "definition": {
+                        "name": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "Unique id, identifies column, (used by pagination.sortBy, 'body-cell-[name]' slot, ...)",
+                            "examples": [
+                                "desc"
+                            ]
+                        },
+                        "label": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "Label for header",
+                            "examples": [
+                                "Dessert (100g serving)"
+                            ]
+                        },
+                        "field": {
+                            "type": [
+                                "String",
+                                "Function"
+                            ],
+                            "required": true,
+                            "desc": "Row Object property to determine value for this column or function which maps to the required property",
+                            "params": {
+                                "row": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "The current row being processed",
+                                    "examples": [
+                                        "{ name: 'Lorem Ipsum', prices: { active: 19, old: 25, list: 29 } }"
+                                    ]
+                                }
+                            },
+                            "returns": {
+                                "type": "Any",
+                                "desc": "Value for this column",
+                                "examples": [
+                                    "19"
+                                ]
+                            },
+                            "examples": [
+                                "name",
+                                "row => row.prices.active"
+                            ]
+                        },
+                        "required": {
+                            "type": "Boolean",
+                            "desc": "If we use visible-columns, this col will always be visible"
+                        },
+                        "align": {
+                            "type": "String",
+                            "desc": "Horizontal alignment of cells in this column",
+                            "values": [
+                                "left",
+                                "right",
+                                "center"
+                            ],
+                            "default": "right",
+                            "required": false
+                        },
+                        "sortable": {
+                            "type": "Boolean",
+                            "desc": "Tell QTable you want this column sortable",
+                            "default": false,
+                            "required": false
+                        },
+                        "sort": {
+                            "type": "Function",
+                            "desc": "Compare function if you have some custom data or want a specific way to compare two rows",
+                            "examples": [
+                                "(a, b, rowA, rowB) => parseInt(a, 10) - parseInt(b, 10)"
+                            ],
+                            "params": {
+                                "a": {
+                                    "type": "Any",
+                                    "required": true,
+                                    "desc": "Value of the first comparison term",
+                                    "examples": [
+                                        123,
+                                        "abc"
+                                    ]
+                                },
+                                "b": {
+                                    "type": "Any",
+                                    "required": true,
+                                    "desc": "Value of the second comparison term",
+                                    "examples": [
+                                        123,
+                                        "abc"
+                                    ]
+                                },
+                                "rowA": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "Full Row object in which is contained the first term",
+                                    "examples": [
+                                        "{ name: 'Potassium', value: 'K' }"
+                                    ]
+                                },
+                                "rowB": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "Full Row object in which is contained the second term",
+                                    "examples": [
+                                        "{ name: 'Fluorine', value: 'F' }"
+                                    ]
+                                }
+                            },
+                            "returns": {
+                                "type": "Number",
+                                "desc": "Comparison result of term 'a' with term 'b'. Less than 0 when 'a' should come first; greater than 0 if 'b' should come first; equal to 0 if their position must not be changed with respect to each other",
+                                "examples": [
+                                    "-1",
+                                    "0",
+                                    "1"
+                                ]
+                            }
+                        },
+                        "sortOrder": {
+                            "type": "String",
+                            "desc": "Set column sort order: 'ad' (ascending-descending) or 'da' (descending-ascending); Overrides the 'column-sort-order' prop",
+                            "values": [
+                                "ad",
+                                "da"
+                            ],
+                            "default": "ad",
+                            "required": false
+                        },
+                        "format": {
+                            "type": "Function",
+                            "desc": "Function you can apply to format your data",
+                            "examples": [
+                                "(val, row) => `${val}%`",
+                                "val => val ? /* Unicode checkmark checked */ '☑' : /* Unicode checkmark unchecked */ '☐'"
+                            ],
+                            "params": {
+                                "val": {
+                                    "type": "Any",
+                                    "required": true,
+                                    "desc": "Value of the cell",
+                                    "examples": [
+                                        123,
+                                        "abc"
+                                    ]
+                                },
+                                "row": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "Full Row object in which the cell is contained",
+                                    "examples": [
+                                        "{ name: 'Potassium', value: 'K' }"
+                                    ]
+                                }
+                            },
+                            "returns": {
+                                "type": "Any",
+                                "desc": "The resulting formatted value",
+                                "examples": [
+                                    "20%"
+                                ]
+                            }
+                        },
+                        "style": {
+                            "type": [
+                                "String",
+                                "Function"
+                            ],
+                            "desc": "Style to apply on normal cells of the column",
+                            "params": {
+                                "row": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "The current row being processed",
+                                    "examples": [
+                                        "{ name: 'Frozen Yogurt', calories: 159 }"
+                                    ]
+                                }
+                            },
+                            "returns": {
+                                "type": "String"
+                            },
+                            "examples": [
+                                "'width: 500px'",
+                                "row => (row.calories % 2 === 0 ? 'width: 10px' : 'font-size: 2em; font-weight: bold')"
+                            ]
+                        },
+                        "classes": {
+                            "type": [
+                                "String",
+                                "Function"
+                            ],
+                            "desc": "Classes to add on normal cells of the column",
+                            "params": {
+                                "row": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "The current row being processed",
+                                    "examples": [
+                                        "{ name: 'Frozen Yogurt', calories: 159 }"
+                                    ]
+                                }
+                            },
+                            "returns": {
+                                "type": "String"
+                            },
+                            "examples": [
+                                "'my-special-class bg-primary'",
+                                "row => (row.calories % 2 === 0 ? 'bg-green text-white' : 'bg-yellow')"
+                            ]
+                        },
+                        "headerStyle": {
+                            "type": "String",
+                            "desc": "Style to apply on header cells of the column",
+                            "examples": [
+                                "width: 500px"
+                            ]
+                        },
+                        "headerClasses": {
+                            "type": "String",
+                            "desc": "Classes to add on header cells of the column",
+                            "examples": [
+                                "my-special-class"
+                            ]
+                        }
+                    }
+                },
+                "visible-columns": {
+                    "type": "Array",
+                    "desc": "Array of Strings defining column names ('name' property of each column from 'columns' prop definitions); Columns marked as 'required' are not affected by this property",
+                    "examples": [
+                        ":visible-columns=\"myCols\"",
+                        "[ 'desc', 'carbs', 'protein' ]"
+                    ],
+                    "category": "column"
+                },
+                "loading": {
+                    "type": "Boolean",
+                    "desc": "Put Table into 'loading' state; Notify the user something is happening behind the scenes",
+                    "category": "behavior|content"
+                },
+                "title": {
+                    "type": "String",
+                    "desc": "Table title",
+                    "examples": [
+                        "Device list"
+                    ],
+                    "category": "content"
+                },
+                "hide-header": {
+                    "type": "Boolean",
+                    "desc": "Hide table header layer",
+                    "category": "content"
+                },
+                "hide-bottom": {
+                    "type": "Boolean",
+                    "desc": "Hide table bottom layer regardless of what it has to display",
+                    "category": "content"
+                },
+                "hide-selected-banner": {
+                    "type": "Boolean",
+                    "desc": "Hide the selected rows banner (if any)",
+                    "category": "content"
+                },
+                "hide-no-data": {
+                    "type": "Boolean",
+                    "desc": "Hide the default no data bottom layer",
+                    "category": "content"
+                },
+                "hide-pagination": {
+                    "type": "Boolean",
+                    "desc": "Hide the pagination controls at the bottom",
+                    "category": "content"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Applies a 'flat' design (no default shadow)",
+                    "category": "style"
+                },
+                "bordered": {
+                    "type": "Boolean",
+                    "desc": "Applies a default border to the component",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style"
+                },
+                "separator": {
+                    "type": "String",
+                    "desc": "Use a separator/border between rows, columns or all cells",
+                    "default": "horizontal",
+                    "values": [
+                        "horizontal",
+                        "vertical",
+                        "cell",
+                        "none"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "wrap-cells": {
+                    "type": "Boolean",
+                    "desc": "Wrap text within table cells",
+                    "category": "content"
+                },
+                "binary-state-sort": {
+                    "type": "Boolean",
+                    "desc": "Skip the third state (unsorted) when user toggles column sort direction",
+                    "category": "sorting"
+                },
+                "column-sort-order": {
+                    "type": "String",
+                    "desc": "Set column sort order: 'ad' (ascending-descending) or 'da' (descending-ascending); It gets applied to all columns unless a column has its own sortOrder specified in the 'columns' definition prop",
+                    "values": [
+                        "ad",
+                        "da"
+                    ],
+                    "default": "ad",
+                    "category": "sorting",
+                    "required": false
+                },
+                "no-data-label": {
+                    "type": "String",
+                    "desc": "Override default text to display when no data is available",
+                    "examples": [
+                        "No devices available"
+                    ],
+                    "category": "content"
+                },
+                "no-results-label": {
+                    "type": "String",
+                    "desc": "Override default text to display when user filters the table and no matched results are found",
+                    "examples": [
+                        "No matched records"
+                    ],
+                    "category": "content"
+                },
+                "loading-label": {
+                    "type": "String",
+                    "desc": "Override default text to display when table is in loading state (see 'loading' prop)",
+                    "examples": [
+                        "Loading devices..."
+                    ],
+                    "category": "content"
+                },
+                "selected-rows-label": {
+                    "type": "Function",
+                    "desc": "Text to display when user selected at least one row; For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "numberOfRows": {
+                            "type": "Number",
+                            "desc": "Number of rows available"
+                        }
+                    },
+                    "returns": {
+                        "type": "String",
+                        "desc": "Label to display",
+                        "examples": [
+                            "5 rows are selected"
+                        ]
+                    },
+                    "examples": [
+                        ":selected-rows-label=\"getSelectedString\""
+                    ],
+                    "category": "selection"
+                },
+                "rows-per-page-label": {
+                    "type": "String",
+                    "desc": "Text to override default rows per page label at bottom of table",
+                    "examples": [
+                        "Records per page:"
+                    ],
+                    "category": "pagination"
+                },
+                "pagination-label": {
+                    "type": "Function",
+                    "desc": "Text to override default pagination label at bottom of table (unless 'pagination' scoped slot is used); For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "firstRowIndex": {
+                            "type": "Number",
+                            "desc": "Index of first displayed row"
+                        },
+                        "endRowIndex": {
+                            "type": "Number",
+                            "desc": "Index of last displayed row"
+                        },
+                        "totalRowsNumber": {
+                            "type": "Number",
+                            "desc": "Number of total rows available in data"
+                        }
+                    },
+                    "returns": {
+                        "type": "String",
+                        "desc": "Label to display",
+                        "examples": [
+                            "1-10 of 132"
+                        ]
+                    },
+                    "examples": [
+                        ":pagination-label=\"getPaginationLabel\""
+                    ],
+                    "category": "pagination"
+                },
+                "table-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "CSS style to apply to native HTML <table> element's wrapper (which is a DIV)",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":table-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "table-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "CSS classes to apply to native HTML <table> element's wrapper (which is a DIV)",
+                    "examples": [
+                        "my-special-class",
+                        ":table-class=\"{ 'my-special-class': [Boolean condition] }\""
+                    ],
+                    "category": "style"
+                },
+                "table-header-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "CSS style to apply to header of native HTML <table> (which is a TR)",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":table-header-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "table-header-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "CSS classes to apply to header of native HTML <table> (which is a TR)",
+                    "examples": [
+                        "my-special-class",
+                        ":table-header-class=\"{ 'my-special-class': [Boolean condition] }\""
+                    ],
+                    "category": "style"
+                },
+                "card-container-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "CSS style to apply to the cards container (when in grid mode)",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":card-container-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "card-container-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "CSS classes to apply to the cards container (when in grid mode)",
+                    "examples": [
+                        "my-special-class",
+                        "justify-center",
+                        ":card-container-class=\"{ 'my-special-class': [Boolean condition] }\""
+                    ],
+                    "category": "style"
+                },
+                "card-style": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueStyleProp",
+                    "desc": "CSS style to apply to the card (when in grid mode) or container card (when not in grid mode)",
+                    "examples": [
+                        "background-color: #ff0000",
+                        ":card-style=\"{ backgroundColor: '#ff0000' }\""
+                    ],
+                    "category": "style"
+                },
+                "card-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "CSS classes to apply to the card (when in grid mode) or container card (when not in grid mode)",
+                    "examples": [
+                        "my-special-class",
+                        ":card-class=\"{ 'my-special-class': [Boolean condition] }\""
+                    ],
+                    "category": "style"
+                },
+                "title-class": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "Object"
+                    ],
+                    "tsType": "VueClassProp",
+                    "desc": "CSS classes to apply to the title (if using 'title' prop)",
+                    "examples": [
+                        "my-special-class",
+                        "text-h1",
+                        ":title-class=\"{ 'text-h1': [Boolean condition] }\""
+                    ],
+                    "category": "style"
+                },
+                "filter": {
+                    "type": [
+                        "String",
+                        "Object"
+                    ],
+                    "desc": "String/Object to filter table with; When using an Object it requires 'filter-method' to also be specified since it will be a custom filtering",
+                    "examples": [
+                        ":filter=\"myFilterInput\""
+                    ],
+                    "category": "filter"
+                },
+                "filter-method": {
+                    "type": "Function",
+                    "desc": "The actual filtering mechanism; For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "rows": {
+                            "type": "Array",
+                            "desc": "Array of rows"
+                        },
+                        "terms": {
+                            "type": [
+                                "String",
+                                "Object"
+                            ],
+                            "desc": "Terms to filter with (is essentially the 'filter' prop value)"
+                        },
+                        "cols": {
+                            "type": "Array",
+                            "desc": "Column definitions"
+                        },
+                        "getCellValue": {
+                            "type": "Function",
+                            "desc": "Optional function to get a cell value",
+                            "params": {
+                                "col": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "Column name from column definitions"
+                                },
+                                "row": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "The row object"
+                                }
+                            },
+                            "returns": {
+                                "type": "Any",
+                                "desc": "Parsed/Processed cell value",
+                                "examples": [
+                                    "Ice Cream Sandwich"
+                                ]
+                            }
+                        }
+                    },
+                    "returns": {
+                        "type": "Array",
+                        "desc": "Filtered rows"
+                    },
+                    "default": "(see source code)",
+                    "examples": [
+                        "(see source code)"
+                    ],
+                    "category": "filter",
+                    "required": false
+                },
+                "pagination": {
+                    "type": "Object",
+                    "desc": "Pagination object; You can also use the 'v-model:pagination' for synching; When not synching it simply initializes the pagination on first render",
+                    "definition": {
+                        "sortBy": {
+                            "type": "String",
+                            "desc": "Column name (from column definition)",
+                            "examples": [
+                                "calories"
+                            ]
+                        },
+                        "descending": {
+                            "type": "Boolean",
+                            "desc": "Is sorting in descending order?"
+                        },
+                        "page": {
+                            "type": "Number",
+                            "desc": "Page number (1-based)"
+                        },
+                        "rowsPerPage": {
+                            "type": "Number",
+                            "desc": "How many rows per page? 0 means Infinite"
+                        },
+                        "rowsNumber": {
+                            "type": "Number",
+                            "desc": "For server-side fetching only. How many total database rows are there to be added to the table. If set, causes the QTable to emit @request when data is required."
+                        }
+                    },
+                    "syncable": true,
+                    "examples": [
+                        ":pagination=\"myInitialPagination\"",
+                        "v-model:pagination=\"myPagination\""
+                    ],
+                    "category": "pagination"
+                },
+                "rows-per-page-options": {
+                    "type": "Array",
+                    "desc": "Options for user to pick (Numbers); Number 0 means 'Show all rows in one page'",
+                    "default": "[ 3, 5, 7, 10, 15, 20, 25, 50, 0 ]",
+                    "examples": [
+                        ":rows-per-page-options=\"[10, 20]\""
+                    ],
+                    "category": "pagination",
+                    "required": false
+                },
+                "selection": {
+                    "type": "String",
+                    "desc": "Selection type",
+                    "default": "none",
+                    "values": [
+                        "single",
+                        "multiple",
+                        "none"
+                    ],
+                    "category": "selection",
+                    "required": false
+                },
+                "selected": {
+                    "type": "Array",
+                    "desc": "Keeps the user selection array",
+                    "default": "[]",
+                    "syncable": true,
+                    "examples": [
+                        "v-model:selected=\"selection\""
+                    ],
+                    "category": "selection",
+                    "required": false
+                },
+                "expanded": {
+                    "type": "Array",
+                    "desc": "Keeps the array with expanded rows keys",
+                    "default": "[]",
+                    "syncable": true,
+                    "examples": [
+                        "v-model:expanded=\"expanded\""
+                    ],
+                    "category": "expansion",
+                    "required": false
+                },
+                "sort-method": {
+                    "type": "Function",
+                    "desc": "The actual sort mechanism. Function (rows, sortBy, descending) => sorted rows; For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "rows": {
+                            "type": "Array",
+                            "desc": "Array with rows"
+                        },
+                        "sortBy": {
+                            "type": "String",
+                            "desc": "Column name (from column definition)",
+                            "examples": [
+                                "calories"
+                            ]
+                        },
+                        "descending": {
+                            "type": "Boolean",
+                            "desc": "Is sorting in descending order?"
+                        }
+                    },
+                    "returns": {
+                        "type": "Array",
+                        "desc": "Sorted rows"
+                    },
+                    "default": "(see source code)",
+                    "examples": [
+                        "(see source code)"
+                    ],
+                    "category": "sorting",
+                    "required": false
+                }
+            },
+            "slots": {
+                "loading": {
+                    "desc": "Override default effect when table is in loading state; Suggestion: QInnerLoading"
+                },
+                "item": {
+                    "desc": "Slot to use for defining an item when in 'grid' mode; Suggestion: QCard",
+                    "scope": {
+                        "key": {
+                            "type": "Any",
+                            "desc": "Row/Item's key"
+                        },
+                        "row": {
+                            "type": "Object",
+                            "desc": "Row/Item object"
+                        },
+                        "rowIndex": {
+                            "type": "Number",
+                            "desc": "Row/Item's index (0 based) in the filtered and sorted table"
+                        },
+                        "pageIndex": {
+                            "type": "Number",
+                            "desc": "Row/Item's index (0 based) in the current page of the filtered and sorted table"
+                        },
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        },
+                        "colsMap": {
+                            "type": "Object",
+                            "desc": "Column mapping (key is column name, value is column object)"
+                        },
+                        "sort": {
+                            "type": "Function",
+                            "desc": "Trigger a table sort",
+                            "params": {
+                                "col": {
+                                    "type": [
+                                        "String",
+                                        "Object"
+                                    ],
+                                    "required": true,
+                                    "desc": "Column name or column definition object",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                }
+                            },
+                            "returns": null
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "(Only if using selection) Is row/item selected? Can directly be assigned new Boolean value which changes selection state",
+                            "reactive": true
+                        },
+                        "expand": {
+                            "type": "Boolean",
+                            "desc": "Is row/item expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "Color name for component from the Quasar Color Palette",
+                            "examples": [
+                                "primary",
+                                "teal-10"
+                            ],
+                            "category": "style"
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "Notify the component that the background is a dark color",
+                            "category": "style"
+                        },
+                        "dense": {
+                            "type": "Boolean",
+                            "desc": "Dense mode; occupies less space",
+                            "category": "style"
+                        }
+                    }
+                },
+                "body": {
+                    "desc": "Slot to define how a body row looks like; Suggestion: QTr + Td",
+                    "scope": {
+                        "key": {
+                            "type": "Any",
+                            "desc": "Row's key"
+                        },
+                        "row": {
+                            "type": "Object",
+                            "desc": "Row object"
+                        },
+                        "rowIndex": {
+                            "type": "Number",
+                            "desc": "Row's index (0 based) in the filtered and sorted table"
+                        },
+                        "pageIndex": {
+                            "type": "Number",
+                            "desc": "Row's index (0 based) in the current page of the filtered and sorted table"
+                        },
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        },
+                        "colsMap": {
+                            "type": "Object",
+                            "desc": "Column mapping (key is column name, value is column object)"
+                        },
+                        "sort": {
+                            "type": "Function",
+                            "desc": "Trigger a table sort",
+                            "params": {
+                                "col": {
+                                    "type": [
+                                        "String",
+                                        "Object"
+                                    ],
+                                    "required": true,
+                                    "desc": "Column name or column definition object",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                }
+                            },
+                            "returns": null
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "(Only if using selection) Is row selected? Can directly be assigned new Boolean value which changes selection state",
+                            "reactive": true
+                        },
+                        "expand": {
+                            "type": "Boolean",
+                            "desc": "Is row expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "Color name for component from the Quasar Color Palette",
+                            "examples": [
+                                "primary",
+                                "teal-10"
+                            ],
+                            "category": "style"
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "Notify the component that the background is a dark color",
+                            "category": "style"
+                        },
+                        "dense": {
+                            "type": "Boolean",
+                            "desc": "Dense mode; occupies less space",
+                            "category": "style"
+                        },
+                        "__trClass": {
+                            "type": "String",
+                            "desc": "Internal prop passed down to QTr (if used)"
+                        }
+                    }
+                },
+                "body-cell": {
+                    "desc": "Slot to define how all body cells look like; Suggestion: QTd",
+                    "scope": {
+                        "col": {
+                            "type": "Object",
+                            "desc": "Column definition for column associated with table cell"
+                        },
+                        "value": {
+                            "type": "Any",
+                            "desc": "Parsed/Formatted value of table cell"
+                        },
+                        "key": {
+                            "type": "Any",
+                            "desc": "Row's key"
+                        },
+                        "row": {
+                            "type": "Object",
+                            "desc": "Row object"
+                        },
+                        "rowIndex": {
+                            "type": "Number",
+                            "desc": "Row's index (0 based) in the filtered and sorted table"
+                        },
+                        "pageIndex": {
+                            "type": "Number",
+                            "desc": "Row's index (0 based) in the current page of the filtered and sorted table"
+                        },
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        },
+                        "colsMap": {
+                            "type": "Object",
+                            "desc": "Column mapping (key is column name, value is column object)"
+                        },
+                        "sort": {
+                            "type": "Function",
+                            "desc": "Trigger a table sort",
+                            "params": {
+                                "col": {
+                                    "type": [
+                                        "String",
+                                        "Object"
+                                    ],
+                                    "required": true,
+                                    "desc": "Column name or column definition object",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                }
+                            },
+                            "returns": null
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "(Only if using selection) Is row selected? Can directly be assigned new Boolean value which changes selection state",
+                            "reactive": true
+                        },
+                        "expand": {
+                            "type": "Boolean",
+                            "desc": "Is row expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "Color name for component from the Quasar Color Palette",
+                            "examples": [
+                                "primary",
+                                "teal-10"
+                            ],
+                            "category": "style"
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "Notify the component that the background is a dark color",
+                            "category": "style"
+                        },
+                        "dense": {
+                            "type": "Boolean",
+                            "desc": "Dense mode; occupies less space",
+                            "category": "style"
+                        }
+                    }
+                },
+                "body-cell-[name]": {
+                    "desc": "Slot to define how a specific column cell looks like; replace '[name]' with column name (from columns definition object)",
+                    "scope": {
+                        "col": {
+                            "type": "Object",
+                            "desc": "Column definition for column associated with table cell"
+                        },
+                        "value": {
+                            "type": "Any",
+                            "desc": "Parsed/Formatted value of table cell"
+                        },
+                        "key": {
+                            "type": "Any",
+                            "desc": "Row's key"
+                        },
+                        "row": {
+                            "type": "Object",
+                            "desc": "Row object"
+                        },
+                        "rowIndex": {
+                            "type": "Number",
+                            "desc": "Row's index (0 based) in the filtered and sorted table"
+                        },
+                        "pageIndex": {
+                            "type": "Number",
+                            "desc": "Row's index (0 based) in the current page of the filtered and sorted table"
+                        },
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        },
+                        "colsMap": {
+                            "type": "Object",
+                            "desc": "Column mapping (key is column name, value is column object)"
+                        },
+                        "sort": {
+                            "type": "Function",
+                            "desc": "Trigger a table sort",
+                            "params": {
+                                "col": {
+                                    "type": [
+                                        "String",
+                                        "Object"
+                                    ],
+                                    "required": true,
+                                    "desc": "Column name or column definition object",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                }
+                            },
+                            "returns": null
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "(Only if using selection) Is row selected? Can directly be assigned new Boolean value which changes selection state",
+                            "reactive": true
+                        },
+                        "expand": {
+                            "type": "Boolean",
+                            "desc": "Is row expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "Color name for component from the Quasar Color Palette",
+                            "examples": [
+                                "primary",
+                                "teal-10"
+                            ],
+                            "category": "style"
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "Notify the component that the background is a dark color",
+                            "category": "style"
+                        },
+                        "dense": {
+                            "type": "Boolean",
+                            "desc": "Dense mode; occupies less space",
+                            "category": "style"
+                        }
+                    }
+                },
+                "header": {
+                    "desc": "Slot to define how header looks like; Suggestion: QTr + QTh",
+                    "scope": {
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        },
+                        "colsMap": {
+                            "type": "Object",
+                            "desc": "Column mapping (key is column name, value is column object)"
+                        },
+                        "sort": {
+                            "type": "Function",
+                            "desc": "Trigger a table sort",
+                            "params": {
+                                "col": {
+                                    "type": [
+                                        "String",
+                                        "Object"
+                                    ],
+                                    "required": true,
+                                    "desc": "Column name or column definition object",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                }
+                            },
+                            "returns": null
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "(Only if using selection) Is row selected? Can directly be assigned new Boolean value which changes selection state",
+                            "reactive": true
+                        },
+                        "expand": {
+                            "type": "Boolean",
+                            "desc": "Is row expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "Color name for component from the Quasar Color Palette",
+                            "examples": [
+                                "primary",
+                                "teal-10"
+                            ],
+                            "category": "style"
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "Notify the component that the background is a dark color",
+                            "category": "style"
+                        },
+                        "dense": {
+                            "type": "Boolean",
+                            "desc": "Dense mode; occupies less space",
+                            "category": "style"
+                        },
+                        "__trClass": {
+                            "type": "String",
+                            "desc": "Internal prop passed down to QTr (if used)"
+                        },
+                        "header": {
+                            "type": "Boolean",
+                            "desc": "Internal prop passed down to QTh (if used); Always 'true'"
+                        }
+                    }
+                },
+                "header-cell": {
+                    "desc": "Slot to define how each header cell looks like; Suggestion: QTh",
+                    "scope": {
+                        "col": {
+                            "type": "Object",
+                            "desc": "Column definition associated to header cell"
+                        },
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        },
+                        "colsMap": {
+                            "type": "Object",
+                            "desc": "Column mapping (key is column name, value is column object)"
+                        },
+                        "sort": {
+                            "type": "Function",
+                            "desc": "Trigger a table sort",
+                            "params": {
+                                "col": {
+                                    "type": [
+                                        "String",
+                                        "Object"
+                                    ],
+                                    "required": true,
+                                    "desc": "Column name or column definition object",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                }
+                            },
+                            "returns": null
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "(Only if using selection) Is row selected? Can directly be assigned new Boolean value which changes selection state",
+                            "reactive": true
+                        },
+                        "expand": {
+                            "type": "Boolean",
+                            "desc": "Is row expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "Color name for component from the Quasar Color Palette",
+                            "examples": [
+                                "primary",
+                                "teal-10"
+                            ],
+                            "category": "style"
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "Notify the component that the background is a dark color",
+                            "category": "style"
+                        },
+                        "dense": {
+                            "type": "Boolean",
+                            "desc": "Dense mode; occupies less space",
+                            "category": "style"
+                        }
+                    }
+                },
+                "header-cell-[name]": {
+                    "desc": "Slot to define how a specific header cell looks like; replace '[name]' with column name (from columns definition object)",
+                    "scope": {
+                        "col": {
+                            "type": "Object",
+                            "desc": "Column definition associated to header cell"
+                        },
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        },
+                        "colsMap": {
+                            "type": "Object",
+                            "desc": "Column mapping (key is column name, value is column object)"
+                        },
+                        "sort": {
+                            "type": "Function",
+                            "desc": "Trigger a table sort",
+                            "params": {
+                                "col": {
+                                    "type": [
+                                        "String",
+                                        "Object"
+                                    ],
+                                    "required": true,
+                                    "desc": "Column name or column definition object",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                }
+                            },
+                            "returns": null
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "(Only if using selection) Is row selected? Can directly be assigned new Boolean value which changes selection state",
+                            "reactive": true
+                        },
+                        "expand": {
+                            "type": "Boolean",
+                            "desc": "Is row expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "Color name for component from the Quasar Color Palette",
+                            "examples": [
+                                "primary",
+                                "teal-10"
+                            ],
+                            "category": "style"
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "Notify the component that the background is a dark color",
+                            "category": "style"
+                        },
+                        "dense": {
+                            "type": "Boolean",
+                            "desc": "Dense mode; occupies less space",
+                            "category": "style"
+                        }
+                    }
+                },
+                "body-selection": {
+                    "desc": "Slot to define how body selection column looks like; Suggestion: QCheckbox",
+                    "scope": {
+                        "key": {
+                            "type": "Any",
+                            "desc": "Row's key"
+                        },
+                        "row": {
+                            "type": "Object",
+                            "desc": "Row object"
+                        },
+                        "rowIndex": {
+                            "type": "Number",
+                            "desc": "Row's index (0 based) in the filtered and sorted table"
+                        },
+                        "pageIndex": {
+                            "type": "Number",
+                            "desc": "Row's index (0 based) in the current page of the filtered and sorted table"
+                        },
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        },
+                        "colsMap": {
+                            "type": "Object",
+                            "desc": "Column mapping (key is column name, value is column object)"
+                        },
+                        "sort": {
+                            "type": "Function",
+                            "desc": "Trigger a table sort",
+                            "params": {
+                                "col": {
+                                    "type": [
+                                        "String",
+                                        "Object"
+                                    ],
+                                    "required": true,
+                                    "desc": "Column name or column definition object",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                }
+                            },
+                            "returns": null
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "(Only if using selection) Is row selected? Can directly be assigned new Boolean value which changes selection state",
+                            "reactive": true
+                        },
+                        "expand": {
+                            "type": "Boolean",
+                            "desc": "Is row expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "Color name for component from the Quasar Color Palette",
+                            "examples": [
+                                "primary",
+                                "teal-10"
+                            ],
+                            "category": "style"
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "Notify the component that the background is a dark color",
+                            "category": "style"
+                        },
+                        "dense": {
+                            "type": "Boolean",
+                            "desc": "Dense mode; occupies less space",
+                            "category": "style"
+                        }
+                    }
+                },
+                "header-selection": {
+                    "desc": "Slot to define how header selection column looks like (available only for multiple selection mode); Suggestion: QCheckbox",
+                    "scope": {
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        },
+                        "colsMap": {
+                            "type": "Object",
+                            "desc": "Column mapping (key is column name, value is column object)"
+                        },
+                        "sort": {
+                            "type": "Function",
+                            "desc": "Trigger a table sort",
+                            "params": {
+                                "col": {
+                                    "type": [
+                                        "String",
+                                        "Object"
+                                    ],
+                                    "required": true,
+                                    "desc": "Column name or column definition object",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                }
+                            },
+                            "returns": null
+                        },
+                        "selected": {
+                            "type": "Boolean",
+                            "desc": "(Only if using selection) Is row selected? Can directly be assigned new Boolean value which changes selection state",
+                            "reactive": true
+                        },
+                        "expand": {
+                            "type": "Boolean",
+                            "desc": "Is row expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "Color name for component from the Quasar Color Palette",
+                            "examples": [
+                                "primary",
+                                "teal-10"
+                            ],
+                            "category": "style"
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "Notify the component that the background is a dark color",
+                            "category": "style"
+                        },
+                        "dense": {
+                            "type": "Boolean",
+                            "desc": "Dense mode; occupies less space",
+                            "category": "style"
+                        }
+                    }
+                },
+                "top-row": {
+                    "desc": "Slot to define how top extra row looks like",
+                    "scope": {
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        }
+                    }
+                },
+                "bottom-row": {
+                    "desc": "Slot to define how bottom extra row looks like",
+                    "scope": {
+                        "cols": {
+                            "type": "Object",
+                            "desc": "Column definitions"
+                        }
+                    }
+                },
+                "top": {
+                    "desc": "Slot to define how table top looks like",
+                    "scope": {
+                        "pagination": {
+                            "type": "Object",
+                            "desc": "Pagination object",
+                            "definition": {
+                                "sortBy": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Column name (from column definition)",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                },
+                                "descending": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Is sorting in descending order?"
+                                },
+                                "page": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Page number (1-based)"
+                                },
+                                "rowsPerPage": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "How many rows per page? 0 means Infinite"
+                                }
+                            }
+                        },
+                        "pagesNumber": {
+                            "type": "Number",
+                            "desc": "Number of pages available"
+                        },
+                        "isFirstPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on first page?"
+                        },
+                        "isLastPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on last page?"
+                        },
+                        "firstPage": {
+                            "type": "Function",
+                            "desc": "Navigates to first page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "prevPage": {
+                            "type": "Function",
+                            "desc": "Navigates to previous page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "nextPage": {
+                            "type": "Function",
+                            "desc": "Navigates to next page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "lastPage": {
+                            "type": "Function",
+                            "desc": "Navigates to last page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "inFullscreen": {
+                            "type": "Boolean",
+                            "desc": "Is table in fullscreen mode?"
+                        },
+                        "toggleFullscreen": {
+                            "type": "Function",
+                            "desc": "Toggles fullscreen mode",
+                            "params": null,
+                            "returns": null
+                        }
+                    }
+                },
+                "bottom": {
+                    "desc": "Slot to define how table bottom looks like",
+                    "scope": {
+                        "pagination": {
+                            "type": "Object",
+                            "desc": "Pagination object",
+                            "definition": {
+                                "sortBy": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Column name (from column definition)",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                },
+                                "descending": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Is sorting in descending order?"
+                                },
+                                "page": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Page number (1-based)"
+                                },
+                                "rowsPerPage": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "How many rows per page? 0 means Infinite"
+                                }
+                            }
+                        },
+                        "pagesNumber": {
+                            "type": "Number",
+                            "desc": "Number of pages available"
+                        },
+                        "isFirstPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on first page?"
+                        },
+                        "isLastPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on last page?"
+                        },
+                        "firstPage": {
+                            "type": "Function",
+                            "desc": "Navigates to first page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "prevPage": {
+                            "type": "Function",
+                            "desc": "Navigates to previous page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "nextPage": {
+                            "type": "Function",
+                            "desc": "Navigates to next page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "lastPage": {
+                            "type": "Function",
+                            "desc": "Navigates to last page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "inFullscreen": {
+                            "type": "Boolean",
+                            "desc": "Is table in fullscreen mode?"
+                        },
+                        "toggleFullscreen": {
+                            "type": "Function",
+                            "desc": "Toggles fullscreen mode",
+                            "params": null,
+                            "returns": null
+                        }
+                    }
+                },
+                "pagination": {
+                    "desc": "Slot to override default pagination label and buttons",
+                    "scope": {
+                        "pagination": {
+                            "type": "Object",
+                            "desc": "Pagination object",
+                            "definition": {
+                                "sortBy": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Column name (from column definition)",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                },
+                                "descending": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Is sorting in descending order?"
+                                },
+                                "page": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Page number (1-based)"
+                                },
+                                "rowsPerPage": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "How many rows per page? 0 means Infinite"
+                                }
+                            }
+                        },
+                        "pagesNumber": {
+                            "type": "Number",
+                            "desc": "Number of pages available"
+                        },
+                        "isFirstPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on first page?"
+                        },
+                        "isLastPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on last page?"
+                        },
+                        "firstPage": {
+                            "type": "Function",
+                            "desc": "Navigates to first page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "prevPage": {
+                            "type": "Function",
+                            "desc": "Navigates to previous page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "nextPage": {
+                            "type": "Function",
+                            "desc": "Navigates to next page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "lastPage": {
+                            "type": "Function",
+                            "desc": "Navigates to last page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "inFullscreen": {
+                            "type": "Boolean",
+                            "desc": "Is table in fullscreen mode?"
+                        },
+                        "toggleFullscreen": {
+                            "type": "Function",
+                            "desc": "Toggles fullscreen mode",
+                            "params": null,
+                            "returns": null
+                        }
+                    }
+                },
+                "top-left": {
+                    "desc": "Slot to define how left part of the table top looks like",
+                    "scope": {
+                        "pagination": {
+                            "type": "Object",
+                            "desc": "Pagination object",
+                            "definition": {
+                                "sortBy": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Column name (from column definition)",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                },
+                                "descending": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Is sorting in descending order?"
+                                },
+                                "page": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Page number (1-based)"
+                                },
+                                "rowsPerPage": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "How many rows per page? 0 means Infinite"
+                                }
+                            }
+                        },
+                        "pagesNumber": {
+                            "type": "Number",
+                            "desc": "Number of pages available"
+                        },
+                        "isFirstPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on first page?"
+                        },
+                        "isLastPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on last page?"
+                        },
+                        "firstPage": {
+                            "type": "Function",
+                            "desc": "Navigates to first page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "prevPage": {
+                            "type": "Function",
+                            "desc": "Navigates to previous page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "nextPage": {
+                            "type": "Function",
+                            "desc": "Navigates to next page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "lastPage": {
+                            "type": "Function",
+                            "desc": "Navigates to last page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "inFullscreen": {
+                            "type": "Boolean",
+                            "desc": "Is table in fullscreen mode?"
+                        },
+                        "toggleFullscreen": {
+                            "type": "Function",
+                            "desc": "Toggles fullscreen mode",
+                            "params": null,
+                            "returns": null
+                        }
+                    }
+                },
+                "top-right": {
+                    "desc": "Slot to define how right part of the table top looks like",
+                    "scope": {
+                        "pagination": {
+                            "type": "Object",
+                            "desc": "Pagination object",
+                            "definition": {
+                                "sortBy": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Column name (from column definition)",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                },
+                                "descending": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Is sorting in descending order?"
+                                },
+                                "page": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Page number (1-based)"
+                                },
+                                "rowsPerPage": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "How many rows per page? 0 means Infinite"
+                                }
+                            }
+                        },
+                        "pagesNumber": {
+                            "type": "Number",
+                            "desc": "Number of pages available"
+                        },
+                        "isFirstPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on first page?"
+                        },
+                        "isLastPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on last page?"
+                        },
+                        "firstPage": {
+                            "type": "Function",
+                            "desc": "Navigates to first page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "prevPage": {
+                            "type": "Function",
+                            "desc": "Navigates to previous page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "nextPage": {
+                            "type": "Function",
+                            "desc": "Navigates to next page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "lastPage": {
+                            "type": "Function",
+                            "desc": "Navigates to last page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "inFullscreen": {
+                            "type": "Boolean",
+                            "desc": "Is table in fullscreen mode?"
+                        },
+                        "toggleFullscreen": {
+                            "type": "Function",
+                            "desc": "Toggles fullscreen mode",
+                            "params": null,
+                            "returns": null
+                        }
+                    }
+                },
+                "top-selection": {
+                    "desc": "Slot to define how top table section looks like when user has selected at least one row",
+                    "scope": {
+                        "pagination": {
+                            "type": "Object",
+                            "desc": "Pagination object",
+                            "definition": {
+                                "sortBy": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Column name (from column definition)",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                },
+                                "descending": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Is sorting in descending order?"
+                                },
+                                "page": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Page number (1-based)"
+                                },
+                                "rowsPerPage": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "How many rows per page? 0 means Infinite"
+                                }
+                            }
+                        },
+                        "pagesNumber": {
+                            "type": "Number",
+                            "desc": "Number of pages available"
+                        },
+                        "isFirstPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on first page?"
+                        },
+                        "isLastPage": {
+                            "type": "Boolean",
+                            "desc": "Are we on last page?"
+                        },
+                        "firstPage": {
+                            "type": "Function",
+                            "desc": "Navigates to first page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "prevPage": {
+                            "type": "Function",
+                            "desc": "Navigates to previous page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "nextPage": {
+                            "type": "Function",
+                            "desc": "Navigates to next page, if available",
+                            "params": null,
+                            "returns": null
+                        },
+                        "lastPage": {
+                            "type": "Function",
+                            "desc": "Navigates to last page",
+                            "params": null,
+                            "returns": null
+                        },
+                        "inFullscreen": {
+                            "type": "Boolean",
+                            "desc": "Is table in fullscreen mode?"
+                        },
+                        "toggleFullscreen": {
+                            "type": "Function",
+                            "desc": "Toggles fullscreen mode",
+                            "params": null,
+                            "returns": null
+                        }
+                    }
+                },
+                "no-data": {
+                    "desc": "Slot to define how the bottom will look like when is nothing to display",
+                    "scope": {
+                        "message": {
+                            "type": "String",
+                            "desc": "The suggested message",
+                            "examples": [
+                                "No data available"
+                            ]
+                        },
+                        "icon": {
+                            "type": "String",
+                            "desc": "The suggested icon name (following Quasar convention)",
+                            "examples": [
+                                "warning"
+                            ]
+                        }
+                    }
+                }
+            },
+            "events": {
+                "row-click": {
+                    "desc": "Emitted when user clicks/taps on a row; Is not emitted when using body/row/item scoped slots",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        },
+                        "row": {
+                            "type": "Object",
+                            "desc": "The row upon which user has clicked/tapped"
+                        },
+                        "index": {
+                            "type": "Number",
+                            "desc": "Index of the row in the current page"
+                        }
+                    }
+                },
+                "row-dblclick": {
+                    "desc": "Emitted when user quickly double clicks/taps on a row; Is not emitted when using body/row/item scoped slots; Please check JS dblclick event support before using",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        },
+                        "row": {
+                            "type": "Object",
+                            "desc": "The row upon which user has double clicked/tapped"
+                        },
+                        "index": {
+                            "type": "Number",
+                            "desc": "Index of the row in the current page"
+                        }
+                    }
+                },
+                "row-contextmenu": {
+                    "desc": "Emitted when user right clicks/long taps on a row; Is not emitted when using body/row/item scoped slots",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object"
+                        },
+                        "row": {
+                            "type": "Object",
+                            "desc": "The row upon which user has right clicked/long tapped"
+                        },
+                        "index": {
+                            "type": "Number",
+                            "desc": "Index of the row in the current page"
+                        }
+                    }
+                },
+                "request": {
+                    "desc": "Emitted when a server request is triggered",
+                    "params": {
+                        "requestProp": {
+                            "type": "Object",
+                            "desc": "Props of the request",
+                            "definition": {
+                                "pagination": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "Pagination object",
+                                    "definition": {
+                                        "sortBy": {
+                                            "type": "String",
+                                            "required": true,
+                                            "desc": "Column name (from column definition)",
+                                            "examples": [
+                                                "calories"
+                                            ]
+                                        },
+                                        "descending": {
+                                            "type": "Boolean",
+                                            "required": true,
+                                            "desc": "Is sorting in descending order?"
+                                        },
+                                        "page": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "Page number (1-based)"
+                                        },
+                                        "rowsPerPage": {
+                                            "type": "Number",
+                                            "required": true,
+                                            "desc": "How many rows per page? 0 means Infinite"
+                                        }
+                                    }
+                                },
+                                "filter": {
+                                    "type": [
+                                        "String",
+                                        "Object"
+                                    ],
+                                    "desc": "String/Object to filter table with (the 'filter' prop)"
+                                },
+                                "getCellValue": {
+                                    "type": "Function",
+                                    "required": true,
+                                    "desc": "Function to get a cell value",
+                                    "params": {
+                                        "col": {
+                                            "type": "Object",
+                                            "required": true,
+                                            "desc": "Column name from column definitions"
+                                        },
+                                        "row": {
+                                            "type": "Object",
+                                            "required": true,
+                                            "desc": "The row object"
+                                        }
+                                    },
+                                    "returns": {
+                                        "type": "Any",
+                                        "desc": "Parsed/Processed cell value",
+                                        "examples": [
+                                            "Ice Cream Sandwich"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "selection": {
+                    "desc": "Emitted when user selects/unselects row(s)",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Selection details",
+                            "definition": {
+                                "rows": {
+                                    "type": "Array",
+                                    "required": true,
+                                    "desc": "Array of row objects that were selected/unselected"
+                                },
+                                "keys": {
+                                    "type": "Array",
+                                    "required": true,
+                                    "desc": "Array of the keys of rows that were selected/unselected"
+                                },
+                                "added": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Were the rows added to selection (true) or removed from selection (false)"
+                                },
+                                "evt": {
+                                    "type": "Event",
+                                    "desc": "JS event object",
+                                    "required": true
+                                }
+                            }
+                        }
+                    }
+                },
+                "update:pagination": {
+                    "desc": "Used by Vue on 'v-model:pagination' for updating its value",
+                    "params": {
+                        "newPagination": {
+                            "type": "Object",
+                            "desc": "The updated pagination object",
+                            "definition": {
+                                "sortBy": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Column name (from column definition)",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                },
+                                "descending": {
+                                    "type": "Boolean",
+                                    "required": true,
+                                    "desc": "Is sorting in descending order?"
+                                },
+                                "page": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Page number (1-based)"
+                                },
+                                "rowsPerPage": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "How many rows per page? 0 means Infinite"
+                                },
+                                "rowsNumber": {
+                                    "type": "Number",
+                                    "required": false,
+                                    "desc": "For server-side fetching only. How many total database rows are there to be added to the table."
+                                }
+                            }
+                        }
+                    }
+                },
+                "update:selected": {
+                    "desc": "Used by Vue on 'v-model:selected' prop for updating its value",
+                    "params": {
+                        "newSelected": {
+                            "type": "Array",
+                            "desc": "The updated selected array",
+                            "examples": [
+                                "[ { name: 'Frozen Yogurt', calories: 159, fat: 6 } ]"
+                            ]
+                        }
+                    }
+                },
+                "update:expanded": {
+                    "desc": "Used by Vue on 'v-model:expanded' prop for updating its value",
+                    "params": {
+                        "newExpanded": {
+                            "type": "Array",
+                            "desc": "The updated expanded array",
+                            "examples": [
+                                "[ 'row-a', 'row-b' ]"
+                            ]
+                        }
+                    }
+                },
+                "virtual-scroll": {
+                    "desc": "Emitted when the virtual scroll occurs, if using virtual scroll",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Object of properties on the new scroll position",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Index of the list item that was scrolled into view (0 based)"
+                                },
+                                "from": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The index of the first list item that is rendered (0 based)"
+                                },
+                                "to": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The index of the last list item that is rendered (0 based)"
+                                },
+                                "direction": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Direction of change",
+                                    "values": [
+                                        "increase",
+                                        "decrease"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "toggleFullscreen": {
+                    "desc": "Toggles fullscreen mode"
+                },
+                "setFullscreen": {
+                    "desc": "Enter the fullscreen view"
+                },
+                "exitFullscreen": {
+                    "desc": "Leave the fullscreen view"
+                },
+                "requestServerInteraction": {
+                    "desc": "Trigger a server request (emits 'request' event)",
+                    "params": {
+                        "props": {
+                            "type": "Object",
+                            "required": false,
+                            "desc": "Request details",
+                            "definition": {
+                                "pagination": {
+                                    "type": "Object",
+                                    "required": false,
+                                    "desc": "Optional pagination object",
+                                    "definition": {
+                                        "sortBy": {
+                                            "type": "String",
+                                            "desc": "Column name (from column definition)",
+                                            "examples": [
+                                                "calories"
+                                            ]
+                                        },
+                                        "descending": {
+                                            "type": "Boolean",
+                                            "desc": "Is sorting in descending order?"
+                                        },
+                                        "page": {
+                                            "type": "Number",
+                                            "desc": "Page number (1-based)"
+                                        },
+                                        "rowsPerPage": {
+                                            "type": "Number",
+                                            "desc": "How many rows per page? 0 means Infinite"
+                                        },
+                                        "rowsNumber": {
+                                            "type": "Number",
+                                            "desc": "For server-side fetching only. How many total database rows are there to be added to the table."
+                                        }
+                                    }
+                                },
+                                "filter": {
+                                    "type": "Function",
+                                    "desc": "Filtering method (the 'filter-method' prop)",
+                                    "params": {
+                                        "rows": {
+                                            "type": "Array",
+                                            "required": true,
+                                            "desc": "Array of rows"
+                                        },
+                                        "terms": {
+                                            "type": [
+                                                "String",
+                                                "Object"
+                                            ],
+                                            "required": true,
+                                            "desc": "Terms to filter with (is essentially the 'filter' prop value)"
+                                        },
+                                        "cols": {
+                                            "type": "Array",
+                                            "desc": "Optional column definitions"
+                                        },
+                                        "getCellValue": {
+                                            "type": "Function",
+                                            "desc": "Optional function to get a cell value",
+                                            "params": {
+                                                "col": {
+                                                    "type": "Object",
+                                                    "desc": "Column name from column definitions"
+                                                },
+                                                "row": {
+                                                    "type": "Object",
+                                                    "desc": "The row object"
+                                                }
+                                            },
+                                            "returns": {
+                                                "type": "Any",
+                                                "desc": "Parsed/Processed cell value",
+                                                "examples": [
+                                                    "Ice Cream Sandwich"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "returns": {
+                                        "type": "Array",
+                                        "desc": "Filtered rows"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "setPagination": {
+                    "desc": "Unless using an external pagination Object (through 'v-model:pagination' prop), you can use this method and force the internal pagination to change",
+                    "params": {
+                        "pagination": {
+                            "type": "Object",
+                            "required": true,
+                            "desc": "Pagination object",
+                            "definition": {
+                                "sortBy": {
+                                    "type": "String",
+                                    "desc": "Column name (from column definition)",
+                                    "examples": [
+                                        "calories"
+                                    ]
+                                },
+                                "descending": {
+                                    "type": "Boolean",
+                                    "desc": "Is sorting in descending order?"
+                                },
+                                "page": {
+                                    "type": "Number",
+                                    "desc": "Page number (1-based)"
+                                },
+                                "rowsPerPage": {
+                                    "type": "Number",
+                                    "desc": "How many rows per page? 0 means Infinite"
+                                }
+                            }
+                        },
+                        "forceServerRequest": {
+                            "type": "Boolean",
+                            "desc": "Also force a server request"
+                        }
+                    }
+                },
+                "firstPage": {
+                    "desc": "Navigates to first page"
+                },
+                "prevPage": {
+                    "desc": "Navigates to previous page, if available"
+                },
+                "nextPage": {
+                    "desc": "Navigates to next page, if available"
+                },
+                "lastPage": {
+                    "desc": "Navigates to last page"
+                },
+                "isRowSelected": {
+                    "desc": "Determine if a row has been selected by user",
+                    "params": {
+                        "key": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "Row key value",
+                            "examples": [
+                                "calories"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "Is row selected or not?"
+                    }
+                },
+                "clearSelection": {
+                    "desc": "Clears user selection (emits 'update:selected' with empty array)"
+                },
+                "isRowExpanded": {
+                    "desc": "Determine if a row is expanded or not",
+                    "params": {
+                        "key": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "Row key value",
+                            "examples": [
+                                "calories"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "Is row expanded or not?"
+                    }
+                },
+                "setExpanded": {
+                    "desc": "Sets the expanded rows keys array; Especially useful if not using an external 'expanded' state otherwise just emits 'update:expanded' with the value",
+                    "params": {
+                        "expanded": {
+                            "type": "Array",
+                            "required": true,
+                            "desc": "Array containing keys of the expanded rows",
+                            "examples": [
+                                "[ 'row-a', 'row-b' ]"
+                            ]
+                        }
+                    }
+                },
+                "sort": {
+                    "desc": "Trigger a table sort",
+                    "params": {
+                        "col": {
+                            "type": [
+                                "String",
+                                "Object"
+                            ],
+                            "required": true,
+                            "desc": "Column name or column definition object",
+                            "examples": [
+                                "calories"
+                            ]
+                        }
+                    }
+                },
+                "resetVirtualScroll": {
+                    "desc": "Resets the virtual scroll (if using it) computations; Needed for custom edge-cases"
+                },
+                "scrollTo": {
+                    "desc": "Scroll the table to the row with the specified index in page (0 based)",
+                    "params": {
+                        "index": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "required": true,
+                            "desc": "The index of the row in page (0 based)"
+                        },
+                        "edge": {
+                            "type": "String",
+                            "desc": "Only for virtual scroll - the edge to align to if the row is not visible already; If the '-force' version is used then it always aligns",
+                            "values": [
+                                "start",
+                                "center",
+                                "end",
+                                "start-force",
+                                "center-force",
+                                "end-force"
+                            ],
+                            "default": "end (if scrolling towards the end) / start (if scrolling towards the start)",
+                            "required": false
+                        }
+                    }
+                }
+            },
+            "computedProps": {
+                "filteredSortedRows": {
+                    "desc": "The filtered and sorted rows (same as the rows prop if using server-side fetching)",
+                    "type": "Array",
+                    "examples": [
+                        "[ { name: 'Ice Cream Sandwich', calories: 237, fat: 9.0, carbs: 37, protein: 4.3, sodium: 129, calcium: 8, iron: 1 }, ... ]"
+                    ]
+                },
+                "computedRows": {
+                    "desc": "Paginated, filtered, and sorted rows (same as the rows prop if using server-side fetching)",
+                    "type": "Array",
+                    "examples": [
+                        "[ { name: 'Ice Cream Sandwich', calories: 237, fat: 9.0, carbs: 37, protein: 4.3, sodium: 129, calcium: 8, iron: 1 }, ... ]"
+                    ]
+                },
+                "computedRowsNumber": {
+                    "desc": "The number of computed rows",
+                    "type": "Number"
+                }
+            }
+        }
+    },
+    {
+        name: "q-th", desc: "", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/table"
+            },
+            "props": {
+                "props": {
+                    "type": "Object",
+                    "desc": "QTable's header column scoped slot property",
+                    "examples": [
+                        ":props=\"props\""
+                    ],
+                    "category": "general"
+                },
+                "auto-width": {
+                    "type": "Boolean",
+                    "desc": "Tries to shrink header column width size; Useful for columns with a checkbox/radio/toggle",
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-tr", desc: "", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/table"
+            },
+            "props": {
+                "props": {
+                    "type": "Object",
+                    "desc": "QTable's row scoped slot property",
+                    "examples": [
+                        ":props=\"props\""
+                    ],
+                    "category": "general"
+                },
+                "no-hover": {
+                    "type": "Boolean",
+                    "desc": "Disable hover effect",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-td", desc: "", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/table"
+            },
+            "props": {
+                "props": {
+                    "type": "Object",
+                    "desc": "QTable's column scoped slot property",
+                    "examples": [
+                        ":props=\"props\""
+                    ],
+                    "category": "general"
+                },
+                "auto-width": {
+                    "type": "Boolean",
+                    "desc": "Tries to shrink column width size; Useful for columns with a checkbox/radio/toggle",
+                    "category": "content"
+                },
+                "no-hover": {
+                    "type": "Boolean",
+                    "desc": "Disable hover effect",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-tabs", desc: "选项卡组", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/tabs"
+            },
+            "props": {
+                "model-value": {
+                    "desc": "Model of the component defining current panel name; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+                    "required": false,
+                    "syncable": true,
+                    "category": "model",
+                    "type": [
+                        "Number",
+                        "String",
+                        "null",
+                        "undefined"
+                    ],
+                    "examples": [
+                        "v-model=\"selectedTab\""
+                    ]
+                },
+                "vertical": {
+                    "type": "Boolean",
+                    "desc": "Use vertical design (tabs one on top of each other rather than one next to the other horizontally)",
+                    "category": "content"
+                },
+                "outside-arrows": {
+                    "type": "Boolean",
+                    "desc": "Reserve space for arrows to place them on each side of the tabs (the arrows fade when inactive)",
+                    "category": "content"
+                },
+                "mobile-arrows": {
+                    "type": "Boolean",
+                    "desc": "Force display of arrows (if needed) on mobile",
+                    "category": "content"
+                },
+                "align": {
+                    "type": "String",
+                    "desc": "Horizontal alignment the tabs within the tabs container",
+                    "default": "center",
+                    "values": [
+                        "left",
+                        "center",
+                        "right",
+                        "justify"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "breakpoint": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Breakpoint (in pixels) of tabs container width at which the tabs automatically turn to a justify alignment",
+                    "default": 600,
+                    "category": "content|behavior",
+                    "required": false
+                },
+                "active-color": {
+                    "type": "String",
+                    "desc": "The color to be attributed to the text of the active tab",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "active-bg-color": {
+                    "type": "String",
+                    "desc": "The color to be attributed to the background of the active tab",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "indicator-color": {
+                    "type": "String",
+                    "desc": "The color to be attributed to the indicator (the underline) of the active tab",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "content-class": {
+                    "type": "String",
+                    "desc": "Class definitions to be attributed to the content wrapper",
+                    "examples": [
+                        "my-special-class"
+                    ],
+                    "category": "style"
+                },
+                "active-class": {
+                    "type": "String",
+                    "desc": "The class to be set on the active tab",
+                    "examples": [
+                        "my-active-class"
+                    ],
+                    "category": "style",
+                    "addedIn": "v2.1.4"
+                },
+                "left-icon": {
+                    "type": "String",
+                    "desc": "The name of an icon to replace the default arrow used to scroll through the tabs to the left, when the tabs extend past the width of the tabs container",
+                    "examples": [
+                        "arrow_left"
+                    ],
+                    "category": "content"
+                },
+                "right-icon": {
+                    "type": "String",
+                    "desc": "The name of an icon to replace the default arrow used to scroll through the tabs to the right, when the tabs extend past the width of the tabs container",
+                    "examples": [
+                        "arrow_right"
+                    ],
+                    "category": "content"
+                },
+                "stretch": {
+                    "type": "Boolean",
+                    "desc": "When used on flexbox parent, tabs will stretch to parent's height",
+                    "category": "content"
+                },
+                "shrink": {
+                    "type": "Boolean",
+                    "desc": "By default, QTabs is set to grow to the available space; However, you can reverse that with this prop; Useful (and required) when placing the component in a QToolbar",
+                    "category": "content"
+                },
+                "switch-indicator": {
+                    "type": "Boolean",
+                    "desc": "Switches the indicator position (on left of tab for vertical mode or above the tab for default horizontal mode)",
+                    "category": "content"
+                },
+                "narrow-indicator": {
+                    "type": "Boolean",
+                    "desc": "Allows the indicator to be the same width as the tab's content (text or icon), instead of the whole width of the tab",
+                    "category": "content"
+                },
+                "inline-label": {
+                    "type": "Boolean",
+                    "desc": "Allows the text to be inline with the icon, should one be used",
+                    "category": "content"
+                },
+                "no-caps": {
+                    "type": "Boolean",
+                    "desc": "Turns off capitalizing all letters within the tab (which is the default)",
+                    "category": "content"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component needs to change the model; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Any",
+                            "desc": "New model value",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-tab", desc: "选项卡", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/tabs"
+            },
+            "props": {
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "label": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "A number or string to label the tab",
+                    "examples": [
+                        "Home"
+                    ],
+                    "category": "content"
+                },
+                "alert": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "Adds an alert symbol to the tab, notifying the user there are some updates; If its value is not a Boolean, then you can specify a color",
+                    "examples": [
+                        "alert",
+                        "alert=\"purple\""
+                    ],
+                    "category": "content"
+                },
+                "alert-icon": {
+                    "type": "String",
+                    "desc": "Adds a floating icon to the tab, notifying the user there are some updates; It's displayed only if 'alert' is set; Can use the color specified by 'alert' prop",
+                    "examples": [
+                        "alert-icon=\"alarm_on\""
+                    ],
+                    "category": "content"
+                },
+                "name": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Panel name",
+                    "default": "A random UID",
+                    "examples": [
+                        "home",
+                        ":name=\"1\""
+                    ],
+                    "category": "general",
+                    "required": false
+                },
+                "no-caps": {
+                    "type": "Boolean",
+                    "desc": "Turns off capitalizing all letters within the tab (which is the default)",
+                    "category": "content"
+                },
+                "content-class": {
+                    "type": "String",
+                    "desc": "Class definitions to be attributed to the content wrapper",
+                    "examples": [
+                        "my-special-class"
+                    ],
+                    "category": "style"
+                },
+                "ripple": {
+                    "type": [
+                        "Boolean",
+                        "Object"
+                    ],
+                    "desc": "Configure material ripple (disable it by setting it to 'false' or supply a config object)",
+                    "default": true,
+                    "examples": [
+                        false,
+                        "{ early: true, center: true, color: 'teal', keyCodes: [] }"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Suggestion: QMenu, QTooltip"
+                }
+            }
+        }
+    },
+    {
+        name: "q-route-tab", desc: "选项卡路由", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/tabs"
+            },
+            "props": {
+                "to": {
+                    "type": [
+                        "String",
+                        "Object"
+                    ],
+                    "desc": "Equivalent to Vue Router <router-link> 'to' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "/home/dashboard",
+                        ":to=\"{ name: 'my-route-name' }\""
+                    ],
+                    "category": "navigation"
+                },
+                "exact": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to Vue Router <router-link> 'exact' property; Superseded by 'href' prop if used",
+                    "category": "navigation"
+                },
+                "replace": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to Vue Router <router-link> 'replace' property; Superseded by 'href' prop if used",
+                    "category": "navigation"
+                },
+                "active-class": {
+                    "type": "String",
+                    "desc": "Equivalent to Vue Router <router-link> 'active-class' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "my-active-class"
+                    ],
+                    "category": "navigation"
+                },
+                "exact-active-class": {
+                    "type": "String",
+                    "desc": "Equivalent to Vue Router <router-link> 'active-class' property; Superseded by 'href' prop if used",
+                    "examples": [
+                        "my-exact-active-class"
+                    ],
+                    "category": "navigation"
+                },
+                "href": {
+                    "type": "String",
+                    "desc": "Native <a> link href attribute; Has priority over the 'to'/'exact'/'replace'/'active-class'/'exact-active-class' props",
+                    "examples": [
+                        "https://quasar.dev"
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "target": {
+                    "type": "String",
+                    "desc": "Native <a> link target attribute; Use it only along with 'href' prop; Has priority over the 'to'/'exact'/'replace'/'active-class'/'exact-active-class' props",
+                    "examples": [
+                        "_blank",
+                        "_self",
+                        "_parent",
+                        "_top"
+                    ],
+                    "category": "navigation",
+                    "addedIn": "v2.4"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "label": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "A number or string to label the tab",
+                    "examples": [
+                        "Home"
+                    ],
+                    "category": "content"
+                },
+                "alert": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "Adds an alert symbol to the tab, notifying the user there are some updates; If its value is not a Boolean, then you can specify a color",
+                    "examples": [
+                        "alert",
+                        "alert=\"purple\""
+                    ],
+                    "category": "content"
+                },
+                "alert-icon": {
+                    "type": "String",
+                    "desc": "Adds a floating icon to the tab, notifying the user there are some updates; It's displayed only if 'alert' is set; Can use the color specified by 'alert' prop",
+                    "examples": [
+                        "alert-icon=\"alarm_on\""
+                    ],
+                    "category": "content"
+                },
+                "name": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Panel name",
+                    "default": "A random UID",
+                    "examples": [
+                        "home",
+                        ":name=\"1\""
+                    ],
+                    "category": "general",
+                    "required": false
+                },
+                "no-caps": {
+                    "type": "Boolean",
+                    "desc": "Turns off capitalizing all letters within the tab (which is the default)",
+                    "category": "content"
+                },
+                "content-class": {
+                    "type": "String",
+                    "desc": "Class definitions to be attributed to the content wrapper",
+                    "examples": [
+                        "my-special-class"
+                    ],
+                    "category": "style"
+                },
+                "ripple": {
+                    "type": [
+                        "Boolean",
+                        "Object"
+                    ],
+                    "desc": "Configure material ripple (disable it by setting it to 'false' or supply a config object)",
+                    "default": true,
+                    "examples": [
+                        false,
+                        "{ early: true, center: true, color: 'teal', keyCodes: [] }"
+                    ],
+                    "category": "style",
+                    "required": false
+                },
+                "tabindex": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Tabindex HTML attribute value",
+                    "examples": [
+                        "0",
+                        "100"
+                    ],
+                    "category": "general"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Suggestion: QMenu, QTooltip"
+                }
+            },
+            "events": {
+                "click": {
+                    "desc": "Emitted when the component is clicked",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object; If you want to cancel navigation then call evt.preventDefault() synchronously in your event handler"
+                        },
+                        "go": {
+                            "type": "Function",
+                            "desc": "When you need to control the time at which the component should trigger the route navigation then call evt.preventDefault() synchronously and then call this function at your convenience; Useful if you have async work to be done before the actual route navigation or if you want to redirect somewhere else",
+                            "required": false,
+                            "params": {
+                                "opts": {
+                                    "type": "Object",
+                                    "desc": "Optional options",
+                                    "required": false,
+                                    "definition": {
+                                        "to": {
+                                            "type": [
+                                                "String",
+                                                "Object"
+                                            ],
+                                            "desc": "Equivalent to Vue Router <router-link> 'to' property; Specify it explicitly otherwise it will be set with same value as component's 'to' prop",
+                                            "required": false,
+                                            "examples": [
+                                                "/home/dashboard",
+                                                "{ name: 'my-route-name' }"
+                                            ]
+                                        },
+                                        "replace": {
+                                            "type": "Boolean",
+                                            "desc": "Equivalent to Vue Router <router-link> 'replace' property; Specify it explicitly otherwise it will be set with same value as component's 'replace' prop",
+                                            "required": false
+                                        },
+                                        "returnRouterError": {
+                                            "type": "Boolean",
+                                            "desc": "Return the router error, if any; Otherwise the returned Promise will always fulfill",
+                                            "required": false
+                                        }
+                                    },
+                                    "addedIn": "v2.9"
+                                }
+                            },
+                            "returns": {
+                                "type": "Promise<any>",
+                                "desc": "Returns the router's navigation promise",
+                                "addedIn": "v2.9"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-tab-panels", desc: "选项卡组", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/tab-panels"
+            },
+            "props": {
+                "model-value": {
+                    "type": "Any",
+                    "desc": "Model of the component defining the current panel's name; If a Number is used, it does not define the panel's index, but rather the panel's name which can also be an Integer; Either use this property (along with a listener for 'update:model-value' event) OR use the v-model directive.",
+                    "examples": [
+                        "v-model=\"panelName\""
+                    ],
+                    "category": "model"
+                },
+                "keep-alive": {
+                    "type": "Boolean",
+                    "desc": "Equivalent to using Vue's native <keep-alive> component on the content",
+                    "category": "behavior"
+                },
+                "keep-alive-include": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "RegExp"
+                    ],
+                    "desc": "Equivalent to using Vue's native include prop for <keep-alive>; Values must be valid Vue component names",
+                    "examples": [
+                        "a,b",
+                        "/a|b/",
+                        "['a', 'b']"
+                    ],
+                    "category": "behavior"
+                },
+                "keep-alive-exclude": {
+                    "type": [
+                        "String",
+                        "Array",
+                        "RegExp"
+                    ],
+                    "desc": "Equivalent to using Vue's native exclude prop for <keep-alive>; Values must be valid Vue component names",
+                    "examples": [
+                        "a,b",
+                        "/a|b/",
+                        "['a', 'b']"
+                    ],
+                    "category": "behavior"
+                },
+                "keep-alive-max": {
+                    "type": "Number",
+                    "desc": "Equivalent to using Vue's native max prop for <keep-alive>",
+                    "category": "behavior"
+                },
+                "animated": {
+                    "type": "Boolean",
+                    "desc": "Enable transitions between panel (also see 'transition-prev' and 'transition-next' props)",
+                    "category": "behavior"
+                },
+                "infinite": {
+                    "type": "Boolean",
+                    "desc": "Makes component appear as infinite (when reaching last panel, next one will become the first one)",
+                    "category": "behavior"
+                },
+                "swipeable": {
+                    "type": "Boolean",
+                    "desc": "Enable swipe events (may interfere with content's touch/mouse events)",
+                    "category": "behavior"
+                },
+                "vertical": {
+                    "type": "Boolean",
+                    "desc": "Default transitions and swipe actions will be on the vertical axis",
+                    "category": "behavior"
+                },
+                "transition-prev": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions (has effect only if 'animated' prop is set)",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "slide-right/slide-down",
+                    "required": false
+                },
+                "transition-next": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions (has effect only if 'animated' prop is set)",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "slide-left/slide-up",
+                    "required": false
+                },
+                "transition-duration": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Transition duration (in milliseconds, without unit)",
+                    "default": 300,
+                    "category": "transition",
+                    "addedIn": "v2.2",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when the component changes the model; This event _isn't_ fired if the model is changed externally; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "New current panel name",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                },
+                "before-transition": {
+                    "desc": "Emitted before transitioning to a new panel",
+                    "params": {
+                        "newVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name towards transition is going",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        },
+                        "oldVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name from which transition is happening",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                },
+                "transition": {
+                    "desc": "Emitted after component transitioned to a new panel",
+                    "params": {
+                        "newVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name towards transition has occurred",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        },
+                        "oldVal": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel name from which transition has happened",
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "next": {
+                    "desc": "Go to next panel"
+                },
+                "previous": {
+                    "desc": "Go to previous panel"
+                },
+                "goTo": {
+                    "desc": "Go to specific panel",
+                    "params": {
+                        "panelName": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "Panel's name, which may be a String or Number; Number does not refers to panel index, but to its name, which may be an Integer",
+                            "required": true,
+                            "examples": [
+                                "dashboard"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-tab-panel", desc: "选项卡", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/tab-panels"
+            },
+            "props": {
+                "name": {
+                    "type": "Any",
+                    "desc": "Panel name",
+                    "required": true,
+                    "examples": [
+                        "accounts",
+                        "firstPanel",
+                        ":name=\"1\""
+                    ],
+                    "category": "general"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-time-line", desc: "时间线组", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/timeline"
+            },
+            "props": {
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "side": {
+                    "type": "String",
+                    "desc": "Side to place the timeline entries in dense and comfortable layout; For loose layout it gets overridden by QTimelineEntry side prop",
+                    "default": "right",
+                    "values": [
+                        "left",
+                        "right"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "layout": {
+                    "type": "String",
+                    "desc": "Layout of the timeline. Dense keeps content and labels on one side. Comfortable keeps content on one side and labels on the opposite side. Loose puts content on both sides.",
+                    "default": "dense",
+                    "values": [
+                        "dense",
+                        "comfortable",
+                        "loose"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Used for content of component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-time-line-entry", desc: "时间线", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/timeline"
+            },
+            "props": {
+                "heading": {
+                    "type": "Boolean",
+                    "desc": "Defines a heading timeline item",
+                    "category": "content"
+                },
+                "tag": {
+                    "type": "String",
+                    "desc": "Tag to use, if of type 'heading' only",
+                    "examples": [
+                        "div",
+                        "span",
+                        "h1"
+                    ],
+                    "category": "content",
+                    "default": "h3",
+                    "required": false
+                },
+                "side": {
+                    "type": "String",
+                    "desc": "Side to place the timeline entry; Works only if QTimeline layout is loose.",
+                    "default": "right",
+                    "values": [
+                        "left",
+                        "right"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "avatar": {
+                    "type": "String",
+                    "desc": "URL to the avatar image; Icon takes precedence if used, so it replaces avatar",
+                    "transformAssetUrls": true,
+                    "examples": [
+                        "(public folder) src=\"img/my-bg.png\"",
+                        "(assets folder) src=\"~assets/my-img.png\"",
+                        "(relative path format) :src=\"require('./my_img.jpg')\"",
+                        "(URL) src=\"https://placeimg.com/500/300/nature\""
+                    ],
+                    "category": "content"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "title": {
+                    "type": "String",
+                    "desc": "Title of timeline entry; Is overridden if using 'title' slot",
+                    "examples": [
+                        "December party"
+                    ],
+                    "category": "content"
+                },
+                "subtitle": {
+                    "type": "String",
+                    "desc": "Subtitle of timeline entry; Is overridden if using 'subtitle' slot",
+                    "examples": [
+                        "All invited"
+                    ],
+                    "category": "content"
+                },
+                "body": {
+                    "type": "String",
+                    "desc": "Body content of timeline entry; Use this prop or the default slot",
+                    "examples": [
+                        "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                    ],
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Timeline entry content (body)"
+                },
+                "title": {
+                    "desc": "Optional slot for title; When used, it overrides 'title' prop"
+                },
+                "subtitle": {
+                    "desc": "Optional slot for subtitle; When used, it overrides 'subtitle' prop"
+                }
+            }
+        }
+    },
+    {
+        name: "q-toolbar", desc: "工具栏", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/toolbar"
+            },
+            "props": {
+                "inset": {
+                    "type": "Boolean",
+                    "desc": "Apply an inset to content (useful for subsequent toolbars)",
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-toolbar-title", desc: "工具栏标题", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/toolbar"
+            },
+            "props": {
+                "shrink": {
+                    "type": "Boolean",
+                    "desc": "By default, QToolbarTitle is set to grow to the available space. However, you can reverse that with this prop",
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            }
+        }
+    },
+    {
+        name: "q-tooltip", desc: "工具提示", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/tooltip"
+            },
+            "props": {
+                "transition-show": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "jump-down",
+                    "required": false
+                },
+                "transition-hide": {
+                    "type": "String",
+                    "desc": "One of Quasar's embedded transitions",
+                    "examples": [
+                        "fade",
+                        "slide-down"
+                    ],
+                    "category": "transition",
+                    "default": "jump-up",
+                    "required": false
+                },
+                "transition-duration": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Transition duration (in milliseconds, without unit)",
+                    "default": 300,
+                    "category": "transition",
+                    "required": false
+                },
+                "model-value": {
+                    "type": "Boolean",
+                    "desc": "Model of the component defining shown/hidden state; Either use this property (along with a listener for 'update:model-value' event) OR use v-model directive",
+                    "category": "model"
+                },
+                "max-height": {
+                    "type": "String",
+                    "desc": "The maximum height of the Tooltip; Size in CSS units, including unit name",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "content"
+                },
+                "max-width": {
+                    "type": "String",
+                    "desc": "The maximum width of the Tooltip; Size in CSS units, including unit name",
+                    "examples": [
+                        "16px",
+                        "2rem"
+                    ],
+                    "category": "content"
+                },
+                "anchor": {
+                    "type": "String",
+                    "desc": "Two values setting the starting position or anchor point of the Tooltip relative to its target",
+                    "values": [
+                        "top left",
+                        "top middle",
+                        "top right",
+                        "top start",
+                        "top end",
+                        "center left",
+                        "center middle",
+                        "center right",
+                        "center start",
+                        "center end",
+                        "bottom left",
+                        "bottom middle",
+                        "bottom right",
+                        "bottom start",
+                        "bottom end"
+                    ],
+                    "default": "bottom middle",
+                    "category": "position",
+                    "required": false
+                },
+                "self": {
+                    "type": "String",
+                    "desc": "Two values setting the Tooltip's own position relative to its target",
+                    "values": [
+                        "top left",
+                        "top middle",
+                        "top right",
+                        "top start",
+                        "top end",
+                        "center left",
+                        "center middle",
+                        "center right",
+                        "center start",
+                        "center end",
+                        "bottom left",
+                        "bottom middle",
+                        "bottom right",
+                        "bottom start",
+                        "bottom end"
+                    ],
+                    "default": "top middle",
+                    "category": "position",
+                    "required": false
+                },
+                "offset": {
+                    "type": "Array",
+                    "desc": "An array of two numbers to offset the Tooltip horizontally and vertically in pixels",
+                    "default": "[14, 14]",
+                    "examples": [
+                        "[8, 8]",
+                        "[5, 10]"
+                    ],
+                    "category": "position",
+                    "required": false
+                },
+                "scroll-target": {
+                    "type": [
+                        "Element",
+                        "String"
+                    ],
+                    "desc": "CSS selector or DOM element to be used as a custom scroll container instead of the auto detected one",
+                    "examples": [
+                        ":scroll-target=\"$refs.scrollTarget\"",
+                        "scroll-target=\".scroll-target-class\"",
+                        "scroll-target=\"#scroll-target-id\"",
+                        "scroll-target=\"body\""
+                    ],
+                    "category": "behavior"
+                },
+                "target": {
+                    "type": [
+                        "Boolean",
+                        "String"
+                    ],
+                    "desc": "Configure a target element to trigger Tooltip toggle; 'true' means it enables the parent DOM element, 'false' means it disables attaching events to any DOM elements; By using a String (CSS selector) it attaches the events to the specified DOM element (if it exists)",
+                    "default": true,
+                    "values": [
+                        "(Boolean) true",
+                        "(Boolean) false",
+                        "(CSS selector)"
+                    ],
+                    "examples": [
+                        ":target=\"false\"",
+                        "target=\".my-parent\""
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "no-parent-event": {
+                    "type": "Boolean",
+                    "desc": "Skips attaching events to the target DOM element (that trigger the element to get shown)",
+                    "category": "behavior"
+                },
+                "delay": {
+                    "type": "Number",
+                    "desc": "Configure Tooltip to appear with delay",
+                    "default": 0,
+                    "category": "behavior",
+                    "required": false
+                },
+                "hide-delay": {
+                    "type": "Number",
+                    "desc": "Configure Tooltip to disappear with delay",
+                    "default": 0,
+                    "category": "behavior",
+                    "required": false
+                }
+            },
+            "slots": {
+                "default": {
+                    "desc": "Default slot in the devland unslotted content of the component"
+                }
+            },
+            "events": {
+                "update:model-value": {
+                    "desc": "Emitted when showing/hidden state changes; Is also used by v-model",
+                    "params": {
+                        "value": {
+                            "type": "Boolean",
+                            "desc": "New state (showing/hidden)"
+                        }
+                    }
+                },
+                "show": {
+                    "desc": "Emitted after component has triggered show()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-show": {
+                    "desc": "Emitted when component triggers show() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Emitted after component has triggered hide()",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                },
+                "before-hide": {
+                    "desc": "Emitted when component triggers hide() but before it finishes doing it",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "show": {
+                    "desc": "Triggers component to show",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "hide": {
+                    "desc": "Triggers component to hide",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    }
+                },
+                "toggle": {
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object",
+                            "required": false
+                        }
+                    },
+                    "desc": "Triggers component to toggle between show/hide"
+                },
+                "updatePosition": {
+                    "desc": "There are some custom scenarios for which Quasar cannot automatically reposition the tooltip without significant performance drawbacks so the optimal solution is for you to call this method when you need it"
+                }
+            },
+            "computedProps": {
+                "contentEl": {
+                    "type": "Element",
+                    "desc": "The DOM Element of the rendered content",
+                    "addedIn": "v2.10.1"
+                }
+            }
+        }
+    },
+    {
+        name: "q-tree", desc: "树", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/tree"
+            },
+            "props": {
+                "nodes": {
+                    "type": "Array",
+                    "tsType": "QTreeNode",
+                    "desc": "The array of nodes that designates the tree structure",
+                    "required": true,
+                    "examples": [
+                        "[ {...}, {...} ]"
+                    ],
+                    "category": "content"
+                },
+                "node-key": {
+                    "type": "String",
+                    "desc": "The property name of each node object that holds a unique node id",
+                    "required": true,
+                    "examples": [
+                        "key",
+                        "id"
+                    ],
+                    "category": "content"
+                },
+                "label-key": {
+                    "type": "String",
+                    "desc": "The property name of each node object that holds the label of the node",
+                    "default": "label",
+                    "examples": [
+                        "name",
+                        "description"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "children-key": {
+                    "type": "String",
+                    "desc": "The property name of each node object that holds the list of children of the node",
+                    "default": "children",
+                    "examples": [
+                        "roles",
+                        "relatives"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "no-connectors": {
+                    "type": "Boolean",
+                    "desc": "Do not display the connector lines between nodes",
+                    "category": "style"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "control-color": {
+                    "type": "String",
+                    "desc": "Color name for controls (like checkboxes) from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "selected-color": {
+                    "type": "String",
+                    "desc": "Color name for selected nodes (from the Quasar Color Palette)",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "dense": {
+                    "type": "Boolean",
+                    "desc": "Dense mode; occupies less space",
+                    "category": "style",
+                    "addedIn": "v2.2.4"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "icon": {
+                    "type": "String",
+                    "desc": "Icon name following Quasar convention; Make sure you have the icon library installed unless you are using 'img:' prefix; If 'none' (String) is used as value then no icon is rendered (but screen real estate will still be used for it)",
+                    "examples": [
+                        "map",
+                        "ion-add",
+                        "img:https://cdn.quasar.dev/logo-v2/svg/logo.svg",
+                        "img:path/to/some_image.png"
+                    ],
+                    "category": "content"
+                },
+                "tick-strategy": {
+                    "type": "String",
+                    "desc": "The type of strategy to use for the selection of the nodes",
+                    "default": "none",
+                    "values": [
+                        "none",
+                        "strict",
+                        "leaf",
+                        "leaf-filtered"
+                    ],
+                    "category": "behavior",
+                    "required": false
+                },
+                "ticked": {
+                    "type": "Array",
+                    "desc": "Keys of nodes that are ticked",
+                    "sync": true,
+                    "examples": [
+                        "v-model:ticked=\"tickedKeys\""
+                    ],
+                    "category": "state",
+                    "syncable": true
+                },
+                "expanded": {
+                    "type": "Array",
+                    "desc": "Keys of nodes that are expanded",
+                    "sync": true,
+                    "examples": [
+                        "v-model:expanded=\"expandedKeys\""
+                    ],
+                    "category": "state",
+                    "syncable": true
+                },
+                "selected": {
+                    "type": "Any",
+                    "desc": "Key of node currently selected",
+                    "sync": true,
+                    "examples": [
+                        "v-model:selected=\"selectedKey\""
+                    ],
+                    "category": "state",
+                    "syncable": true
+                },
+                "no-selection-unset": {
+                    "type": "Boolean",
+                    "desc": "Do not allow un-selection when clicking currently selected node",
+                    "category": "behavior",
+                    "addedIn": "v2.4.10"
+                },
+                "default-expand-all": {
+                    "type": "Boolean",
+                    "desc": "Allow the tree to have all its branches expanded, when first rendered",
+                    "category": "behavior"
+                },
+                "accordion": {
+                    "type": "Boolean",
+                    "desc": "Allows the tree to be set in accordion mode",
+                    "category": "behavior"
+                },
+                "no-transition": {
+                    "type": "Boolean",
+                    "desc": "Turn off transition effects when expanding/collapsing nodes; Also enhances perf by a lot as a side-effect; Recommended for big trees",
+                    "category": "behavior",
+                    "addedIn": "v2.9.2"
+                },
+                "filter": {
+                    "type": "String",
+                    "desc": "The text value to be used for filtering nodes",
+                    "examples": [
+                        ":filter=\"searchText\""
+                    ],
+                    "category": "filter"
+                },
+                "filter-method": {
+                    "type": "Function",
+                    "desc": "The function to use to filter the tree nodes; For best performance, reference it from your scope and do not define it inline",
+                    "default": "(see source code)",
+                    "params": {
+                        "node": {
+                            "type": "Object",
+                            "desc": "Node currently being filtered"
+                        },
+                        "filter": {
+                            "type": "String",
+                            "desc": "Filter text to match against"
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "Matches or not"
+                    },
+                    "category": "filter",
+                    "required": false
+                },
+                "duration": {
+                    "type": "Number",
+                    "desc": "Toggle animation duration (in milliseconds)",
+                    "default": 300,
+                    "category": "style",
+                    "required": false
+                },
+                "no-nodes-label": {
+                    "type": "String",
+                    "desc": "Override default such label for when no nodes are available",
+                    "examples": [
+                        "No nodes to show!"
+                    ],
+                    "category": "content"
+                },
+                "no-results-label": {
+                    "type": "String",
+                    "desc": "Override default such label for when no nodes are available due to filtering",
+                    "examples": [
+                        "No results"
+                    ],
+                    "category": "content"
+                }
+            },
+            "slots": {
+                "default-header": {
+                    "desc": "Slot to use for defining the header of a node",
+                    "scope": {
+                        "expanded": {
+                            "type": "Boolean",
+                            "desc": "Is node expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "ticked": {
+                            "type": "Boolean",
+                            "desc": "Is node ticked? Can directly be assigned new Boolean value which changes ticked state",
+                            "reactive": true
+                        },
+                        "tree": {
+                            "type": "Component",
+                            "tsType": "QTree",
+                            "desc": "QTree instance"
+                        },
+                        "node": {
+                            "type": "Object",
+                            "desc": "Node object"
+                        },
+                        "key": {
+                            "type": "Any",
+                            "desc": "Node's key"
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "QTree instance 'color' supplied prop value",
+                            "examples": [
+                                "primary"
+                            ]
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "QTree instance 'dark' supplied prop value"
+                        }
+                    }
+                },
+                "header-[name]": {
+                    "desc": "Header template slot for describing node header; Used by nodes which have their 'header' prop set to '[name]', where '[name]' can be any string",
+                    "scope": {
+                        "expanded": {
+                            "type": "Boolean",
+                            "desc": "Is node expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "ticked": {
+                            "type": "Boolean",
+                            "desc": "Is node ticked? Can directly be assigned new Boolean value which changes ticked state",
+                            "reactive": true
+                        },
+                        "tree": {
+                            "type": "Component",
+                            "tsType": "QTree",
+                            "desc": "QTree instance"
+                        },
+                        "node": {
+                            "type": "Object",
+                            "desc": "Node object"
+                        },
+                        "key": {
+                            "type": "Any",
+                            "desc": "Node's key"
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "QTree instance 'color' supplied prop value",
+                            "examples": [
+                                "primary"
+                            ]
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "QTree instance 'dark' supplied prop value"
+                        }
+                    }
+                },
+                "default-body": {
+                    "desc": "Slot to use for defining the body of a node",
+                    "scope": {
+                        "expanded": {
+                            "type": "Boolean",
+                            "desc": "Is node expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "ticked": {
+                            "type": "Boolean",
+                            "desc": "Is node ticked? Can directly be assigned new Boolean value which changes ticked state",
+                            "reactive": true
+                        },
+                        "tree": {
+                            "type": "Component",
+                            "tsType": "QTree",
+                            "desc": "QTree instance"
+                        },
+                        "node": {
+                            "type": "Object",
+                            "desc": "Node object"
+                        },
+                        "key": {
+                            "type": "Any",
+                            "desc": "Node's key"
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "QTree instance 'color' supplied prop value",
+                            "examples": [
+                                "primary"
+                            ]
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "QTree instance 'dark' supplied prop value"
+                        }
+                    }
+                },
+                "body-[name]": {
+                    "desc": "Body template slot for describing node body; Used by nodes which have their 'body' prop set to '[name]', where '[name]' can be any string",
+                    "scope": {
+                        "expanded": {
+                            "type": "Boolean",
+                            "desc": "Is node expanded? Can directly be assigned new Boolean value which changes expanded state",
+                            "reactive": true
+                        },
+                        "ticked": {
+                            "type": "Boolean",
+                            "desc": "Is node ticked? Can directly be assigned new Boolean value which changes ticked state",
+                            "reactive": true
+                        },
+                        "tree": {
+                            "type": "Component",
+                            "tsType": "QTree",
+                            "desc": "QTree instance"
+                        },
+                        "node": {
+                            "type": "Object",
+                            "desc": "Node object"
+                        },
+                        "key": {
+                            "type": "Any",
+                            "desc": "Node's key"
+                        },
+                        "color": {
+                            "type": "String",
+                            "desc": "QTree instance 'color' supplied prop value",
+                            "examples": [
+                                "primary"
+                            ]
+                        },
+                        "dark": {
+                            "type": "Boolean",
+                            "desc": "QTree instance 'dark' supplied prop value"
+                        }
+                    }
+                }
+            },
+            "events": {
+                "update:expanded": {
+                    "desc": "Triggered when nodes are expanded or collapsed; Used by Vue on 'v-model:update' to update its value",
+                    "params": {
+                        "expanded": {
+                            "type": "Array",
+                            "desc": "The expanded node keys",
+                            "examples": [
+                                "[ 'Node 1', 'Node 2' ]"
+                            ]
+                        }
+                    }
+                },
+                "lazy-load": {
+                    "desc": "Emitted when the lazy loading of nodes is finished",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Lazy loading details",
+                            "definition": {
+                                "node": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "The node to which the new nodes (the children) will be appended"
+                                },
+                                "key": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "The key of the node getting the newly loaded child nodes",
+                                    "examples": [
+                                        "New Node"
+                                    ]
+                                },
+                                "done": {
+                                    "type": "Function",
+                                    "required": true,
+                                    "desc": "The callback to be carried out when the loading is successful",
+                                    "params": {
+                                        "children": {
+                                            "type": "Array",
+                                            "desc": "Array of nodes",
+                                            "default": "[]",
+                                            "required": false
+                                        }
+                                    },
+                                    "returns": null
+                                },
+                                "fail": {
+                                    "type": "Function",
+                                    "required": true,
+                                    "desc": "The callback to be carried out should the loading fails",
+                                    "params": null,
+                                    "returns": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "update:ticked": {
+                    "desc": "Emitted when nodes are ticked/unticked via the checkbox; Used by Vue on 'v-model:ticked' to update its value",
+                    "params": {
+                        "target": {
+                            "type": "Array",
+                            "desc": "The ticked node keys",
+                            "examples": [
+                                "[ 'Node 1', 'Node 2' ]"
+                            ]
+                        }
+                    }
+                },
+                "update:selected": {
+                    "desc": "Emitted when selected node changes; Used by Vue on 'v-model:selected' to update its value",
+                    "params": {
+                        "target": {
+                            "type": "Any",
+                            "desc": "The selected node key",
+                            "examples": [
+                                "Node 1"
+                            ]
+                        }
+                    }
+                },
+                "after-show": {
+                    "desc": "Emitted when component show animation is finished"
+                },
+                "after-hide": {
+                    "desc": "Emitted when component hide animation is finished"
+                }
+            },
+            "methods": {
+                "getNodeByKey": {
+                    "desc": "Get the node with the given key",
+                    "params": {
+                        "key": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "The key of a node",
+                            "examples": [
+                                "Node 1"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Object",
+                        "desc": "Requested node"
+                    }
+                },
+                "getTickedNodes": {
+                    "desc": "Get array of nodes that are ticked",
+                    "returns": {
+                        "type": "Array",
+                        "desc": "Ticked node objects"
+                    }
+                },
+                "getExpandedNodes": {
+                    "desc": "Get array of nodes that are expanded",
+                    "returns": {
+                        "type": "Array",
+                        "desc": "Expanded node objects"
+                    }
+                },
+                "isExpanded": {
+                    "desc": "Determine if a node is expanded",
+                    "params": {
+                        "key": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "The key of a node",
+                            "examples": [
+                                "Node 1"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "Is specified node expanded?"
+                    }
+                },
+                "expandAll": {
+                    "desc": "Use to expand all branches of the tree"
+                },
+                "collapseAll": {
+                    "desc": "Use to collapse all branches of the tree"
+                },
+                "setExpanded": {
+                    "desc": "Expands the tree at the point of the node with the key given",
+                    "params": {
+                        "key": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "The key of a node",
+                            "examples": [
+                                "Node 1"
+                            ]
+                        },
+                        "state": {
+                            "type": "Boolean",
+                            "required": true,
+                            "desc": "Set to 'true' to expand the branch of the tree, otherwise 'false' collapses it"
+                        }
+                    }
+                },
+                "isTicked": {
+                    "desc": "Method to check if a node's checkbox is selected or not",
+                    "params": {
+                        "key": {
+                            "type": "Any",
+                            "required": true,
+                            "desc": "The key of a node",
+                            "examples": [
+                                "Node 1"
+                            ]
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "Is specified node ticked?"
+                    }
+                },
+                "setTicked": {
+                    "desc": "Method to set a node's checkbox programmatically",
+                    "params": {
+                        "keys": {
+                            "type": "Array",
+                            "required": true,
+                            "desc": "The keys of nodes to tick/untick",
+                            "examples": [
+                                "[ 'Node 1', 'Node 2' ]"
+                            ]
+                        },
+                        "state": {
+                            "type": "Boolean",
+                            "required": true,
+                            "desc": "Set to 'true' to tick the checkbox of nodes, otherwise 'false' unticks them"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        name: "q-uploader", desc: "上传器", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/uploader"
+            },
+            "props": {
+                "factory": {
+                    "type": "Function",
+                    "tsType": "QUploaderFactoryFn",
+                    "desc": "Function which should return an Object or a Promise resolving with an Object; For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Uploaded files"
+                        }
+                    },
+                    "returns": {
+                        "type": [
+                            "Object",
+                            "Promise<any>"
+                        ],
+                        "desc": "Optional configuration for the upload process; You can override QUploader props in this Object (url, method, headers, formFields, fieldName, withCredentials, sendRaw); Props of these Object can also be Functions with the form of (file[s]) => value"
+                    },
+                    "category": "upload"
+                },
+                "url": {
+                    "type": [
+                        "String",
+                        "Function"
+                    ],
+                    "desc": "URL or path to the server which handles the upload. Takes String or factory function, which returns String. Function is called right before upload; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "examples": [
+                        "https://example.com/path",
+                        "files => `https://example.com?count=${files.length}`"
+                    ],
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Uploaded files"
+                        }
+                    },
+                    "returns": {
+                        "type": "String",
+                        "desc": "URL or path to the server which handles the upload"
+                    },
+                    "category": "upload"
+                },
+                "method": {
+                    "type": [
+                        "String",
+                        "Function"
+                    ],
+                    "default": "POST",
+                    "desc": "HTTP method to use for upload; Takes String or factory function which returns a String; Function is called right before upload; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "values": [
+                        "POST",
+                        "PUT"
+                    ],
+                    "examples": [
+                        "POST",
+                        ":method=\"files => files.length > 10 ? 'POST' : 'PUT'\""
+                    ],
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Uploaded files"
+                        }
+                    },
+                    "returns": {
+                        "type": "String",
+                        "desc": "HTTP method to use for upload"
+                    },
+                    "category": "upload",
+                    "required": false
+                },
+                "field-name": {
+                    "type": [
+                        "String",
+                        "Function"
+                    ],
+                    "desc": "Field name for each file upload; This goes into the following header: 'Content-Disposition: form-data; name=\"__HERE__\"; filename=\"somefile.png\"; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "default": "(file) => file.name",
+                    "examples": [
+                        "backgroundFile",
+                        ":field-name=\"(file) => 'background' + file.name\""
+                    ],
+                    "params": {
+                        "files": {
+                            "type": "File",
+                            "desc": "The current file being processed"
+                        }
+                    },
+                    "returns": {
+                        "type": "String",
+                        "desc": "Field name for the current file upload"
+                    },
+                    "category": "upload",
+                    "required": false
+                },
+                "headers": {
+                    "type": [
+                        "Array",
+                        "Function"
+                    ],
+                    "desc": "Array or a factory function which returns an array; Array consists of objects with header definitions; Function is called right before upload; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "definition": {
+                        "name": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "Header name",
+                            "examples": [
+                                "Content-Type",
+                                "Accept",
+                                "Cache-Control"
+                            ]
+                        },
+                        "value": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "Header value",
+                            "examples": [
+                                "application/json",
+                                "no-cache"
+                            ]
+                        }
+                    },
+                    "examples": [
+                        "[{name: 'Content-Type', value: 'application/json'}, {name: 'Accept', value: 'application/json'}]",
+                        "() => [{name: 'X-Custom-Timestamp', value: Date.now()}]",
+                        "files => [{name: 'X-Custom-Count', value: files.length}]"
+                    ],
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Uploaded files"
+                        }
+                    },
+                    "returns": {
+                        "type": "String",
+                        "desc": "An array consisting of objects with header definitions"
+                    },
+                    "category": "upload"
+                },
+                "form-fields": {
+                    "type": [
+                        "Array",
+                        "Function"
+                    ],
+                    "desc": "Array or a factory function which returns an array; Array consists of objects with additional fields definitions (used by Form to be uploaded); Function is called right before upload; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "definition": {
+                        "name": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "Field name",
+                            "examples": [
+                                "Some field"
+                            ]
+                        },
+                        "value": {
+                            "type": "String",
+                            "required": true,
+                            "desc": "Field value",
+                            "examples": [
+                                "some-value"
+                            ]
+                        }
+                    },
+                    "examples": [
+                        "[{name: 'my-field', value: 'my-value'}]",
+                        "() => [{name: 'my-field', value: 'my-value'}]",
+                        "files => [{name: 'my-field', value: 'my-value' + files.length}]"
+                    ],
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Uploaded files"
+                        }
+                    },
+                    "returns": {
+                        "type": "String",
+                        "desc": "An array consists of objects with additional fields definitions (used by Form to be uploaded)"
+                    },
+                    "category": "upload"
+                },
+                "with-credentials": {
+                    "type": [
+                        "Boolean",
+                        "Function"
+                    ],
+                    "desc": "Sets withCredentials to true on the XHR that manages the upload; Takes boolean or factory function for Boolean; Function is called right before upload; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "examples": [
+                        "with-credentials",
+                        ":with-credentials=\"files => ...\""
+                    ],
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Uploaded files"
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "If true, withCredentials will be set to true on the XHR that manages the upload"
+                    },
+                    "category": "upload"
+                },
+                "send-raw": {
+                    "type": [
+                        "Boolean",
+                        "Function"
+                    ],
+                    "desc": "Send raw files without wrapping into a Form(); Takes boolean or factory function for Boolean; Function is called right before upload; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "examples": [
+                        "send-raw",
+                        ":send-raw=\"files => ...\""
+                    ],
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Uploaded files"
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "If true, raw files will get sent without wrapping into a Form()"
+                    },
+                    "category": "upload"
+                },
+                "batch": {
+                    "type": [
+                        "Boolean",
+                        "Function"
+                    ],
+                    "desc": "Upload files in batch (in one XHR request); Takes boolean or factory function for Boolean; Function is called right before upload; If using a function then for best performance, reference it from your scope and do not define it inline",
+                    "examples": [
+                        "files => files.length > 10"
+                    ],
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Uploaded files"
+                        }
+                    },
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "If true, files will be uploaded in a batch (in one XHR request)"
+                    },
+                    "category": "upload"
+                },
+                "multiple": {
+                    "type": "Boolean",
+                    "desc": "Allow multiple file uploads",
+                    "category": "behavior"
+                },
+                "accept": {
+                    "type": "String",
+                    "desc": "Comma separated list of unique file type specifiers. Maps to 'accept' attribute of native input type=file element",
+                    "examples": [
+                        ".jpg, .pdf, image/*",
+                        "image/jpeg, .pdf"
+                    ],
+                    "category": "behavior"
+                },
+                "capture": {
+                    "type": "String",
+                    "desc": "Optionally, specify that a new file should be captured, and which device should be used to capture that new media of a type defined by the 'accept' prop. Maps to 'capture' attribute of native input type=file element",
+                    "values": [
+                        "user",
+                        "environment"
+                    ],
+                    "category": "behavior"
+                },
+                "max-file-size": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Maximum size of individual file in bytes",
+                    "examples": [
+                        1024,
+                        1048576
+                    ],
+                    "category": "behavior"
+                },
+                "max-total-size": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Maximum size of all files combined in bytes",
+                    "category": "behavior"
+                },
+                "max-files": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Maximum number of files to contain",
+                    "category": "behavior"
+                },
+                "filter": {
+                    "type": "Function",
+                    "desc": "Custom filter for added files; Only files that pass this filter will be added to the queue and uploaded; For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "files": {
+                            "type": [
+                                "FileList",
+                                "Array"
+                            ],
+                            "desc": "Candidate files to be added to queue"
+                        }
+                    },
+                    "returns": {
+                        "type": "Array",
+                        "desc": "Filtered files to be added to queue"
+                    },
+                    "examples": [
+                        ":filter=\"files => files.filter(file => file.size === 1024)\""
+                    ],
+                    "category": "behavior"
+                },
+                "label": {
+                    "type": "String",
+                    "desc": "Label for the uploader",
+                    "examples": [
+                        "Upload photo here"
+                    ],
+                    "category": "content"
+                },
+                "color": {
+                    "type": "String",
+                    "desc": "Color name for component from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "text-color": {
+                    "type": "String",
+                    "desc": "Overrides text color (if needed); Color name from the Quasar Color Palette",
+                    "examples": [
+                        "primary",
+                        "teal-10"
+                    ],
+                    "category": "style"
+                },
+                "dark": {
+                    "type": "Boolean",
+                    "desc": "Notify the component that the background is a dark color",
+                    "category": "style"
+                },
+                "square": {
+                    "type": "Boolean",
+                    "desc": "Removes border-radius so borders are squared",
+                    "category": "style"
+                },
+                "flat": {
+                    "type": "Boolean",
+                    "desc": "Applies a 'flat' design (no default shadow)",
+                    "category": "style"
+                },
+                "bordered": {
+                    "type": "Boolean",
+                    "desc": "Applies a default border to the component",
+                    "category": "style"
+                },
+                "no-thumbnails": {
+                    "type": "Boolean",
+                    "desc": "Don't display thumbnails for image files",
+                    "category": "content"
+                },
+                "auto-upload": {
+                    "type": "Boolean",
+                    "desc": "Upload files immediately when added",
+                    "category": "behavior"
+                },
+                "hide-upload-btn": {
+                    "type": "Boolean",
+                    "desc": "Don't show the upload button",
+                    "category": "behavior"
+                },
+                "disable": {
+                    "type": "Boolean",
+                    "desc": "Put component in disabled mode",
+                    "category": "state"
+                },
+                "readonly": {
+                    "type": "Boolean",
+                    "desc": "Put component in readonly mode",
+                    "category": "state"
+                }
+            },
+            "slots": {
+                "header": {
+                    "desc": "Slot for custom header; Scope is the QUploader instance itself",
+                    "scope": {
+                        "...self": {
+                            "type": "Component",
+                            "tsType": "QUploader",
+                            "desc": "QUploader instance"
+                        }
+                    }
+                },
+                "list": {
+                    "desc": "Slot for custom list; Scope is the QUploader instance itself",
+                    "scope": {
+                        "...self": {
+                            "type": "Component",
+                            "tsType": "QUploader",
+                            "desc": "QUploader instance"
+                        }
+                    }
+                }
+            },
+            "events": {
+                "uploaded": {
+                    "desc": "Emitted when file or batch of files is uploaded",
+                    "params": {
+                        "info": {
+                            "type": "Object",
+                            "desc": "Object containing information about the event",
+                            "definition": {
+                                "files": {
+                                    "type": "Array",
+                                    "required": true,
+                                    "desc": "Uploaded files"
+                                },
+                                "xhr": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "XMLHttpRequest that has been used to upload this batch of files"
+                                }
+                            }
+                        }
+                    }
+                },
+                "failed": {
+                    "desc": "Emitted when file or batch of files has encountered error while uploading",
+                    "params": {
+                        "info": {
+                            "type": "Object",
+                            "desc": "Object containing information about the event",
+                            "definition": {
+                                "files": {
+                                    "type": "Array",
+                                    "required": true,
+                                    "desc": "Files which encountered error"
+                                },
+                                "xhr": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "XMLHttpRequest that has been used to upload this batch of files"
+                                }
+                            }
+                        }
+                    }
+                },
+                "uploading": {
+                    "desc": "Emitted when file or batch of files started uploading",
+                    "params": {
+                        "info": {
+                            "type": "Object",
+                            "desc": "Object containing information about the event",
+                            "definition": {
+                                "files": {
+                                    "type": "Array",
+                                    "required": true,
+                                    "desc": "Files which are now uploading"
+                                },
+                                "xhr": {
+                                    "type": "Object",
+                                    "required": true,
+                                    "desc": "XMLHttpRequest used for uploading"
+                                }
+                            }
+                        }
+                    }
+                },
+                "factory-failed": {
+                    "desc": "Emitted when factory function is supplied with a Promise which is rejected",
+                    "params": {
+                        "err": {
+                            "type": "Error",
+                            "desc": "Error object which is the Promise rejection reason"
+                        },
+                        "files": {
+                            "type": "Array",
+                            "desc": "Files which were to get uploaded"
+                        }
+                    }
+                },
+                "rejected": {
+                    "desc": "Emitted after files are picked and some do not pass the validation props (accept, max-file-size, max-total-size, filter, etc)",
+                    "params": {
+                        "rejectedEntries": {
+                            "type": "Array",
+                            "tsType": "QRejectedEntry",
+                            "desc": "Array of { failedPropValidation: string, file: File } Objects for files that do not pass the validation"
+                        }
+                    }
+                },
+                "added": {
+                    "desc": "Emitted when files are added into the list",
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Array of files that were added"
+                        }
+                    }
+                },
+                "removed": {
+                    "desc": "Emitted when files are removed from the list",
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Array of files that were removed"
+                        }
+                    }
+                },
+                "start": {
+                    "desc": "Started working"
+                },
+                "finish": {
+                    "desc": "Finished working (regardless of success or fail)"
+                }
+            },
+            "methods": {
+                "pickFiles": {
+                    "desc": "Trigger the file picker dialog; The event must come from a user interaction event handler",
+                    "params": {
+                        "evt": {
+                            "type": "Event",
+                            "desc": "JS event object of the original user interaction handler",
+                            "required": true
+                        }
+                    }
+                },
+                "addFiles": {
+                    "desc": "Manually add files to the queue",
+                    "params": {
+                        "files": {
+                            "type": "Array",
+                            "desc": "Must be an array of instances of JS File type",
+                            "required": true
+                        }
+                    }
+                },
+                "upload": {
+                    "desc": "Start uploading (same as clicking the upload button)"
+                },
+                "abort": {
+                    "desc": "Abort upload of all files (same as clicking the abort button)"
+                },
+                "reset": {
+                    "desc": "Resets uploader to default; Empties queue, aborts current uploads"
+                },
+                "removeUploadedFiles": {
+                    "desc": "Removes already uploaded files from the list"
+                },
+                "removeQueuedFiles": {
+                    "desc": "Remove files that are waiting for upload to start (same as clicking the left clear button)"
+                },
+                "removeFile": {
+                    "desc": "Remove specified file from the queue",
+                    "params": {
+                        "file": {
+                            "type": "File",
+                            "desc": "The file to remove",
+                            "required": true
+                        }
+                    }
+                },
+                "updateFileStatus": {
+                    "desc": "Update the status of a file",
+                    "params": {
+                        "file": {
+                            "type": "File",
+                            "desc": "The file to update",
+                            "required": true
+                        },
+                        "status": {
+                            "type": "String",
+                            "desc": "Status of file",
+                            "values": [
+                                "idle",
+                                "failed",
+                                "uploading",
+                                "uploaded"
+                            ],
+                            "required": true
+                        },
+                        "uploadedSize": {
+                            "type": "Number",
+                            "desc": "The number of uploaded bytes of the file; Is required explicitly only when status is NOT 'uploaded'",
+                            "required": true
+                        }
+                    }
+                },
+                "isAlive": {
+                    "desc": "Is the component alive (activated but not unmounted); Useful to determine if you still need to compute anything going further",
+                    "returns": {
+                        "type": "Boolean",
+                        "desc": "If true, the current component is still activated and mounted"
+                    }
+                }
+            },
+            "computedProps": {
+                "files": {
+                    "type": "Array",
+                    "desc": "List of all files"
+                },
+                "queuedFiles": {
+                    "type": "Array",
+                    "desc": "List of files that are waiting to be uploaded"
+                },
+                "uploadedFiles": {
+                    "type": "Array",
+                    "desc": "List of files that have been uploaded"
+                },
+                "uploadedSize": {
+                    "type": "Number",
+                    "desc": "Size of all uploaded files in bytes"
+                },
+                "uploadSizeLabel": {
+                    "type": "String",
+                    "desc": "Label for the size total of all files",
+                    "examples": [
+                        "1.0MB"
+                    ]
+                },
+                "uploadProgressLabel": {
+                    "type": "String",
+                    "desc": "Label for the upload progress (in %)",
+                    "examples": [
+                        "52.76%"
+                    ]
+                },
+                "canAddFiles": {
+                    "type": "Boolean",
+                    "desc": "Whether new files can be added to the list"
+                },
+                "canUpload": {
+                    "type": "Boolean",
+                    "desc": "Whether the files can be uploaded"
+                },
+                "isBusy": {
+                    "type": "Boolean",
+                    "desc": "The component state is set as busy; User should not be able to interact with the component"
+                },
+                "isUploading": {
+                    "type": "Boolean",
+                    "desc": "The component is uploading files"
+                }
+            }
+        }
+    },
+    {
+        name: "q-video", desc: "视频", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/video"
+            },
+            "props": {
+                "ratio": {
+                    "type": [
+                        "String",
+                        "Number"
+                    ],
+                    "desc": "Aspect ratio for the content; If value is a String, then avoid using a computational statement (like '16/9') and instead specify the String value of the result directly (eg. '1.7777')",
+                    "examples": [
+                        ":ratio=\"4/3\"",
+                        ":ratio=\"16/9\"",
+                        "ratio=\"1\""
+                    ],
+                    "category": "style"
+                },
+                "src": {
+                    "type": "String",
+                    "desc": "The source url to display in an iframe",
+                    "required": true,
+                    "examples": [
+                        "https://www.youtube.com/embed/k3_tw44QsZQ"
+                    ],
+                    "category": "model"
+                },
+                "title": {
+                    "type": "String",
+                    "desc": "(Accessibility) Set the native 'title' attribute value of the inner iframe being used",
+                    "required": false,
+                    "examples": [
+                        "My Daily Marathon"
+                    ],
+                    "category": "accessibility",
+                    "addedIn": "v2.4.3"
+                },
+                "fetchpriority": {
+                    "type": "String",
+                    "desc": "Provides a hint of the relative priority to use when fetching the iframe document",
+                    "default": "auto",
+                    "values": [
+                        "high",
+                        "low",
+                        "auto"
+                    ],
+                    "category": "behavior",
+                    "addedIn": "v2.6.6",
+                    "required": false
+                },
+                "loading": {
+                    "type": "String",
+                    "desc": "Indicates how the browser should load the iframe",
+                    "default": "eager",
+                    "values": [
+                        "eager",
+                        "lazy"
+                    ],
+                    "category": "behavior",
+                    "addedIn": "v2.6.6",
+                    "required": false
+                },
+                "referrerpolicy": {
+                    "type": "String",
+                    "desc": "Indicates which referrer to send when fetching the frame's resource",
+                    "default": "strict-origin-when-cross-origin",
+                    "values": [
+                        "no-referrer",
+                        "no-referrer-when-downgrade",
+                        "origin",
+                        "origin-when-cross-origin",
+                        "same-origin",
+                        "strict-origin",
+                        "strict-origin-when-cross-origin",
+                        "unsafe-url"
+                    ],
+                    "category": "behavior",
+                    "addedIn": "v2.6.6",
+                    "required": false
+                }
+            }
+        }
+    },
+    {
+        name: "q-virtual-scroll", desc: "虚拟滚动", info: {
+            "type": "component",
+            "meta": {
+                "docsUrl": "https://v2.quasar.dev/vue-components/virtual-scroll"
+            },
+            "props": {
+                "virtual-scroll-horizontal": {
+                    "type": "Boolean",
+                    "desc": "Make virtual list work in horizontal mode",
+                    "category": "behavior"
+                },
+                "virtual-scroll-slice-size": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Minimum number of items to render in the virtual list",
+                    "default": "30",
+                    "examples": [
+                        "virtual-scroll-slice-size=\"60\""
+                    ],
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-slice-ratio-before": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Ratio of number of items in visible zone to render before it",
+                    "default": 1,
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-slice-ratio-after": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Ratio of number of items in visible zone to render after it",
+                    "default": 1,
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-item-size": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Default size in pixels (height if vertical, width if horizontal) of an item; This value is used for rendering the initial list; Try to use a value close to the minimum size of an item",
+                    "default": 24,
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-sticky-size-start": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Size in pixels (height if vertical, width if horizontal) of the sticky part (if using one) at the start of the list; A correct value will improve scroll precision",
+                    "default": "0",
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "virtual-scroll-sticky-size-end": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "Size in pixels (height if vertical, width if horizontal) of the sticky part (if using one) at the end of the list; A correct value will improve scroll precision",
+                    "default": "0",
+                    "category": "virtual-scroll",
+                    "required": false
+                },
+                "table-colspan": {
+                    "type": [
+                        "Number",
+                        "String"
+                    ],
+                    "desc": "The number of columns in the table (you need this if you use table-layout: fixed)",
+                    "category": "virtual-scroll|content"
+                },
+                "type": {
+                    "type": "String",
+                    "desc": "The type of content: list (default) or table",
+                    "default": "list",
+                    "values": [
+                        "list",
+                        "table"
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "items": {
+                    "type": "Array",
+                    "desc": "Available list items that will be passed to the scoped slot; For best performance freeze the list of items; Required if 'itemsFn' is not supplied",
+                    "default": "[]",
+                    "examples": [
+                        ":items=\"[ 'BMW', 'Samsung Phone' ]\"",
+                        ":items=\"[ { label: 'BMW', value: 'car' }, { label: 'Samsung Phone', value: 'phone' } ]\""
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "items-size": {
+                    "type": "Number",
+                    "desc": "Number of available items in the list; Required and used only if 'itemsFn' is provided",
+                    "default": "void 0",
+                    "examples": [
+                        ":items-size=\"100000\"",
+                        ":items-size=\"500\""
+                    ],
+                    "category": "content",
+                    "required": false
+                },
+                "items-fn": {
+                    "type": "Function",
+                    "desc": "Function to return the scope for the items to be displayed; Should return an array for items starting from 'from' index for size length; For best performance, reference it from your scope and do not define it inline",
+                    "params": {
+                        "from": {
+                            "type": "Number",
+                            "desc": "Index of the first item (0 based)"
+                        },
+                        "size": {
+                            "type": "Number",
+                            "desc": "Number of items to return"
+                        }
+                    },
+                    "returns": {
+                        "type": "Array",
+                        "desc": "List of scope for items to be displayed"
+                    },
+                    "examples": [
+                        ":items-fn=\"(from, size) => { const items = []; for (let i = 0; i < size; i++) { items.push('Item ' + i) }; return items }\""
+                    ],
+                    "category": "content"
+                },
+                "scroll-target": {
+                    "type": [
+                        "Element",
+                        "String"
+                    ],
+                    "desc": "CSS selector or DOM element to be used as a custom scroll container instead of the auto detected one",
+                    "examples": [
+                        ":scroll-target=\"$refs.scrollTarget\"",
+                        "scroll-target=\".scroll-target-class\"",
+                        "scroll-target=\"#scroll-target-id\"",
+                        "scroll-target=\"body\""
+                    ],
+                    "category": "behavior"
+                }
+            },
+            "slots": {
+                "before": {
+                    "desc": "Template slot for the elements that should be rendered before the list; Suggestion: thead before a table"
+                },
+                "after": {
+                    "desc": "Template slot for the elements that should be rendered after the list; Suggestion: tfoot after a table"
+                },
+                "default": {
+                    "desc": "Template slot for defining the list item; Suggestion: QItem",
+                    "scope": {
+                        "index": {
+                            "type": "Number",
+                            "desc": "Item index in the options list"
+                        },
+                        "item": {
+                            "type": "Any",
+                            "desc": "Item data -- its value is taken from 'options' prop"
+                        }
+                    }
+                }
+            },
+            "events": {
+                "virtual-scroll": {
+                    "desc": "Emitted when the virtual scroll occurs",
+                    "params": {
+                        "details": {
+                            "type": "Object",
+                            "desc": "Object of properties on the new scroll position",
+                            "definition": {
+                                "index": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "Index of the list item that was scrolled into view (0 based)"
+                                },
+                                "from": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The index of the first list item that is rendered (0 based)"
+                                },
+                                "to": {
+                                    "type": "Number",
+                                    "required": true,
+                                    "desc": "The index of the last list item that is rendered (0 based)"
+                                },
+                                "direction": {
+                                    "type": "String",
+                                    "required": true,
+                                    "desc": "Direction of change",
+                                    "values": [
+                                        "increase",
+                                        "decrease"
+                                    ]
+                                },
+                                "ref": {
+                                    "type": "Component",
+                                    "required": true,
+                                    "desc": "Vue reference to the QVirtualScroll",
+                                    "tsType": "QVirtualScroll"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "methods": {
+                "scrollTo": {
+                    "desc": "Scroll the virtual scroll list to the item with the specified index (0 based)",
+                    "params": {
+                        "index": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "The index of the list item (0 based)",
+                            "required": true
+                        },
+                        "edge": {
+                            "type": "String",
+                            "desc": "The edge to align to if the item is not visible already (by default it aligns to end if scrolling towards the end and to start otherwise); If the '-force' version is used then it always aligns",
+                            "values": [
+                                "start",
+                                "center",
+                                "end",
+                                "start-force",
+                                "center-force",
+                                "end-force"
+                            ]
+                        }
+                    }
+                },
+                "reset": {
+                    "desc": "Resets the virtual scroll computations; Needed for custom edge-cases"
+                },
+                "refresh": {
+                    "desc": "Refreshes the virtual scroll list; Use it after appending items",
+                    "params": {
+                        "index": {
+                            "type": [
+                                "String",
+                                "Number"
+                            ],
+                            "desc": "The index of the list item to scroll to after refresh (0 based); If it's not specified the scroll position is not changed; Use a negative value to keep scroll position"
+                        }
+                    }
+                }
+            }
+        }
+    },
+
 ]

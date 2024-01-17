@@ -27,6 +27,7 @@ interface ITagInfo {
     example: string[] | any
 }
 
+export const DataType = ['number', 'string', 'boolean', 'null', 'object', 'array', 'function', 'any', 'void', 'never']
 const quasarColorsExample = ["text-primary", "text-secondary", "text-accent", "text-dark", "text-positive", "text-negative", "text-info", "text-warning", "text-red", "text-pink", "text-purple", "text-deep-purple", "text-indigo", "text-blue", "text-light-blue", "text-cyan", "text-teal", "text-green", "text-light-green", "text-lime", "text-yellow", "text-amber", "text-orange", "text-deep-orange", "text-brown", "text-grey", "text-blue-grey",]
 const quasarFontSizeExample = ["2px", "16px", "2rem"]
 const quasarSizeExample = ["xs", "sm", "md", "lg", "xl"]
@@ -3334,7 +3335,7 @@ export const CssList: ICss[] = [
         ]
     },
 ]
-export const tagLists = [
+export const tagLists: any = [
     {name: "div", desc: "div2", info: {}},
     {name: "html", desc: "html2", info: {}},
     {name: "head", desc: "", info: {}},

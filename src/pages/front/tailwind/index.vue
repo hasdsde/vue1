@@ -3,6 +3,21 @@
   <div class="q-pa-sm flex justify-around h-[95vh]">
     <q-card class="w-[20%]  q-pa-md ">
       <div>
+        <q-btn icon="add" color="primary" flat class="float-right">
+          <q-menu>
+            <q-list style="min-width: 100px">
+              <q-item clickable v-close-popup>
+                <q-item-section @click="variableDialog=true">变量</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup>
+                <q-item-section @click="functionDialog=true">函数</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup>
+                <q-item-section @click="importDialog=true">引入</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
         <q-btn-toggle
             v-model="leftTab"
             spread
@@ -51,7 +66,7 @@
                     {{ key + " : " + value }}
                   </q-badge>
                   <!--        忽略key          -->
-                  <span v-else-if="key=='d_key'" color="primary" class="q-mr-sm">
+                  <span v-else-if="key=='d_key'" class="q-mr-sm">
                   </span>
                   <q-badge v-else color="secondary" class="q-mr-sm">
                     {{ key + " : " + value }}
@@ -67,7 +82,7 @@
           <q-tab-panel name="vars" class="no-padding q-mt-md">
             <!--            radio_button_checked-->
             <q-expansion-item
-                v-for="item in codeVariable"
+                v-for="(item,index) in codeVariable"
                 expand-separator
                 :icon="item.ref?'motion_photos_on':'radio_button_checked'"
                 :label="item.name +' = '+item.value"
@@ -78,14 +93,16 @@
                 <q-card-section class="q-pa-sm">
                   <div class="flex justify-between">
                     <q-select filled v-model="item.modifier" dense :options="['const','let','var']"
-                              class="w-1/3 q-pr-sm"
+                              class="w-1/4 q-pr-sm"
                               label="修饰符"/>
                     <q-input filled v-model="item.name" dense
                              class="w-1/3 q-pr-sm"
                              label="变量名"/>
                     <q-input filled v-model="item.format" dense :options="['const','let','var']"
-                             class="w-1/3 q-pr-sm"
+                             class="w-1/4 q-pr-sm"
                              label="类型"/>
+                    <q-btn icon="close" color="red" round flat class="float-right"
+                           @click="handleRemoveVariable(index)"/>
                   </div>
                   <div class="q-mt-md">
                     <q-input filled v-model="item.value" dense class=" q-pr-sm" label="值" autogrow/>
@@ -98,7 +115,7 @@
           <!--     函数     -->
           <q-tab-panel name="fun" class="no-padding q-mt-md">
             <q-expansion-item
-                v-for="item in codeFunction"
+                v-for="(item,index) in codeFunction"
                 expand-separator
                 icon="functions"
                 :label="`${item.functionName} (${item.paramsStr})`"
@@ -106,17 +123,29 @@
             >
               <q-card>
                 <q-card-section class="q-pa-sm">
-                  <div class="">
-                    <q-input filled v-model="item.functionName" dense
-                             class="w-full q-pr-sm"
-                             label="名称"/>
+                  <div>
+                    <div class="flex justify-between">
+                      <q-input filled v-model="item.functionName" dense
+                               class="w-[80%] q-pr-sm"
+                               label="名称"/>
+                      <q-btn icon="add" color="grey" round flat class="float-right"
+                             @click="item.params.push({name:'',type:'any'})"/>
+                      <q-btn icon="close" color="red" round flat class="float-right"
+                             @click="handleRemoveFunction(index)"/>
+                    </div>
                     <div v-for="(param,index) in item.params" class="w-full flex justify-between q-pt-md">
                       <q-input filled v-model="param.name" dense
-                               class="w-1/2 q-pr-sm"
+                               class="w-[45%] q-pr-sm"
                                :label="'形参'+(index+1)"/>
-                      <q-input filled v-model="param.type" dense
-                               class="w-1/2 q-pr-sm"
-                               :label="'类型'+(index+1)"/>
+                      <q-select filled v-model="param.type" dense
+                                use-input
+                                use-chips
+                                new-value-mode="add"
+                                :options="DataType"
+                                class="w-[45%] q-pr-sm"
+                                :label="'类型'+(index+1)"/>
+                      <q-btn icon="close" color="red" round flat class="float-right"
+                             @click="item.params.splice(index)"/>
                     </div>
                   </div>
                   <div class="q-mt-md">
@@ -131,17 +160,22 @@
           <!--     引入     -->
           <q-tab-panel name="import" class="no-padding q-mt-md">
             <q-expansion-item
-                v-for="item in codeImport"
+                v-for="(item,index) in codeImport"
                 expand-separator
                 :icon="item.icon"
-                :label="item.origin"
+                :label="`import ${item.icon=='account_tree'?'{':''}${item.items}${item.icon=='account_tree'?'}':''} from ${item.path}`"
                 header-class="text-primary text-bold text-subtitle1 "
             >
               <q-card>
                 <q-card-section class="q-pa-sm">
-                  <q-input filled v-model="item.items" dense
-                           class="w-full"
-                           label="Import"/>
+                  <div class="flex justify-between">
+
+                    <q-input filled v-model="item.items" dense
+                             class="w-[90%]"
+                             label="Import"/>
+                    <q-btn icon="close" color="red" round flat class="float-right"
+                           @click="handleRemoveImport(index)"/>
+                  </div>
                   <q-input filled v-model="item.path" dense
                            class="w-full q-pt-md"
                            label="Path"/>
@@ -210,7 +244,7 @@
         </div>
         <div class="w-5/6">
           <q-select
-              label="CSS样式"
+              label="属性"
               filled
               dense
               v-model="currentDivClass"
@@ -247,6 +281,7 @@
             hide-dropdown-icon
             input-debounce="0"
             new-value-mode="add-unique"
+            @new-value="handleAddDivAttr"
         >
           <template v-slot:selected-item="prop">
             <q-chip removable dense
@@ -280,7 +315,7 @@
             <q-tab name="methods" label="方法"/>
           </q-tabs>
           <q-separator/>
-          <q-tab-panels v-model="tab" animated class="h-[1000px] overflow-y-auto ">
+          <q-tab-panels v-model="tab" animated class="h-[990px] overflow-y-auto ">
             <q-tab-panel name="css" class="q-pa-none h-fit">
               <q-splitter
                   v-model="splitterModel"
@@ -332,9 +367,11 @@
             <q-tab-panel name="attribute">
               <div v-for="tags in tagLists">
                 <div v-if="tags.name==currentDivName">
-                  <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.props" class="w-full ">
+                  <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.props" class="w-full"
+                          @click="currentDivAttr.push({key:index,value:''})">
                     <q-item-section avatar>
-                      <q-checkbox v-model="currentDivAttr" :val="index" color="orange"/>
+                      <!--                      <q-checkbox v-model="currentDivAttr" :val="{key:index,value:''}" color="orange"/>-->
+                      <q-icon name="add_circle" color="grey" size="sm"/>
                     </q-item-section>
                     <q-item-section>
                       <q-item-label>
@@ -345,7 +382,8 @@
                       <q-item-label caption>描述：{{ prop.desc }}</q-item-label>
                       <q-item-label caption v-if="prop.examples!=null">
                         举例：
-                        <q-badge outline color="primary" class="q-mr-sm" :label="exp" v-for="exp in prop.examples"/>
+                        <q-badge outline color="primary" class="q-mr-sm" :label="exp" v-for="exp in prop.examples"
+                                 @click.stop="currentDivAttr.push({key:index,value:exp})"/>
                       </q-item-label>
                     </q-item-section>
                   </q-item>
@@ -361,7 +399,7 @@
                     </q-item-section>
                     <q-item-section>
                       <q-item-label>
-                        <q-badge rounded color="primary" :label="index" class="text-md q-mr-md"/>
+                        <q-badge rounded color="primary" :label="'@'+index" class="text-md q-mr-md"/>
                         <q-badge v-if="prop.type!=null" rounded color="orange" :label="prop.type" class="text-md"/>
                       </q-item-label>
                       <q-item-label caption>描述：{{ prop.desc }}</q-item-label>
@@ -438,13 +476,110 @@
       </q-card-section>
     </q-card>
   </q-dialog>
+  <q-dialog v-model="variableDialog">
+    <q-card style="min-width: 350px">
+      <q-card-section>
+        <div class="text-h6">新增变量</div>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+        <q-select v-model="variableForm.modifier" :options="['const','let','var']" autofocus outlined
+                  label="修饰符"/>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+        <q-input v-model="variableForm.name" outlined label="变量名"/>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+        <q-select v-model="variableForm.format" use-chips :options="DataType" use-input
+                  new-value-mode="add"
+                  outlined label="类型"/>
+      </q-card-section>
+
+      <q-card-section class="q-pt-none">
+        <q-input v-model="variableForm.value" outlined label="值"/>
+      </q-card-section>
+
+      <q-card-actions align="right" class="text-primary">
+        <q-btn flat label="确定" v-close-popup @click="handleAddVariable"/>
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
+  <q-dialog v-model="functionDialog">
+    <q-card class="min-w-[550px]">
+      <q-card-section>
+        <div class="text-h6">新增函数</div>
+      </q-card-section>
+
+      <q-card-section class="q-pa-sm">
+
+        <div class="flex justify-between">
+          <q-input outlined v-model="functionForm.functionName"
+                   class="w-[90%] q-pr-sm"
+                   label="名称"/>
+          <q-btn icon="add" color="grey" round flat class="float-right"
+                 @click="functionForm.params.push({name:'',type:'any'})"/>
+        </div>
+        <div v-for="(param,index) in functionForm.params" class="w-full flex justify-between q-pt-md">
+          <q-input outlined v-model="param.name"
+                   class="w-[45%] q-pr-sm"
+                   :label="'形参'+(index+1)"/>
+          <q-select outlined v-model="param.type"
+                    use-input
+                    use-chips
+                    new-value-mode="add"
+                    :options="DataType"
+                    class="w-[45%] q-pr-sm"
+                    :label="'类型'+(index+1)"/>
+          <q-btn icon="close" color="red" round flat class="float-right"
+                 @click="functionForm.params.splice(index)"/>
+        </div>
+        <div class="q-mt-md">
+          <q-input outlined v-model="functionForm.body" class=" q-pr-sm" label="函数体" autogrow/>
+        </div>
+      </q-card-section>
+      <q-card-actions align="right" class="text-primary">
+        <q-btn flat label="确定" v-close-popup @click="handleAddFunction"/>
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
+  <q-dialog v-model="importDialog">
+    <q-card class="min-w-[550px]">
+      <q-card-section>
+        <div class="text-h6">新增引入</div>
+      </q-card-section>
+
+      <q-card-section class="q-pa-sm">
+
+        <div class="flex justify-between">
+          <q-input outlined v-model="importFrom.items"
+                   class="w-full q-pr-sm"
+                   label="引入"/>
+        </div>
+        <q-toggle
+            label="部分引入 (是否带{})"
+            color="primary"
+            false-value="streetview"
+            true-value="account_tree"
+            v-model="importFrom.icon"
+        />
+        <div class="q-mt-md">
+          <q-input outlined v-model="importFrom.path" class=" q-pr-sm" label="位置" autogrow/>
+        </div>
+      </q-card-section>
+      <q-card-actions align="right" class="text-primary">
+        <q-btn flat label="确定" v-close-popup @click="handleAddImport"/>
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
 </template>
 <script lang="ts" setup>
 import cheerio, {AnyNode, Cheerio, CheerioAPI} from 'cheerio';
 import {ref, toRaw, watch} from "vue";
 import axios from "axios";
-import {CommonFail, CommonGroupFastSuccess} from "components/dialog";
-import {CssList, tagLists} from "pages/front/tailwind/struct";
+import {CommonFail, CommonGroupFastSuccess, DialogConfirm} from "components/dialog";
+import {CssList, DataType, tagLists} from "pages/front/tailwind/struct";
 import {QTreeNode} from "quasar/dist/types/api/qtree";
 import {Ref, UnwrapRef} from "@vue/reactivity";
 
@@ -566,7 +701,7 @@ function parseFunction(sourceCode: string) {
     let paramsStr = ""
     if (match[2] != "") {
       params = match[2].split(',').map(param => {
-        var split = param.split(":");
+        const split = param.split(":");
         paramsStr += `${split[0]}:${split[1]},`
         return {name: split[0], type: split[1]}
       });
@@ -603,7 +738,28 @@ function parseImports(sourceCode: string) {
 // 添加弹窗
 const saveDialog = ref(false)
 const saveTitle = ref('新增')
-
+const variableDialog = ref(false)
+const functionDialog = ref(false)
+const importDialog = ref(false)
+// 弹窗Form
+const variableForm = ref({
+  name: "",
+  modifier: "const",
+  format: "any",
+  value: ""
+})
+const functionForm = ref({
+  functionName: "",
+  params: [],
+  paramsStr: [],
+  body: ""
+})
+const importFrom = ref({
+  origin: "",
+  items: "",
+  path: "",
+  icon: "streetview"
+})
 const cssList = CssList
 const currentNode: Ref<UnwrapRef<QTreeNode>> = ref({})
 const currentDivClass: any = ref([])
@@ -618,8 +774,9 @@ const divNamDialog = ref(false)
 let tagList = ref(tagLists)
 const tagSearch = ref("")
 
+// 新增表单
 function handleChangeDivName(name: string) {
-  var selector = $(`[d_key = ${currentNode.value.d_key}]`)
+  const selector = $(`[d_key = ${currentNode.value.d_key}]`)
   const clone = selector.clone().wrap('<div>').parent()
   clone.children()[0].name = name.toString()
   selector.replaceWith(clone.html() as string);
@@ -627,8 +784,15 @@ function handleChangeDivName(name: string) {
   divNamDialog.value = false
 }
 
+//重写方法
+function handleAddDivAttr(inputValue: string, doneFn: Function) {
+  const value = inputValue.split("=")
+  currentDivAttr.value.push({key: value[0], value: value[1]})
+  doneFn()
+}
+
 function handleFilter() {
-  tagList.value = tagLists.filter((item) => {
+  tagList.value = tagLists.filter((item: any) => {
     return item.name.includes(tagSearch.value.toLowerCase()) || item.desc.includes(tagSearch.value.toLowerCase())
   })
 }
@@ -649,11 +813,6 @@ function handleUpdateDialog(node: QTreeNode) {
   resolveForm(node)
   saveTitle.value = "修改"
   saveDialog.value = true
-}
-
-//修改标签名字
-function handleChangeLabel() {
-
 }
 
 // 解析到dialog
@@ -732,7 +891,7 @@ function generateCode() {
   template += functions + "\n\n"
   template += '<\/script>'
   template = template.replaceAll(/d_key="\d"/g, '')
-  // console.log(template)
+  return template
   // uploadCode(template)
 }
 
@@ -743,6 +902,65 @@ function removeLastComma(str: string) {
   } else {
     return str.substring(0, str.lastIndexOf(',')) + str.substring(str.lastIndexOf(',') + 1);
   }
+}
+
+// 新增变量引入函数的增删改查
+function handleAddVariable() {
+  const form = {
+    name: variableForm.value.name,
+    value: variableForm.value.value,
+    modifier: variableForm.value.modifier,
+    format: variableForm.value.format
+  }
+  codeVariable.value.push(form)
+  variableForm.value.name = ""
+  variableForm.value.value = ""
+}
+
+function handleAddImport() {
+  const form = {
+    origin: importFrom.value.origin,
+    items: importFrom.value.items,
+    path: importFrom.value.path,
+    icon: importFrom.value.icon
+  }
+  codeImport.value.push(form)
+  importFrom.value.origin = ""
+  importFrom.value.items = ""
+  importFrom.value.path = ""
+  importFrom.value.icon = "streetview"
+}
+
+function handleAddFunction() {
+  const form = {
+    functionName: functionForm.value.functionName,
+    params: functionForm.value.params,
+    paramsStr: functionForm.value.paramsStr,
+    body: functionForm.value.body
+  }
+  codeFunction.value.push(form)
+  functionForm.value.functionName = ""
+  functionForm.value.params = []
+  functionForm.value.paramsStr = []
+  functionForm.value.body = ""
+}
+
+function handleRemoveVariable(index: any) {
+  DialogConfirm("确定要删除吗").onOk(() => {
+    codeVariable.value.splice(index, 1)
+  })
+}
+
+function handleRemoveImport(index: any) {
+  DialogConfirm("确定要删除吗").onOk(() => {
+    codeImport.value.splice(index, 1)
+  })
+}
+
+function handleRemoveFunction(index: any) {
+  DialogConfirm("确定要删除吗").onOk(() => {
+    codeFunction.value.splice(index, 1)
+  })
 }
 
 function test() {

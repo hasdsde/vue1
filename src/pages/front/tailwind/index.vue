@@ -469,9 +469,10 @@
             <q-tab-panel name="event">
               <div v-for="tags in tagLists">
                 <div v-if="tags.name==currentDivName">
-                  <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.events" class="w-full ">
+                  <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.events" class="w-full"
+                          @click="currentDivAttr.push({key:'@'+index,value:''})">
                     <q-item-section avatar>
-                      <q-checkbox v-model="currentDivAttr" :val="index" color="orange"/>
+                      <q-icon name="add_circle" color="grey" size="sm"/>
                     </q-item-section>
                     <q-item-section>
                       <q-item-label>
@@ -491,9 +492,10 @@
             <q-tab-panel name="slot">
               <div v-for="tags in tagLists">
                 <div v-if="tags.name==currentDivName">
-                  <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.slots" class="w-full ">
+                  <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.slots" class="w-full "
+                          @click="handleAddSlot(index)">
                     <q-item-section avatar>
-                      <q-checkbox v-model="currentDivAttr" :val="index" color="orange"/>
+                      <q-icon name="add" color="grey"/>
                     </q-item-section>
                     <q-item-section>
                       <q-item-label>
@@ -514,9 +516,6 @@
               <div v-for="tags in tagLists">
                 <div v-if="tags.name==currentDivName">
                   <q-item tag="label" v-ripple v-for="(prop,index) in tags.info.methods" class="w-full ">
-                    <q-item-section avatar>
-                      <q-checkbox v-model="currentDivAttr" :val="index" color="orange"/>
-                    </q-item-section>
                     <q-item-section>
                       <q-item-label>
                         <q-badge rounded color="primary" :label="index" class="text-md q-mr-md"/>
@@ -846,11 +845,11 @@ const tab = ref('css')
 const cssTab = ref(cssList[0].name)
 const splitterModel = ref(15)
 const divNamDialog = ref(false)
-// 更换标签名称
+
 let tagList = ref(tagLists)
 const tagSearch = ref("")
 
-// 新增表单
+// 更换标签名称
 function handleChangeDivName(name: string) {
   const selector = $(`[d_key = ${currentNode.value.d_key}]`)
   const clone = selector.clone().wrap('<div>').parent()
@@ -874,14 +873,23 @@ function handleFilter() {
 }
 
 function handleNewDialog(node: QTreeNode) {
-  currentNode.value = node
   saveTitle.value = "新增"
+  d_key = d_key + 1
+  const element = `\n<div d_key="${d_key}"></div>`
+  $(`[d_key = ${node.d_key}]`).prepend(element)
   saveDialog.value = true
   currentDivName.value = "div"
   currentDivAttr.value = []
   currentDivClass.value = []
   divNamDialog.value = true
-  // console.log($(`[d_key = ${currentNode.value.d_key}]`).clone().wrap('<div>').parent().html())
+  currentNode.value = {
+    attr: [],
+    children: [],
+    d_key: d_key,
+    icon: "category",
+    label: "div",
+    text: ""
+  }
 }
 
 function handleUpdateDialog(node: QTreeNode) {
@@ -889,6 +897,13 @@ function handleUpdateDialog(node: QTreeNode) {
   resolveForm(node)
   saveTitle.value = "修改"
   saveDialog.value = true
+}
+
+// 添加插槽
+function handleAddSlot(name: string) {
+  const element = `\n<template v-slot="${name}"></template>`
+  $(`[d_key = ${currentNode.value.d_key}]`).prepend(element)
+  saveDialog.value = false
 }
 
 // 解析到dialog
@@ -902,8 +917,19 @@ function resolveForm(node: QTreeNode) {
   }
 }
 
+// 关闭时传输给消息
 function handleDialogClose() {
-  $(`[d_key = ${currentNode.value.d_key}]`).attr('class', currentDivClass.value.toString().replaceAll(',', ' '))
+  const current = $(`[d_key = ${currentNode.value.d_key}]`)
+  // 清除旧的attr
+  for (const attr in current.attr()) {
+    current.removeAttr(attr)
+  }
+  // 增加新的
+  const newAttrs = currentDivAttr.value
+  for (const attr in newAttrs) {
+    current.attr(newAttrs[attr].key, newAttrs[attr].value)
+  }
+  current.attr('class', currentDivClass.value.toString().replaceAll(',', ' '))
   generateCode()
 }
 
@@ -967,7 +993,7 @@ function generateCode() {
   template += functions + "\n\n"
   template += '<\/script>'
   template = template.replaceAll(/d_key="\d"/g, '')
-  return template
+  console.log(template)
   // uploadCode(template)
 }
 
@@ -1007,6 +1033,7 @@ function handleAddImport() {
   importFrom.value.icon = "streetview"
 }
 
+// 新增函数
 function handleAddFunction() {
   const form = {
     functionName: functionForm.value.functionName,

@@ -1,5 +1,5 @@
 <template>
-  <div id="div_id" class="first second" v-ripple="">
+  <div id="div_id" class="first second" v-ripple>
     <div class="q-pa-md">
       <div class="q-mt-md id_1">
         123{aaa}111

@@ -27,6 +27,8 @@ interface ITagInfo {
     example: string[] | any
 }
 
+export const QuasarSize = ["none", "xs", "sm", "md", "lg", "xl", "2xl", "3xl"]
+export const QuasarColors = ["primary", "secondary", "accent", "dark", "positive", "negative", "info", "warning", "red", "pink", "purple", "deep-purple", "indigo", "blue", "light-blue", "cyan", "teal", "green", "light-green", "lime", "yellow", "amber", "orange", "deep-orange", "brown", "grey", "blue-grey",]
 export const DataType = ['number', 'string', 'boolean', 'null', 'object', 'array', 'function', 'any', 'void', 'never']
 const quasarColorsExample = ["text-primary", "text-secondary", "text-accent", "text-dark", "text-positive", "text-negative", "text-info", "text-warning", "text-red", "text-pink", "text-purple", "text-deep-purple", "text-indigo", "text-blue", "text-light-blue", "text-cyan", "text-teal", "text-green", "text-light-green", "text-lime", "text-yellow", "text-amber", "text-orange", "text-deep-orange", "text-brown", "text-grey", "text-blue-grey",]
 const quasarFontSizeExample = ["2px", "16px", "2rem"]

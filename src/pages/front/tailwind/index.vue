@@ -238,13 +238,28 @@
         <q-btn icon="close" flat round dense v-close-popup/>
       </q-card-section>
       <q-card-section class=" justify-around flex ">
-        <div class="flex w-1/6 content-center">
+        <div class="flex w-1/6 content-center justify-around">
           <q-input filled v-model="currentDivName" readonly dense label="Filled" class="w-fit q-mr-sm"/>
           <q-btn color="primary" icon="autorenew" label="更换" class="" @click="divNamDialog = true"/>
+          <q-btn color="primary" icon="add" label="属性" outline class="">
+            <q-menu>
+              <q-list style="min-width: 100px">
+                <q-item clickable v-close-popup>
+                  <q-item-section @click="variableDialog=true">变量</q-item-section>
+                </q-item>
+                <q-item clickable v-close-popup>
+                  <q-item-section @click="functionDialog=true">函数</q-item-section>
+                </q-item>
+                <q-item clickable v-close-popup>
+                  <q-item-section @click="importDialog=true">引入</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
         </div>
         <div class="w-5/6">
           <q-select
-              label="属性"
+              label="Css样式"
               filled
               dense
               v-model="currentDivClass"
@@ -271,7 +286,7 @@
         </div>
         <q-select
             class="w-full q-mt-md"
-            label="CSS样式"
+            label="属性"
             filled
             dense
             v-model="currentDivAttr"
@@ -291,7 +306,68 @@
               <q-popup-proxy>
                 <q-card class="q-pa-md">
                   <q-input filled v-model="prop.opt.key" dense/>
-                  <q-input class="q-mt-sm" filled v-model="prop.opt.value" dense/>
+                  <q-input class="q-mt-sm" filled v-model="prop.opt.value" dense>
+                    <template v-slot:append>
+                      <q-btn icon="menu" flat class="cursor-pointer">
+                        <q-popup-proxy>
+                          <div>
+                            <q-card class="w-[1000px] flex">
+                              <div class="w-1/4 ">
+                                <q-banner class="bg-primary text-white text-center text-2xl">
+                                  变量
+                                </q-banner>
+                                <q-list bordered separator class="overflow-y-auto max-h-[400px]">
+                                  <q-item clickable v-ripple v-for="vari in codeVariable"
+                                          @click="prop.opt.value=vari.name">
+                                    <q-item-section>
+                                      {{ vari.name }} ({{ vari.format }})
+                                    </q-item-section>
+                                  </q-item>
+                                </q-list>
+                              </div>
+                              <div class="w-1/4 ">
+                                <q-banner class="bg-pink text-white text-center text-2xl">
+                                  函数
+                                </q-banner>
+                                <q-list bordered separator class="overflow-y-auto max-h-[400px]">
+                                  <q-item clickable v-ripple v-for="code in codeFunction"
+                                          @click="prop.opt.value=code.functionName">
+                                    <q-item-section>
+                                      {{ code.functionName }}
+                                    </q-item-section>
+                                  </q-item>
+                                </q-list>
+                              </div>
+                              <div class="w-1/4 ">
+                                <q-banner class="bg-purple text-white text-center text-2xl">
+                                  颜色
+                                </q-banner>
+                                <q-list bordered separator class="overflow-y-auto max-h-[400px]">
+                                  <q-item clickable v-ripple v-for="code in QuasarColors" @click="prop.opt.value=code">
+                                    <q-item-section>
+                                      {{ code }}
+                                    </q-item-section>
+                                  </q-item>
+                                </q-list>
+                              </div>
+                              <div class="w-1/4 ">
+                                <q-banner class="bg-green text-white text-center text-2xl ">
+                                  大小
+                                </q-banner>
+                                <q-list bordered separator class="overflow-y-auto max-h-[400px]">
+                                  <q-item clickable v-ripple v-for="code in QuasarSize" @click="prop.opt.value=code">
+                                    <q-item-section>
+                                      {{ code }}
+                                    </q-item-section>
+                                  </q-item>
+                                </q-list>
+                              </div>
+                            </q-card>
+                          </div>
+                        </q-popup-proxy>
+                      </q-btn>
+                    </template>
+                  </q-input>
                 </q-card>
               </q-popup-proxy>
             </q-chip>
@@ -579,7 +655,7 @@ import cheerio, {AnyNode, Cheerio, CheerioAPI} from 'cheerio';
 import {ref, toRaw, watch} from "vue";
 import axios from "axios";
 import {CommonFail, CommonGroupFastSuccess, DialogConfirm} from "components/dialog";
-import {CssList, DataType, tagLists} from "pages/front/tailwind/struct";
+import {CssList, DataType, QuasarColors, QuasarSize, tagLists} from "pages/front/tailwind/struct";
 import {QTreeNode} from "quasar/dist/types/api/qtree";
 import {Ref, UnwrapRef} from "@vue/reactivity";
 

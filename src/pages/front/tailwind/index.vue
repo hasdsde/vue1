@@ -53,7 +53,25 @@
                          @click.stop="handleNewDialog(prop.node)"/>
                   <q-btn flat color="grey" class="q-ml-sm" dense round icon="edit"
                          @click.stop="handleUpdateDialog(prop.node)"/>
-                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="close" @click.stop="test"/>
+                  <q-btn flat color="grey" class="q-ml-sm" dense round icon="more_horiz" @click.stop="test">
+                    <q-menu>
+                      <q-list style="min-width: 100px">
+                        <q-item clickable v-close-popup>
+                          <q-item-section @click="handleCopyDiv(prop.node.d_key)">复制</q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup>
+                          <q-item-section @click="handlePasteDivTop(prop.node.d_key)">粘贴(顶)</q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup>
+                          <q-item-section @click="handlePasteDivBottom(prop.node.d_key)">粘贴(底)</q-item-section>
+                        </q-item>
+                        <q-separator/>
+                        <q-item clickable v-close-popup>
+                          <q-item-section @click="handleDeleteDiv(prop.node.d_key)">删除</q-item-section>
+                        </q-item>
+                      </q-list>
+                    </q-menu>
+                  </q-btn>
                 </div>
               </template>
 
@@ -201,6 +219,8 @@
                  icon="cloud_download"/>
           <q-btn class="q-ml-md" color="secondary" label="更新" :loading="refresh" @click="uploadCode(sourceCode)"
                  icon="backup"/>
+          <q-btn class="q-ml-md" color="purple" label="生成" :loading="refresh" @click="generateCode"
+                 icon="auto_fix_high"/>
         </div>
       </q-card-section>
 
@@ -653,7 +673,7 @@
 import cheerio, {AnyNode, Cheerio, CheerioAPI} from 'cheerio';
 import {ref, toRaw, watch} from "vue";
 import axios from "axios";
-import {CommonFail, CommonGroupFastSuccess, DialogConfirm} from "components/dialog";
+import {CommonFail, CommonGroupFastSuccess, CommonSuccess, DialogConfirm} from "components/dialog";
 import {CssList, DataType, QuasarColors, QuasarSize, tagLists} from "pages/front/tailwind/struct";
 import {QTreeNode} from "quasar/dist/types/api/qtree";
 import {Ref, UnwrapRef} from "@vue/reactivity";
@@ -900,7 +920,7 @@ function handleUpdateDialog(node: QTreeNode) {
 }
 
 // 添加插槽
-function handleAddSlot(name: string) {
+function handleAddSlot(name: any) {
   const element = `\n<template v-slot="${name}"></template>`
   $(`[d_key = ${currentNode.value.d_key}]`).prepend(element)
   saveDialog.value = false
@@ -1063,6 +1083,31 @@ function handleRemoveImport(index: any) {
 function handleRemoveFunction(index: any) {
   DialogConfirm("确定要删除吗").onOk(() => {
     codeFunction.value.splice(index, 1)
+  })
+}
+
+let copyBoard: any
+
+// 复制粘贴删除
+function handleCopyDiv(index: number) {
+  copyBoard = $(`[d_key = ${index}]`).clone()
+  CommonSuccess("已复制")
+}
+
+function handlePasteDivTop(index: number) {
+  $(`[d_key = ${index}]`).prepend(copyBoard)
+  CommonSuccess("已粘贴")
+}
+
+function handlePasteDivBottom(index: number) {
+  $(`[d_key = ${index}]`).append(copyBoard)
+  CommonSuccess("已粘贴")
+}
+
+function handleDeleteDiv(index: number) {
+  DialogConfirm("确定要删除吗").onOk(() => {
+    $(`[d_key = ${index}]`).remove()
+    CommonSuccess("已删除")
   })
 }
 

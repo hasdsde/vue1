@@ -108,7 +108,6 @@
           <div class="text-h6">{{ saveTitle }}</div>
         </q-card-section>
 
-
         <!-- <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.id" label="Id" readonly />
         </q-card-section> -->
@@ -120,7 +119,6 @@
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.icon" label="图标"/>
         </q-card-section>
-
 
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.url" label="地址"/>

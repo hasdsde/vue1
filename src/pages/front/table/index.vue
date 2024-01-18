@@ -15,6 +15,7 @@
             <q-btn flat color="primary" class="q-mr-md" label="新增列" @click="building"/>
             <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="building"/>
             <q-btn flat color="primary" class="q-mr-md" label="保存表单到剪切板" @click="handleTableForm"/>
+            <q-btn flat color="primary" class="q-mr-md" label="生成示例数据" @click="handleTableFormData"/>
           </q-card-section>
           <q-separator/>
           <q-card-section class="q-pb-none">
@@ -82,6 +83,7 @@
             <q-btn flat color="primary" class="q-mr-md" label="新增列" @click="building"/>
             <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="building"/>
             <q-btn flat color="primary" class="q-mr-md" label="保存表单到剪切板" @click="handleSaveForm"/>
+            <q-btn flat color="primary" class="q-mr-md" label="保存表单dialog到剪切板" @click="handleSaveFormDialog"/>
           </q-card-section>
           <q-card-section class="q-pb-none">
             <div class="row justify-center">
@@ -186,8 +188,23 @@ function building() {
 //表格数据保存表单到剪切板
 function handleTableForm() {
   const code = JSON.stringify(toRaw(tableForm.value))
-  DialogPrompt("输入", "变量名称", "tableColumns").onOk((val: string) => {
+  DialogPrompt("输入", "变量名称", "columns").onOk((val: string) => {
     CopyToClickBoard("const " + val + ":any[] = " + code)
+  })
+}
+
+// 生成示例数据
+function handleTableFormData() {
+  const data: any = []
+  for (let i = 0; i < 10; i++) {
+    const signalData: any = {}
+    tableForm.value.forEach((item: any) => {
+      signalData[item.name] = item.name + i
+    })
+    data.push(signalData)
+  }
+  DialogPrompt("输入", "变量名称", "rows").onOk((val: string) => {
+    CopyToClickBoard(`const col:any = ref(${JSON.stringify(data)})`)
   })
 }
 
@@ -210,6 +227,55 @@ function handleSaveForm() {
   code = JSON.stringify(toRaw(code))
   DialogPrompt("输入", "变量名称", "saveForm").onOk((val: string) => {
     CopyToClickBoard("const " + val + ":any = ref(" + code + ")")
+  })
+}
+
+function handleSaveFormDialog() {
+  DialogPrompt("输入", "变量名称", "saveForm").onOk((val: string) => {
+    let AllCode = `<q-card class="q-pa-sm">\n`
+    saveForm.value.forEach((item: any, index: any) => {
+      let currentItem = `  <q-card-section class="q-pa-md"`
+      if (item.new && !item.update) {
+        currentItem += ` v-if="title=='新增'"`
+      }
+      if (!item.new && item.update) {
+        currentItem += ` v-if="title=='修改'"`
+      }
+      if (!item.new && !item.update) {
+        return
+      }
+      currentItem += `>\n`
+      if (item.option != 0) {
+        currentItem += `    <q-select :options="[${item.option}]"`
+      } else {
+        currentItem += `    <q-input `
+      }
+      currentItem += ` v-model="${val}.${item.name}" `
+
+      if (item.clearable) {
+        currentItem += ' clearable '
+      }
+      if (item.rules != "") {
+        currentItem += `<q-select :rules="${item.option}"`
+      }
+      if (item.disable) {
+        currentItem += ' disable '
+      }
+      if (item.label) {
+        currentItem += ` label="${item.label}" `
+      }
+      if (item.readonly) {
+        currentItem += ` label="${item.readonly}" `
+      }
+      if (item.placeholder) {
+        currentItem += ` placeholder="${item.placeholder}" `
+      }
+      currentItem += ` />\n`
+      currentItem += `  </q-card-section>\n`
+      AllCode += currentItem
+    })
+    AllCode += `</q-card>`
+    CopyToClickBoard(AllCode)
   })
 }
 

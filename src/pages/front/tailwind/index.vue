@@ -36,8 +36,9 @@
         />
         <q-tab-panels v-model="leftTab" animated>
           <!--     模板     -->
-          <q-tab-panel name="template" class="no-padding q-mt-md">
+          <q-tab-panel name="template" class="no-padding q-mt-md  ">
             <q-tree
+                class="h-[86vh] overflow-y-auto"
                 :nodes="codeTree"
                 node-key="d_key"
                 default-expand-all
@@ -101,6 +102,7 @@
           <q-tab-panel name="vars" class="no-padding q-mt-md">
             <!--            radio_button_checked-->
             <q-expansion-item
+                class="ellipsis"
                 v-for="(item,index) in codeVariable"
                 expand-separator
                 :icon="item.ref?'motion_photos_on':'radio_button_checked'"
@@ -216,11 +218,11 @@
           设置
         </div>
         <div class="flex no-wrap">
-          <q-btn class="q-ml-md" color="primary" label="刷新" :loading="refresh" @click="getCode"
+          <q-btn class="q-ml-md" color="primary" label="拉取" :loading="refresh" @click="getCode"
                  icon="cloud_download"/>
-          <q-btn class="q-ml-md" color="secondary" label="更新" :loading="refresh" @click="uploadCode(sourceCode)"
+          <q-btn class="q-ml-md" color="secondary" label="推送" :loading="refresh" @click="uploadCode(sourceCode)"
                  icon="backup"/>
-          <q-btn class="q-ml-md" color="purple" label="生成" :loading="refresh" @click="generateCode"
+          <q-btn class="q-ml-md" color="purple" label="生成并推送" :loading="refresh" @click="generateCode"
                  icon="auto_fix_high"/>
         </div>
       </q-card-section>
@@ -737,6 +739,8 @@ function uploadCode(htmlString: string) {
 function parseTemplateTree(sourceCode: string) {
   const regex = /(?<=<template>)([\s\S]*)(?=<\/template>)/g
   const match = sourceCode.match(regex) as RegExpMatchArray
+  //解决template问题
+  match[0] = match[0].replaceAll("<template", "<templates").replaceAll("<\/template>", "<\/templates>")
   $ = cheerio.load(match[0]);
   const template = $('body')
   codeTree.value = []
@@ -757,6 +761,9 @@ function cycleGetNode(node: Cheerio<AnyNode>, codeTree: any) {
         text: $(node).children().length == 0 ? $(node).text().replaceAll("\n", "").replaceAll(" ", "") : ''
       }
   )
+  // console.log("node", node[0])
+  // console.log("child1", $(node).children().get())
+  // console.log("child2", node.children())
   $(node).children().map((i, el) => {
     cycleGetNode($(el), codeTree[codeTree.length - 1].children)
   })
@@ -775,7 +782,7 @@ function getScript(sourceCode: string) {
 // 解析变量
 function parseVariables(sourceCode: string) {
   codeVariable.value = []
-  const regex = /(const|let|var)\s+(\w+)\s*:\s*(\w+)\s*=\s*(.*)/g;
+  const regex = /(const|let|var)\s+(\w+)\s*:\s*(\w+)\s*=\s*([^;]+);/g
   let match = sourceCode.match(regex);
   while ((match = regex.exec(sourceCode)) !== null) {
     const modifier = match[1];
@@ -954,7 +961,6 @@ function handleDialogClose() {
     current.removeAttr(attr)
   }
   // 增加新的
-  console.log(currentDivAttr.value)
   const newAttrs = currentDivAttr.value
   for (const attr in newAttrs) {
     current.attr(newAttrs[attr].key, newAttrs[attr].value)
@@ -974,7 +980,7 @@ function generateCode() {
       v += " :" + code.format
     }
     v += " = " + code.value
-    variable = variable + v + "\n"
+    variable = variable + v + ";\n"
   })
 
   let imports = ""
@@ -1015,16 +1021,16 @@ function generateCode() {
     fun += "{\n  " + func.body + "\n}\n\n"
     functions += fun
   })
-
-  template += "<template>" + $('body').html()?.toString() + "</template>\n"
+  // 解决template不识别问题
+  const htmlCode = $('body').html()?.toString().replaceAll('<templates', '<template').replaceAll('</templates>', '</template>')
+  template += "<template>" + htmlCode + "</template>"
   template += `<script setup lang="ts">`
   template += "\n" + imports + "\n"
   template += variable + "\n"
-  template += functions + "\n"
+  template += functions
   template += '<\/script>'
-  template = template.replaceAll(/d_key="\d"/g, '')
+  template = template.replaceAll(/d_key="\d+"/g, '')
   uploadCode(template)
-  console.log(template)
 }
 
 //删除最后一个逗号

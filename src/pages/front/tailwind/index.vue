@@ -735,7 +735,7 @@ function uploadCode(htmlString: string) {
 
 // 解析模板树
 function parseTemplateTree(sourceCode: string) {
-  const regex = /(?<=<template>)([\s\S]*?)(?=<\/template>)/
+  const regex = /(?<=<template>)([\s\S]*)(?=<\/template>)/g
   const match = sourceCode.match(regex) as RegExpMatchArray
   $ = cheerio.load(match[0]);
   const template = $('body')
@@ -929,7 +929,7 @@ function handleUpdateDialog(node: QTreeNode) {
 
 // 添加插槽
 function handleAddSlot(name: any) {
-  const element = `\n<template v-slot="${name}"></template>`
+  const element = `\n<template v-slot:${name}="prop"></template>`
   $(`[d_key = ${currentNode.value.d_key}]`).prepend(element)
   saveDialog.value = false
 }

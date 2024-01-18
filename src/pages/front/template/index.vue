@@ -1,22 +1,22 @@
-<template><div id="div_id" class="first second" v-ripple="" d_key="37">
-<div class="" d_key="38"></div>
-<q-btn size="md" label="更新4" color="red" icon="add" class="" d_key="39"></q-btn>
-    <div class="q-pa-md" d_key="40">
-      <div class="q-mt-md id_1" d_key="41">
+<template><div id="div_id" class="first second" v-ripple="" d_key="61">
+<div class="" d_key="62"></div>
+<q-btn size="md" label="点击更新" color="red" icon="add" class=""></q-btn>
+    <div class="q-pa-md" d_key="64">
+      <div class="q-mt-md id_1" d_key="65">
         123{aaa}111
       </div>
-      <div class="q-pa-md hahahaha" d_key="42">
-        <div class="haha" d_key="43">aaa</div>
-        <q-option-group :options="options" type="checkbox" v-model="group" d_key="44">
-          <div d_key="45">2222</div>
+      <div class="q-pa-md hahahaha" d_key="66">
+        <div class="haha" d_key="67">aaa</div>
+        <q-option-group :options="options" type="checkbox" v-model="group" d_key="68">
+          <div d_key="69">2222</div>
         </q-option-group>
       </div>
     </div>
-    <q-btn color="primary" label="按钮" @click="handleClick" class=""></q-btn>
-    <div class="q-pa-md number" d_key="47">
+    <q-btn color="primary" label="按钮" @click="handleClick" class="" d_key="70"></q-btn>
+    <div class="q-pa-md number" d_key="71">
       114514
     </div>
-    <q-slider class="q-pa-xl" v-model="priceModel" color="green" markers="" :marker-labels="arrayMarkerLabel" label-always="" :label-value="priceLabel" switch-label-side="" switch-marker-labels-side="" snap="" :min="0" :max="3" d_key="48">
+    <q-slider class="q-pa-xl" v-model="priceModel" color="green" markers="" :marker-labels="arrayMarkerLabel" label-always="" :label-value="priceLabel" switch-label-side="" switch-marker-labels-side="" snap="" :min="0" :max="3" d_key="72">
       
     </q-slider>
   </div>

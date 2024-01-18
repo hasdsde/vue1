@@ -684,7 +684,7 @@ const codeEditable = ref('可编辑')
 const refresh = ref(false)//刷新
 let d_key: number = 0 //代码树的唯一id
 let $: CheerioAPI = cheerio.load('')
-const tree = ref(null)
+const tree: any = ref(null)
 
 const sourceCode = ref<string>("")
 const codeTree: Ref<UnwrapRef<QTreeNode>> = ref([]) //代码树
@@ -699,9 +699,6 @@ watch(sourceCode, (n, o) => {
   uploadCode(sourceCode.value)
 }, {immediate: false})
 
-setTimeout(() => {
-  tree.value.expandAll()
-}, 500)
 
 getCode()
 
@@ -713,6 +710,10 @@ function getCode() {
     parseTemplateTree(res.data)
     getScript(res.data)
     refresh.value = false
+
+    setTimeout(() => {
+      tree.value.expandAll()
+    }, 500)
   }).catch((e) => {
     CommonFail("错误：" + e.message)
   })
@@ -937,6 +938,7 @@ function handleAddSlot(name: any) {
 function resolveForm(node: QTreeNode) {
   currentDivName.value = node.label?.toString() as string
   currentDivClass.value = node.attr.class != null ? node.attr.class.split(" ") : []
+  currentDivAttr.value = []
   for (const a in node.attr) {
     if (a != 'class' && a != 'd_key') {
       currentDivAttr.value.push({key: a, value: node.attr[a]})
@@ -952,12 +954,12 @@ function handleDialogClose() {
     current.removeAttr(attr)
   }
   // 增加新的
+  console.log(currentDivAttr.value)
   const newAttrs = currentDivAttr.value
   for (const attr in newAttrs) {
     current.attr(newAttrs[attr].key, newAttrs[attr].value)
   }
   current.attr('class', currentDivClass.value.toString().replaceAll(',', ' '))
-  console.log(current)
   generateCode()
 }
 

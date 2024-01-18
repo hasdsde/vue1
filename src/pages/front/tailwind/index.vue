@@ -1,7 +1,7 @@
 <!--@formatter:on-->
 <template>
   <div class="q-pa-sm flex justify-around h-[95vh]">
-    <q-card class="w-[20%]  q-pa-md ">
+    <q-card class="w-[20%] q-pa-md">
       <div>
         <q-btn icon="add" color="primary" flat class="float-right">
           <q-menu>
@@ -41,6 +41,7 @@
                 :nodes="codeTree"
                 node-key="d_key"
                 default-expand-all
+                ref="tree"
             >
               <template v-slot:default-header="prop">
                 <div class="row items-center ">
@@ -244,7 +245,7 @@
             filled
             autogrow
             type="textarea"
-            class="overflow-auto h-[1000px]"
+            class="overflow-auto h-[1000px] text-red"
         />
       </q-card-section>
     </q-card>
@@ -683,18 +684,24 @@ const codeEditable = ref('可编辑')
 const refresh = ref(false)//刷新
 let d_key: number = 0 //代码树的唯一id
 let $: CheerioAPI = cheerio.load('')
+const tree = ref(null)
 
 const sourceCode = ref<string>("")
 const codeTree: Ref<UnwrapRef<QTreeNode>> = ref([]) //代码树
 const codeVariable: any = ref([])
 const codeFunction: any = ref([])
 const codeImport: any = ref([])
+
 watch(sourceCode, (n, o) => {
   if (o == null) {
     return
   }
   uploadCode(sourceCode.value)
 }, {immediate: false})
+
+setTimeout(() => {
+  tree.value.expandAll()
+}, 500)
 
 getCode()
 
@@ -709,7 +716,6 @@ function getCode() {
   }).catch((e) => {
     CommonFail("错误：" + e.message)
   })
-
 }
 
 // 上传代码
@@ -719,6 +725,7 @@ function uploadCode(htmlString: string) {
   axios.post("/twc/upload", data, {timeout: 2000}).then((res: any) => {
     if (res.status == 200) {
       CommonGroupFastSuccess("更新已完成")
+      getCode()
     }
   }).catch((e) => {
     CommonFail("错误：" + e.message)
@@ -896,7 +903,7 @@ function handleNewDialog(node: QTreeNode) {
   saveTitle.value = "新增"
   d_key = d_key + 1
   const element = `\n<div d_key="${d_key}"></div>`
-  $(`[d_key = ${node.d_key}]`).prepend(element)
+  $(`[d_key = ${node.d_key}]`).append(element)
   saveDialog.value = true
   currentDivName.value = "div"
   currentDivAttr.value = []
@@ -950,6 +957,7 @@ function handleDialogClose() {
     current.attr(newAttrs[attr].key, newAttrs[attr].value)
   }
   current.attr('class', currentDivClass.value.toString().replaceAll(',', ' '))
+  console.log(current)
   generateCode()
 }
 
@@ -1006,15 +1014,15 @@ function generateCode() {
     functions += fun
   })
 
-  template += "<template>\n" + $('body').html()?.toString() + "\n</template>\n"
+  template += "<template>" + $('body').html()?.toString() + "</template>\n"
   template += `<script setup lang="ts">`
-  template += "\n" + imports + "\n\n"
-  template += variable + "\n\n"
-  template += functions + "\n\n"
+  template += "\n" + imports + "\n"
+  template += variable + "\n"
+  template += functions + "\n"
   template += '<\/script>'
   template = template.replaceAll(/d_key="\d"/g, '')
+  uploadCode(template)
   console.log(template)
-  // uploadCode(template)
 }
 
 //删除最后一个逗号
@@ -1097,17 +1105,21 @@ function handleCopyDiv(index: number) {
 function handlePasteDivTop(index: number) {
   $(`[d_key = ${index}]`).prepend(copyBoard)
   CommonSuccess("已粘贴")
+  generateCode()
 }
 
 function handlePasteDivBottom(index: number) {
   $(`[d_key = ${index}]`).append(copyBoard)
   CommonSuccess("已粘贴")
+  generateCode()
+
 }
 
 function handleDeleteDiv(index: number) {
   DialogConfirm("确定要删除吗").onOk(() => {
     $(`[d_key = ${index}]`).remove()
     CommonSuccess("已删除")
+    generateCode()
   })
 }
 

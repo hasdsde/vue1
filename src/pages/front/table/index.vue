@@ -189,14 +189,14 @@ function building() {
 function handleTableForm() {
   const code = JSON.stringify(toRaw(tableForm.value))
   DialogPrompt("输入", "变量名称", "columns").onOk((val: string) => {
-    CopyToClickBoard("const " + val + ":any[] = " + code)
+    CopyToClickBoard("const " + val + ":any = " + code + ";")
   })
 }
 
 // 生成示例数据
 function handleTableFormData() {
   const data: any = []
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 2; i++) {
     const signalData: any = {}
     tableForm.value.forEach((item: any) => {
       signalData[item.name] = item.name + i
@@ -204,7 +204,7 @@ function handleTableFormData() {
     data.push(signalData)
   }
   DialogPrompt("输入", "变量名称", "rows").onOk((val: string) => {
-    CopyToClickBoard(`const col:any = ref(${JSON.stringify(data)})`)
+    CopyToClickBoard(`const ${val} :any = ref(${JSON.stringify(data)});`)
   })
 }
 
@@ -215,7 +215,7 @@ function handleQueryForm() {
   })
   code = JSON.stringify(toRaw(code))
   DialogPrompt("输入", "变量名称", "queryForm").onOk((val: string) => {
-    CopyToClickBoard("const " + val + ":any = ref(" + code + ")")
+    CopyToClickBoard("const " + val + ":any = ref(" + code + ");")
   })
 }
 
@@ -226,7 +226,7 @@ function handleSaveForm() {
   })
   code = JSON.stringify(toRaw(code))
   DialogPrompt("输入", "变量名称", "saveForm").onOk((val: string) => {
-    CopyToClickBoard("const " + val + ":any = ref(" + code + ")")
+    CopyToClickBoard("const " + val + ":any = ref(" + code + ");")
   })
 }
 
@@ -265,7 +265,7 @@ function handleSaveFormDialog() {
         currentItem += ` label="${item.label}" `
       }
       if (item.readonly) {
-        currentItem += ` label="${item.readonly}" `
+        currentItem += ` readonly="${item.readonly}" `
       }
       if (item.placeholder) {
         currentItem += ` placeholder="${item.placeholder}" `

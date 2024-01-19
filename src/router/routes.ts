@@ -19,6 +19,7 @@ const routes: RouteRecordRaw[] = [
             {path: '/sys/dept', component: () => import('pages/sys/dept/index.vue')},
             {path: '/sys/authority', component: () => import('pages/sys/authority/index.vue')},
             {path: '/sys/user', component: () => import('pages/sys/user/index.vue')},
+            {path: '/sys/role', component: () => import('pages/sys/role/index.vue')},
             {path: '/dashboard/home', component: () => import('pages/dashboard/home/index.vue')},
             //特殊文件：代码生成器
 

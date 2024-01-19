@@ -47,8 +47,6 @@ export function ResetForm(array: any[any]) {
     }
 }
 
-// 对象转换数组
-
 
 //导出表格
 export function ExportTable(columns: any, rows: any, fileName: string) {

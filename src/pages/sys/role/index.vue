@@ -8,22 +8,15 @@
       <q-btn color="red" label="删除" icon="delete" @click="handleDelete" class="q-mr-md"></q-btn>
     </q-card>
     <q-card class="q-mt-md">
-      <q-table :rows="rows" :columns="columns" v-model:selected="selected" selection="multiple"
-               :pagination="{rowsPerPage:0}"
+      <q-table :rows="rows" :columns="columns" hide-pagination="" v-model:selected="selected" selection="multiple"
                row-key="id" class="">
         <template v-slot:top="prop">
           <q-input filled="" dense="" label="搜索内容" class="q-mr-md"></q-input>
           <q-btn flat="" icon="search" color="primary" class=""></q-btn>
         </template>
-        <template v-slot:body-cell-type="props">
-          <q-td :props="props">
-            {{ props.row.type == 1 ? '前端' : '后端' }}
-          </q-td>
-        </template>
-        <template v-slot:bottom>
+        <template v-slot:bottom="">
           <span v-if="selected.length > 0">已选择{{ selected.length }}项</span>
-          <q-space>
-          </q-space>
+          <q-space></q-space>
           <span class="q-mr-md">共{{ page.total }}条</span>
           <div>
             <span class="q-mr-md ">行数 {{ page.pageSize }}
@@ -53,6 +46,7 @@
           <q-pagination v-model="page.currentPage" :max="Math.ceil(page.total/page.pageSize)" input=""
                         @update:model-value="loadPage">
           </q-pagination>
+
         </template>
         <template v-slot:body-cell-updatedAt="props">
           <q-td :props="props">
@@ -65,7 +59,6 @@
             {{ GetHumanDate(props.row.createdAt) }}
           </q-td>
         </template>
-
         <template v-slot:body-cell-deletedAt="props">
           <q-td :props="props">
             <div v-if="props.row.deletedAt != null">
@@ -87,20 +80,11 @@
           <q-btn icon="close" flat="" class=""></q-btn>
         </q-card-section>
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.name" label="名称" placeholder="名称">
-          </q-input>
+          <q-input v-model="saveForm.name" label="名称" placeholder="名称"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.description" label="描述" placeholder="描述">
-          </q-input>
+          <q-input v-model="saveForm.description" label="描述" placeholder="描述"/>
         </q-card-section>
-        <q-card-section class="q-pa-md">
-          <q-select :options="[{label:'前端',value:1},{label:'后端',value:2}]" v-model="saveForm.type" clearable=""
-                    emit-value map-options
-                    label="类型" placeholder="类型">
-          </q-select>
-        </q-card-section>
-
         <q-card-section class="text-primary">
           <div class="row justify-between">
             <div class="col">
@@ -132,58 +116,42 @@ const columns: any = [
     "name": "name",
     "align": "left",
     "required": true,
-    "sortable": false,
+    "sortable": true,
     "label": "名称",
     "field": "name"
-  },
-  {
-    "name": "type",
-    "align": "center",
-    "required": true,
-    "sortable": false,
-    "label": "类型",
-    "field": "type"
   },
   {
     "name": "description",
     "align": "center",
     "required": true,
-    "sortable": false,
+    "sortable": true,
     "label": "描述",
     "field": "description"
-  },
-  {
+  }, {
     "name": "createdAt",
     "align": "center",
     "required": true,
-    "sortable": false,
+    "sortable": true,
     "label": "创建时间",
     "field": "createdAt"
-  },
-  {
+  }, {
     "name": "updatedAt",
     "align": "center",
     "required": true,
-    "sortable": false,
+    "sortable": true,
     "label": "更新时间",
     "field": "updatedAt"
-  },
-  {
+  }, {
     "name": "deletedAt",
     "align": "right",
     "required": true,
-    "sortable": false,
+    "sortable": true,
     "label": "删除时间",
     "field": "deletedAt"
-  },];
+  }];
 const saveDialog: any = ref(false);
 const selected: any = ref([]);
-const saveForm: any = ref({
-  "description": "",
-  "id": "",
-  "name": "",
-  "type": "",
-});
+const saveForm: any = ref({"description": "", "id": "", "name": ""});
 const dialogTitle = ref("新增");
 const page = ref({
   currentPage: 1,
@@ -193,7 +161,7 @@ const page = ref({
 loadPage()
 
 function loadPage() {
-  api.get("/authority/page", {params: page.value}).then((res: BaseApi) => {
+  api.get("/role/page", {params: page.value}).then((res: BaseApi) => {
     rows.value = res.data.records
     page.value.total = res.data.total
   })
@@ -218,8 +186,9 @@ function handleNew() {
   saveDialog.value = true
 }
 
+
 function save() {
-  api.post("/authority/save", saveForm.value).then((res: BaseApi) => {
+  api.post("/role/save", saveForm.value).then((res: BaseApi) => {
     if (res.code == 200) {
       CommonSuccess("操作成功")
     }
@@ -237,7 +206,7 @@ function handleDeleteSign() {
     const numbers = selected.value.map((item: any) => {
       return item.id
     })
-    api.delete("/authority/sign", {data: numbers}).then((res: BaseApi) => {
+    api.delete("/role/sign", {data: numbers}).then((res: BaseApi) => {
       if (res.data == 200) {
         CommonSuccess("操作成功")
       }
@@ -256,7 +225,7 @@ function handleDelete() {
     const numbers = selected.value.map((item: any) => {
       return item.id
     })
-    api.delete("/authority/batch", {data: numbers}).then((res: BaseApi) => {
+    api.delete("/role/batch", {data: numbers}).then((res: BaseApi) => {
       if (res.data == 200) {
         CommonSuccess("")
       }
@@ -266,7 +235,7 @@ function handleDelete() {
 }
 
 function recover(id: number) {
-  api.delete("/authority/recover/" + id).then((res: BaseApi) => {
+  api.delete("/role/recover/" + id).then((res: BaseApi) => {
     if (res.code == 200) {
       CommonSuccess("操作成功")
     }

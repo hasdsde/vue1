@@ -138,11 +138,10 @@
         </q-card-section>
         <!--    提交按钮    -->
         <q-card-section class="text-primary">
-
           <div class="row justify-between">
             <div class="col">
               <!-- <q-btn color="primary" class="text-left" label="取消" v-close-popup @click="handleCancel" /> -->
-              <q-btn flat color="red" label="重置" @click="save"/>
+              <q-btn flat color="red" label="重置" @click="ResetForm(saveForm)"/>
             </div>
             <div class="col text-right">
               <q-btn color="primary" label="提交" v-close-popup @click="save"/>
@@ -261,7 +260,6 @@ function handleUpdate() {
     return
   }
   saveForm.value = {...saveForm.value, ...form}
-  console.log(saveForm.value);
   saveTitle.value = "修改"
   saveDialog.value = true
 }

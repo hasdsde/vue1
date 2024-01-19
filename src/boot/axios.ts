@@ -50,12 +50,13 @@ export default boot(({app}) => {
         } else {
             CommonFail('错误:' + response.data.code + '  信息：' + response.data.msg)
         }
-
     }, (error) => {
-        // 错误处理，错误不会有 res.data.code，不走上面
-        console.log("cuowu")
-        console.log(error.response.data.message);
-        CommonFail('请求失败' + '  错误码:' + error.response.status)
+        if (error.response == null) {
+            CommonFail(error.message)
+        } else {
+            // 错误处理，错误不会有 res.data.code，不走上面
+            CommonFail('请求失败' + '  错误码:' + error.response.status)
+        }
     })
 });
 

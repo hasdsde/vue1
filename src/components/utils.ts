@@ -34,7 +34,7 @@ export function SetLocalItem(name: string, item: any) {
 //用于去掉T的日期而且不改变原来的
 export function GetHumanDate(date: string) {
     if (date == null) {
-        return ""
+        return "/"
     } else {
         return date.replace('T', ' ')
     }

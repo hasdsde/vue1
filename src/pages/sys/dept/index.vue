@@ -36,10 +36,9 @@
 
         <template v-slot:body-cell-deletedAt="props">
           <q-td :props="props">
-            <div v-if="props.row.deletedAt != null">
-              {{ GetHumanDate(props.row.deletedAt) }}
-              <q-btn flat size="md" style="color: #FF0080" label="恢复" @click="recover(props.row.id)"/>
-            </div>
+            {{ GetHumanDate(props.row.deletedAt) }}
+            <q-btn v-if="props.row.deletedAt != null" flat size="md" style="color: #FF0080" label="恢复"
+                   @click="recover(props.row.id)"/>
           </q-td>
         </template>
         <template v-slot:bottom>
@@ -84,7 +83,7 @@
         <q-card-section class="row items-center">
           <div class="text-h6">{{ dialogTitle }}</div>
           <q-space class=""></q-space>
-          <q-btn icon="close" flat="" class=""></q-btn>
+          <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.name" label="名称" placeholder="名称">

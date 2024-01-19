@@ -92,10 +92,9 @@
 
         <template v-slot:body-cell-deletedAt="props">
           <q-td :props="props">
-            <div v-if="props.row.deletedAt != null">
-              {{ GetHumanDate(props.row.deletedAt) }}
-              <q-btn flat size="md" style="color: #FF0080" label="恢复" @click="handleRecover(props.row.id)"/>
-            </div>
+            {{ GetHumanDate(props.row.deletedAt) }}
+            <q-btn v-if="props.row.deletedAt != null" flat size="md" style="color: #FF0080" label="恢复"
+                   @click="recover(props.row.id)"/>
           </q-td>
         </template>
       </q-table>
@@ -104,8 +103,10 @@
     <!-- 新增/修改 -->
     <q-dialog v-model="saveDialog" full-height position="right">
       <q-card class="column full-height max-w-[80vw] w-fit min-w-[400px] q-pa-sm">
-        <q-card-section>
+        <q-card-section class="row items-center">
           <div class="text-h6">{{ saveTitle }}</div>
+          <q-space></q-space>
+          <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
 
         <!-- <q-card-section class="q-pa-md">
@@ -284,7 +285,7 @@ function handleDelete() {
   })
 }
 
-function handleRecover(id: number) {
+function recover(id: number) {
   api.put("/menu/recover/" + id).then((res: BaseApi) => {
     if (res.data == 200) {
       CommonSuccess("")

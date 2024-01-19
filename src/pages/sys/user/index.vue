@@ -46,7 +46,23 @@
           <q-pagination v-model="page.currentPage" :max="Math.ceil(page.total/page.pageSize)" input=""
                         @update:model-value="loadPage">
           </q-pagination>
-
+        </template>
+        <template v-slot:body-cell-sex="props">
+          <q-td :props="props">
+            <span v-if="props.row.sex==1">男</span>
+            <span v-if="props.row.sex==2">女</span>
+            <span v-if="props.row.sex==0">未知</span>
+          </q-td>
+        </template>
+        <template v-slot:body-cell-roleId="props">
+          <q-td :props="props">
+            {{ getRoleNameById(props.row.roleId) }}
+          </q-td>
+        </template>
+        <template v-slot:body-cell-jobId="props">
+          <q-td :props="props">
+            {{ getDeptNameById(props.row.jobId) }}
+          </q-td>
         </template>
         <template v-slot:body-cell-updatedAt="props">
           <q-td :props="props">
@@ -61,12 +77,12 @@
         </template>
         <template v-slot:body-cell-deletedAt="props">
           <q-td :props="props">
-            <div v-if="props.row.deletedAt != null">
-              {{ GetHumanDate(props.row.deletedAt) }}
-              <q-btn flat size="md" style="color: #FF0080" label="恢复" @click="recover(props.row.id)"/>
-            </div>
+            {{ GetHumanDate(props.row.deletedAt) }}
+            <q-btn v-if="props.row.deletedAt != null" flat size="md" style="color: #FF0080" label="恢复"
+                   @click="recover(props.row.id)"/>
           </q-td>
         </template>
+
       </q-table>
 
       <div class=""></div>
@@ -77,7 +93,7 @@
         <q-card-section class="row items-center">
           <div class="text-h6">{{ dialogTitle }}</div>
           <q-space class=""></q-space>
-          <q-btn icon="close" flat="" class=""></q-btn>
+          <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
 
         <q-card-section class="q-pa-md">
@@ -93,7 +109,14 @@
           <q-input v-model="saveForm.email" label="邮箱" placeholder="邮箱"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.jobId" label="岗位id" placeholder="岗位id"/>
+          <q-select v-model="saveForm.roleId" label="角色" placeholder="角色" clearable emit-value map-options
+                    option-value="id" option-label="name"
+                    :options="roles"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-select v-model="saveForm.jobId" label="部门" placeholder="部门" clearable emit-value map-options
+                    option-value="id" option-label="name"
+                    :options="depts"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.nickName" label="显示名称" placeholder="显示名称"/>
@@ -140,17 +163,51 @@ const columns: any = [
   {"name": "email", "align": "center", "required": true, "sortable": true, "label": "邮箱", "field": "email"},
   {"name": "phone", "align": "center", "required": true, "sortable": true, "label": "手机号", "field": "phone"},
   {"name": "sex", "align": "center", "required": true, "sortable": true, "label": "性别", "field": "sex"},
-  {"name": "jobId", "align": "center", "required": true, "sortable": true, "label": "岗位id", "field": "jobId"},
+  {"name": "jobId", "align": "center", "required": true, "sortable": true, "label": "部门", "field": "jobId"},
+  {"name": "roleId", "align": "center", "required": true, "sortable": true, "label": "角色", "field": "roleId"},
   {"name": "comment", "align": "center", "required": true, "sortable": true, "label": "备注", "field": "comment"},
-  {"name": "createdAt", "align": "center", "required": true, "sortable": true, "label": "创建时间", "field": "createdAt"},
-  {"name": "updatedAt", "align": "center", "required": true, "sortable": true, "label": "更新时间", "field": "updatedAt"},
-  {"name": "deletedAt", "align": "center", "required": true, "sortable": true, "label": "删除时间", "field": "deletedAt"}
+  {
+    "name": "createdAt",
+    "align": "center",
+    "required": true,
+    "sortable": true,
+    "label": "创建时间",
+    "field": "createdAt"
+  },
+  {
+    "name": "updatedAt",
+    "align": "center",
+    "required": true,
+    "sortable": true,
+    "label": "更新时间",
+    "field": "updatedAt"
+  },
+  {
+    "name": "deletedAt",
+    "align": "center",
+    "required": true,
+    "sortable": true,
+    "label": "删除时间",
+    "field": "deletedAt"
+  },
 ];
 const saveDialog: any = ref(false);
 const selected: any = ref([]);
-const saveForm: any = ref({"avatar": "", "comment": "", "email": "", "jobId": "", "nickName": "", "password": "", "phone": "", "sex": "", "userName": ""});
+const saveForm: any = ref({
+  "avatar": "",
+  "comment": "",
+  "roleId": "",
+  "email": "",
+  "jobId": "",
+  "nickName": "",
+  "password": "",
+  "phone": "",
+  "sex": "",
+  "userName": ""
+});
 const dialogTitle = ref("新增");
-
+const roles = ref([])
+const depts = ref([])
 const page = ref({
   currentPage: 1,
   pageSize: 15,
@@ -163,6 +220,12 @@ function loadPage() {
   api.get("/user/page", {params: page.value}).then((res: BaseApi) => {
     rows.value = res.data.records
     page.value.total = res.data.total
+  })
+  api.get("/role/all").then((res: BaseApi) => {
+    roles.value = res.data
+  })
+  api.get("/dept/all").then((res: BaseApi) => {
+    depts.value = res.data
   })
 }
 
@@ -245,4 +308,23 @@ function recover(id: number) {
   })
 }
 
+function getRoleNameById(id: number) {
+  let name = "/"
+  roles.value.forEach((item: any) => {
+    if (id == item.id) {
+      name = item.name;
+    }
+  })
+  return name
+}
+
+function getDeptNameById(id: number) {
+  let name = "/"
+  depts.value.forEach((item: any) => {
+    if (id == item.id) {
+      name = item.name;
+    }
+  })
+  return name
+}
 </script>

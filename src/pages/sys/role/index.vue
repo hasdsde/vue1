@@ -61,10 +61,15 @@
         </template>
         <template v-slot:body-cell-deletedAt="props">
           <q-td :props="props">
-            <div v-if="props.row.deletedAt != null">
-              {{ GetHumanDate(props.row.deletedAt) }}
-              <q-btn flat size="md" style="color: #FF0080" label="恢复" @click="recover(props.row.id)"/>
-            </div>
+            {{ GetHumanDate(props.row.deletedAt) }}
+            <q-btn v-if="props.row.deletedAt != null" flat size="md" style="color: #FF0080" label="恢复"
+                   @click="recover(props.row.id)"/>
+          </q-td>
+        </template>
+        <template v-slot:body-cell-handle="props">
+          <q-td :props="props">
+            <q-btn label="分配权限" flat color="primary" class="q-mr-md" @click="handleUpdateAuthority(props.row.id)"/>
+            <q-btn label="分配菜单" flat color="primary" @click="handleUpdateMenu(props.row.id)"/>
           </q-td>
         </template>
       </q-table>
@@ -77,7 +82,7 @@
         <q-card-section class="row items-center">
           <div class="text-h6">{{ dialogTitle }}</div>
           <q-space class=""></q-space>
-          <q-btn icon="close" flat="" class=""></q-btn>
+          <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.name" label="名称" placeholder="名称"/>
@@ -100,6 +105,75 @@
         </q-card-section>
       </q-card>
     </q-dialog>
+    <q-dialog v-model="authorityDialog" position="right" full-height>
+      <q-card class="min-w-[400px]">
+        <q-card-section class="row items-center">
+          <div class="text-h6">{{ dialogTitle }}</div>
+          <q-space class=""></q-space>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-card-section>
+          <q-list>
+            <q-item tag="label" v-ripple v-for="authority in allAuthorities">
+              <q-item-section avatar>
+                <q-checkbox v-model="currentAuthorities" :val="authority.id" color="teal"/>
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ authority.name }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-card-section>
+        <q-card-section class="text-primary">
+          <div class="row justify-between">
+            <div class="col">
+              <!-- <q-btn color="primary" class="text-left" label="取消" v-close-popup @click="handleCancel" /> -->
+              <q-btn flat="" color="red" label="重置" @click="ResetForm(authorityForm)">
+              </q-btn>
+            </div>
+            <div class="col text-right">
+              <q-btn color="primary" label="提交" v-close-popup="">
+              </q-btn>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+    <q-dialog v-model="menuDialog" position="right" full-height>
+      <q-card class="min-w-[400px]">
+        <q-card-section class="row items-center">
+          <div class="text-h6">{{ dialogTitle }}</div>
+          <q-space class=""></q-space>
+          <q-btn icon="close" flat round dense v-close-popup/>
+        </q-card-section>
+        <q-card-section>
+          <q-list>
+            <q-item tag="label" v-ripple v-for="menu in allMenus">
+              <q-item-section avatar>
+                <q-checkbox v-model="currentMenus" :val="menu.id" color="teal"/>
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ menu.name }}</q-item-label>
+                <q-item-label class="text-grey">{{ menu.url }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-card-section>
+        <q-card-section class="text-primary">
+          <div class="row justify-between">
+            <div class="col">
+              <!-- <q-btn color="primary" class="text-left" label="取消" v-close-popup @click="handleCancel" /> -->
+              <q-btn flat="" color="red" label="重置" @click="ResetForm(menuForm)">
+              </q-btn>
+            </div>
+            <div class="col text-right">
+              <q-btn color="primary" label="提交" v-close-popup="">
+              </q-btn>
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </div>
 
 </template>
@@ -111,47 +185,55 @@ import {BaseApi} from "components/models";
 import {CommonSuccess, CommonWarn, DialogConfirm} from "components/dialog";
 
 const rows: any = ref([]);
-const columns: any = [
-  {
-    "name": "name",
-    "align": "left",
-    "required": true,
-    "sortable": true,
-    "label": "名称",
-    "field": "name"
-  },
-  {
-    "name": "description",
-    "align": "center",
-    "required": true,
-    "sortable": true,
-    "label": "描述",
-    "field": "description"
-  }, {
-    "name": "createdAt",
-    "align": "center",
-    "required": true,
-    "sortable": true,
-    "label": "创建时间",
-    "field": "createdAt"
-  }, {
-    "name": "updatedAt",
-    "align": "center",
-    "required": true,
-    "sortable": true,
-    "label": "更新时间",
-    "field": "updatedAt"
-  }, {
-    "name": "deletedAt",
-    "align": "right",
-    "required": true,
-    "sortable": true,
-    "label": "删除时间",
-    "field": "deletedAt"
-  }];
+const columns: any = [{
+  "name": "name",
+  "align": "left",
+  "required": true,
+  "sortable": true,
+  "label": "名称",
+  "field": "name"
+}, {
+  "name": "description",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "描述",
+  "field": "description"
+}, {
+  "name": "createdAt",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "创建时间",
+  "field": "createdAt"
+}, {
+  "name": "updatedAt",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "更新时间",
+  "field": "updatedAt"
+}, {
+  "name": "deletedAt",
+  "align": "right",
+  "required": true,
+  "sortable": true,
+  "label": "删除时间",
+  "field": "deletedAt"
+}, {"name": "handle", "align": "center", "required": true, "sortable": true, "label": "操作", "field": "handle"}];
 const saveDialog: any = ref(false);
 const selected: any = ref([]);
 const saveForm: any = ref({"description": "", "id": "", "name": ""});
+const allMenus = ref([])
+const allAuthorities = ref([])
+
+const menuForm = ref([])
+const authorityForm = ref({})
+const currentAuthorities = ref([])
+const currentMenus = ref([])
+const authorityDialog = ref(false)
+const menuDialog = ref(false)
+
 const dialogTitle = ref("新增");
 const page = ref({
   currentPage: 1,
@@ -159,11 +241,22 @@ const page = ref({
   total: 1
 });
 loadPage()
+loadData()
 
 function loadPage() {
   api.get("/role/page", {params: page.value}).then((res: BaseApi) => {
     rows.value = res.data.records
     page.value.total = res.data.total
+  })
+
+}
+
+function loadData() {
+  api.get("/authority/all").then((res: BaseApi) => {
+    allAuthorities.value = res.data
+  })
+  api.get("/menu/all").then((res: BaseApi) => {
+    allMenus.value = res.data
   })
 }
 
@@ -186,6 +279,21 @@ function handleNew() {
   saveDialog.value = true
 }
 
+// 分配菜单
+function handleUpdateMenu(id: number) {
+  dialogTitle.value = "更新菜单"
+  menuDialog.value = true
+}
+
+// 分配权限
+function handleUpdateAuthority(id: number) {
+  dialogTitle.value = "更新权限"
+  authorityDialog.value = true
+
+  api.get("/roleAuthority/" + id).then((res: BaseApi) => {
+    currentAuthorities.value = res.data
+  })
+}
 
 function save() {
   api.post("/role/save", saveForm.value).then((res: BaseApi) => {

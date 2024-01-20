@@ -68,15 +68,14 @@
         </template>
         <template v-slot:body-cell-handle="props">
           <q-td :props="props">
-            <q-btn label="分配权限" flat color="primary" class="q-mr-md" @click="handleUpdateAuthority(props.row.id)"/>
-            <q-btn label="分配菜单" flat color="primary" @click="handleUpdateMenu(props.row.id)"/>
+            <q-btn label="查看/分配权限" flat color="primary" class="q-mr-md"
+                   @click="handleUpdateAuthority(props.row.id)"/>
+            <q-btn label="查看/分配菜单" flat color="primary" @click="handleUpdateMenu(props.row.id)"/>
           </q-td>
         </template>
       </q-table>
-
       <div class=""></div>
     </q-card>
-
     <q-dialog v-model="saveDialog" position="right" full-height="" class="">
       <q-card class="q-pa-sm min-w-[400px]">
         <q-card-section class="row items-center">
@@ -120,6 +119,7 @@
               </q-item-section>
               <q-item-section>
                 <q-item-label>{{ authority.name }}</q-item-label>
+                <q-item-label class="text-grey">{{ authority.description }}</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>
@@ -132,13 +132,14 @@
               </q-btn>
             </div>
             <div class="col text-right">
-              <q-btn color="primary" label="提交" v-close-popup="">
+              <q-btn color="primary" label="提交" v-close-popup="" @click="updateAuthority">
               </q-btn>
             </div>
           </div>
         </q-card-section>
       </q-card>
     </q-dialog>
+
     <q-dialog v-model="menuDialog" position="right" full-height>
       <q-card class="min-w-[400px]">
         <q-card-section class="row items-center">
@@ -167,7 +168,7 @@
               </q-btn>
             </div>
             <div class="col text-right">
-              <q-btn color="primary" label="提交" v-close-popup="">
+              <q-btn color="primary" label="提交" v-close-popup="" @click="updateMenu">
               </q-btn>
             </div>
           </div>
@@ -233,6 +234,7 @@ const currentAuthorities = ref([])
 const currentMenus = ref([])
 const authorityDialog = ref(false)
 const menuDialog = ref(false)
+const currentId = ref()
 
 const dialogTitle = ref("新增");
 const page = ref({
@@ -283,15 +285,31 @@ function handleNew() {
 function handleUpdateMenu(id: number) {
   dialogTitle.value = "更新菜单"
   menuDialog.value = true
+  currentId.value = id
+  api.get("/roleMenu/" + id).then((res: BaseApi) => {
+    currentMenus.value = res.data
+  })
 }
 
 // 分配权限
 function handleUpdateAuthority(id: number) {
   dialogTitle.value = "更新权限"
   authorityDialog.value = true
-
+  currentId.value = id
   api.get("/roleAuthority/" + id).then((res: BaseApi) => {
     currentAuthorities.value = res.data
+  })
+}
+
+function updateAuthority() {
+  api.post("/roleAuthority/" + currentId.value, currentAuthorities.value).then((res: BaseApi) => {
+    CommonSuccess(null)
+  })
+}
+
+function updateMenu(id: number) {
+  api.post("/roleMenu/" + currentId.value, currentMenus.value).then((res: BaseApi) => {
+    CommonSuccess(null)
   })
 }
 

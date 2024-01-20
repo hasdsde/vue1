@@ -95,7 +95,9 @@
           <q-space class=""></q-space>
           <q-btn icon="close" flat round dense v-close-popup/>
         </q-card-section>
-
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.nickName" label="显示名称" placeholder="显示名称"/>
+        </q-card-section>
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.userName" label="登录名" placeholder="登录名"/>
         </q-card-section>
@@ -117,9 +119,6 @@
           <q-select v-model="saveForm.jobId" label="部门" placeholder="部门" clearable emit-value map-options
                     option-value="id" option-label="name"
                     :options="depts"/>
-        </q-card-section>
-        <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.nickName" label="显示名称" placeholder="显示名称"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.phone" label="手机号" placeholder="手机号"/>
@@ -225,6 +224,7 @@ function loadPage() {
     roles.value = res.data
   })
   api.get("/dept/all").then((res: BaseApi) => {
+    console.log(res.data)
     depts.value = res.data
   })
 }

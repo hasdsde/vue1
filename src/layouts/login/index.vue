@@ -1,30 +1,30 @@
 <template>
-  <div class="q-pa-md main" style="height: 100vh;">
+  <div class="q-pa-md main h-screen bg-login-bg bg-cover ">
     <!--   背景图片   -->
     <!--    <BackgroundImg />-->
-    <div class="column justify-center" style="height: 90vh;">
-      <div class="col-auto row justify-center">
-        <q-card class="col-auto shadow-10 text-h5"
-                style="background-color: rgb(255,255,255);padding: 50px;width: 400px">
+    <div class="flex justify-center align-middle h-full content-center ">
+
+      <div class="flex max-h-[500px] w-[1000px] shadow-2 q-pa-sm bg-white rounded ">
+        <div class="w-4/6 bg-login-bg bg-cover rounded-borders ">
+        </div>
+        <q-card class="q-pa-md no-shadow w-2/6">
+
           <q-card-section class="row justify-between">
-            <p class="op-font">登录</p>
+            <p class="op-font text-h6">登录</p>
             <q-btn icon="close" dense rounded flat to="/"/>
           </q-card-section>
 
-          <q-card-section class="op-font">
+          <q-card-section>
             <q-input rounded ref="usernameRef" v-model="name" label="用户名" :lazy-rules="true"
                      :rules="[(val) => (val.length > 0) || '输入值为空']"/>
-          </q-card-section>
-
-          <q-card-section class="op-font">
             <q-input rounded ref="passwordRef" v-model="password" label="密码" lazy-rules
                      :rules="[(val) => (val && val.length > 0) || '输入值为空']" type="password"/>
           </q-card-section>
 
           <q-card-section>
-            <q-btn-group rounded>
-              <q-btn @click="handleLogin" color="primary" style="width: 205px;" label="登录"/>
-              <q-btn @click="handleRegister" color="secondary" label="注册"/>
+            <q-btn-group class="w-full">
+              <q-btn @click="handleLogin" color="primary" class="w-3/4" label="登录"/>
+              <q-btn @click="handleRegister" color="secondary" class="w-1/4" label="注册"/>
             </q-btn-group>
           </q-card-section>
         </q-card>
@@ -68,16 +68,18 @@ function handleRegister() {
 
 //登录
 async function handleLogin() {
-  await api.post('/login', {
-    'name': name.value,
+  await api.post('/user/login', {
+    'userName': name.value,
     'password': password.value
   }).then((res: any) => {
     if (res.code == '200') {
+      CommonSuccess("登录成功")
+      localStorage.clear()
       localStorage.setItem('token', res.data.token)
-      CommonSuccess('登录成功')
+      localStorage.setItem('userInfo', JSON.stringify(res.data.userInfo))
       $router.push('/')
     } else {
-      CommonFail('登录失败')
+      CommonFail(res.msg)
     }
   })
 }

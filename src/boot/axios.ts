@@ -32,15 +32,13 @@ export default boot(({app}) => {
     //       so you can easily perform requests against your app's base
 
     // 请求拦截器
-    // base.interceptors.request.use((config) => {
-    //   // if (localStorage.getItem('token') == null) {
-    //   //   window.location.href = "/login"
-    //   // }
-    //   if (localStorage.getItem('username') == null) {
-    //     window.location.href = '/#/login'
-    //   }
-    //   return config;
-    // })
+    base.interceptors.request.use((config) => {
+        if (localStorage.getItem('token') == null) {
+            window.location.href = "/login"
+        }
+        config.headers.set("token", localStorage.getItem('token'))
+        return config;
+    })
 
     // 响应拦截器
     base.interceptors.response.use((response: AxiosResponse) => {

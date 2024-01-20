@@ -91,7 +91,6 @@ function loadMenu() {
     });
   } else {
     api.get("/menu/parent").then((parnet: BaseApi) => {
-
       parentMenu = parnet.data.map((p: any) => {
         return {id: p.id, url: p.url, icon: p.icon, name: p.name, expand: false}
       })
@@ -99,7 +98,6 @@ function loadMenu() {
       parentMenu.forEach((parent: any) => {
         menuMap[parent.id] = {...parent, children: []}
       })
-
       api.get("/menu/child").then((children: BaseApi) => {
         childrenMenu = children.data.map((c: any) => {
           return {id: c.id, url: c.url, icon: c.icon, name: c.name, parentId: c.parentId}

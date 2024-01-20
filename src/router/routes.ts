@@ -22,7 +22,6 @@ const routes: RouteRecordRaw[] = [
             {path: '/sys/role', component: () => import('pages/sys/role/index.vue')},
             {path: '/dashboard/home', component: () => import('pages/dashboard/home/index.vue')},
             //特殊文件：代码生成器
-
         ],
     },
 ];
@@ -45,12 +44,19 @@ let childrenMenu: any[] = []
 //     })
 // }
 
-routes.push({
-    path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue'),
-}, {
-    path: '/template', component: () => import('pages/front/template/index.vue')
-},)
+routes.push(
+    {
+        path: '/login',
+        component: () => import('layouts/login/index.vue'),
+    },
+    {
+        path: '/:catchAll(.*)*',
+        component: () => import('pages/ErrorNotFound.vue'),
+    },
+    {
+        path: '/template', component: () => import('pages/front/template/index.vue')
+    },
+)
 
 
 export default routes;

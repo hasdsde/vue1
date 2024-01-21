@@ -303,13 +303,17 @@ function handleUpdateAuthority(id: number) {
 
 function updateAuthority() {
   api.post("/roleAuthority/" + currentId.value, currentAuthorities.value).then((res: BaseApi) => {
-    CommonSuccess(null)
+    if (res.code == 200) {
+      CommonSuccess(null)
+    }
   })
 }
 
 function updateMenu(id: number) {
   api.post("/roleMenu/" + currentId.value, currentMenus.value).then((res: BaseApi) => {
-    CommonSuccess(null)
+    if (res.code == 200) {
+      CommonSuccess(null)
+    }
   })
 }
 

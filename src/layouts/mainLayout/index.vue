@@ -7,7 +7,12 @@
         <q-toolbar-title>
           DD-Code管理系统
         </q-toolbar-title>
-        <div>Quasar v{{ $q.version }}</div>
+        <div>
+          <span class="q-mr-md">
+            用户： {{ userInfo.nickName }}
+          </span>
+          <q-btn icon="logout" size="sm" color="red" @click="handleLogout"/>
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -48,6 +53,7 @@ const menus: any = ref([])
 const leftDrawerOpen = ref(true)
 const link: any = ref('')
 const route = useRoute()
+const userInfo = ref({nickName: ""})
 
 // 收起侧栏
 function toggleLeftDrawer() {
@@ -73,8 +79,18 @@ function handleCardExpand(name: any) {
   }
 }())
 
+function getUserInfo() {
+  userInfo.value = JSON.parse(localStorage.getItem("userInfo") as string)
+}
+
+function handleLogout() {
+  localStorage.clear()
+  location.href = "/#/login"
+}
+
 // 获取远程Menu
 loadMenu()
+getUserInfo()
 
 function loadMenu() {
   if (localStorage.getItem("parentMenu") != null && localStorage.getItem("childrenMenu") != null) {

@@ -34,7 +34,7 @@ export default boot(({app}) => {
     // 请求拦截器
     base.interceptors.request.use((config) => {
         if (localStorage.getItem('token') == null) {
-            window.location.href = "/login"
+            window.location.href = "/#/login"
         }
         config.headers.set("token", localStorage.getItem('token'))
         return config;
@@ -43,6 +43,9 @@ export default boot(({app}) => {
     // 响应拦截器
     base.interceptors.response.use((response: AxiosResponse) => {
         if (response.status == 200) {
+            if (response.data.code != 200) {
+                CommonFail("错误码: " + response.data.code + " " + response.data.msg)
+            }
             return response.data
             // 如果再多一层 data 可能会导致某些 res 为空
         } else {

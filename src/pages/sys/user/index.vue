@@ -59,9 +59,9 @@
             {{ getRoleNameById(props.row.roleId) }}
           </q-td>
         </template>
-        <template v-slot:body-cell-jobId="props">
+        <template v-slot:body-cell-deptId="props">
           <q-td :props="props">
-            {{ getDeptNameById(props.row.jobId) }}
+            {{ getDeptNameById(props.row.deptId) }}
           </q-td>
         </template>
         <template v-slot:body-cell-updatedAt="props">
@@ -116,7 +116,7 @@
                     :options="roles"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
-          <q-select v-model="saveForm.jobId" label="部门" placeholder="部门" clearable emit-value map-options
+          <q-select v-model="saveForm.deptId" label="部门" placeholder="部门" clearable emit-value map-options
                     option-value="id" option-label="name"
                     :options="depts"/>
         </q-card-section>
@@ -162,7 +162,7 @@ const columns: any = [
   {"name": "email", "align": "center", "required": true, "sortable": true, "label": "邮箱", "field": "email"},
   {"name": "phone", "align": "center", "required": true, "sortable": true, "label": "手机号", "field": "phone"},
   {"name": "sex", "align": "center", "required": true, "sortable": true, "label": "性别", "field": "sex"},
-  {"name": "jobId", "align": "center", "required": true, "sortable": true, "label": "部门", "field": "jobId"},
+  {"name": "deptId", "align": "center", "required": true, "sortable": true, "label": "部门", "field": "jobId"},
   {"name": "roleId", "align": "center", "required": true, "sortable": true, "label": "角色", "field": "roleId"},
   {"name": "comment", "align": "center", "required": true, "sortable": true, "label": "备注", "field": "comment"},
   {
@@ -197,7 +197,7 @@ const saveForm: any = ref({
   "comment": "",
   "roleId": "",
   "email": "",
-  "jobId": "",
+  "deptId": "",
   "nickName": "",
   "password": "",
   "phone": "",

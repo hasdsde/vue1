@@ -98,8 +98,130 @@
 import {ref} from "vue"
 import {ResetForm} from "components/utils"
 
-const rows :any = ref([{"avatar":"avatar0","comment":"comment0","createdAt":"createdAt0","deletedAt":"deletedAt0","email":"email0","id":"id0","jobId":"jobId0","nickName":"nickName0","password":"password0","phone":"phone0","sex":"sex0","updatedAt":"updatedAt0","userId":"userId0","userName":"userName0"},{"avatar":"avatar1","comment":"comment1","createdAt":"createdAt1","deletedAt":"deletedAt1","email":"email1","id":"id1","jobId":"jobId1","nickName":"nickName1","password":"password1","phone":"phone1","sex":"sex1","updatedAt":"updatedAt1","userId":"userId1","userName":"userName1"}]);
-const columns:any = [{"name":"avatar","align":"center","required":true,"sortable":true,"label":"头像","field":"avatar"},{"name":"comment","align":"center","required":true,"sortable":true,"label":"备注","field":"comment"},{"name":"createdAt","align":"center","required":true,"sortable":true,"label":"创建时间","field":"createdAt"},{"name":"deletedAt","align":"center","required":true,"sortable":true,"label":"删除时间","field":"deletedAt"},{"name":"email","align":"center","required":true,"sortable":true,"label":"邮箱","field":"email"},{"name":"id","align":"center","required":true,"sortable":true,"label":"主键","field":"id"},{"name":"jobId","align":"center","required":true,"sortable":true,"label":"岗位id","field":"jobId"},{"name":"nickName","align":"center","required":true,"sortable":true,"label":"显示名称","field":"nickName"},{"name":"password","align":"center","required":true,"sortable":true,"label":"密码","field":"password"},{"name":"phone","align":"center","required":true,"sortable":true,"label":"手机号","field":"phone"},{"name":"sex","align":"center","required":true,"sortable":true,"label":"性别 0-未知 1男 2女","field":"sex"},{"name":"updatedAt","align":"center","required":true,"sortable":true,"label":"更新时间","field":"updatedAt"},{"name":"userId","align":"center","required":true,"sortable":true,"label":"登录用id","field":"userId"},{"name":"userName","align":"center","required":true,"sortable":true,"label":"登录名","field":"userName"}];
+const rows: any = ref([
+  {
+    "avatar": "avatar0",
+    "comment": "comment0",
+    "createdAt": "createdAt0",
+    "deletedAt": "deletedAt0",
+    "email": "email0",
+    "id": "id0",
+    "jobId": "jobId0",
+    "nickName": "nickName0",
+    "password": "password0",
+    "phone": "phone0",
+    "sex": "sex0",
+    "updatedAt": "updatedAt0",
+    "userId": "userId0",
+    "userName": "userName0"
+  }, {
+    "avatar": "avatar1",
+    "comment": "comment1",
+    "createdAt": "createdAt1",
+    "deletedAt": "deletedAt1",
+    "email": "email1",
+    "id": "id1",
+    "jobId": "jobId1",
+    "nickName": "nickName1",
+    "password": "password1",
+    "phone": "phone1",
+    "sex": "sex1",
+    "updatedAt": "updatedAt1",
+    "userId": "userId1",
+    "userName": "userName1"
+  }]);
+const columns: any = [{
+  "name": "avatar",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "头像",
+  "field": "avatar"
+}, {
+  "name": "comment",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "备注",
+  "field": "comment"
+}, {
+  "name": "createdAt",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "创建时间",
+  "field": "createdAt"
+}, {
+  "name": "deletedAt",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "删除时间",
+  "field": "deletedAt"
+}, {
+  "name": "email",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "邮箱",
+  "field": "email"
+}, {
+  "name": "id",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "主键",
+  "field": "id"
+}, {
+  "name": "jobId",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "岗位id",
+  "field": "jobId"
+}, {
+  "name": "nickName",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "显示名称",
+  "field": "nickName"
+}, {
+  "name": "password",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "密码",
+  "field": "password"
+}, {
+  "name": "phone",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "手机号",
+  "field": "phone"
+}, {
+  "name": "sex",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "性别 0-未知 1男 2女",
+  "field": "sex"
+}, {
+  "name": "updatedAt",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "更新时间",
+  "field": "updatedAt"
+}, {
+  "name": "userId",
+  "align": "center",
+  "required": true,
+  "sortable": true,
+  "label": "登录用id",
+  "field": "userId"
+}, {"name": "userName", "align": "center", "required": true, "sortable": true, "label": "登录名", "field": "userName"}];
 const saveDialog: any = ref(false);
 const selected: any = ref([]);
 const saveForm: any = ref({

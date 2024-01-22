@@ -43,7 +43,7 @@ export default boot(({app}) => {
     // 响应拦截器
     base.interceptors.response.use((response: AxiosResponse) => {
         if (response.status == 200) {
-            if (response.data.code != 200) {
+            if (response.data.code != null && response.data.code != 200) {
                 CommonFail("错误码: " + response.data.code + " " + response.data.msg)
             }
             return response.data

@@ -154,7 +154,7 @@ function handleTablesUpdate(table: any) {
       name: key,
       align: 'center',
       required: true,
-      sortable: true,
+      sortable: false,
       label: table.properties[key].description == null ? key : table.properties[key].description,
       field: key,
     })

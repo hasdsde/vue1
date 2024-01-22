@@ -10,6 +10,7 @@ const routes: RouteRecordRaw[] = [
             {path: '/server/schedule', component: () => import('pages/server/schedule/index.vue')},
             {path: '/server/log', component: () => import('pages/server/log/index.vue')},
             {path: '/server/data', component: () => import('pages/server/data/index.vue')},
+            {path: '/server/system', component: () => import('pages/server/system/index.vue')},
             {path: '/front/table', component: () => import('pages/front/table/index.vue')},
             {path: '/front/func', component: () => import('pages/front/func/index.vue')},
             {path: '/front/icon', component: () => import('pages/front/icon/index.vue')},

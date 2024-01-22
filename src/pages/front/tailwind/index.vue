@@ -261,8 +261,8 @@
         <q-btn icon="close" flat round dense v-close-popup/>
       </q-card-section>
       <q-card-section class=" justify-around flex ">
-        <div class="flex w-1/6 content-center justify-around">
-          <q-input filled v-model="currentDivName" readonly dense label="Filled" class="w-fit q-mr-sm"/>
+        <div class="flex w-1/6 content-center justify-between q-pr-md">
+          <q-input filled v-model="currentDivName" readonly dense label="Filled" class="w-2/5 q-mr-sm"/>
           <q-btn color="primary" icon="autorenew" label="更换" class="" @click="divNamDialog = true"/>
           <q-btn color="primary" icon="add" label="属性" outline class="">
             <q-menu>

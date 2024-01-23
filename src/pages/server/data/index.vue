@@ -119,6 +119,8 @@ function loadChart1() {
       data.push(item[sqlCard.value])
     })
     loadSqlChart(yAxis, data)
+  }).catch((error) => {
+    window.open("http://localhost:8080/druid/login.html")
   })
 }
 

@@ -12,8 +12,13 @@
                :pagination="{rowsPerPage:0}"
                row-key="id" class="">
         <template v-slot:top="prop">
-          <q-input filled="" dense="" label="搜索内容" class="q-mr-md"></q-input>
-          <q-btn flat="" icon="search" color="primary" class=""></q-btn>
+          <q-input filled="" dense="" label="名称" class="q-mr-md" v-model="searchForm.name"></q-input>
+          <q-input filled="" dense="" label="描述" class="q-mr-md" v-model="searchForm.description"></q-input>
+          <q-select filled="" dense="" label="类型" v-model="searchForm.type" emit-value map-options
+                    class="w-[200px] q-mr-md"
+                    :options="[{label:'前端',value:'1'},{label:'后端',value:'2'}]"></q-select>
+          <q-btn flat="" icon="search" color="primary" class="" @click="loadPage"></q-btn>
+          <q-btn flat icon="restart_alt" color="red" @click="()=>{ResetForm(searchForm);loadPage();}"></q-btn>
         </template>
         <template v-slot:body-cell-type="props">
           <q-td :props="props">
@@ -183,6 +188,11 @@ const saveForm: any = ref({
   "name": "",
   "type": "",
 });
+const searchForm = ref({
+  name: "",
+  type: "",
+  description: "",
+})
 const dialogTitle = ref("新增");
 const page = ref({
   currentPage: 1,
@@ -192,7 +202,7 @@ const page = ref({
 loadPage()
 
 function loadPage() {
-  api.get("/authority/page", {params: page.value}).then((res: BaseApi) => {
+  api.get("/authority/page", {params: {...page.value, ...searchForm.value}}).then((res: BaseApi) => {
     rows.value = res.data.records
     page.value.total = res.data.total
   })

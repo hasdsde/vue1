@@ -7,8 +7,11 @@
       <q-table :rows="rows" :columns="columns" hide-pagination="" v-model:selected="selected" selection="multiple"
                row-key="id" class="" :pagination="{rowsPerPage:0}">
         <template v-slot:top="prop">
-          <q-input filled="" dense="" label="搜索内容" class="q-mr-md"></q-input>
-          <q-btn flat="" icon="search" color="primary" class=""></q-btn>
+          <q-input filled="" dense="" label="用户名" class="q-mr-md" v-model="searchForm.userName"></q-input>
+          <q-input filled="" dense="" label="方法名" class="q-mr-md" v-model="searchForm.methodName"></q-input>
+          <q-input filled="" dense="" label="权限名" class="q-mr-md" v-model="searchForm.authorityName"></q-input>
+          <q-btn flat icon="search" color="primary" class="" @click="loadPage"></q-btn>
+          <q-btn flat icon="restart_alt" color="red" @click="()=>{ResetForm(searchForm);loadPage();}"></q-btn>
         </template>
         <template v-slot:bottom="">
           <q-space></q-space>
@@ -63,6 +66,7 @@
 <script setup lang="ts">
 import {ref} from "vue"
 import {api} from "boot/axios";
+import {ResetForm} from "components/utils";
 
 const rows: any = ref([]);
 const columns: any = [
@@ -122,10 +126,15 @@ const page = ref({
   pageSize: 15,
   total: 1
 });
+const searchForm = ref({
+  userName: "",
+  methodName: "",
+  authorityName: "",
+})
 loadPage()
 
 function loadPage() {
-  api.get("/log/page", {params: page.value}).then((res: any) => {
+  api.get("/log/page", {params: {...page.value, ...searchForm.value}}).then((res: any) => {
     rows.value = res.data.records
     page.value.total = res.data.total
   })

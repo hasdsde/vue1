@@ -11,8 +11,10 @@
       <q-table :rows="rows" :columns="columns" hide-pagination="" v-model:selected="selected" selection="multiple"
                row-key="id" class="">
         <template v-slot:top="prop">
-          <q-input filled="" dense="" label="搜索内容" class="q-mr-md"></q-input>
-          <q-btn flat="" icon="search" color="primary" class=""></q-btn>
+          <q-input filled="" dense="" label="名称" class="q-mr-md" v-model="searchForm.name"></q-input>
+          <q-input filled="" dense="" label="描述" class="q-mr-md" v-model="searchForm.description"></q-input>
+          <q-btn flat icon="search" color="primary" class="" @click="loadPage"></q-btn>
+          <q-btn flat icon="restart_alt" color="red" @click="()=>{ResetForm(searchForm);loadPage();}"></q-btn>
         </template>
         <template v-slot:bottom="">
           <span v-if="selected.length > 0">已选择{{ selected.length }}项</span>
@@ -235,6 +237,10 @@ const currentMenus = ref([])
 const authorityDialog = ref(false)
 const menuDialog = ref(false)
 const currentId = ref()
+const searchForm = ref({
+  "description": "",
+  "name": "",
+})
 
 const dialogTitle = ref("新增");
 const page = ref({
@@ -246,7 +252,7 @@ loadPage()
 loadData()
 
 function loadPage() {
-  api.get("/role/page", {params: page.value}).then((res: BaseApi) => {
+  api.get("/role/page", {params: {...page.value, ...searchForm.value}}).then((res: BaseApi) => {
     rows.value = res.data.records
     page.value.total = res.data.total
   })

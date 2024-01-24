@@ -5,7 +5,7 @@
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer"/>
         <q-toolbar-title>
-          DD-Code管理系统
+          加盟商户管理系统
         </q-toolbar-title>
         <div>
           <span class="q-mr-md">

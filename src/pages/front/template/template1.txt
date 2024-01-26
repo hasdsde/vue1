@@ -11,8 +11,10 @@
       <q-table :rows="rows" :columns="columns" hide-pagination="" v-model:selected="selected" selection="multiple"
                row-key="id" class="">
         <template v-slot:top="prop">
-          <q-input filled="" dense="" label="搜索内容" class="q-mr-md"></q-input>
-          <q-btn flat="" icon="search" color="primary" class=""></q-btn>
+          <q-input filled="" dense="" label="品牌名" class="q-mr-md" v-model="queryForm.name"></q-input>
+          <q-input filled="" dense="" label="公司名" class="q-mr-md" v-model="queryForm.companyName"></q-input>
+          <q-btn flat="" icon="search" color="primary" class="" @click="loadPage"></q-btn>
+          <q-btn flat icon="restart_alt" color="red" @click="()=>{ResetForm(queryForm);loadPage();}"></q-btn>
         </template>
         <template v-slot:bottom="">
           <span v-if="selected.length > 0">已选择{{ selected.length }}项</span>
@@ -46,7 +48,25 @@
           <q-pagination v-model="page.currentPage" :max="Math.ceil(page.total/page.pageSize)" input=""
                         @update:model-value="loadPage">
           </q-pagination>
+        </template>
+        <template v-slot:body-cell-updatedAt="props">
+          <q-td :props="props">
+            {{ GetHumanDate(props.row.updatedAt) }}
+          </q-td>
+        </template>
 
+        <template v-slot:body-cell-createdAt="props">
+          <q-td :props="props">
+            {{ GetHumanDate(props.row.createdAt) }}
+          </q-td>
+        </template>
+
+        <template v-slot:body-cell-deletedAt="props">
+          <q-td :props="props">
+            {{ GetHumanDate(props.row.deletedAt) }}
+            <q-btn v-if="props.row.deletedAt != null" flat size="md" style="color: #FF0080" label="恢复"
+                   @click="recover(props.row.id)"/>
+          </q-td>
         </template>
       </q-table>
 
@@ -58,28 +78,61 @@
         <q-card-section class="row items-center">
           <div class="text-h6">{{ dialogTitle }}</div>
           <q-space class=""></q-space>
-          <q-btn icon="close" flat="" class=""></q-btn>
+          <q-btn icon="close"/>
         </q-card-section>
 
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.description" label="描述" placeholder="描述">
-          </q-input>
+          <q-input v-model="saveForm.name" label="品牌名" placeholder="品牌名"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.name" label="名称" placeholder="名称">
-          </q-input>
+          <q-input v-model="saveForm.userId" label="用户id" placeholder="用户id"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
-          <q-select :options="[{label:'前端',value:1},{label:'后端',value:2}]" v-model="saveForm.type" clearable=""
-                    label="类型" placeholder="类型">
-
-          </q-select>
+          <q-input v-model="saveForm.advantage" label="优势" placeholder="优势"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.sortId" label="分类id" placeholder="分类id"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.avatarUrl" label="头图" placeholder="头图"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.bodyUrl" label="主题图片" placeholder="主题图片"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.claimCheck" label="审核" placeholder="审核"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.claimExecrise" label="培训" placeholder="培训"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.claimLicens" label="许可条款" placeholder="许可条款"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.claimMoney" label="需求金额" placeholder="需求金额"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.claimShop" label="店面" placeholder="店面"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.claimStaff" label="员工要求" placeholder="员工要求"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.companyAddress" label="公司地址" placeholder="公司地址"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.companyName" label="公司名" placeholder="公司名"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.flow" label="流程" placeholder="流程"/>
+        </q-card-section>
+        <q-card-section class="q-pa-md">
+          <q-input v-model="saveForm.mode" label="经营模式" placeholder="经营模式"/>
         </q-card-section>
 
         <q-card-section class="text-primary">
           <div class="row justify-between">
             <div class="col">
-              <!-- <q-btn color="primary" class="text-left" label="取消" v-close-popup @click="handleCancel" /> -->
               <q-btn flat="" color="red" label="重置" @click="ResetForm(saveForm)">
               </q-btn>
             </div>
@@ -95,26 +148,29 @@
 
 </template>
 <script setup lang="ts">
-import {ref} from "vue"
-import {ResetForm} from "components/utils"
+import {onMounted, ref} from "vue"
+import {GetHumanDate, ResetForm} from "components/utils"
+import {api} from "boot/axios";
+import {BaseApi} from "components/models";
+import {CommonSuccess, CommonWarn, DialogConfirm} from "components/dialog";
 
-const rows :any = ref([{"authorityName":"authorityName0","createdAt":"createdAt0","id":"id0","info":"info0","methodName":"methodName0","userId":"userId0","userName":"userName0"},{"authorityName":"authorityName1","createdAt":"createdAt1","id":"id1","info":"info1","methodName":"methodName1","userId":"userId1","userName":"userName1"}]);
-const columns:any = [{"name":"authorityName","align":"center","required":true,"sortable":false,"label":"权限名","field":"authorityName"},{"name":"createdAt","align":"center","required":true,"sortable":false,"label":"创建时间","field":"createdAt"},{"name":"id","align":"center","required":true,"sortable":false,"label":"id","field":"id"},{"name":"info","align":"center","required":true,"sortable":false,"label":"详细信息","field":"info"},{"name":"methodName","align":"center","required":true,"sortable":false,"label":"方法名","field":"methodName"},{"name":"userId","align":"center","required":true,"sortable":false,"label":"用户id","field":"userId"},{"name":"userName","align":"center","required":true,"sortable":false,"label":"用户名","field":"userName"}];
+const baseUrl = "/brand"
+const columns: any = [{"name": "name", "align": "center", "required": true, "sortable": false, "label": "品牌名", "field": "name"}, {"name": "sortId", "align": "center", "required": true, "sortable": false, "label": "分类id", "field": "sortId"}, {"name": "userId", "align": "center", "required": true, "sortable": false, "label": "用户id", "field": "userId"}, {"name": "avatarUrl", "align": "center", "required": true, "sortable": false, "label": "头图", "field": "avatarUrl"}, {"name": "companyName", "align": "center", "required": true, "sortable": false, "label": "公司名", "field": "companyName"}, {"name": "mode", "align": "center", "required": true, "sortable": false, "label": "经营模式", "field": "mode"}, {"name": "flow", "align": "center", "required": true, "sortable": false, "label": "流程", "field": "flow"}, {"name": "advantage", "align": "center", "required": true, "sortable": false, "label": "优势", "field": "advantage"}, {"name": "bodyUrl", "align": "center", "required": true, "sortable": false, "label": "主题图片", "field": "bodyUrl"}, {"name": "claimCheck", "align": "center", "required": true, "sortable": false, "label": "审核", "field": "claimCheck"}, {"name": "claimExecrise", "align": "center", "required": true, "sortable": false, "label": "培训", "field": "claimExecrise"}, {"name": "claimLicens", "align": "center", "required": true, "sortable": false, "label": "许可条款", "field": "claimLicens"}, {"name": "claimMoney", "align": "center", "required": true, "sortable": false, "label": "需求金额", "field": "claimMoney"}, {"name": "claimShop", "align": "center", "required": true, "sortable": false, "label": "店面", "field": "claimShop"}, {"name": "claimStaff", "align": "center", "required": true, "sortable": false, "label": "员工要求", "field": "claimStaff"}, {"name": "companyAddress", "align": "center", "required": true, "sortable": false, "label": "公司地址", "field": "companyAddress"}, {"name": "createdAt", "align": "center", "required": true, "sortable": false, "label": "createdAt", "field": "createdAt"}, {"name": "deletedAt", "align": "center", "required": true, "sortable": false, "label": "deletedAt", "field": "deletedAt"}, {"name": "updatedAt", "align": "center", "required": true, "sortable": false, "label": "updatedAt", "field": "updatedAt"}];
+const rows: any = ref([]);
 const saveDialog: any = ref(false);
 const selected: any = ref([]);
-const saveForm: any = ref({
-  "description": "",
-  "id": "",
-  "name": "",
-  "type": "",
-});
+const saveForm: any = ref({"id": "", "userId": "", "advantage": "", "sortId": "", "name": "", "avatarUrl": "", "bodyUrl": "", "claimCheck": "", "claimExecrise": "", "claimLicens": "", "claimMoney": "", "claimShop": "", "claimStaff": "", "companyAddress": "", "companyName": "", "flow": "", "mode": ""});
 const dialogTitle = ref("新增");
-
 const page = ref({
   currentPage: 1,
   pageSize: 15,
   total: 1
 });
+const queryForm: any = ref({
+  "name": "",
+  "companyName": ""
+});
+
 
 function loadPage() {
 
@@ -125,12 +181,9 @@ function handleUpdate() {
 }
 
 function handleNew() {
-  saveDialog.value = true
-}
-
-function handleReset() {
 
 }
+
 
 function save() {
 
@@ -144,4 +197,7 @@ function handleDelete() {
 
 }
 
+function recover(id: number) {
+
+}
 </script>

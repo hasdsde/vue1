@@ -1,5 +1,5 @@
 <template>
-  brand.vue
+  brand a.vue
 </template>
 <script setup lang="ts">
 

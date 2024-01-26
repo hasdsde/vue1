@@ -12,7 +12,6 @@
                row-key="id" class="">
         <template v-slot:top="prop">
           <q-input filled="" dense="" label="品牌名" class="q-mr-md" v-model="queryForm.name"></q-input>
-          <q-input filled="" dense="" label="公司名" class="q-mr-md" v-model="queryForm.companyName"></q-input>
           <q-btn flat="" icon="search" color="primary" class="" @click="loadPage"></q-btn>
           <q-btn flat icon="restart_alt" color="red" @click="()=>{ResetForm(queryForm);loadPage();}"></q-btn>
         </template>
@@ -155,11 +154,162 @@ import {BaseApi} from "components/models";
 import {CommonSuccess, CommonWarn, DialogConfirm} from "components/dialog";
 
 const baseUrl = "/brand"
-const columns: any = [{"name": "name", "align": "center", "required": true, "sortable": false, "label": "品牌名", "field": "name"}, {"name": "sortId", "align": "center", "required": true, "sortable": false, "label": "分类id", "field": "sortId"}, {"name": "userId", "align": "center", "required": true, "sortable": false, "label": "用户id", "field": "userId"}, {"name": "avatarUrl", "align": "center", "required": true, "sortable": false, "label": "头图", "field": "avatarUrl"}, {"name": "companyName", "align": "center", "required": true, "sortable": false, "label": "公司名", "field": "companyName"}, {"name": "mode", "align": "center", "required": true, "sortable": false, "label": "经营模式", "field": "mode"}, {"name": "flow", "align": "center", "required": true, "sortable": false, "label": "流程", "field": "flow"}, {"name": "advantage", "align": "center", "required": true, "sortable": false, "label": "优势", "field": "advantage"}, {"name": "bodyUrl", "align": "center", "required": true, "sortable": false, "label": "主题图片", "field": "bodyUrl"}, {"name": "claimCheck", "align": "center", "required": true, "sortable": false, "label": "审核", "field": "claimCheck"}, {"name": "claimExecrise", "align": "center", "required": true, "sortable": false, "label": "培训", "field": "claimExecrise"}, {"name": "claimLicens", "align": "center", "required": true, "sortable": false, "label": "许可条款", "field": "claimLicens"}, {"name": "claimMoney", "align": "center", "required": true, "sortable": false, "label": "需求金额", "field": "claimMoney"}, {"name": "claimShop", "align": "center", "required": true, "sortable": false, "label": "店面", "field": "claimShop"}, {"name": "claimStaff", "align": "center", "required": true, "sortable": false, "label": "员工要求", "field": "claimStaff"}, {"name": "companyAddress", "align": "center", "required": true, "sortable": false, "label": "公司地址", "field": "companyAddress"}, {"name": "createdAt", "align": "center", "required": true, "sortable": false, "label": "createdAt", "field": "createdAt"}, {"name": "deletedAt", "align": "center", "required": true, "sortable": false, "label": "deletedAt", "field": "deletedAt"}, {"name": "updatedAt", "align": "center", "required": true, "sortable": false, "label": "updatedAt", "field": "updatedAt"}];
+const columns: any = [{
+  "name": "name",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "品牌名",
+  "field": "name"
+}, {
+  "name": "sortId",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "分类id",
+  "field": "sortId"
+}, {
+  "name": "userId",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "用户id",
+  "field": "userId"
+}, {
+  "name": "avatarUrl",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "头图",
+  "field": "avatarUrl"
+}, {
+  "name": "companyName",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "公司名",
+  "field": "companyName"
+}, {
+  "name": "mode",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "经营模式",
+  "field": "mode"
+}, {
+  "name": "flow",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "流程",
+  "field": "flow"
+}, {
+  "name": "advantage",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "优势",
+  "field": "advantage"
+}, {
+  "name": "bodyUrl",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "主题图片",
+  "field": "bodyUrl"
+}, {
+  "name": "claimCheck",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "审核",
+  "field": "claimCheck"
+}, {
+  "name": "claimExecrise",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "培训",
+  "field": "claimExecrise"
+}, {
+  "name": "claimLicens",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "许可条款",
+  "field": "claimLicens"
+}, {
+  "name": "claimMoney",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "需求金额",
+  "field": "claimMoney"
+}, {
+  "name": "claimShop",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "店面",
+  "field": "claimShop"
+}, {
+  "name": "claimStaff",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "员工要求",
+  "field": "claimStaff"
+}, {
+  "name": "companyAddress",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "公司地址",
+  "field": "companyAddress"
+}, {
+  "name": "createdAt",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "createdAt",
+  "field": "createdAt"
+}, {
+  "name": "deletedAt",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "deletedAt",
+  "field": "deletedAt"
+}, {
+  "name": "updatedAt",
+  "align": "center",
+  "required": true,
+  "sortable": false,
+  "label": "updatedAt",
+  "field": "updatedAt"
+}];
 const rows: any = ref([]);
 const saveDialog: any = ref(false);
 const selected: any = ref([]);
-const saveForm: any = ref({"id": "", "userId": "", "advantage": "", "sortId": "", "name": "", "avatarUrl": "", "bodyUrl": "", "claimCheck": "", "claimExecrise": "", "claimLicens": "", "claimMoney": "", "claimShop": "", "claimStaff": "", "companyAddress": "", "companyName": "", "flow": "", "mode": ""});
+const saveForm: any = ref({
+  "id": "",
+  "userId": "",
+  "advantage": "",
+  "sortId": "",
+  "name": "",
+  "avatarUrl": "",
+  "bodyUrl": "",
+  "claimCheck": "",
+  "claimExecrise": "",
+  "claimLicens": "",
+  "claimMoney": "",
+  "claimShop": "",
+  "claimStaff": "",
+  "companyAddress": "",
+  "companyName": "",
+  "flow": "",
+  "mode": ""
+});
 const dialogTitle = ref("新增");
 const page = ref({
   currentPage: 1,
@@ -168,7 +318,6 @@ const page = ref({
 });
 const queryForm: any = ref({
   "name": "",
-  "companyName": ""
 });
 
 onMounted(() => {

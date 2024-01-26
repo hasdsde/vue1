@@ -12,14 +12,14 @@
                         class="rounded-borders">
         <q-card>
           <q-card-section class="q-pa-sm">
-            <q-btn flat color="primary" class="q-mr-md" label="新增列" @click="building"/>
-            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="building"/>
+            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="handleNewTableLine"/>
             <q-btn flat color="primary" class="q-mr-md" label="保存表单到剪切板" @click="handleTableForm"/>
             <q-btn flat color="primary" class="q-mr-md" label="生成示例数据" @click="handleTableFormData"/>
           </q-card-section>
           <q-separator/>
           <q-card-section class="q-pb-none">
             <div class="row justify-center">
+              <q-space class="w-[200px]"/>
               <div class="col text-subtitle1" v-for="item in tableList">
                 {{ item.label }}
                 ({{ item.name }})
@@ -29,6 +29,12 @@
 
           <q-card-section class="q-pt-none">
             <div class="row justify-between" v-for="(table, tableKey) in tableForm" :key="tableKey">
+              <div class="q-mt-md w-[200px] flex justify-around">
+                <q-btn flat round color="grey" dense  icon="vertical_align_top"  @click="handleTop(tableForm,tableKey)"/>
+                <q-btn flat round color="grey" dense  icon="arrow_upward"  @click="handleUp(tableForm,tableKey)"/>
+                <q-btn flat round color="grey" dense  icon="arrow_downward"  @click="handleDown(tableForm,tableKey)"/>
+                <q-btn flat round color="red" dense  icon="close"  @click="handleDelete(tableForm,tableKey)"/>
+              </div>
               <div class="col q-pr-sm " v-for="(item, itemKey) in tableList">
                 <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense v-model="table[item.name]"/>
                 <q-select filled v-if="item.type === 'select'" :options="item.options" class="q-mt-md" dense
@@ -51,12 +57,13 @@
         <q-separator/>
         <q-card>
           <q-card-section class="q-pa-sm">
-            <q-btn flat color="primary" class="q-mr-md" label="新增列" @click="building"/>
-            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="building"/>
+            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="handleNewQueryLine"/>
             <q-btn flat color="primary" class="q-mr-md" label="保存表单到剪切板" @click="handleQueryForm"/>
+            <q-btn flat color="primary" class="q-mr-md" label="复制分页变量Page" @click="handleCopyPage"/>
           </q-card-section>
           <q-card-section class="q-pb-none">
             <div class="row justify-center">
+              <q-space class="w-[200px]"/>
               <div class="col text-subtitle1" v-for="item in queryList">
                 {{ item.label }}
                 ({{ item.name }})
@@ -65,6 +72,12 @@
           </q-card-section>
           <q-card-section class="q-pt-none">
             <div class="row justify-between" v-for="(form, formKey) in queryForm" :key="formKey">
+              <div class="q-mt-md w-[200px] flex justify-around">
+                <q-btn flat round color="grey" dense  icon="vertical_align_top"  @click="handleTop(queryForm,formKey)"/>
+                <q-btn flat round color="grey" dense  icon="arrow_upward"  @click="handleUp(queryForm,formKey)"/>
+                <q-btn flat round color="grey" dense  icon="arrow_downward"  @click="handleDown(queryForm,formKey)"/>
+                <q-btn flat round color="red" dense  icon="close"  @click="handleDelete(queryForm,formKey)"/>
+              </div>
               <div class="col q-pr-sm " v-for="(item, itemKey) in queryList">
                 <q-input filled class="q-mt-md" dense v-model="form[item.name]"/>
               </div>
@@ -80,13 +93,13 @@
         <q-separator/>
         <q-card>
           <q-card-section class="q-pa-sm">
-            <q-btn flat color="primary" class="q-mr-md" label="新增列" @click="building"/>
-            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="building"/>
+            <q-btn flat color="primary" class="q-mr-md" label="新增行" @click="handleNewSaveLine"/>
             <q-btn flat color="primary" class="q-mr-md" label="保存表单到剪切板" @click="handleSaveForm"/>
             <q-btn flat color="primary" class="q-mr-md" label="保存表单dialog到剪切板" @click="handleSaveFormDialog"/>
           </q-card-section>
           <q-card-section class="q-pb-none">
             <div class="row justify-center">
+              <q-space class="w-[200px]"/>
               <div class="col text-subtitle1" v-for="item in saveList">
                 {{ item.label }}
                 ({{ item.name }})
@@ -96,6 +109,12 @@
 
           <q-card-section class="q-pt-none">
             <div class="row justify-between" v-for="(form, tableKey) in saveForm" :key="tableKey">
+              <div class="q-mt-md w-[200px] flex justify-around">
+                <q-btn flat round color="grey" dense  icon="vertical_align_top"  @click="handleTop(saveForm,tableKey)"/>
+                <q-btn flat round color="grey" dense  icon="arrow_upward"  @click="handleUp(saveForm,tableKey)"/>
+                <q-btn flat round color="grey" dense  icon="arrow_downward"  @click="handleDown(saveForm,tableKey)"/>
+                <q-btn flat round color="red" dense  icon="close"  @click="handleDelete(saveForm,tableKey)"/>
+              </div>
               <div class="col q-pr-sm " v-for="(item, itemKey) in saveList">
                 <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense v-model="form[item.name]"/>
                 <q-select filled v-if="item.type === 'select'" :options="item.options" class="q-mt-md" dense
@@ -184,7 +203,28 @@ function handleTablesUpdate(table: any) {
 function building() {
   CommonWarn("稍后开发")
 }
-
+function handleNewQueryLine(){
+  queryForm.value.public({
+    name:"",
+    default: "",
+  })
+}
+function handleNewSaveLine(){
+  saveForm.value.push({
+    name: "",
+    label: "",
+    type: "string",
+    placeholder: "",
+    rules: "",
+    readonly: false,
+    disable: false,
+    clearable: false,
+    new: true,
+    update: true,
+    option: [],
+    defaultValue: ""
+  })
+}
 //表格数据保存表单到剪切板
 function handleTableForm() {
   const code = JSON.stringify(toRaw(tableForm.value))
@@ -229,10 +269,51 @@ function handleSaveForm() {
     CopyToClickBoard("const " + val + ":any = ref(" + code + ");")
   })
 }
-
+function handleNewTableLine(){
+  tableForm.value.push({
+    name: "",
+    align: 'center',
+    required: true,
+    sortable: false,
+    label: "",
+    field: "",
+  })
+}
+function handleTop(form:any,tableKey:any){
+  const temp = form[tableKey]
+  form.splice(tableKey,1)
+  form.unshift(temp)
+}
+function handleUp(form:any,tableKey:any){
+  if (tableKey==0){
+    return
+  }
+  const temp =  form[tableKey-1]
+  form[tableKey-1] =form[tableKey]
+  form[tableKey] = temp
+}
+function handleDown(form:any,tableKey:any){
+  if (tableKey==form.length-1){
+    return
+  }
+  const temp =  form[tableKey+1]
+  form[tableKey+1] =form[tableKey]
+  form[tableKey] = temp
+}
+function  handleDelete(form:any,tableKey:any){
+  form.splice(tableKey,1)
+}
+function handleCopyPage(){
+  CopyToClickBoard(
+`const page = ref({
+  currentPage: 1,
+  pageSize: 15,
+  total: 1
+});`)
+}
 function handleSaveFormDialog() {
   DialogPrompt("输入", "变量名称", "saveForm").onOk((val: string) => {
-    let AllCode = `<q-card class="q-pa-sm">\n`
+    let AllCode = ``
     saveForm.value.forEach((item: any, index: any) => {
       let currentItem = `  <q-card-section class="q-pa-md"`
       if (item.new && !item.update) {
@@ -274,7 +355,6 @@ function handleSaveFormDialog() {
       currentItem += `  </q-card-section>\n`
       AllCode += currentItem
     })
-    AllCode += `</q-card>`
     CopyToClickBoard(AllCode)
   })
 }

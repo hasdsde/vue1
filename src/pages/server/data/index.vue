@@ -97,7 +97,7 @@ function loadSqlChart(yAxis: string[], data: string[]) {
     },
     series: [
       {
-        name: '2012',
+        name: sqlCard.value,
         type: 'bar',
         data: data
       }
@@ -159,7 +159,7 @@ function loadWebChart(yAxis: string[], data: string[]) {
     },
     series: [
       {
-        name: '2012',
+        name: webCard.value,
         type: 'bar',
         data: data
       }
@@ -214,7 +214,7 @@ function loadSessionChart(yAxis: string[], data: string[]) {
       sort: 'data'
     },
     yAxis: {
-      type: 'category',
+      type: sessionCard.value,
       data: yAxis
     },
     series: [

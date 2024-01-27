@@ -4,7 +4,6 @@
       <q-btn color="primary" label="刷新" icon="refresh" @click="loadPage" class="q-mr-md"></q-btn>
       <q-btn color="secondary" label="新增" icon="add" @click="handleNew" class="q-mr-md"></q-btn>
       <q-btn color="purple" label="修改" icon="update" @click="handleUpdate" class="q-mr-md"></q-btn>
-      <q-btn color="purple" label="标记删除" icon="delete" @click="handleDeleteSign" class="q-mr-md"></q-btn>
       <q-btn color="red" label="删除" icon="delete" @click="handleDelete" class="q-mr-md"></q-btn>
     </q-card>
     <q-card class="q-mt-md">
@@ -12,14 +11,6 @@
                :pagination="{rowsPerPage:0}"
                row-key="id" class="">
         <template v-slot:top="prop">
-          <q-input filled="" dense="" label="分类名" class="q-mr-md" v-model="queryForm.name"></q-input>
-          <q-select filled dense v-model="queryForm.parentId" label="父级" placeholder="父级" class="w-[200px]"
-                    :options="parentSort"
-                    map-options
-                    emit-value clearable
-                    option-label="name" option-value="id"/>
-          <q-btn flat="" icon="search" color="primary" class="" @click="loadPage"></q-btn>
-          <q-btn flat icon="restart_alt" color="red" @click="()=>{ResetForm(queryForm);loadPage();}"></q-btn>
         </template>
         <template v-slot:bottom="">
           <span v-if="selected.length > 0">已选择{{ selected.length }}项</span>
@@ -103,16 +94,12 @@
         </q-card-section>
 
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.name" label="分类名" placeholder="分类名"/>
+          <q-input v-model="saveForm.link" label="链接" placeholder="链接"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.icon" label="图标" placeholder="图标"/>
+          <q-input v-model="saveForm.url" label="url" placeholder="url"/>
         </q-card-section>
-        <q-card-section class="q-pa-md">
-          <q-select v-model="saveForm.parentId" label="父级" placeholder="父级" :options="parentSort" map-options
-                    emit-value clearable
-                    option-label="name" option-value="id"/>
-        </q-card-section>
+
         <q-card-section class="text-primary">
           <div class="row justify-between">
             <div class="col">
@@ -137,42 +124,34 @@ import {api} from "boot/axios";
 import {BaseApi} from "components/models";
 import {CommonSuccess, CommonWarn, DialogConfirm} from "components/dialog";
 
-const baseUrl = "/sort"
+const baseUrl = "/banner"
 const columns: any = [{
-  "name": "name", "align": "center", "required": true, "sortable": false, "label": "分类名", "field": "name"
-},
-  {
-    "name": "icon", "align": "center", "required": true, "sortable": false, "label": "图标", "field": "icon"
-  },
-  {
-    "name": "parentId", "align": "center", "required": true, "sortable": false, "label": "父级", "field": "parentId"
-  },
-  {
-    "name": "createdAt",
-    "align": "center",
-    "required": true,
-    "sortable": false,
-    "label": "创建时间",
-    "field": "createdAt"
-  }, {
-    "name": "updatedAt",
-    "align": "center",
-    "required": true,
-    "sortable": false,
-    "label": "修改时间",
-    "field": "updatedAt"
-  }, {
-    "name": "deletedAt",
-    "align": "center",
-    "required": true,
-    "sortable": false,
-    "label": "删除时间",
-    "field": "deletedAt"
-  }];
+  "name": "url",
+  "align": "center",
+  "required": false,
+  "sortable": false,
+  "label": "url",
+  "field": "url"
+}, {
+  "name": "link",
+  "align": "center",
+  "required": false,
+  "sortable": false,
+  "label": "链接",
+  "field": "link"
+}, {
+  "name": "createdAt",
+  "align": "center",
+  "required": false,
+  "sortable": false,
+  "label": "创建时间",
+  "field": "createdAt"
+}];
+
 const rows: any = ref([]);
 const saveDialog: any = ref(false);
 const selected: any = ref([]);
-const saveForm: any = ref({"name": "", "parentId": "", "icon": ""});
+const saveForm: any = ref({"link": "", "url": ""});
 const dialogTitle = ref("新增");
 const page = ref({
   currentPage: 1,
@@ -180,7 +159,7 @@ const page = ref({
   total: 1
 });
 const parentSort = ref([])
-const queryForm: any = ref({"name": "", "parentId": ""});
+const queryForm: any = ref();
 
 onMounted(() => {
   loadPage()
@@ -190,9 +169,6 @@ function loadPage() {
   api.get(baseUrl + "/page", {params: {...page.value, ...queryForm.value}}).then((res: BaseApi) => {
     rows.value = res.data.records
     page.value.total = res.data.total
-  })
-  api.get(baseUrl + "/all/parent").then((res: BaseApi) => {
-    parentSort.value = res.data
   })
 }
 

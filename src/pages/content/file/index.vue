@@ -3,11 +3,13 @@
     <q-card class="q-pa-md">
       <q-btn color="primary" label="刷新" icon="refresh" @click="loadPage" class="q-mr-md"></q-btn>
       <q-btn color="secondary" label="新增" icon="add" @click="handleNew" class="q-mr-md"></q-btn>
+      <q-btn color="secondary" label="上传" icon="upload" @click="handleUpload" class="q-mr-md"></q-btn>
       <q-btn color="purple" label="修改" icon="update" @click="handleUpdate" class="q-mr-md"></q-btn>
       <q-btn color="purple" label="标记删除" icon="delete" @click="handleDeleteSign" class="q-mr-md"></q-btn>
       <q-btn color="red" label="删除" icon="delete" @click="handleDelete" class="q-mr-md"></q-btn>
     </q-card>
     <q-card class="q-mt-md">
+      :pagination="{rowsPerPage:0}"
       <q-table :rows="rows" :columns="columns" hide-pagination="" v-model:selected="selected" selection="multiple"
                row-key="id" class="">
         <template v-slot:top="prop">
@@ -73,6 +75,16 @@
       <div class=""></div>
     </q-card>
 
+    <q-dialog v-model="uploadDialog" position="top">
+      <q-card>
+        <q-uploader
+            :factory="factoryFn"
+            auto-upload
+            multiple
+            style="max-width: 300px"
+        />
+      </q-card>
+    </q-dialog>
     <q-dialog v-model="saveDialog" position="right" full-height="" class="">
       <q-card class="q-pa-sm min-w-[400px]">
         <q-card-section class="row items-center">
@@ -120,6 +132,7 @@ import {GetHumanDate, ResetForm} from "components/utils"
 import {api} from "boot/axios";
 import {BaseApi} from "components/models";
 import {CommonSuccess, CommonWarn, DialogConfirm} from "components/dialog";
+import {QUploaderFactoryFn} from "quasar";
 
 const baseUrl = "/file"
 const columns: any = [{
@@ -132,19 +145,44 @@ const columns: any = [{
   "name": "url", "align": "center", "required": true, "sortable": false, "label": "URL", "field": "url"
 }, {
   "name": "md5", "align": "center", "required": true, "sortable": false, "label": "MD5", "field": "md5"
-}, {
-  "name": "format", "align": "center", "required": true, "sortable": false, "label": "格式", "field": "format"
-}, {
-  "name": "createdAt", "align": "center", "required": true, "sortable": false, "label": "创建时间", "field": "createdAt"
-}, {
-  "name": "updatedAt", "align": "center", "required": true, "sortable": false, "label": "修改时间", "field": "updatedAt"
-}, {
-  "name": "deletedAt", "align": "center", "required": true, "sortable": false, "label": "删除时间", "field": "deletedAt"
-}];
+},
+  {
+    "name": "format", "align": "center", "required": true, "sortable": false, "label": "格式", "field": "format"
+  },
+  {
+    "name": "userId", "align": "center", "required": true, "sortable": false, "label": "用户id", "field": "userId"
+  },
+  {
+    "name": "size", "align": "center", "required": true, "sortable": false, "label": "大小", "field": "size"
+  },
+  {
+    "name": "createdAt",
+    "align": "center",
+    "required": true,
+    "sortable": false,
+    "label": "创建时间",
+    "field": "createdAt"
+  },
+  {
+    "name": "updatedAt",
+    "align": "center",
+    "required": true,
+    "sortable": false,
+    "label": "修改时间",
+    "field": "updatedAt"
+  }, {
+    "name": "deletedAt",
+    "align": "center",
+    "required": true,
+    "sortable": false,
+    "label": "删除时间",
+    "field": "deletedAt"
+  }];
+const uploadDialog = ref(false)
 const rows: any = ref([]);
 const saveDialog: any = ref(false);
 const selected: any = ref([]);
-const saveForm: any = ref({"name": "", "md5": "", "path": "", "url": "", format: ""});
+const saveForm: any = ref({"name": "", "md5": "", "path": "", "url": "", format: "", "userId": "", "size": ""});
 const dialogTitle = ref("新增");
 const page = ref({
   currentPage: 1,
@@ -182,6 +220,19 @@ function handleNew() {
   saveDialog.value = true
 }
 
+function handleUpload() {
+  uploadDialog.value = true
+}
+
+function factoryFn(file: QUploaderFactoryFn) {
+  const data = new FormData
+  data.append("file", file[0])
+  api.post(baseUrl + '/upload', data).then((res: BaseApi) => {
+    if (res.code == 200) {
+      CommonSuccess("上传完成")
+    }
+  })
+}
 
 function save() {
   api.post(baseUrl, saveForm.value).then((res: BaseApi) => {

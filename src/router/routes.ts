@@ -28,6 +28,7 @@ const routes: RouteRecordRaw[] = [
             {path: '/content/brand', component: () => import('pages/content/brand/index.vue')},
             {path: '/content/sort', component: () => import('pages/content/sort/index.vue')},
             {path: '/content/file', component: () => import('pages/content/file/index.vue')},
+            {path: '/content/banner', component: () => import('pages/content/banner/index.vue')},
             //用户页
             {path: '/home', component: () => import('pages/user/home/index.vue')},
             {path: '/brand', component: () => import('pages/user/brand/index.vue')},

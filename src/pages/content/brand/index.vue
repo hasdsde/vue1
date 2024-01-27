@@ -9,6 +9,7 @@
     </q-card>
     <q-card class="q-mt-md">
       <q-table :rows="rows" :columns="columns" hide-pagination="" v-model:selected="selected" selection="multiple"
+               :pagination="{rowsPerPage:0}"
                :visible-columns="visibleColumns"
                row-key="id" class="">
         <template v-slot:top="prop">

@@ -9,11 +9,27 @@
     </q-card>
     <q-card class="q-mt-md">
       <q-table :rows="rows" :columns="columns" hide-pagination="" v-model:selected="selected" selection="multiple"
+               :visible-columns="visibleColumns"
                row-key="id" class="">
         <template v-slot:top="prop">
           <q-input filled="" dense="" label="品牌名" class="q-mr-md" v-model="queryForm.name"></q-input>
           <q-btn flat="" icon="search" color="primary" class="" @click="loadPage"></q-btn>
           <q-btn flat icon="restart_alt" color="red" @click="()=>{ResetForm(queryForm);loadPage();}"></q-btn>
+          <q-space></q-space>
+          <q-select
+              v-model="visibleColumns"
+              multiple
+              outlined
+              dense
+              options-dense
+              display-value="详细信息"
+              emit-value
+              map-options
+              :options="columns"
+              option-value="name"
+              options-cover
+              style="min-width: 150px"
+          />
         </template>
         <template v-slot:bottom="">
           <span v-if="selected.length > 0">已选择{{ selected.length }}项</span>
@@ -47,6 +63,11 @@
           <q-pagination v-model="page.currentPage" :max="Math.ceil(page.total/page.pageSize)" input=""
                         @update:model-value="loadPage">
           </q-pagination>
+        </template>
+        <template v-slot:body-cell-sortId="props">
+          <q-td :props="props">
+            {{ getSortName(props.row.sortId) }}
+          </q-td>
         </template>
         <template v-slot:body-cell-updatedAt="props">
           <q-td :props="props">
@@ -90,7 +111,9 @@
           <q-input v-model="saveForm.advantage" label="优势" placeholder="优势"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.sortId" label="分类id" placeholder="分类id"/>
+          <q-select v-model="saveForm.sortId" :options="sorts" map-options emit-value label="分类id"
+                    option-value="id" option-label="name" clearable
+                    placeholder="分类id"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.avatarUrl" label="头图" placeholder="头图"/>
@@ -154,143 +177,143 @@ import {BaseApi} from "components/models";
 import {CommonSuccess, CommonWarn, DialogConfirm} from "components/dialog";
 
 const baseUrl = "/brand"
+const rows: any = ref([]);
+const saveDialog: any = ref(false);
+const selected: any = ref([]);
 const columns: any = [{
   "name": "name",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "品牌名",
   "field": "name"
 }, {
   "name": "sortId",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "分类id",
   "field": "sortId"
 }, {
   "name": "userId",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "用户id",
   "field": "userId"
 }, {
   "name": "avatarUrl",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "头图",
   "field": "avatarUrl"
 }, {
   "name": "companyName",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "公司名",
   "field": "companyName"
 }, {
   "name": "mode",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "经营模式",
   "field": "mode"
 }, {
   "name": "flow",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "流程",
   "field": "flow"
 }, {
   "name": "advantage",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "优势",
   "field": "advantage"
 }, {
   "name": "bodyUrl",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "主题图片",
   "field": "bodyUrl"
 }, {
   "name": "claimCheck",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "审核",
   "field": "claimCheck"
 }, {
   "name": "claimExecrise",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "培训",
   "field": "claimExecrise"
 }, {
   "name": "claimLicens",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "许可条款",
   "field": "claimLicens"
 }, {
   "name": "claimMoney",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "需求金额",
   "field": "claimMoney"
 }, {
   "name": "claimShop",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "店面",
   "field": "claimShop"
 }, {
   "name": "claimStaff",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "员工要求",
   "field": "claimStaff"
 }, {
   "name": "companyAddress",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "公司地址",
   "field": "companyAddress"
 }, {
   "name": "createdAt",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "createdAt",
   "field": "createdAt"
 }, {
   "name": "deletedAt",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "deletedAt",
   "field": "deletedAt"
 }, {
   "name": "updatedAt",
   "align": "center",
-  "required": true,
+  "required": false,
   "sortable": false,
   "label": "updatedAt",
   "field": "updatedAt"
 }];
-const rows: any = ref([]);
-const saveDialog: any = ref(false);
-const selected: any = ref([]);
 const saveForm: any = ref({
   "id": "",
   "userId": "",
@@ -319,7 +342,8 @@ const page = ref({
 const queryForm: any = ref({
   "name": "",
 });
-
+const visibleColumns = ref(['name', 'sortId', 'userId', 'avatarUrl', 'companyName', 'mode', 'createdAt', 'updatedAt', 'deletedAt'])
+const sorts: any = ref([])
 onMounted(() => {
   loadPage()
 })
@@ -329,6 +353,23 @@ function loadPage() {
     rows.value = res.data.records
     page.value.total = res.data.total
   })
+  loadSort()
+}
+
+function loadSort() {
+  api.get("/sort/all").then((res: BaseApi) => {
+    sorts.value = res.data
+  })
+}
+
+function getSortName(id: number) {
+  let sortName = ""
+  sorts.value.forEach((sort: any) => {
+    if (sort.id == id) {
+      sortName = sort.name
+    }
+  })
+  return sortName
 }
 
 function handleUpdate() {

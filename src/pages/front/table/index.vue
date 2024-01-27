@@ -30,10 +30,10 @@
           <q-card-section class="q-pt-none">
             <div class="row justify-between" v-for="(table, tableKey) in tableForm" :key="tableKey">
               <div class="q-mt-md w-[200px] flex justify-around">
-                <q-btn flat round color="grey" dense  icon="vertical_align_top"  @click="handleTop(tableForm,tableKey)"/>
-                <q-btn flat round color="grey" dense  icon="arrow_upward"  @click="handleUp(tableForm,tableKey)"/>
-                <q-btn flat round color="grey" dense  icon="arrow_downward"  @click="handleDown(tableForm,tableKey)"/>
-                <q-btn flat round color="red" dense  icon="close"  @click="handleDelete(tableForm,tableKey)"/>
+                <q-btn flat round color="grey" dense icon="vertical_align_top" @click="handleTop(tableForm,tableKey)"/>
+                <q-btn flat round color="grey" dense icon="arrow_upward" @click="handleUp(tableForm,tableKey)"/>
+                <q-btn flat round color="grey" dense icon="arrow_downward" @click="handleDown(tableForm,tableKey)"/>
+                <q-btn flat round color="red" dense icon="close" @click="handleDelete(tableForm,tableKey)"/>
               </div>
               <div class="col q-pr-sm " v-for="(item, itemKey) in tableList">
                 <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense v-model="table[item.name]"/>
@@ -73,10 +73,10 @@
           <q-card-section class="q-pt-none">
             <div class="row justify-between" v-for="(form, formKey) in queryForm" :key="formKey">
               <div class="q-mt-md w-[200px] flex justify-around">
-                <q-btn flat round color="grey" dense  icon="vertical_align_top"  @click="handleTop(queryForm,formKey)"/>
-                <q-btn flat round color="grey" dense  icon="arrow_upward"  @click="handleUp(queryForm,formKey)"/>
-                <q-btn flat round color="grey" dense  icon="arrow_downward"  @click="handleDown(queryForm,formKey)"/>
-                <q-btn flat round color="red" dense  icon="close"  @click="handleDelete(queryForm,formKey)"/>
+                <q-btn flat round color="grey" dense icon="vertical_align_top" @click="handleTop(queryForm,formKey)"/>
+                <q-btn flat round color="grey" dense icon="arrow_upward" @click="handleUp(queryForm,formKey)"/>
+                <q-btn flat round color="grey" dense icon="arrow_downward" @click="handleDown(queryForm,formKey)"/>
+                <q-btn flat round color="red" dense icon="close" @click="handleDelete(queryForm,formKey)"/>
               </div>
               <div class="col q-pr-sm " v-for="(item, itemKey) in queryList">
                 <q-input filled class="q-mt-md" dense v-model="form[item.name]"/>
@@ -110,10 +110,10 @@
           <q-card-section class="q-pt-none">
             <div class="row justify-between" v-for="(form, tableKey) in saveForm" :key="tableKey">
               <div class="q-mt-md w-[200px] flex justify-around">
-                <q-btn flat round color="grey" dense  icon="vertical_align_top"  @click="handleTop(saveForm,tableKey)"/>
-                <q-btn flat round color="grey" dense  icon="arrow_upward"  @click="handleUp(saveForm,tableKey)"/>
-                <q-btn flat round color="grey" dense  icon="arrow_downward"  @click="handleDown(saveForm,tableKey)"/>
-                <q-btn flat round color="red" dense  icon="close"  @click="handleDelete(saveForm,tableKey)"/>
+                <q-btn flat round color="grey" dense icon="vertical_align_top" @click="handleTop(saveForm,tableKey)"/>
+                <q-btn flat round color="grey" dense icon="arrow_upward" @click="handleUp(saveForm,tableKey)"/>
+                <q-btn flat round color="grey" dense icon="arrow_downward" @click="handleDown(saveForm,tableKey)"/>
+                <q-btn flat round color="red" dense icon="close" @click="handleDelete(saveForm,tableKey)"/>
               </div>
               <div class="col q-pr-sm " v-for="(item, itemKey) in saveList">
                 <q-input filled v-if="item.type === 'string'" class="q-mt-md" dense v-model="form[item.name]"/>
@@ -172,7 +172,7 @@ function handleTablesUpdate(table: any) {
     tableForm.value.push({
       name: key,
       align: 'center',
-      required: true,
+      required: false,
       sortable: false,
       label: table.properties[key].description == null ? key : table.properties[key].description,
       field: key,
@@ -203,13 +203,15 @@ function handleTablesUpdate(table: any) {
 function building() {
   CommonWarn("稍后开发")
 }
-function handleNewQueryLine(){
+
+function handleNewQueryLine() {
   queryForm.value.public({
-    name:"",
+    name: "",
     default: "",
   })
 }
-function handleNewSaveLine(){
+
+function handleNewSaveLine() {
   saveForm.value.push({
     name: "",
     label: "",
@@ -225,6 +227,7 @@ function handleNewSaveLine(){
     defaultValue: ""
   })
 }
+
 //表格数据保存表单到剪切板
 function handleTableForm() {
   const code = JSON.stringify(toRaw(tableForm.value))
@@ -269,7 +272,8 @@ function handleSaveForm() {
     CopyToClickBoard("const " + val + ":any = ref(" + code + ");")
   })
 }
-function handleNewTableLine(){
+
+function handleNewTableLine() {
   tableForm.value.push({
     name: "",
     align: 'center',
@@ -279,38 +283,44 @@ function handleNewTableLine(){
     field: "",
   })
 }
-function handleTop(form:any,tableKey:any){
+
+function handleTop(form: any, tableKey: any) {
   const temp = form[tableKey]
-  form.splice(tableKey,1)
+  form.splice(tableKey, 1)
   form.unshift(temp)
 }
-function handleUp(form:any,tableKey:any){
-  if (tableKey==0){
+
+function handleUp(form: any, tableKey: any) {
+  if (tableKey == 0) {
     return
   }
-  const temp =  form[tableKey-1]
-  form[tableKey-1] =form[tableKey]
+  const temp = form[tableKey - 1]
+  form[tableKey - 1] = form[tableKey]
   form[tableKey] = temp
 }
-function handleDown(form:any,tableKey:any){
-  if (tableKey==form.length-1){
+
+function handleDown(form: any, tableKey: any) {
+  if (tableKey == form.length - 1) {
     return
   }
-  const temp =  form[tableKey+1]
-  form[tableKey+1] =form[tableKey]
+  const temp = form[tableKey + 1]
+  form[tableKey + 1] = form[tableKey]
   form[tableKey] = temp
 }
-function  handleDelete(form:any,tableKey:any){
-  form.splice(tableKey,1)
+
+function handleDelete(form: any, tableKey: any) {
+  form.splice(tableKey, 1)
 }
-function handleCopyPage(){
+
+function handleCopyPage() {
   CopyToClickBoard(
-`const page = ref({
+      `const page = ref({
   currentPage: 1,
   pageSize: 15,
   total: 1
 });`)
 }
+
 function handleSaveFormDialog() {
   DialogPrompt("输入", "变量名称", "saveForm").onOk((val: string) => {
     let AllCode = ``

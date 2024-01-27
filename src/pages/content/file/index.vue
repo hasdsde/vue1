@@ -12,6 +12,7 @@
                row-key="id" class="">
         <template v-slot:top="prop">
           <q-input filled="" dense="" label="分类名" class="q-mr-md" v-model="queryForm.name"></q-input>
+          <q-input filled="" dense="" label="类型" class="q-mr-md" v-model="queryForm.format"></q-input>
           <q-btn flat="" icon="search" color="primary" class="" @click="loadPage"></q-btn>
           <q-btn flat icon="restart_alt" color="red" @click="()=>{ResetForm(queryForm);loadPage();}"></q-btn>
         </template>
@@ -95,7 +96,7 @@
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.format" label="格式" placeholder="format"/>
         </q-card-section>
-        
+
         <q-card-section class="text-primary">
           <div class="row justify-between">
             <div class="col">
@@ -122,68 +123,23 @@ import {CommonSuccess, CommonWarn, DialogConfirm} from "components/dialog";
 
 const baseUrl = "/file"
 const columns: any = [{
-  "name": "id",
-  "align": "center",
-  "required": true,
-  "sortable": false,
-  "label": "id",
-  "field": "id"
+  "name": "id", "align": "center", "required": true, "sortable": false, "label": "id", "field": "id"
 }, {
-  "name": "name",
-  "align": "center",
-  "required": true,
-  "sortable": false,
-  "label": "文件名",
-  "field": "name"
+  "name": "name", "align": "center", "required": true, "sortable": false, "label": "文件名", "field": "name"
 }, {
-  "name": "path",
-  "align": "center",
-  "required": true,
-  "sortable": false,
-  "label": "本地路径",
-  "field": "path"
+  "name": "path", "align": "center", "required": true, "sortable": false, "label": "本地路径", "field": "path"
 }, {
-  "name": "url",
-  "align": "center",
-  "required": true,
-  "sortable": false,
-  "label": "URL",
-  "field": "url"
+  "name": "url", "align": "center", "required": true, "sortable": false, "label": "URL", "field": "url"
 }, {
-  "name": "md5",
-  "align": "center",
-  "required": true,
-  "sortable": false,
-  "label": "MD5",
-  "field": "md5"
+  "name": "md5", "align": "center", "required": true, "sortable": false, "label": "MD5", "field": "md5"
 }, {
-  "name": "format",
-  "align": "center",
-  "required": true,
-  "sortable": false,
-  "label": "格式",
-  "field": "format"
+  "name": "format", "align": "center", "required": true, "sortable": false, "label": "格式", "field": "format"
 }, {
-  "name": "createdAt",
-  "align": "center",
-  "required": true,
-  "sortable": false,
-  "label": "创建时间",
-  "field": "createdAt"
+  "name": "createdAt", "align": "center", "required": true, "sortable": false, "label": "创建时间", "field": "createdAt"
 }, {
-  "name": "updatedAt",
-  "align": "center",
-  "required": true,
-  "sortable": false,
-  "label": "修改时间",
-  "field": "updatedAt"
+  "name": "updatedAt", "align": "center", "required": true, "sortable": false, "label": "修改时间", "field": "updatedAt"
 }, {
-  "name": "deletedAt",
-  "align": "center",
-  "required": true,
-  "sortable": false,
-  "label": "删除时间",
-  "field": "deletedAt"
+  "name": "deletedAt", "align": "center", "required": true, "sortable": false, "label": "删除时间", "field": "deletedAt"
 }];
 const rows: any = ref([]);
 const saveDialog: any = ref(false);

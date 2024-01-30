@@ -9,8 +9,8 @@
       <q-btn color="red" label="删除" icon="delete" @click="handleDelete" class="q-mr-md"></q-btn>
     </q-card>
     <q-card class="q-mt-md">
-      :pagination="{rowsPerPage:0}"
       <q-table :rows="rows" :columns="columns" hide-pagination="" v-model:selected="selected" selection="multiple"
+               :pagination="{rowsPerPage:0}"
                row-key="id" class="">
         <template v-slot:top="prop">
           <q-input filled="" dense="" label="分类名" class="q-mr-md" v-model="queryForm.name"></q-input>

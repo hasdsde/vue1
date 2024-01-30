@@ -126,16 +126,10 @@
           <q-input v-model="saveForm.claimCheck" label="审核" placeholder="审核"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.claimExecrise" label="培训" placeholder="培训"/>
-        </q-card-section>
-        <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.claimLicens" label="许可条款" placeholder="许可条款"/>
-        </q-card-section>
-        <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.claimMoney" label="需求金额" placeholder="需求金额"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.claimShop" label="店面" placeholder="店面"/>
+          <q-input v-model="saveForm.claimShop" label="门店数" placeholder="门店数"/>
         </q-card-section>
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.claimStaff" label="员工要求" placeholder="员工要求"/>
@@ -146,9 +140,7 @@
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.companyName" label="公司名" placeholder="公司名"/>
         </q-card-section>
-        <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.flow" label="流程" placeholder="流程"/>
-        </q-card-section>
+
         <q-card-section class="q-pa-md">
           <q-input v-model="saveForm.mode" label="经营模式" placeholder="经营模式"/>
         </q-card-section>
@@ -252,20 +244,6 @@ const columns: any = [{
   "label": "审核",
   "field": "claimCheck"
 }, {
-  "name": "claimExecrise",
-  "align": "center",
-  "required": false,
-  "sortable": false,
-  "label": "培训",
-  "field": "claimExecrise"
-}, {
-  "name": "claimLicens",
-  "align": "center",
-  "required": false,
-  "sortable": false,
-  "label": "许可条款",
-  "field": "claimLicens"
-}, {
   "name": "claimMoney",
   "align": "center",
   "required": false,
@@ -277,7 +255,7 @@ const columns: any = [{
   "align": "center",
   "required": false,
   "sortable": false,
-  "label": "店面",
+  "label": "门店数",
   "field": "claimShop"
 }, {
   "name": "claimStaff",
@@ -324,8 +302,6 @@ const saveForm: any = ref({
   "avatarUrl": "",
   "bodyUrl": "",
   "claimCheck": "",
-  "claimExecrise": "",
-  "claimLicens": "",
   "claimMoney": "",
   "claimShop": "",
   "claimStaff": "",

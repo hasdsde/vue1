@@ -139,6 +139,8 @@ import {CommonSuccess, CommonWarn, DialogConfirm} from "components/dialog";
 
 const baseUrl = "/sort"
 const columns: any = [{
+  "name": "id", "align": "center", "required": true, "sortable": false, "label": "id", "field": "id"
+}, {
   "name": "name", "align": "center", "required": true, "sortable": false, "label": "分类名", "field": "name"
 },
   {

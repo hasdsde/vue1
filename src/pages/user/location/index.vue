@@ -10,7 +10,14 @@
         <q-card-section class=" w-3/4">
           <div class="leading-10 q-pa-md">
             <div class="float-right">
-              <q-btn outline round color="orange" icon="star_border"/>
+              <div class="float-right">
+                <div v-if="likeIds.indexOf(currentItem.id)>-1">
+                  <q-btn outline round color="orange" icon="star" @click="removeLike(currentItem.id)"/>
+                </div>
+                <div v-else>
+                  <q-btn outline round color="orange" icon="star_border" @click="addLike(currentItem.id)"/>
+                </div>
+              </div>
             </div>
             <div class="text-h6 font-bold">{{ currentItem.name }}</div>
             <div class="text-grey-8">{{ currentItem.companyName }}</div>
@@ -41,8 +48,10 @@
                 <span>
                 {{ currentUser.nickName }}
                 </span>
-                <q-btn label="电话咨询" color="positive" class="float-right" icon="call"/>
-                <q-btn label="发送邮件" color="cyan" class="float-right q-mr-md" icon="email"/>
+                <q-btn label="电话咨询" color="positive" class="float-right" icon="call"
+                       @click="CopyToClickBoard(currentUser.phone)"/>
+                <q-btn label="发送邮件" color="cyan" class="float-right q-mr-md" icon="email"
+                       @click="CopyToClickBoard(currentUser.email)"/>
               </div>
             </div>
           </div>
@@ -61,15 +70,22 @@ import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import {api} from "boot/axios";
 import {BaseApi} from "components/models";
+import {CopyToClickBoard} from "components/utils";
+import {CommonSuccess} from "components/dialog";
 
 const router = useRouter().currentRoute.value
 const currentItem: any = ref({})
 const currentUser = ref({})
+const likeIds = ref([])
 onMounted(() => {
   const router = useRouter().currentRoute.value
-  getItemById(router.query.id)
+  loadPage()
 })
 
+function loadPage() {
+  getItemById(router.query.id)
+  getUserLikes()
+}
 
 function getItemById(id: any) {
   api.get("/brand/" + id).then((res: BaseApi) => {
@@ -85,6 +101,30 @@ function getItemById(id: any) {
 function getUserInfo(userId: number) {
   api.get("/user/info?id=" + userId.toString()).then((res: BaseApi) => {
     currentUser.value = res.data
+  })
+}
+
+function getUserLikes() {
+  api.get("/like/brandId").then((res: any) => {
+    likeIds.value = res.data
+  })
+}
+
+function addLike(id: any) {
+  api.post("/like?id=" + id).then((res: BaseApi) => {
+    if (res.code == 200) {
+      CommonSuccess("收藏成功")
+    }
+    loadPage()
+  })
+}
+
+function removeLike(id: any) {
+  api.delete("/like/del?id=" + id).then((res: BaseApi) => {
+    if (res.code == 200) {
+      CommonSuccess("取消收藏")
+    }
+    loadPage()
   })
 }
 </script>

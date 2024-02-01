@@ -277,7 +277,6 @@ function removeLike(id: any) {
 }
 
 function handleJump(id: number) {
-  console.log("触发")
   router.push("/location?id=" + id)
 }
 

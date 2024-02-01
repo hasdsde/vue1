@@ -2,16 +2,15 @@
   <div class="q-pa-md ">
     <div class="max-w-[1600px] m-auto">
       <div class="q-ma-md w-[50%] m-auto flex justify-between  box-border border-sky-500 border-2">
-        <q-input filled v-model="text" label="搜索店家" class="w-[80%] font-bold" clearable
-                 color="primary"/>
-        <q-btn square color="primary" icon="search" label="搜索" size="1rem" class="w-[20%]"/>
+        <q-input filled v-model="searchText" label="搜索店家" class="w-[80%] font-bold" clearable
+                 color="primary" @keyup.enter="handleSearch"/>
+        <q-btn square color="primary" icon="search" label="搜索" size="1rem" class="w-[20%]" @click="handleSearch"/>
       </div>
       <div class="w-full flex justify-between  q-mt-lg ">
         <q-card class="w-[22%] bg-grey-1  min-w-[300px]">
-          <div class="q-pt-md q-pl-md text-body1 text-bold">全部分类</div>
-          <q-list class="grid gap-2 grid-cols-3">
+          <q-list class="grid gap-2 grid-cols-3 q-mt-md">
             <q-item v-ripple="false" v-for="sort in allSort" class="q-pa-sm">
-              <q-btn flat size="1rem" outline color="primary">
+              <q-btn flat size="1rem" outline color="primary" @click="handleSort(sort.id)">
                 <div class="text-center">
                   <q-icon :name="sort.icon"/>
                 </div>
@@ -35,10 +34,7 @@
               @mouseenter="autoplay = false"
               @mouseleave="autoplay = true"
           >
-            <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg"/>
-            <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg"/>
-            <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg"/>
-            <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg"/>
+            <q-carousel-slide :name="index" :img-src="banner.url" v-for="(banner,index) in banners"/>
           </q-carousel>
         </q-card>
         <q-card class="w-[22%] min-w-[300px] text-center flex justify-center bg-grey-1 ">
@@ -46,26 +42,29 @@
             <div class="q-ma-md">
               <q-btn round>
                 <q-avatar size="5rem">
-                  <img src="https://cdn.quasar.dev/logo-v2/svg/logo.svg"/>
+                  <img v-if="userInfo.avatar==''" src="https://cdn.quasar.dev/logo-v2/svg/logo.svg"/>
+                  <img v-else :src="userInfo.avatar"/>
                 </q-avatar>
               </q-btn>
             </div>
             <div class="text-h6 font-bold q-mt-md">
-              请登录！
+              你好，{{ userInfo.nickName }}
             </div>
           </q-card-section>
           <q-card-section class="w-full">
             <div class="flex justify-around">
-              <q-btn color="primary" size="1rem" rounded label="登录" class="w-[20%] "/>
-              <q-btn color="secondary" size="1rem" rounded label="注册" class="w-[20%] "/>
-              <q-btn color="purple" size="1rem" rounded outline label="加盟" class="w-[20%] "/>
-              <q-btn color="orange" size="1rem" rounded outline label="入驻" class="w-[20%] "/>
+              <q-btn v-if="token==''" color="primary" size="1rem" rounded label="登录" class="w-[20%] " to="/login"/>
+              <q-btn v-if="token==''" color="secondary" size="1rem" rounded label="注册" class="w-[20%]"/>
+              <q-btn color="purple" size="1rem" rounded outline label="加盟" class="w-[20%] " to="/sort"/>
+              <q-btn color="orange" size="1rem" rounded outline label="入驻" class="w-[20%] " to="/user?open=3"/>
+              <q-btn v-if="token!=''" color="primary" size="1rem" rounded label="设置" class="w-[20%]" to="/user"/>
+              <q-btn v-if="token!=''" color="red" size="1rem" rounded label="注销" class="w-[20%] " to="/login"/>
             </div>
           </q-card-section>
           <q-card-section>
             <q-list class="grid gap-1 grid-cols-3">
               <q-item v-ripple="false" class="no-padding">
-                <q-btn flat size="1rem" outline color="grey">
+                <q-btn flat size="1rem" outline color="grey" to="/user?open=1">
                   <div class="text-center">
                     <q-icon name="star" color="grey-7"/>
                   </div>
@@ -75,7 +74,7 @@
                 </q-btn>
               </q-item>
               <q-item v-ripple="false" class="no-padding">
-                <q-btn flat size="1rem" outline color="grey">
+                <q-btn flat size="1rem" outline color="grey" to="/user?open=2">
                   <div class="text-center">
                     <q-icon name="schedule" color="grey-7"/>
                   </div>
@@ -85,7 +84,7 @@
                 </q-btn>
               </q-item>
               <q-item v-ripple="false" class="no-padding">
-                <q-btn flat size="1rem" outline color="grey">
+                <q-btn flat size="1rem" outline color="grey" to="/user?open=3">
                   <div class="text-center">
                     <q-icon name="widgets" color="grey-7"/>
                   </div>
@@ -99,228 +98,173 @@
         </q-card>
       </div>
       <div class="mt-10">
-        <div class="text-h6 font-bold q-my-md">热门项目</div>
+        <div class="text-h6 font-bold q-my-md">最新项目</div>
         <q-list class="w-full flex justify-between">
-          <q-card class="w-[32%] flex bg-grey-1" v-ripple>
-            <q-card-section class="w-1/2">
-              <q-img fit="fill" width="250px" height="200px"
-                     src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
+          <q-card class="w-[32%] flex bg-grey-1 q-mb-md no-border q-pa-sm" v-ripple v-for="item in newItems"
+                  @click="handleJump(item.id)">
+            <q-card-section class="w-[35%] overflow-hidden q-pa-sm">
+              <q-img fit="cover" height="250px"
+                     :src="item.avatarUrl">
               </q-img>
             </q-card-section>
-            <q-card-section class=" min-w-1/2">
-              <div class="leading-10 q-pa-md">
-                <div class="text-h6">点名称</div>
-                <div class="text-grey-8">加盟地区：全国</div>
-                <div class="text-grey-8">行业：餐饮 矿泉水</div>
-                <div class="text-grey-8">门店数：1000+</div>
-                <div class="text-grey-8">投资金额：10-20万</div>
-              </div>
-            </q-card-section>
-          </q-card>
-          <q-card class="w-[32%] flex bg-grey-1" v-ripple>
-            <q-card-section class="w-1/2">
-              <q-img fit="fill" width="250px" height="200px"
-                     src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-              </q-img>
-            </q-card-section>
-            <q-card-section class=" min-w-1/2">
-              <div class="leading-10 q-pa-md">
-                <div class="text-h6">点名称</div>
-                <div class="text-grey-8">加盟地区：全国</div>
-                <div class="text-grey-8">行业：餐饮 矿泉水</div>
-                <div class="text-grey-8">门店数：1000+</div>
-                <div class="text-grey-8">投资金额：10-20万</div>
-              </div>
-            </q-card-section>
-          </q-card>
-          <q-card class="w-[32%] flex bg-grey-1" v-ripple>
-            <q-card-section class="w-1/2">
-              <q-img fit="fill" width="250px" height="200px"
-                     src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-              </q-img>
-            </q-card-section>
-            <q-card-section class=" min-w-1/2">
-              <div class="leading-10 q-pa-md">
-                <div class="text-h6">点名称</div>
-                <div class="text-grey-8">加盟地区：全国</div>
-                <div class="text-grey-8">行业：餐饮 矿泉水</div>
-                <div class="text-grey-8">门店数：1000+</div>
-                <div class="text-grey-8">投资金额：10-20万</div>
+            <q-card-section class=" w-[65%] q-pa-sm">
+              <div class="leading-8  ">
+                <div class="text-h6 font-bold">{{ item.name }}</div>
+                <div class="text-grey-8">{{ item.companyName }}</div>
+                <div class="text-grey-8">
+                  <q-badge transparent align="middle" color="primary" class="q-mr-md">
+                    {{ item.mode }}
+                  </q-badge>
+                  <q-badge transparent align="middle" color="primary" class="q-mr-md">
+                    {{ item.claimShop }} +门店
+                  </q-badge>
+                </div>
+                <div class="text-grey-8">
+                  员工要求：{{ item.claimStaff }}人
+                  &nbsp;&nbsp;&nbsp;审核时间： 约{{ item.claimCheck }}天
+                </div>
+                <div>
+                  <q-badge transparent align="middle" color="orange" class="q-mr-md" v-for="ad in item.advantage">
+                    {{ ad }}
+                  </q-badge>
+                </div>
+                <div>
+                  需求资金: <span class="text-xl text-orange text-bold">{{ item.claimMoney }}万元</span>
+                </div>
               </div>
             </q-card-section>
           </q-card>
         </q-list>
       </div>
       <div class="mt-10">
-        <div class="text-h6 font-bold q-my-md">全部分类</div>
-        <q-list class="w-full flex justify-between">
-          <q-card class="w-[49%]  bg-grey-1 q-pa-md" v-ripple="false">
-            <div class="text-[1rem] font-bold q-mb-md w-full">餐饮</div>
-            <div class="grid gap-2 grid-cols-3 grid-rows-2 ">
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-            </div>
-          </q-card>
-          <q-card class="w-[49%]  bg-grey-1 q-pa-md" v-ripple="false">
-            <div class="text-[1rem] font-bold q-mb-md w-full">餐饮</div>
-            <div class="grid gap-2 grid-cols-3 grid-rows-2 ">
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-              <div class="q-my-sm">
-                <q-img fit="fill" width="200px" height="150px"
-                       src="https://img.alicdn.com/imgextra/i1/6000000002133/O1CN01tq0D8T1Rcxj6Ge3Tr_!!6000000002133-0-octopus.jpg">
-                </q-img>
-                <div class="text-md text-bold">
-                  店名店名店名店名店名店名
-                </div>
-                <div>
-                  10-20万
-                </div>
-              </div>
-            </div>
-          </q-card>
-        </q-list>
+        <div class="flex justify-left items-center">
+          <div class="text-h6 font-bold q-my-md q-mr-md">全部分类</div>
+          <q-btn-toggle
+              v-model="sortId"
+              class="my-custom-toggle"
+              no-caps
+              unelevated
+              toggle-color="primary"
+              color="white"
+              text-color="primary"
+              :options="sorts"/>
+        </div>
       </div>
+      <q-list class="w-full flex justify-between">
+        <q-card class="w-full  bg-grey-1 q-pa-md" v-ripple="false">
+          <div class="grid gap-4 grid-cols-5 grid-rows-2 ">
+            <div class="q-my-sm cursor-pointer" v-for="item in all" @click="router.push('/location?id='+item.id)">
+              <q-img fit="fill" width="240px" height="150px"
+                     :src="item.avatarUrl">
+              </q-img>
+              <div class="text-md text-bold">
+                {{ item.name }}
+              </div>
+              <div>
+                <span class="text-orange text-lg">{{ item.claimMoney }}万元</span>
+              </div>
+            </div>
+          </div>
+        </q-card>
+      </q-list>
     </div>
   </div>
 
 </template>
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 import {api} from "boot/axios";
+import {useRouter} from "vue-router";
+import {BaseApi} from "components/models";
 
-const slide = ref(1)
+const sorts: any = ref([])
+const router = useRouter()
+const slide = ref(0)
 const autoplay = ref(true)
 const allSort = ref([])
-
+const searchText = ref("")
+const banners = ref([])
+const newItems = ref([])
+const sortId = ref(0)
+const all = ref([])
+const token = ref("")
+const userInfo = ref({
+  "nickName": "请登录",
+  "avatar": ''
+})
 onMounted(() => {
   loadPage();
 })
 
 function loadPage() {
+  loadBanner()
   loadAllSort()
+  getNewItem()
+  getParentSort()
+  loadItemSort()
+  getUserInfo()
 }
+
+watch(sortId, () => {
+  loadItemSort()
+})
+
+function getUserInfo() {
+  userInfo.value = JSON.parse(localStorage.getItem("userInfo") as string);
+  token.value = localStorage.getItem("token") as string
+}
+
+function loadItemSort() {
+  api.get("/brand/page?sortId=" + sortId.value).then((res: BaseApi) => {
+    res.data.records.forEach((item: any) => {
+      item.advantage = item.advantage.split(',')
+    })
+    all.value = res.data.records
+  })
+}
+
+function getNewItem() {
+  api.get("/brand/page?currentPage=1&pageSize=3").then((res: BaseApi) => {
+    res.data.records.forEach((item: any) => {
+      item.advantage = item.advantage.split(',')
+    })
+    newItems.value = res.data.records
+  })
+}
+
+function loadBanner() {
+  api.get("/banner/page").then((res: BaseApi) => {
+    banners.value = res.data.records
+  })
+}
+
+function handleSearch() {
+  router.push("/sort?name=" + searchText.value)
+}
+
+function handleSort(id: number) {
+  router.push("/sort?sortId=" + id)
+
+}
+
 
 function loadAllSort() {
   api.get("/sort/all/parent").then((res: any) => {
     allSort.value = res.data
+  })
+}
+
+function handleJump(id: number) {
+  router.push("/location?id=" + id)
+}
+
+function getParentSort() {
+  sorts.value = []
+  api.get("/sort/all/parent").then((res: any) => {
+    sorts.value.push({"label": '全部', "value": 0})
+    res.data.forEach((item: any) => {
+      sorts.value.push({"label": item.name, "value": item.id})
+    })
   })
 }
 </script>

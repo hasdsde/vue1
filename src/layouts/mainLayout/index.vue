@@ -9,7 +9,7 @@
         </q-toolbar-title>
         <div>
           <span class="q-mr-md">
-            用户： {{ userInfo.nickName }}
+            用户： {{ userInfo.nickName == '' ? '请登录' : userInfo.nickName }}
           </span>
           <q-btn icon="logout" size="sm" color="red" @click="handleLogout"/>
         </div>
@@ -44,7 +44,7 @@
 import {api} from 'src/boot/axios';
 import {BaseApi} from 'src/components/models';
 import {ref} from 'vue';
-import {useRoute} from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
 
 const menuMap: any = []
 let parentMenu: any = []
@@ -53,7 +53,8 @@ const menus: any = ref([])
 const leftDrawerOpen = ref(false)
 const link: any = ref('')
 const route = useRoute()
-const userInfo = ref({nickName: ""})
+const router = useRouter()
+const userInfo = ref({nickName: "请登录"})
 
 // 收起侧栏
 function toggleLeftDrawer() {
@@ -80,7 +81,12 @@ function handleCardExpand(name: any) {
 }())
 
 function getUserInfo() {
-  userInfo.value = JSON.parse(localStorage.getItem("userInfo") as string)
+  let item = localStorage.getItem("userInfo");
+  if (item == null) {
+    location.href = "/#/login"
+  } else {
+    userInfo.value = JSON.parse(localStorage.getItem("userInfo") as string)
+  }
 }
 
 function handleLogout() {

@@ -94,10 +94,11 @@
         </q-card-section>
 
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.link" label="链接" placeholder="链接"/>
+          <q-input v-model="saveForm.url" label="图片src" placeholder="url"/>
         </q-card-section>
+
         <q-card-section class="q-pa-md">
-          <q-input v-model="saveForm.url" label="url" placeholder="url"/>
+          <q-input v-model="saveForm.link" label="跳转链接" placeholder="链接"/>
         </q-card-section>
 
         <q-card-section class="text-primary">
@@ -130,14 +131,14 @@ const columns: any = [{
   "align": "center",
   "required": false,
   "sortable": false,
-  "label": "url",
+  "label": "图片src",
   "field": "url"
 }, {
   "name": "link",
   "align": "center",
   "required": false,
   "sortable": false,
-  "label": "链接",
+  "label": "跳转链接",
   "field": "link"
 }, {
   "name": "createdAt",

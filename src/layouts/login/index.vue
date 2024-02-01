@@ -36,7 +36,7 @@
 <script setup lang="ts">
 import {api} from 'src/boot/axios';
 import {CommonFail, CommonSuccess, CommonWarn} from 'src/components/dialog';
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import {useRouter} from 'vue-router'
 
 
@@ -46,18 +46,18 @@ const $router = useRouter()
 const usernameRef = ref(null)
 const passwordRef = ref(null)
 const passwordConformRef = ref(null)
-
-
 const name = ref('')
 const password = ref('')
 const registerMode = ref(false)
 
+onMounted(() => {
+  localStorage.clear();
+})
 
 // 重置输入框
 function clearAll() {
   name.value = ''
   password.value = ''
-
 }
 
 

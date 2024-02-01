@@ -6,7 +6,7 @@ const routes: RouteRecordRaw[] = [
         path: '/',
         component: () => import('layouts/mainLayout/index.vue'),
         children: [
-            {path: '', redirect: '/dashboard/home'},
+            {path: '', redirect: '/home'},
             {path: '/dashboard/home', component: () => import('pages/dashboard/home/index.vue')},
             //服务端页
             {path: '/server/schedule', component: () => import('pages/server/schedule/index.vue')},

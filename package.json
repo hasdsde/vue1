@@ -12,6 +12,7 @@
     "tw": "node src/pages/front/template/server.js"
   },
   "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
     "@quasar/extras": "^1.16.4",
     "axios": "^1.2.1",
     "cheerio": "^1.0.0-rc.12",

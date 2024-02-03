@@ -65,14 +65,62 @@
             <q-expansion-item
                 expand-separator
                 icon="insights"
-                :label="'当前类型：互联网'"
+                :label="'当前类型：'+sort.name"
                 header-class="text-primary"
             >
               <q-card>
                 <q-card-section>
-                  <div class="flex">
-                    <q-btn color="primary" class="q-mr-md" label="开始分析" @click="getOriginPosition"/>
-                    <q-btn color="primary" class="q-mr-md" label="收藏该位置" @click="getOriginPosition"/>
+                  <div class="flex items-center">
+                    <q-btn color="primary" class="q-mr-md" label="开始分析" @click="startAnalyse"/>
+                    <q-btn color="primary" class="q-mr-md" label="复制坐标"
+                           @click="CopyToClickBoard(currentPosition.lng+','+currentPosition.lat)"/>
+                    <span class="text-h6 font-bold" :class="analyseList.score>1000?'text-green':'text-red'"
+                          v-if="analyseList.score!=null"> 最终得分：{{
+                        analyseList.score
+                      }}</span>
+                  </div>
+                  <div class="q-mt-md">
+                    <div v-for="analyse in analyseList">
+                      <q-expansion-item
+                          v-if=" analyse.result != ''"
+                          icon="travel_explore"
+                          :label="analyse.name"
+                          :caption="'得分:'+analyse.score"
+                          :header-class="analyse.weight>0?'text-green':'text-red'"
+                      >
+                        <q-card>
+                          <q-card-section>
+                            <q-item clickable v-ripple v-for="result in analyse.result">
+                              <q-item-section avatar>
+                                <q-icon :color="result.weight>0?'primary':'red'"
+                                        :name="result.weight>0?'verified':'new_releases'"/>
+                              </q-item-section>
+                              <q-item-section>
+
+                                <div>
+                                  <span>
+                                  距离： {{ result.distance }}米
+                                </span>
+                                  <span>
+                                  名称： {{ result.name }}
+                                </span>
+                                  <span>
+                                  地址：{{ result.address }}
+                                </span>
+                                  <span>
+                                  权重：{{ result.weight }}
+                                </span>
+                                  <span class="float-right">
+                                  得分：{{ result.score }}
+                                </span>
+                                </div>
+                              </q-item-section>
+                            </q-item>
+                          </q-card-section>
+                        </q-card>
+                      </q-expansion-item>
+                    </div>
+
                   </div>
                 </q-card-section>
               </q-card>
@@ -125,6 +173,9 @@ import {BaseApi} from "components/models";
 import {CopyToClickBoard} from "components/utils";
 import {CommonSuccess} from "components/dialog";
 import AMapLoader from "@amap/amap-jsapi-loader";
+import {AroundSearch, SortData, TransportData} from "components/calc";
+import {useQuasar} from "quasar";
+import {GD_JS_KEY} from "components/pwd";
 //@ts-ignore
 window._AMapSecurityConfig = {
   securityJsCode: "858e1662d17c1af4144ffabcbb834717",
@@ -136,29 +187,33 @@ let geolocationPlugin: any
 let placeSearchPlugin: any
 let AMapObj: any
 //交互
-const currentPosition = ref({"name": "石家庄市", lng: "", lat: ""})
+const currentPosition = ref({"name": "石家庄市", lng: 0, lat: 0})
 const positionSearchValue = ref({name: "石家庄市"})
 const positionSearchResult = ref([])
+const analyseList: any = ref([])
 // X：纬度lat,Y：经度lng
 //页面相关
 const router = useRouter().currentRoute.value
 const currentItem: any = ref({})
 const currentUser = ref({})
+const sort = ref({"name": "美食餐饮"})
 const likeIds = ref([])
 onMounted(() => {
   const router = useRouter().currentRoute.value
   loadPage()
 })
+const $q = useQuasar()
 
 function loadPage() {
   getItemById(router.query.id)
+  getSortById(router.query.id)
   getUserLikes()
   loadMap()
 }
 
 function loadMap() {
   AMapLoader.load({
-    key: "97c29eae0d0c1a274349f1a1d47fb970",
+    key: GD_JS_KEY,
     version: "2.0",
   }).then((AMap) => {
     AMapObj = AMap
@@ -195,6 +250,13 @@ function loadMap() {
     AMap.plugin('AMap.PlaceSearch', function () {
       placeSearchPlugin = new AMap.PlaceSearch({city: currentPosition.value.name});
     })
+
+    //绑定移动事件
+    map.on('moveend', () => {
+      var center = map.getCenter();
+      currentPosition.value.lat = center.lat
+      currentPosition.value.lng = center.lng
+    });
   }).catch((e) => {
     console.log(e);
   });
@@ -212,6 +274,7 @@ function filterFn(val: string, update: Function, abort: any) {
     })
   })
 }
+
 
 //更新位置
 function updatePosition() {
@@ -232,10 +295,43 @@ function getOriginPosition() {
   })
 }
 
+
 //内容相关
 onUnmounted(() => {
   map?.destroy()
 })
+
+function startAnalyse() {
+  getSearchList()
+}
+
+function getSortById(id: any) {
+  api.get("/sort/parentId?id=" + id).then((res: BaseApi) => {
+    sort.value = res.data
+  })
+}
+
+function getSearchList() {
+  let data: any = []
+  let code: number[] = []
+  SortData.forEach((item) => {
+    if (sort.value.name == item.name) {
+      data = [...item.data]
+    }
+  })
+  data.push(...TransportData)
+  $q.loading.show({
+    message: '请求APi并处理数据',
+    boxClass: 'bg-grey-2 text-grey-9',
+    spinnerColor: 'primary'
+  })
+  setTimeout(() => {
+    const a = AroundSearch(data, currentPosition.value.lng, currentPosition.value.lat).then((res: any) => {
+      analyseList.value = res
+    })
+    $q.loading.hide()
+  }, 1000)
+}
 
 function getItemById(id: any) {
   api.get("/brand/" + id).then((res: BaseApi) => {
